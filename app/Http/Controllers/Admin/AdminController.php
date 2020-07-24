@@ -13,6 +13,7 @@ use Image;
 class AdminController extends Controller
 {
     public function dashboard(){
+        Session::put('page','dashboard');
         return view('admin.admin_dashboard');
     }
     public function login(Request $request){
@@ -50,7 +51,7 @@ class AdminController extends Controller
     }
 
     public function settings(){
-        
+        Session::put('page','settings');
         return view('admin.admin_settings');
 
     }
@@ -90,6 +91,8 @@ class AdminController extends Controller
 
     }
     public function updateAdminDetails(Request $request){
+        Session::put('page','update-admin-details');
+
         if($request->isMethod('post')){
             $data = $request->all();
             $rules = [
@@ -116,7 +119,7 @@ class AdminController extends Controller
                     $imageName = rand(111,99999).'.'.$extension;
                     $imagePath = 'img/admin_img/admin_photos/'.$imageName;
                     // Upload the Image
-                    Image::make($image_tmp)->save($imagePath);
+                    Image::make($image_tmp)->resize(360,360)->save($imagePath);
                 }
             }else if(!empty($data['current_admin_image'])){
                 $imageName = $data['current_admin_image'];
