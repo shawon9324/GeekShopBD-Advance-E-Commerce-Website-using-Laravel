@@ -21,13 +21,15 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-8">
+                <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Categories Information</h3>
+                            <a href="{{ url('admin/add-edit-category') }}" style="max-width:150px; float:right;display:inline-block;" class="btn btn-block btn-success">
+                            Add Category</a>
                         </div>
                         <div class="card-body">
-                            <table id="sections" class="table table-bordered table-striped">
+                            <table id="categories" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
