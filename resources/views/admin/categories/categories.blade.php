@@ -11,7 +11,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Sections</li>
+                        <li class="breadcrumb-item active">Categories</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                 <div class="col-8">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Sections Information</h3>
+                            <h3 class="card-title">Categories Information</h3>
                         </div>
                         <div class="card-body">
                             <table id="sections" class="table table-bordered table-striped">
@@ -32,18 +32,24 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Discount</th>
+                                        <th>URL</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($sections as $section)
+                                    @foreach($categories as $category)
                                     <tr>
-                                        <td>{{$section->id}}</td>
-                                        <td>{{$section->name}}</td>
-                                        <td>@if($section->status==1)
-                                            <a class="updateSectionStatus" id="section-{{$section->id}}" section_id="{{$section->id}}" href="javascript:void(0)"> Active</a>
+                                        <td>{{$category->id}}</td>
+                                        <td>{{$category->category_name}}</td>
+                                        <td>{{$category->description}}</td>
+                                        <td>{{$category->category_discount}}</td>
+                                        <td>{{$category->url}}</td>
+                                        <td>@if($category->status==1)
+                                            <a class="updateCategoryStatus" id="category-{{$category->id}}" category_id="{{$category->id}}" href="javascript:void(0)"> Active</a>
                                             @else
-                                            <a class="updateSectionStatus" id="section-{{$section->id}}" section_id="{{$section->id}}" href="javascript:void(0)"> Inactive</a>
+                                            <a class="updateCategoryStatus" id="category-{{$category->id}}" category_id="{{$category->id}}" href="javascript:void(0)"> Inactive</a>
                                             @endif
                                         </td>
                                     </tr>
