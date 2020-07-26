@@ -48,7 +48,6 @@ $(document).ready(function() {
                 }
             },
             error: function() {
-                alert("Error");
             }
         });
     });
@@ -56,7 +55,7 @@ $(document).ready(function() {
 
 
     //Category status Active/Inactive toggling update
-    $(".updateCategoryStatus").click(function() {
+    $(".updateCategoryStatus").click(function(){
         var status = $(this).text();
         var category_id = $(this).attr("category_id");
         $.ajax({
@@ -71,7 +70,6 @@ $(document).ready(function() {
                 }
             },
             error: function() {
-                alert("Error");
             }
         });
     });
@@ -80,25 +78,20 @@ $(document).ready(function() {
 
 
 
+        //Append Category level in the Add category form
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        $("#section_id").change( function() {
+            var section_id = $(this).val();
+            $.ajax({
+                type:"post",
+                url:"/admin/append-categories-level",
+                data:{section_id:section_id},
+                success:function(resp){
+                    $("#appendCategoriesLevel").html(resp);
+                },error: function() {
+                }
+            });
+        });
 
 
 });
