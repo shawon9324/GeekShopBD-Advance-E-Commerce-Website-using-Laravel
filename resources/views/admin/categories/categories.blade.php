@@ -41,21 +41,30 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Discount</th>
+                                        <th>Category Name</th>
+                                        <th>Parent Category</th>
+                                        <th>Section</th>
                                         <th>URL</th>
+                                        <th>Discount</th>
+                                        <th>Description</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($categories as $category)
+                                    @if(!isset($category->parentcategory->category_name))
+                                    <?php $parent_category = "Root";    ?>
+                                    @else
+                                    <?php $parent_category = $category->parentcategory->category_name;    ?>
+                                    @endif
                                     <tr>
                                         <td>{{$category->id}}</td>
                                         <td>{{$category->category_name}}</td>
-                                        <td>{{$category->description}}</td>
-                                        <td>{{$category->category_discount}}</td>
+                                        <td>{{$parent_category}}</td>
+                                        <td>{{$category->section->name}}</td>
                                         <td>{{$category->url}}</td>
+                                        <td>{{$category->category_discount}}</td>
+                                        <td>{{$category->description}}</td>
                                         <td>@if($category->status==1)
                                             <a class="updateCategoryStatus" id="category-{{$category->id}}" category_id="{{$category->id}}" href="javascript:void(0)"> Active</a>
                                             @else

@@ -9,4 +9,10 @@ class Category extends Model
     public function subcategories(){
         return $this->hasMany('App\Category','parent_id')->where('status',1);
     }
+    public function section(){
+        return $this->belongsTo('App\Section','section_id')->select('id','name');    //only fetch section name 
+    }
+    public function parentcategory(){
+        return $this->belongsTo('App\Category','parent_id')->select('id','category_name');   //only fetch parent category name
+    }
 }
