@@ -94,4 +94,75 @@ $(document).ready(function() {
         });
 
 
+        // //confrim delete alert records(normal default alert)
+
+        // $(".confirmDelete").click(function(){
+        //     var name = $(this).attr("name");
+        //     if(confirm("Are you sure want to delete this"+name+"?"))
+        //     {
+        //         return true;
+        //     }
+        //     else
+        //     {
+        //         return false;
+        //     }
+        // });
+        //default alert message timeout
+        $(".alert").fadeTo(2000, 500).slideUp(1000, function(){
+            $(".alert").slideUp(2000);
+        });
+        
+        //confrim delete alert records(with Sweet Alert 2.0)
+        
+
+        $(".confirmDelete").click(function(){
+            var record_type = $(this).attr("record_type");
+            var record_id = $(this).attr("record_id");
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.value) {
+                  Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                  )
+                  window.location.href="/admin/delete-"+record_type+"/"+record_id;
+                }
+              });
+        });
+    
+
+        //view image in update category form
+
+        $(".imageView").click(function(){
+            var image_id = $(this).attr("image_id");
+
+            Swal.fire({
+                title: 'Sweet!',
+                text: 'Modal with a custom image.',
+                imageUrl: '/img/category_img/'+image_id,
+                // imageWidth: 400,
+                // imageHeight: 200,
+                imageAlt: 'Category Image',
+              })
+
+            
+        });
+        
+
+        
+
+
+
+
+
+
 });
+

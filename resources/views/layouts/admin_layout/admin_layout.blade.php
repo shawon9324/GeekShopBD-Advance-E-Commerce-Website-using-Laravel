@@ -90,6 +90,7 @@
     $('.select2bs4').select2({
       theme: 'bootstrap4'
     });
+  });
 </script>
 
 <!-- ChartJS -->
@@ -116,6 +117,8 @@
 <script src="{{ url('js/admin_js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('js/admin_js/demo.js') }}"></script>
+<!-- SWEETALERT 2 CDN-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <!-- Custom ADMIN JS -->
 <script src="{{ url('js/admin_js/admin_script.js') }}"></script>
 

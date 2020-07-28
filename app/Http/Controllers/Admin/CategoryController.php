@@ -155,7 +155,7 @@ class CategoryController extends Controller
         }
         //delete category image from the database table
         Category::where('id',$id)->update(['category_image'=>'']);
-        Session::flash('success_message','category Image has been deleted successfully!');
+        Session::flash('success_message','Category Image has been deleted successfully!');
         return redirect()->back();
        
 
