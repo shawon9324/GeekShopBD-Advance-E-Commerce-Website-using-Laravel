@@ -39,11 +39,22 @@ class CategoryController extends Controller
     public function addEditCategory(Request $request, $id=null){
 
             if($id==""){
+                //ADD CATEGORY
                 $title = "Add Category";
+                $btn_title ="Submit";
                 $category = new Category;
+                $categoryData = array();
+                $getCategories =array();
+                $message = "Category added Successfully!";
             }
             else{
+                 //EDIT CATEGORY
                 $title = "Edit Category";
+                $btn_title ="Update";
+                $categoryData = Category::where('id',$id)->first();
+                $getCategories = Category::with('subcategories')->where(['parent_id'=>0,'section_id'=>$categoryData['section_id']])->get();
+                $category = Category::find($id);        //this query is for update category
+                $message = "Category updated Successfully!";
             }
   
 
@@ -86,21 +97,21 @@ class CategoryController extends Controller
                 }
                 //END Image Stroing Process
 
-                if(empty($data['description'])){
-                    $data['description']="";
-                }
-                if(empty($data['category_discount'])){
-                    $data['category_discount']="";
-                }
-                if(empty($data['meta_title'])){
-                    $data['meta_title']="";
-                }
-                if(empty($data['meta_description'])){
-                    $data['meta_description']="";
-                }
-                if(empty($data['meta_keywords'])){
-                    $data['meta_keywords']="";
-                }
+                // if(empty($data['description'])){
+                //     $data['description']="";
+                // }
+                // if(empty($data['category_discount'])){
+                //     $data['category_discount']="";
+                // }
+                // if(empty($data['meta_title'])){
+                //     $data['meta_title']="";
+                // }
+                // if(empty($data['meta_description'])){
+                //     $data['meta_description']="";
+                // }
+                // if(empty($data['meta_keywords'])){
+                //     $data['meta_keywords']="";
+                // }
  
 
 
@@ -115,13 +126,13 @@ class CategoryController extends Controller
                 $category->meta_keywords = $data['meta_keywords'];
                 $category->status = 1;
                 $category->save();
-                Session::flash('success_message','Caegory added Successfully!');
+                Session::flash('success_message',$message);
                 return redirect('admin/categories');
             }
             //-/Data Storing Process
             //get all section
             $getSections = Section::get();
-            return view('admin.categories.add_edit_category')->with(compact('title','getSections'));
+            return view('admin.categories.add_edit_category')->with(compact('title','getSections','btn_title','categoryData','getCategories'));
     }
 
     public function appendCategoryLevel(Request $request){
@@ -132,6 +143,29 @@ class CategoryController extends Controller
             return view('admin.categories.append_categories_level')->with(compact('getCategories'));
 
         }
+    }
+    public function deleteCategoryImage($id){
+        //get category image by id
+        $getCategoryImage = Category::select('category_image')->where('id',$id)->first();
+       //get category image path
+        $category_image_path = 'img/category_img/'.$getCategoryImage->category_image;
+        //delete cateogry image from the folder
+        if(file_exists($category_image_path)){
+            unlink($category_image_path);
+        }
+        //delete category image from the database table
+        Category::where('id',$id)->update(['category_image'=>'']);
+        Session::flash('success_message','category Image has been deleted successfully!');
+        return redirect()->back();
+       
+
+    }
+    public function deleteCategory($id){
+        $categoryName = Category::select('category_name')->where('id',$id)->first();
+        Category::where('id',$id)->delete();
+        $message = $categoryName->category_name.'- Category has been deleted successfully!';
+        Session::flash('success_message',$message);
+        return redirect()->back();
     }
 
 

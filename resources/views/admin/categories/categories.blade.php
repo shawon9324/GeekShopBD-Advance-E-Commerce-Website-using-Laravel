@@ -33,8 +33,9 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Categories Information</h3>
-                            <a href="{{ url('admin/add-edit-category') }}" style="max-width:150px; float:right;display:inline-block;" class="btn btn-block btn-success">
-                            Add Category</a>
+                            <a href="{{ url('admin/add-edit-category') }}" style="max-width:150px; float:right;display:inline-block;">
+                            <button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add Category</button></a>
+                            
                         </div>
                         <div class="card-body">
                             <table id="categories" class="table table-bordered table-striped">
@@ -48,6 +49,7 @@
                                         <th>Discount</th>
                                         <th>Description</th>
                                         <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,6 +72,10 @@
                                             @else
                                             <a class="updateCategoryStatus" id="category-{{$category->id}}" category_id="{{$category->id}}" href="javascript:void(0)"> Inactive</a>
                                             @endif
+                                        </td>
+                                        <td> <a href="{{url('admin/add-edit-category/'.$category->id)}}">Edit</a>&nbsp;&nbsp; 
+                                        <a href="{{url('admin/delete-category/'.$category->id)}}">Delete</a> 
+                                    
                                         </td>
                                     </tr>
                                     @endforeach
