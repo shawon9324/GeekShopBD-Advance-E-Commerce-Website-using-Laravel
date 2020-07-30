@@ -87,7 +87,7 @@
                   </li>
 
                   <!--Catalogues-->
-                  @if(Session::get('page')=="sections" || Session::get('page')=="categories")
+                  @if(Session::get('page')=="sections" || Session::get('page')=="categories" ||Session::get('page')=="products")
                   <?php $active ="active"; $menu = "open" ?>
                   @else
                   <?php $active=""; $menu = "close";?>
@@ -109,7 +109,7 @@
                           @endif
                           <li class="nav-item">
                               <a href="{{ url('admin/sections') }}" class="nav-link {{ $active }}">
-                                  <i class="far fa-circle nav-icon"></i>
+                                  <i class="nav-icon far fa-circle text-info"></i>
                                   <p>Sections</p>
                               </a>
                           </li>
@@ -120,8 +120,19 @@
                           @endif
                           <li class="nav-item">
                               <a href="{{ url('admin/categories') }}" class="nav-link {{ $active }}">
-                                  <i class="far fa-circle nav-icon"></i>
+                                  <i class="nav-icon far fa-circle text-info"></i>
                                   <p>Categories</p>
+                              </a>
+                          </li>
+                          @if(Session::get('page')=="products")
+                          <?php $active ="active";?>
+                          @else
+                          <?php $active=""; ?>
+                          @endif
+                          <li class="nav-item">
+                              <a href="{{ url('admin/products') }}" class="nav-link {{ $active }}">
+                                  <i class="nav-icon far fa-circle text-info"></i>
+                                  <p>Products</p>
                               </a>
                           </li>
                       </ul>

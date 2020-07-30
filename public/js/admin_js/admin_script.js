@@ -143,10 +143,10 @@ $(document).ready(function() {
 
         $(".imageView").click(function(){
             var image_id = $(this).attr("image_id");
+            var image_category_info = $(this).attr("image_category_info");
 
             Swal.fire({
-                title: 'Sweet!',
-                text: 'Modal with a custom image.',
+                title: image_category_info,
                 imageUrl: '/img/category_img/'+image_id,
                 // imageWidth: 400,
                 // imageHeight: 200,
@@ -155,6 +155,28 @@ $(document).ready(function() {
 
             
         });
+
+
+
+        //Products status Active/Inactive toggling update
+    $(".updateProductStatus").click(function(){
+        var status = $(this).text();
+        var product_id = $(this).attr("product_id");
+        $.ajax({
+            type: "post",
+            url: "/admin/update-product-status",
+            data: { status: status, product_id: product_id },
+            success: function(resp) {
+                if (resp["status"] == 0) {
+                    $("#product-" + product_id).html("<a class='updateProductStatus' href='javascript:void(0)'> Inactive</a>");
+                } else if (resp["status"] == 1) {
+                    $("#product-" + product_id).html("<a class='updateProductStatus' href='javascript:void(0)'>Active </a>");
+                }
+            },
+            error: function() {
+            }
+        });
+    });
         
 
         

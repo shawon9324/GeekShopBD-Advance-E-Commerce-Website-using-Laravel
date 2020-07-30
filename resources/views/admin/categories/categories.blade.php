@@ -33,7 +33,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Categories Information</h3>
-                            <a href="{{ url('admin/add-edit-category') }}" style="max-width:150px; float:right;display:inline-block;">
+                            <a href="{{ url('admin/add-edit-category') }}" style="max-width:150px; float:right;">
                             <button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add Category</button></a>
                             
                         </div>
