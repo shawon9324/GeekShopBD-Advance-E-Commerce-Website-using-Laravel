@@ -26,9 +26,24 @@ class CreateProductsTable extends Migration
             $table->float('product_discount')->nullable();
             $table->string('product_video')->nullable();
             $table->string('main_image')->nullable();
-            $table->mediumText('features')->nullable();
-            $table->string('warranty')->nullable();
             $table->longText('description')->nullable();
+            $table->string('warranty')->nullable();
+
+            $table->string('feature_1')->nullable();
+            $table->string('feature_2')->nullable();
+            $table->string('feature_3')->nullable();
+            $table->string('feature_4')->nullable();
+            $table->string('feature_5')->nullable();
+
+
+
+            $table->string('generation');
+            $table->string('hdd');
+            $table->string('ssd');
+            $table->string('ram');
+            $table->string('grahphics');
+            $table->string('processor');
+
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
             $table->string('meta_keywords')->nullable();

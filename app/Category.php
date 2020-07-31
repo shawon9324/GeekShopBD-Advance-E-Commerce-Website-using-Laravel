@@ -15,4 +15,5 @@ class Category extends Model
     public function parentcategory(){
         return $this->belongsTo('App\Category','parent_id')->select('id','category_name');   //only fetch parent category name
     }
+    
 }

@@ -57,7 +57,7 @@
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
                               <a href="" class="nav-link ">
-                                  <i class="far fa-circle nav-icon"></i>
+                                  <i class="nav-icon far fa-circle text-warning"></i>
                                   <p>Admin Profile</p>
                               </a>
                           </li>
@@ -68,7 +68,7 @@
                           @endif
                           <li class="nav-item">
                               <a href="{{ url('admin/update-admin-details') }}" class="nav-link {{ $active }}">
-                                  <i class="far fa-circle nav-icon"></i>
+                                  <i class="nav-icon far fa-circle text-warning"></i>
                                   <p>Update Admin Details</p>
                               </a>
                           </li>
@@ -79,7 +79,7 @@
                           @endif
                           <li class="nav-item">
                               <a href="{{ url('admin/settings') }}" class="nav-link {{ $active }}">
-                                  <i class="far fa-circle nav-icon"></i>
+                                  <i class="nav-icon far fa-circle text-warning"></i>
                                   <p>Update Admin Password</p>
                               </a>
                           </li>

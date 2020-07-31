@@ -108,8 +108,8 @@ $(document).ready(function() {
         //     }
         // });
         //default alert message timeout
-        $(".alert").fadeTo(2000, 500).slideUp(1000, function(){
-            $(".alert").slideUp(2000);
+        $(".alert").fadeTo(4000, 500).slideUp(1000, function(){
+            $(".alert").slideUp(4000);
         });
         
         //confrim delete alert records(with Sweet Alert 2.0)
@@ -177,6 +177,7 @@ $(document).ready(function() {
             }
         });
     });
+    
         
 
         

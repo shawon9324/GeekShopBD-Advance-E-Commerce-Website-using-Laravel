@@ -84,9 +84,15 @@
       "responsive": true,
       "autoWidth": false,
     });
+    $('#full_description').summernote({
+        placeholder: 'Enter Product Full Description. . .',
+        height: 150,
+        
+    });
 
   });
 </script>
+
 <!-- Select2 -->
 <script src="{{ url('plugins/select2/js/select2.full.min.js') }}"></script>
 <script>
@@ -126,6 +132,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <!-- Custom ADMIN JS -->
 <script src="{{ url('js/admin_js/admin_script.js') }}"></script>
+
 
 </body>
 </html>
