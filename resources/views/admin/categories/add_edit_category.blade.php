@@ -114,7 +114,7 @@
                                     </span>
 
                                     <div class="info-box-content">
-                                        <a class="imageView" image_category_info="{{$categoryData['category_name']}}" image_id="{{$categoryData['category_image']}}" href="javascript:void(0)">
+                                        <a class="imageView" image_folder="category_img" image_info="{{$categoryData['category_name']}}" image_id="{{$categoryData['category_image']}}" href="javascript:void(0)">
                                         <button style="width: 150px;margin-bottom:5px;" type="button" class="btn btn-block btn-outline-success">
                                         View Image</button></a>
                                         <a class="confirmDelete" href="javascript:void(0)"  record_type="category-image" record_id="{{$categoryData['id']}}" >

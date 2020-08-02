@@ -49,8 +49,10 @@
                                         <th>Product Price</th>
                                         <th>Product Regular Price</th>
                                         <th>Discount</th>
+                                        <th>Product Image</th>
                                         <th>Category</th>
                                         <th>Section</th>
+                                        <th>Featured Product</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -66,8 +68,26 @@
                                         <td>{{$product->product_price}}</td>
                                         <td>{{$product->product_regular_price}}</td>
                                         <td>{{$product->product_discount}}</td>
+                                        <td> <?php $product_image_path = "img/product_img/small/".$product->main_image; ?>
+                                            @if (!empty($product->main_image) && file_exists($product_image_path))
+                                            <img style="width: 100px" src="{{ asset('img/product_img/small/'.$product->main_image) }}">
+                                            @else
+                                            <img style="width: 100px" src="{{ asset('img/product_img/small/no_image.png')}}">
+                                            @endif
+
+                                            
+                                            
+                                        </td>
                                         <td>{{$product->category->category_name}}</td>
                                         <td>{{$product->section->name}}</td>
+                                        <td>
+                                        @if ($product->is_featured=="Yes")
+                                        <input type="checkbox"  disabled="" checked="" onclick="return false;"/>
+                                        @else
+                                        <input type="checkbox"  disabled="" onclick="return false;"/>
+                                        @endif
+                                        </td>
+
                                         <td>@if($product->status==1)
                                             <a class="updateProductStatus" id="product-{{$product->id}}" product_id="{{$product->id}}" href="javascript:void(0)"> Active</a>
                                             @else

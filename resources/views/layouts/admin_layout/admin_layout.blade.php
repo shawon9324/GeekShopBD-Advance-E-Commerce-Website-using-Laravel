@@ -84,7 +84,7 @@
       "responsive": true,
       "autoWidth": false,
     });
-    $('#full_description').summernote({
+    $('.full_description').summernote({
         placeholder: 'Enter Product Full Description. . .',
         height: 150,
         

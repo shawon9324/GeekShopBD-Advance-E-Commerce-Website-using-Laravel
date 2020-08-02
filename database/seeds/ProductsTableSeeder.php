@@ -38,7 +38,7 @@ class ProductsTableSeeder extends Seeder
                 'hdd'=>'1TB',
                 'ssd'=>'256GB',
                 'ram'=>' 8 GB',
-                'grahphics'=>'MSI RTX 2060s',
+                'graphics'=>'MSI RTX 2060s',
                 'processor'=>'Intel',
 
                 'meta_title'=>' ',
@@ -73,7 +73,7 @@ class ProductsTableSeeder extends Seeder
                 'hdd'=>'1TB',
                 'ssd'=>'256GB',
                 'ram'=>' 8 GB',
-                'grahphics'=>'MSI RTX 2060s',
+                'graphics'=>'MSI RTX 2060s',
                 'processor'=>'Intel',
 
                 'meta_title'=>' ',

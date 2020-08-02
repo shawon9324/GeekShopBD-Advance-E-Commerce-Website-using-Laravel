@@ -143,14 +143,15 @@ $(document).ready(function() {
 
         $(".imageView").click(function(){
             var image_id = $(this).attr("image_id");
-            var image_category_info = $(this).attr("image_category_info");
+            var image_info = $(this).attr("image_info");
+            var image_folder = $(this).attr("image_folder");
 
             Swal.fire({
-                title: image_category_info,
-                imageUrl: '/img/category_img/'+image_id,
+                title: image_info,
+                imageUrl: '/img/'+image_folder+'/'+image_id,
                 // imageWidth: 400,
                 // imageHeight: 200,
-                imageAlt: 'Category Image',
+                imageAlt: 'Image',
               })
 
             

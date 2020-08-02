@@ -37,12 +37,12 @@ class CreateProductsTable extends Migration
 
 
 
-            $table->string('generation');
-            $table->string('hdd');
-            $table->string('ssd');
-            $table->string('ram');
-            $table->string('grahphics');
-            $table->string('processor');
+            $table->string('generation')->nullable();
+            $table->string('hdd')->nullable();
+            $table->string('ssd')->nullable();
+            $table->string('ram')->nullable();
+            $table->string('graphics')->nullable();
+            $table->string('processor')->nullable();
 
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
