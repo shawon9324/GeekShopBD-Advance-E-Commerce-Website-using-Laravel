@@ -1,3 +1,13 @@
+window.addEventListener('load', function () {
+    loader_fade_out()
+
+})
+
+function loader_fade_out() {
+    $('.loader').fadeOut();
+}
+
+
 $(document).ready(function() {
     //check_admin_pwd_correct_or_not
     $("#current_password").keyup(function() {
@@ -180,7 +190,28 @@ $(document).ready(function() {
     });
     
         
-
+        //Products attributes Add/remove script for future use from : https://www.codexworld.com/add-remove-input-fields-dynamically-using-jquery/
+        var maxField = 10; //Input fields increment limitation
+        var addButton = $('.add_button'); //Add button selector
+        var wrapper = $('.field_wrapper'); //Input field wrapper
+        var fieldHTML = '<div><br><input type="text" name="sku[]" value="" placeholder="SKU" style="width: 310px" required=""/>  <input type="number" name="stock[]" value="" placeholder="STOCK" style="width: 310px" required=""/>  <a href="javascript:void(0);" class="remove_button"> <i class="fa fa-minus-square" aria-hidden="true"></i></a></div>'; //New input field html 
+        var x = 1; //Initial field counter is 1
+        
+        //Once add button is clicked
+        $(addButton).click(function(){
+            //Check maximum number of input fields
+            if(x < maxField){ 
+                x++; //Increment field counter
+                $(wrapper).append(fieldHTML); //Add field html
+            }
+        });
+        
+        //Once remove button is clicked
+        $(wrapper).on('click', '.remove_button', function(e){
+            e.preventDefault();
+            $(this).parent('div').remove(); //Remove field html
+            x--; //Decrement field counter
+        });
         
 
 

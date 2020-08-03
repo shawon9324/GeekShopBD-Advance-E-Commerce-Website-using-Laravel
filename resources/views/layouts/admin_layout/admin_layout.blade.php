@@ -24,6 +24,8 @@
   <link rel="stylesheet" href="{{ url('plugins/jqvmap/jqvmap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ url('css/admin_css/adminlte.min.css') }}">
+  {{-- Loader Style --}}
+  <link rel="stylesheet" href="{{ url('css/admin_css/loader.css') }}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ url('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
   <!-- Daterange picker -->
@@ -35,7 +37,7 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
+{{-- @include('admin.loader') --}}
 @include('layouts.admin_layout.admin_header')
 @include('layouts.admin_layout.admin_sidebar')
 @yield('content')

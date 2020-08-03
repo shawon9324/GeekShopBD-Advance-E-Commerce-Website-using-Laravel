@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
+use App\ProductsAttribute;
 use App\Section;
 use Session;
 use Image;
@@ -211,8 +212,8 @@ class ProductController extends Controller
 
 
 
-        return view('admin.products.add_edit_product')->with(compact('title','btn_title','generationArray','processorArray','graphicsArray','hddArray','ssdArray','ramArray',
-        'categories','productData'))->with('is_featured');
+        return view('admin.products.add_edit_product')->with('is_featured')->with(compact('title','btn_title','generationArray','processorArray','graphicsArray','hddArray','ssdArray','ramArray',
+        'categories','productData'));
 
     }
 
@@ -245,6 +246,60 @@ class ProductController extends Controller
         Product::where('id',$id)->update(['product_video'=>'']);
         Session::flash('success_message','Product Video has been deleted successfully!');
         return redirect()->back();
+    }
+
+
+
+    public function addAttributes(Request $request, $id){
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+            //sku validation
+            
+            foreach ($data['sku'] as $key => $value) {
+                if(!empty($value)){
+                    $attrCountSKU = ProductsAttribute::where('sku',$value)->count();
+                    if($attrCountSKU>0)
+                    {
+                        Session::flash('error_message',"SKU is already exists.Please enter another one!");
+                        return redirect()->back();
+                    }
+                    $attribute = new ProductsAttribute;
+                    $attribute->product_id = $id;
+                    $attribute->sku =$value;
+                    $attribute->stock =$data['stock'][$key];
+                    $attribute->save();
+                    
+                }
+            }
+            Session::flash('success_message',"Product Attributes added successfully!");
+            return redirect()->back();
+        }
+
+        $productData = Product::select('id','product_name','product_model','product_code','product_mpn','main_image')->with('attributes')->find($id);
+        // $productData = \json_decode(\json_encode($productData),true);
+        // echo "<pre>"  ;print_r($productData) ;die;
+        return view('admin.products.add_attributes')->with(compact('productData'));
+
+    }
+    public function deleteAttributes($id){
+        ProductsAttribute::where('id',$id)->delete();
+        $message ='Product Attributes has been deleted successfully!';
+        Session::flash('success_message',$message);
+        return redirect()->back();
+    }
+    public function editAttributes(Request $request, $id){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            foreach ($data['attrId'] as $key => $attr) {
+                if(!empty($attr)){
+                    ProductsAttribute::where(['id'=>$data['attrId'][$key]])->update(['stock'=>$data['stock'][$key]]);
+                }
+            }
+            // echo "<pre>"; print_r($data); die;
+        }
+        Session::flash('success_message',"Product Attributes updated successfully!");
+        return redirect()->back();
+
     }
 
 }

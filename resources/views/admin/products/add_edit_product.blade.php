@@ -532,9 +532,8 @@
                             <div style="margin-top: 5px" class="form-group clearfix">
                                 <div class="icheck-success d-inline">
                                   <input type="checkbox" id="is_featured" name="is_featured"
-                                  @if ($productData['is_featured']== "Yes" )
+                                  @if(!empty($productData['is_featured']) &&$productData['is_featured'] == "Yes" )
                                   checked=""
-                                  @else
                                   @endif>
                                     <label for="is_featured">
                                         Featured Product

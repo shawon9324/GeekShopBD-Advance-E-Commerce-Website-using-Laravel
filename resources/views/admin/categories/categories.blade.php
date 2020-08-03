@@ -73,8 +73,8 @@
                                             <a class="updateCategoryStatus" id="category-{{$category->id}}" category_id="{{$category->id}}" href="javascript:void(0)"> Inactive</a>
                                             @endif
                                         </td>
-                                        <td> <a href="{{url('admin/add-edit-category/'.$category->id)}}">Edit</a>&nbsp;&nbsp; 
-                                        <a class="confirmDelete" record_type="category" record_id="{{$category->id}}"  href="javascript:void(0)">Delete</a>                                    
+                                        <td> <a title="Edit Category" href="{{url('admin/add-edit-category/'.$category->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;&nbsp; 
+                                        <a title="Delete Category" class="confirmDelete" record_type="category" record_id="{{$category->id}}"  href="javascript:void(0)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>                                    
                                         </td>
                                     </tr>
                                     @endforeach

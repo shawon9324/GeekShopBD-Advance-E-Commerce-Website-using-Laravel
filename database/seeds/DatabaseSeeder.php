@@ -1,5 +1,6 @@
 <?php
 
+use App\ProductsAttribute;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +15,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(AdminsTableSeeder::class);
         // $this->call(SectionsTableSeeder::class);
         // $this->call(CategoryTableSeeder::class);
-         $this->call(ProductsTableSeeder::class);
+        //  $this->call(ProductsTableSeeder::class);
+        //  $this->call(ProductsAttributesTableSeeder::class);
+         $this->call(ProductsImagesTableSeeder::class);
     }
 }

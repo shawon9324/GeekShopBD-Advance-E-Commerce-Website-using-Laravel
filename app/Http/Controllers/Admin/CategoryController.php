@@ -67,7 +67,7 @@ class CategoryController extends Controller
                         'category_name' => 'required|regex:/^[\pL\s\-]+$/u',
                         'section_id' => 'required',
                         'url' =>'required',
-                        'category_image' => 'mimes:jpeg,jpg,png,gif'
+                        'category_image' => 'image'
                     ];
                     $customMessage = [
                         'category_name.required' => 'Category Name is required',
@@ -82,16 +82,13 @@ class CategoryController extends Controller
 
                 //Start Image Stroing Process
                 if($request->hasFile('category_image')){
-                    $image_tmp = $request->file('category_image');
-                    if($image_tmp->isValid()){
-                        // Get Image Extension
-                        $extension = $image_tmp->getClientOriginalExtension();
-                        // Generate New Image Name
-                        $imageName = rand(111,99999).'.'.$extension;
-                        $imagePath = 'img/category_img/'.$imageName;
-                        // Upload the Image
-                        Image::make($image_tmp)->save($imagePath);
-                        //save category image
+                    $image_temp = $request->file('category_image');
+                    if($image_temp->isValid()){
+                        //upload images after resizing
+                        $image_name = $image_temp->getClientOriginalName();
+                        $imageName =rand(111,99999).'-'.$image_name;
+                        $image_path = 'img/category_img/'.$imageName;
+                        Image::make($image_temp)->save($image_path);
                         $category->category_image = $imageName;
                     }
                 }
@@ -100,18 +97,7 @@ class CategoryController extends Controller
                 // if(empty($data['description'])){
                 //     $data['description']="";
                 // }
-                // if(empty($data['category_discount'])){
-                //     $data['category_discount']="";
-                // }
-                // if(empty($data['meta_title'])){
-                //     $data['meta_title']="";
-                // }
-                // if(empty($data['meta_description'])){
-                //     $data['meta_description']="";
-                // }
-                // if(empty($data['meta_keywords'])){
-                //     $data['meta_keywords']="";
-                // }
+
  
 
 
@@ -160,6 +146,7 @@ class CategoryController extends Controller
        
 
     }
+    
     public function deleteCategory($id){
         $categoryName = Category::select('category_name')->where('id',$id)->first();
         Category::where('id',$id)->delete();
