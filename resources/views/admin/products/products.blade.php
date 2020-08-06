@@ -45,14 +45,11 @@
                                         <th>Product Name</th>
                                         <th>Product Model</th>
                                         <th>Product Code</th>
-                                        <th>Product MPN</th>
                                         <th>Product Price</th>
-                                        <th>Product Regular Price</th>
-                                        <th>Discount</th>
                                         <th>Product Image</th>
                                         <th>Category</th>
                                         <th>Section</th>
-                                        <th>Featured Product</th>
+                                        <th>Featured</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -64,10 +61,7 @@
                                         <td>{{$product->product_name}}</td>
                                         <td>{{$product->product_model}}</td>
                                         <td>{{$product->product_code}}</td>
-                                        <td>{{$product->product_mpn}}</td>
                                         <td>{{$product->product_price}}</td>
-                                        <td>{{$product->product_regular_price}}</td>
-                                        <td>{{$product->product_discount}}</td>
                                         <td> <?php $product_image_path = "img/product_img/small/".$product->main_image; ?>
                                             @if (!empty($product->main_image) && file_exists($product_image_path))
                                             <img style="width: 100px" src="{{ asset('img/product_img/small/'.$product->main_image) }}">
@@ -95,7 +89,8 @@
                                             @endif
                                         </td>
                                         <td> 
-                                            <a title="Add Attribute" href="{{url('admin/add-attributes/'.$product->id)}}"><i class="fa fa-plus-square-o"></i></a>&nbsp;
+                                            <a title="Add Attribute" href="{{url('admin/add-attributes/'.$product->id)}}"><i class="fa fa-plus-square"></i></a>&nbsp;
+                                            <a title="Add Images" href="{{url('admin/add-images/'.$product->id)}}"><i class="fa fa-plus-circle"></i></a>&nbsp;
                                             <a title="Edit Product" href="{{url('admin/add-edit-product/'.$product->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;
                                             <a title="Delete Product" class="confirmDelete" record_type="product" record_id="{{$product->id}}"  href="javascript:void(0)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>                                    
                                         </td>
