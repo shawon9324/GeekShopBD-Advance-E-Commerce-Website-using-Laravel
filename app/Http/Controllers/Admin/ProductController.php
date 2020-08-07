@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Brand;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,14 +12,16 @@ use App\ProductsImage;
 use App\Section;
 use Session;
 use Image;
+
 class ProductController extends Controller
 {
-    public function products(){
-        Session::put('page','products');
-        $products = Product::with(['category'=>function($query){
-            $query->select('id','category_name');
-        },'section'=>function($query){
-            $query->select('id','name');
+    public function products()
+    {
+        Session::put('page', 'products');
+        $products = Product::with(['category' => function ($query) {
+            $query->select('id', 'category_name');
+        }, 'section' => function ($query) {
+            $query->select('id', 'name');
         }])->get();
         // $products = \json_decode(\json_encode($products));
         // echo "<pre>";print_r($products);die;
@@ -26,47 +29,44 @@ class ProductController extends Controller
     }
 
 
-    public function updateProductStatus(Request $request){
-        if($request->ajax()){
+    public function updateProductStatus(Request $request)
+    {
+        if ($request->ajax()) {
             $data = $request->all();
-            if($data['status']=="Active"){
+            if ($data['status'] == "Active") {
                 $status = 0;
-            }
-            else{
+            } else {
                 $status = 1;
             }
-            Product::where('id',$data['product_id'])->update(['status'=>$status]);
-            return response()->json(['status'=>$status,'product_id'=>$data['product_id']]);
+            Product::where('id', $data['product_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'product_id' => $data['product_id']]);
         }
     }
 
 
-    public function deleteProduct($id){
-        $productName = Product::select('product_name')->where('id',$id)->first();
-        Product::where('id',$id)->delete();
-        $message = $productName->product_name.'- Product has been deleted successfully!';
-        Session::flash('success_message',$message);
+    public function deleteProduct($id)
+    {
+        $productName = Product::select('product_name')->where('id', $id)->first();
+        Product::where('id', $id)->delete();
+        $message = $productName->product_name . '- Product has been deleted successfully!';
+        Session::flash('success_message', $message);
         return redirect()->back();
     }
-    public function addEditProduct(Request $request, $id=null){
+    public function addEditProduct(Request $request, $id = null)
+    {
 
-        if($id==""){ 
-            $title ="Add Product";
-            $btn_title ="Submit";
+        if ($id == "") {
+            $title = "Add Product";
+            $btn_title = "Submit";
             $product = new Product; //create product object
             $productData = array();
             $message = "Product added Successfully!";
-
-
-        }
-        else{
+        } else {
             $title = "Edit Product";
             $productData = Product::find($id);
             $product = Product::find($id);
-            $btn_title ="Update";
+            $btn_title = "Update";
             $message = "Product Data Updated Successfully!";
-
- 
         }
         //add data 
         if ($request->isMethod('post')) {
@@ -74,77 +74,78 @@ class ProductController extends Controller
             // echo "<pre>"; print_r($data);die;
             $rules = [
                 'category_id' => 'required',
+                'brand_id' => 'required',
                 'product_name' => 'required',
                 'product_model' => 'required',
                 'product_code' => 'required',
                 'product_mpn' => 'required',
                 'product_price' => 'required | integer',
-                'product_regular_price' =>'required | integer',
-                'feature_1'=>'required',
-                'feature_2'=>'required',
-                'feature_3'=>'required',
-                'feature_4'=>'required',
-                'feature_5'=>'required',
-                'main_image'=>'image',
-                'product_video'=>'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
+                'product_regular_price' => 'required | integer',
+                'feature_1' => 'required',
+                'feature_2' => 'required',
+                'feature_3' => 'required',
+                'feature_4' => 'required',
+                'feature_5' => 'required',
+                'main_image' => 'image',
+                'product_video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
                 'description' => 'required',
-              
+
             ];
             $customMessage = [
 
-                'category_id.required'=>'Category is required!',
-                'product_name.required'=>'Product name is required!',
-                'product_model.required'=>'Product Model is required!',
-                'product_code.required'=>'Product Code is required!',
-                'product_mpn.required'=>'Product MPN is required!',
-                'product_price.required'=>'Product Price is required!',
-                'product_price.integer'=>'Valid Product Price is required!',
-                'product_regular_price.required'=>'Regular Product Price is required!',
-                'product_regular_price.integer'=>'Valid Regular Product Price is required!',
-                'feature_1.required'=>'Product Feature 1 is required!',
-                'feature_2.required'=>'Product Feature 2 is required!',
-                'feature_3.required'=>'Product Feature 3 is required!',
-                'feature_4.required'=>'Product Feature 4 is required!',
-                'feature_5.required'=>'Product Feature 5 is required!',
-                'main_image.image'=>'Valid Product Image is required',
-                'product_video.video'=>'Valid Product Video is required',
-                'description.required'=>' Product Description is required',
+                'category_id.required' => 'Category is required!',
+                'brand_id.required' => 'Brand is required!',
+                'product_name.required' => 'Product name is required!',
+                'product_model.required' => 'Product Model is required!',
+                'product_code.required' => 'Product Code is required!',
+                'product_mpn.required' => 'Product MPN is required!',
+                'product_price.required' => 'Product Price is required!',
+                'product_price.integer' => 'Valid Product Price is required!',
+                'product_regular_price.required' => 'Regular Product Price is required!',
+                'product_regular_price.integer' => 'Valid Regular Product Price is required!',
+                'feature_1.required' => 'Product Feature 1 is required!',
+                'feature_2.required' => 'Product Feature 2 is required!',
+                'feature_3.required' => 'Product Feature 3 is required!',
+                'feature_4.required' => 'Product Feature 4 is required!',
+                'feature_5.required' => 'Product Feature 5 is required!',
+                'main_image.image' => 'Valid Product Image is required',
+                'product_video.video' => 'Valid Product Video is required',
+                'description.required' => ' Product Description is required',
 
             ];
-            $this->validate($request,$rules,$customMessage);
+            $this->validate($request, $rules, $customMessage);
 
-            if(!empty($data['is_featured'])){
+            if (!empty($data['is_featured'])) {
                 $is_featured = "Yes";
-            }
-            else{
+            } else {
                 $is_featured = "No";
             }
 
 
             //Upload Product Image
-            if($request->hasFile('main_image')){
+            if ($request->hasFile('main_image')) {
                 $image_temp = $request->file('main_image');
-                if($image_temp->isValid()){
+                if ($image_temp->isValid()) {
                     //upload images after resizing
                     $image_name = $image_temp->getClientOriginalName();
-                    $imageName =rand(111,99999).'-'.$image_name;
-                    $large_image_path = 'img/product_img/large/'.$imageName;
-                    $medium_image_path = 'img/product_img/medium/'.$imageName;
-                    $small_image_path = 'img/product_img/small/'.$imageName;
+                    $imageName = rand(111, 99999) . '-' . $image_name;
+                    $large_image_path = 'img/product_img/large/' . $imageName;
+                    $medium_image_path = 'img/product_img/medium/' . $imageName;
+                    $small_image_path = 'img/product_img/small/' . $imageName;
                     Image::make($image_temp)->save($large_image_path);
-                    Image::make($image_temp)->resize(520,600)->save($medium_image_path);
-                    Image::make($image_temp)->resize(260,300)->save($small_image_path);
+                    Image::make($image_temp)->resize(520, 600)->save($medium_image_path);
+                    Image::make($image_temp)->resize(260, 300)->save($small_image_path);
                     $product->main_image = $imageName;
                 }
             }
-             //Upload Product Video
-            if($request->hasFile('product_video')){
+            //Upload Product Video
+            if ($request->hasFile('product_video')) {
                 $video_temp = $request->file('product_video');
-                if($video_temp->isValid()){
+                if ($video_temp->isValid()) {
                     $video_name = $video_temp->getClientOriginalName();
-                    $videoName= rand(111,99999).'-'.$video_name;
-                    $video_path = 'videos/product_videos/'.$videoName;
-                    $video_temp->move($video_path,$videoName);
+                    $videoName = rand(111, 99999) . '-' . $video_name;
+                    $video_path = 'videos/product_videos/' . $videoName;
+                    $video_temp->move($video_path, $videoName);
                     //save video in products tables
                     $product->product_video = $videoName;
                 }
@@ -157,6 +158,7 @@ class ProductController extends Controller
             $categoryDetails = Category::find($data['category_id']);
             $product->section_id = $categoryDetails['section_id'];
             $product->category_id = $data['category_id'];
+            $product->brand_id = $data['brand_id'];
             $product->product_name = $data['product_name'];
             $product->product_model = $data['product_model'];
             $product->product_code = $data['product_code'];
@@ -181,176 +183,187 @@ class ProductController extends Controller
             $product->meta_description = $data['meta_description'];
             $product->meta_keywords = $data['meta_keywords'];
             $product->is_featured = $is_featured;
-            $product->status=1;
+            $product->status = 1;
             $product->save();
-            Session::flash('success_message',$message);
+            Session::flash('success_message', $message);
             return redirect('admin/products');
-            
         }
 
-        
+
 
 
 
 
         //filtering Array
-        $generationArray = array('3rd Gen','4th Gen','5th Gen','6th Gen','7th Gen','8th Gen','9th Gen','10th Gen');
-        $processorArray = array('Atom','AMD','CDC','PQC','Intel Core i3','Intel Core i5','Intel Core i7','Intel Core i9','Ryzen 3','Ryzen 5','Ryzen 7','Ryzen 9');
-        $graphicsArray = array('Intel HD','2GB','4GB','6GB','8GB','16GB');
-        $hddArray =array('500GB','1TB','2TB','3TB','4TB','6TB');
-        $ssdArray =array('128GB','256GB','512GB','1TB','2TB');
-        $ramArray =array('2 GB','4 GB','8 GB','16 GB','32 GB','64 GB');
+        $generationArray = array('3rd Gen', '4th Gen', '5th Gen', '6th Gen', '7th Gen', '8th Gen', '9th Gen', '10th Gen');
+        $processorArray = array('Atom', 'AMD', 'CDC', 'PQC', 'Intel Core i3', 'Intel Core i5', 'Intel Core i7', 'Intel Core i9', 'Ryzen 3', 'Ryzen 5', 'Ryzen 7', 'Ryzen 9');
+        $graphicsArray = array('Intel HD', '2GB', '4GB', '6GB', '8GB', '16GB');
+        $hddArray = array('500GB', '1TB', '2TB', '3TB', '4TB', '6TB');
+        $ssdArray = array('128GB', '256GB', '512GB', '1TB', '2TB');
+        $ramArray = array('2 GB', '4 GB', '8 GB', '16 GB', '32 GB', '64 GB');
 
 
         //Sections With Categories And Sub Categories
 
         $categories = Section::with(['categories'])->get();
-        // $categories = \json_decode(json_encode($categories),true);
+        $categories = \json_decode(json_encode($categories),true);
         // echo "<pre>" ; print_r($categories);die;
 
 
+        $brands = Brand::where('status',1)->get();
+        $brands = \json_decode(json_encode($brands),true);
 
 
 
-
-        return view('admin.products.add_edit_product')->with('is_featured')->with(compact('title','btn_title','generationArray','processorArray','graphicsArray','hddArray','ssdArray','ramArray',
-        'categories','productData'));
-
+        return view('admin.products.add_edit_product')->with('is_featured')->with(compact(
+            'title',
+            'btn_title',
+            'generationArray',
+            'processorArray',
+            'graphicsArray',
+            'hddArray',
+            'ssdArray',
+            'ramArray',
+            'categories',
+            'productData',
+            'brands'
+        ));
     }
 
-    public function deleteProductImage($id){
-        $getProductImage = Product::select('main_image')->where('id',$id)->first();
-        $product_large_image_path = 'img/product_img/large/'.$getProductImage->main_image;
-        $product_medium_image_path = 'img/product_img/medium/'.$getProductImage->main_image;
-        $product_small_image_path = 'img/product_img/small/'.$getProductImage->main_image;
-        if(file_exists($product_large_image_path)){
+    public function deleteProductImage($id)
+    {
+        $getProductImage = Product::select('main_image')->where('id', $id)->first();
+        $product_large_image_path = 'img/product_img/large/' . $getProductImage->main_image;
+        $product_medium_image_path = 'img/product_img/medium/' . $getProductImage->main_image;
+        $product_small_image_path = 'img/product_img/small/' . $getProductImage->main_image;
+        if (file_exists($product_large_image_path)) {
             unlink($product_large_image_path);
         }
-        if(file_exists($product_medium_image_path)){
+        if (file_exists($product_medium_image_path)) {
             unlink($product_medium_image_path);
         }
-        if(file_exists($product_small_image_path)){
+        if (file_exists($product_small_image_path)) {
             unlink($product_small_image_path);
         }
         //delete category image from the database table
-        Product::where('id',$id)->update(['main_image'=>'']);
-        Session::flash('success_message','Product Image has been deleted successfully!');
+        Product::where('id', $id)->update(['main_image' => '']);
+        Session::flash('success_message', 'Product Image has been deleted successfully!');
         return redirect()->back();
     }
-    public function deleteProductVideo($id){
-        $getProductVideo = Product::select('product_video')->where('id',$id)->first();
-        $product_video_path = 'videos/product_videos/'.$getProductVideo->product_video;
-        if(file_exists($product_video_path)){
+    public function deleteProductVideo($id)
+    {
+        $getProductVideo = Product::select('product_video')->where('id', $id)->first();
+        $product_video_path = 'videos/product_videos/' . $getProductVideo->product_video;
+        if (file_exists($product_video_path)) {
             unlink($product_video_path);
         }
         //delete category image from the database table
-        Product::where('id',$id)->update(['product_video'=>'']);
-        Session::flash('success_message','Product Video has been deleted successfully!');
+        Product::where('id', $id)->update(['product_video' => '']);
+        Session::flash('success_message', 'Product Video has been deleted successfully!');
         return redirect()->back();
     }
 
 
 
-    public function addAttributes(Request $request, $id){
+    public function addAttributes(Request $request, $id)
+    {
         if ($request->isMethod('post')) {
             $data = $request->all();
             //sku validation
-            
+
             foreach ($data['sku'] as $key => $value) {
-                if(!empty($value)){
-                    $attrCountSKU = ProductsAttribute::where('sku',$value)->count();
-                    if($attrCountSKU>0)
-                    {
-                        Session::flash('error_message',"SKU is already exists.Please enter another one!");
+                if (!empty($value)) {
+                    $attrCountSKU = ProductsAttribute::where('sku', $value)->count();
+                    if ($attrCountSKU > 0) {
+                        Session::flash('error_message', "SKU is already exists.Please enter another one!");
                         return redirect()->back();
                     }
                     $attribute = new ProductsAttribute;
                     $attribute->product_id = $id;
-                    $attribute->sku =$value;
-                    $attribute->stock =$data['stock'][$key];
+                    $attribute->sku = $value;
+                    $attribute->stock = $data['stock'][$key];
                     $attribute->save();
-                    
                 }
             }
-            Session::flash('success_message',"Product Attributes added successfully!");
+            Session::flash('success_message', "Product Attributes added successfully!");
             return redirect()->back();
         }
 
-        $productData = Product::select('id','product_name','product_model','product_code','product_mpn','main_image')->with('attributes')->find($id);
+        $productData = Product::select('id', 'product_name', 'product_model', 'product_code', 'product_mpn', 'main_image')->with('attributes')->find($id);
         // $productData = \json_decode(\json_encode($productData),true);
         // echo "<pre>"  ;print_r($productData) ;die;
         return view('admin.products.add_attributes')->with(compact('productData'));
-
     }
-    public function deleteAttributes($id){
-        ProductsAttribute::where('id',$id)->delete();
-        $message ='Product Attributes has been deleted successfully!';
-        Session::flash('success_message',$message);
+    public function deleteAttributes($id)
+    {
+        ProductsAttribute::where('id', $id)->delete();
+        $message = 'Product Attributes has been deleted successfully!';
+        Session::flash('success_message', $message);
         return redirect()->back();
     }
-    public function editAttributes(Request $request, $id){
-        if($request->isMethod('post')){
+    public function editAttributes(Request $request, $id)
+    {
+        if ($request->isMethod('post')) {
             $data = $request->all();
             foreach ($data['attrId'] as $key => $attr) {
-                if(!empty($attr)){
-                    ProductsAttribute::where(['id'=>$data['attrId'][$key]])->update(['stock'=>$data['stock'][$key]]);
+                if (!empty($attr)) {
+                    ProductsAttribute::where(['id' => $data['attrId'][$key]])->update(['stock' => $data['stock'][$key]]);
                 }
             }
             // echo "<pre>"; print_r($data); die;
         }
-        Session::flash('success_message',"Product Attributes updated successfully!");
+        Session::flash('success_message', "Product Attributes updated successfully!");
         return redirect()->back();
     }
-    public function addImages(Request $request,$id){
-        $productData= Product::with('images')->select('id','product_name','product_code','main_image')->find($id);
+    public function addImages(Request $request, $id)
+    {
+        $productData = Product::with('images')->select('id', 'product_name', 'product_code', 'main_image')->find($id);
         // $productData = \json_decode(json_encode($productData),true);
         // echo "<pre>"; print_r($productData);
-        if($request->isMethod('post')){
-            $data= $request->all();
-            if($request->hasFile('images')){
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+            if ($request->hasFile('images')) {
                 $images = $request->file('images');
                 foreach ($images as $key => $image) {
                     $productImage = new ProductsImage;
                     $image_temp = Image::make($image);
                     $extension = $image->getClientOriginalExtension();
-                    $imageName = rand(111,99999).time().".".$extension;
-                    $large_image_path = 'img/product_img/large/'.$imageName;
-                    $medium_image_path = 'img/product_img/medium/'.$imageName;
-                    $small_image_path = 'img/product_img/small/'.$imageName;
+                    $imageName = rand(111, 99999) . time() . "." . $extension;
+                    $large_image_path = 'img/product_img/large/' . $imageName;
+                    $medium_image_path = 'img/product_img/medium/' . $imageName;
+                    $small_image_path = 'img/product_img/small/' . $imageName;
                     Image::make($image_temp)->save($large_image_path);
-                    Image::make($image_temp)->resize(520,600)->save($medium_image_path);
-                    Image::make($image_temp)->resize(260,300)->save($small_image_path);
+                    Image::make($image_temp)->resize(520, 600)->save($medium_image_path);
+                    Image::make($image_temp)->resize(260, 300)->save($small_image_path);
                     $productImage->image = $imageName;
                     $productImage->product_id = $id;
                     $productImage->save();
-
                 }
-                Session::flash('success_message','Product Image has been added successfully!');
+                Session::flash('success_message', 'Product Image has been added successfully!');
                 return redirect()->back();
-
             }
         }
-        $title ="Product Images";
-        return view('admin.products.add_images')->with(compact('productData','title'));
+        $title = "Product Images";
+        return view('admin.products.add_images')->with(compact('productData', 'title'));
     }
-    public function deleteImages($id){
-        $getImage = ProductsImage::select('image')->where('id',$id)->first();
-        $product_large_image_path = 'img/product_img/large/'.$getImage->image;
-        $product_medium_image_path = 'img/product_img/medium/'.$getImage->image;
-        $product_small_image_path = 'img/product_img/small/'.$getImage->image;
-        if(file_exists($product_large_image_path)){
+    public function deleteImages($id)
+    {
+        $getImage = ProductsImage::select('image')->where('id', $id)->first();
+        $product_large_image_path = 'img/product_img/large/' . $getImage->image;
+        $product_medium_image_path = 'img/product_img/medium/' . $getImage->image;
+        $product_small_image_path = 'img/product_img/small/' . $getImage->image;
+        if (file_exists($product_large_image_path)) {
             unlink($product_large_image_path);
         }
-        if(file_exists($product_medium_image_path)){
+        if (file_exists($product_medium_image_path)) {
             unlink($product_medium_image_path);
         }
-        if(file_exists($product_small_image_path)){
+        if (file_exists($product_small_image_path)) {
             unlink($product_small_image_path);
-        }
+        } 
         //delete image from the database table
-        ProductsImage::where('id',$id)->delete();
-        Session::flash('success_message','Product Image has been deleted successfully!');
+        ProductsImage::where('id', $id)->delete();
+        Session::flash('success_message', 'Product Image has been deleted successfully!');
         return redirect()->back();
     }
-
 }

@@ -142,7 +142,7 @@
                             </thead>
                             <tbody>
                                 @foreach($productData['attributes'] as $attribute)
-                                <input type="text" name="attrId[]" value="{{$attribute['id']}}">
+                                <input style="display: none" type="text" name="attrId[]" value="{{$attribute['id']}}">
                                 <tr>
                                     <td>{{$attribute['id']}}</td>
                                     <td>{{$attribute['sku']}}</td>

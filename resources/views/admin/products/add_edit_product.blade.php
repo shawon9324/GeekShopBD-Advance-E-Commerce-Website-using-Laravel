@@ -96,6 +96,21 @@
                                                 </select>
                                         </div>
                                     </div>
+                                    <div class="col-12 col-sm-6">
+                                        <div class="form-group">
+                                            <label>Select brand</label>
+                                                <select data-dropdown-css-class="select2" name="brand_id" id="brand_id" class="form-control select2"
+                                                        style="width: 100%;">
+                                                    <option value="">Select</option>
+                                                    @foreach ($brands as $brand)
+                                                    <option value="{{ $brand['id'] }}"
+                                                    @if (!empty($productData['brand_id']) && $productData['brand_id']== $brand['id'] )
+                                                            selected=""
+                                                            @endif>{{ $brand['name'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                        </div>
+                                    </div>
                                 </div>
 
 

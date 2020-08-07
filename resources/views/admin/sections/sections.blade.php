@@ -32,7 +32,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,9 +41,9 @@
                                         <td>{{$section->id}}</td>
                                         <td>{{$section->name}}</td>
                                         <td>@if($section->status==1)
-                                            <a class="updateSectionStatus" id="section-{{$section->id}}" section_id="{{$section->id}}" href="javascript:void(0)"> Active</a>
+                                            <a class="updateSectionStatus btn btn-info" id="section-{{$section->id}}" section_id="{{$section->id}}" href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg" style="color:greenyellow" status="Active"></i></a>
                                             @else
-                                            <a class="updateSectionStatus" id="section-{{$section->id}}" section_id="{{$section->id}}" href="javascript:void(0)"> Inactive</a>
+                                            <a class="updateSectionStatus btn btn-info" id="section-{{$section->id}}" section_id="{{$section->id}}" href="javascript:void(0)"><i class="fas fa-toggle-off fa-lg"  status="Inactive"></i></a>
                                             @endif
                                         </td>
                                     </tr>

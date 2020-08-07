@@ -48,7 +48,6 @@
                                         <th>URL</th>
                                         <th>Discount</th>
                                         <th>Description</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -67,14 +66,15 @@
                                         <td>{{$category->url}}</td>
                                         <td>{{$category->category_discount}}</td>
                                         <td>{{$category->description}}</td>
-                                        <td>@if($category->status==1)
-                                            <a class="updateCategoryStatus" id="category-{{$category->id}}" category_id="{{$category->id}}" href="javascript:void(0)"> Active</a>
+                                        
+                                        <td> 
+                                            @if($category->status==1)
+                                            <a class="updateCategoryStatus btn btn-info" id="category-{{$category->id}}" category_id="{{$category->id}}" href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg" style="color:greenyellow" status="Active"></i></a>&nbsp;&nbsp; 
                                             @else
-                                            <a class="updateCategoryStatus" id="category-{{$category->id}}" category_id="{{$category->id}}" href="javascript:void(0)"> Inactive</a>
-                                            @endif
-                                        </td>
-                                        <td> <a title="Edit Category" href="{{url('admin/add-edit-category/'.$category->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;&nbsp; 
-                                        <a title="Delete Category" class="confirmDelete" record_type="category" record_id="{{$category->id}}"  href="javascript:void(0)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>                                    
+                                            <a class="updateCategoryStatus btn btn-info" id="category-{{$category->id}}" category_id="{{$category->id}}" href="javascript:void(0)"><i class="fas fa-toggle-off fa-lg"  status="Inactive"></i></a>&nbsp;&nbsp; 
+                                            @endif 
+                                            <a title="Edit Category" class=" btn btn-success" href="{{url('admin/add-edit-category/'.$category->id)}}"><i class="fa fa-pencil-square-o"></i></a>&nbsp;&nbsp; 
+                                            <a title="Delete Category" class="confirmDelete  btn btn-danger" record_type="category" record_id="{{$category->id}}"  href="javascript:void(0)"><i class="fas fa-trash"></i></a>                                    
                                         </td>
                                     </tr>
                                     @endforeach

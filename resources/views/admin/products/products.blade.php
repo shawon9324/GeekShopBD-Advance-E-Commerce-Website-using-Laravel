@@ -35,7 +35,6 @@
                             <h3 class="card-title">Products Information</h3>
                             <a href="{{ url('admin/add-edit-product') }}" style="max-width:150px; float:right;">
                             <button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add Product</button></a>
-                            
                         </div>
                         <div class="card-body">
                             <table id="products" class="table table-bordered table-striped">
@@ -50,7 +49,6 @@
                                         <th>Category</th>
                                         <th>Section</th>
                                         <th>Featured</th>
-                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -81,18 +79,16 @@
                                         <input type="checkbox"  disabled="" onclick="return false;"/>
                                         @endif
                                         </td>
-
-                                        <td>@if($product->status==1)
-                                            <a class="updateProductStatus" id="product-{{$product->id}}" product_id="{{$product->id}}" href="javascript:void(0)"> Active</a>
-                                            @else
-                                            <a class="updateProductStatus" id="product-{{$product->id}}" product_id="{{$product->id}}" href="javascript:void(0)"> Inactive</a>
-                                            @endif
-                                        </td>
                                         <td> 
-                                            <a title="Add Attribute" href="{{url('admin/add-attributes/'.$product->id)}}"><i class="fa fa-plus-square"></i></a>&nbsp;
-                                            <a title="Add Images" href="{{url('admin/add-images/'.$product->id)}}"><i class="fa fa-plus-circle"></i></a>&nbsp;
-                                            <a title="Edit Product" href="{{url('admin/add-edit-product/'.$product->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;
-                                            <a title="Delete Product" class="confirmDelete" record_type="product" record_id="{{$product->id}}"  href="javascript:void(0)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>                                    
+                                            @if($product->status==1)
+                                            <a class="updateProductStatus btn btn-info" id="product-{{$product->id}}" product_id="{{$product->id}}" href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg" style="color:greenyellow" status="Active"></i></a>
+                                            @else
+                                            <a class="updateProductStatus btn btn-info" id="product-{{$product->id}}" product_id="{{$product->id}}" href="javascript:void(0)"><i class="fas fa-toggle-off fa-lg"  status="Inactive"></i></a>
+                                            @endif
+                                            <a title="Add Attribute" class="btn btn-secondary" href="{{url('admin/add-attributes/'.$product->id)}}"><i class="fa fa-plus-square"></i></a>&nbsp;
+                                            <a title="Add Images" class="btn btn-primary" href="{{url('admin/add-images/'.$product->id)}}"><i class="fa fa-plus-circle"></i></a>&nbsp;
+                                            <a title="Edit Product" class="btn btn-success" href="{{url('admin/add-edit-product/'.$product->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>&nbsp;
+                                            <a title="Delete Product"  class="confirmDelete btn btn-danger" record_type="product" record_id="{{$product->id}}"  href="javascript:void(0)"><i class="fas fa-trash"></i></a>                                    
                                         </td>
                                     </tr>
                                     @endforeach

@@ -37,7 +37,7 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-{{-- @include('admin.loader') --}}
+@include('admin.loader')
 @include('layouts.admin_layout.admin_header')
 @include('layouts.admin_layout.admin_sidebar')
 @yield('content')

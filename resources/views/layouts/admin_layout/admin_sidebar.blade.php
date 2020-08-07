@@ -40,7 +40,7 @@
                       </a>
                   </li>
                   <!--SETTINGS-->
-                  @if(Session::get('page')=="settings" || Session::get('page')=="update-admin-details")
+                  @if(Session::get('page')=="settings" || Session::get('page')=="update-admin-details" ||Session::get('page')=="profile")
                   <?php $active ="active"; $menu = "open" ?>
                   @else
                   <?php $active=""; $menu = "close";?>
@@ -54,9 +54,14 @@
                               <i class="right fas fa-angle-left"></i>
                           </p>
                       </a>
+                      @if(Session::get('page')=="profile")
+                          <?php $active ="active"; ?>
+                          @else
+                          <?php $active=""; ?>
+                          @endif
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="" class="nav-link ">
+                              <a href="{{ url('admin/profile') }}" class="nav-link {{ $active }}">
                                   <i class="nav-icon far fa-circle text-warning"></i>
                                   <p>Admin Profile</p>
                               </a>
@@ -87,7 +92,8 @@
                   </li>
 
                   <!--Catalogues-->
-                  @if(Session::get('page')=="sections" || Session::get('page')=="categories" ||Session::get('page')=="products")
+                  @if(Session::get('page')=="sections" || Session::get('page')=="categories" ||Session::get('page')=="products"
+                  ||Session::get('page')=="brands")
                   <?php $active ="active"; $menu = "open" ?>
                   @else
                   <?php $active=""; $menu = "close";?>
@@ -111,6 +117,17 @@
                               <a href="{{ url('admin/sections') }}" class="nav-link {{ $active }}">
                                   <i class="nav-icon far fa-circle text-info"></i>
                                   <p>Sections</p>
+                              </a>
+                          </li>
+                          @if(Session::get('page')=="brands")
+                          <?php $active ="active"; ?>
+                          @else
+                          <?php $active=""; ?>
+                          @endif
+                          <li class="nav-item">
+                              <a href="{{ url('admin/brands') }}" class="nav-link {{ $active }}">
+                                  <i class="nav-icon far fa-circle text-info"></i>
+                                  <p>Brands</p>
                               </a>
                           </li>
                           @if(Session::get('page')=="categories")

@@ -16,6 +16,16 @@ class AdminController extends Controller
         Session::put('page','dashboard');
         return view('admin.admin_dashboard');
     }
+    public function profile(){
+        Session::put('page','profile');
+        return view('admin.profile');
+
+    }
+
+
+
+
+
     public function login(Request $request){
         if($request->isMethod('post')){
             $data = $request->all();

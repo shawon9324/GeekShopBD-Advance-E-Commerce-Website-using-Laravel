@@ -38,9 +38,30 @@ $(document).ready(function() {
         });
     });
 
+
+     //Brand status Active/Inactive toggling update
+     $(".updateBrandStatus").click(function(){
+        var status = $(this).children("i").attr("status");
+        var brand_id = $(this).attr("brand_id");
+        $.ajax({
+            type: "post",
+            url: "/admin/update-brand-status",
+            data: { status: status, brand_id:brand_id },
+            success: function(resp) {
+                if (resp["status"] == 0) {
+                    $("#brand-" + brand_id).html("<i class='fas fa-toggle-off fa-lg'  status='Inactive'></i>");
+                } else if (resp["status"] == 1) {
+                    $("#brand-" + brand_id).html("<i class='fas fa-toggle-on fa-lg' style='color:greenyellow;'status='Active'></i>");
+                }
+            },
+            error: function() {
+            }
+        });
+    });
+
     //Section status Active/Inactive toggling update
     $(".updateSectionStatus").click(function() {
-        var status = $(this).text();
+        var status = $(this).children("i").attr("status");
         var section_id = $(this).attr("section_id");
         $.ajax({
             type: "post",
@@ -48,13 +69,9 @@ $(document).ready(function() {
             data: { status: status, section_id: section_id },
             success: function(resp) {
                 if (resp["status"] == 0) {
-                    $("#section-" + section_id).html(
-                        "<a class='updateSectionStatus' href='javascript:void(0)'> Inactive</a>"
-                    );
+                    $("#section-" + section_id).html("<i class='fas fa-toggle-off fa-lg' status='Inactive'></i></a>");
                 } else if (resp["status"] == 1) {
-                    $("#section-" + section_id).html(
-                        "<a class='updateSectionStatus' href='javascript:void(0)'>Active </a>"
-                    );
+                    $("#section-" + section_id).html("<i class='fas fa-toggle-on fa-lg' style='color:greenyellow;'status='Active'></i>");
                 }
             },
             error: function() {
@@ -66,7 +83,7 @@ $(document).ready(function() {
 
     //Category status Active/Inactive toggling update
     $(".updateCategoryStatus").click(function(){
-        var status = $(this).text();
+        var status = $(this).children("i").attr("status");       
         var category_id = $(this).attr("category_id");
         $.ajax({
             type: "post",
@@ -74,9 +91,9 @@ $(document).ready(function() {
             data: { status: status, category_id: category_id },
             success: function(resp) {
                 if (resp["status"] == 0) {
-                    $("#category-" + category_id).html("<a class='updateCategoryStatus' href='javascript:void(0)'> Inactive</a>");
+                    $("#category-" + category_id).html("<i class='fas fa-toggle-off fa-lg'  status='Inactive'></i>");
                 } else if (resp["status"] == 1) {
-                    $("#category-" + category_id).html("<a class='updateCategoryStatus' href='javascript:void(0)'>Active </a>");
+                    $("#category-" + category_id).html("<i class='fas fa-toggle-on fa-lg' style='color:greenyellow;'status='Active'></i>");
                 }
             },
             error: function() {
@@ -84,6 +101,26 @@ $(document).ready(function() {
         });
     });
 
+    //Products status Active/Inactive toggling update
+        $(".updateProductStatus").click(function(){
+            var status = $(this).children("i").attr("status");             
+            var product_id = $(this).attr("product_id");
+            $.ajax({
+                type: "post",
+                url: "/admin/update-product-status",
+                data: { status: status, product_id: product_id },
+                success: function(resp) {
+                    if (resp["status"] == 0) {
+                        $("#product-" + product_id).html("<i class='fas fa-toggle-off fa-lg'  status='Inactive'></i>");
+                    } else if (resp["status"] == 1) {
+                        $("#product-" + product_id).html("<i class='fas fa-toggle-on fa-lg' style='color:greenyellow;'status='Active'></i>");
+                    }
+                },
+                error: function() {
+                }
+            });
+        });
+        
 
 
 
@@ -169,26 +206,7 @@ $(document).ready(function() {
 
 
 
-        //Products status Active/Inactive toggling update
-    $(".updateProductStatus").click(function(){
-        var status = $(this).text();
-        var product_id = $(this).attr("product_id");
-        $.ajax({
-            type: "post",
-            url: "/admin/update-product-status",
-            data: { status: status, product_id: product_id },
-            success: function(resp) {
-                if (resp["status"] == 0) {
-                    $("#product-" + product_id).html("<a class='updateProductStatus' href='javascript:void(0)'> Inactive</a>");
-                } else if (resp["status"] == 1) {
-                    $("#product-" + product_id).html("<a class='updateProductStatus' href='javascript:void(0)'>Active </a>");
-                }
-            },
-            error: function() {
-            }
-        });
-    });
-    
+
         
         //Products attributes Add/remove script for future use from : https://www.codexworld.com/add-remove-input-fields-dynamically-using-jquery/
         var maxField = 10; //Input fields increment limitation

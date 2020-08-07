@@ -32,6 +32,7 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
         //admins
         Route::get('dashboard','AdminController@dashboard');
         Route::get('settings','AdminController@settings');
+        Route::get('profile','AdminController@profile');
         Route::post('check-current-password','AdminController@checkCurrentPassword');
         Route::post('update-current-password','AdminController@updateCurrentPassword');
         Route::get('logout','AdminController@logout');
@@ -39,6 +40,11 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
         //sections
         Route::get('sections','SectionController@sections');
         Route::post('update-section-status','SectionController@updateSectionStatus');
+        // Brands
+        Route::get('brands','BrandController@brands');
+        Route::post('update-brand-status','BrandController@updateBrandStatus');
+        Route::get('delete-brand/{id}','BrandController@deleteBrand');
+        Route::match(['get','post'],'add-edit-brand/{id?}','BrandController@addEditBrand');
         //categories
         Route::get('categories','CategoryController@categories');
         Route::post('update-category-status','CategoryController@updateCategoryStatus');
