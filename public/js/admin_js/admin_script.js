@@ -1,12 +1,8 @@
+//loader
 window.addEventListener('load', function () {
-    loader_fade_out()
+    $('.loader').fadeOut(200);
 
-})
-
-function loader_fade_out() {
-    $('.loader').fadeOut();
-}
-
+});
 
 $(document).ready(function() {
     //check_admin_pwd_correct_or_not
@@ -40,7 +36,7 @@ $(document).ready(function() {
 
 
      //Brand status Active/Inactive toggling update
-     $(".updateBrandStatus").click(function(){
+         $(document).on("click",".updateBrandStatus",function(){
         var status = $(this).children("i").attr("status");
         var brand_id = $(this).attr("brand_id");
         $.ajax({
@@ -60,7 +56,7 @@ $(document).ready(function() {
     });
 
     //Section status Active/Inactive toggling update
-    $(".updateSectionStatus").click(function() {
+        $(document).on("click",".updateSectionStatus",function(){
         var status = $(this).children("i").attr("status");
         var section_id = $(this).attr("section_id");
         $.ajax({
@@ -82,7 +78,7 @@ $(document).ready(function() {
 
 
     //Category status Active/Inactive toggling update
-    $(".updateCategoryStatus").click(function(){
+        $(document).on("click",".updateCategoryStatus",function(){
         var status = $(this).children("i").attr("status");       
         var category_id = $(this).attr("category_id");
         $.ajax({
@@ -102,7 +98,7 @@ $(document).ready(function() {
     });
 
     //Products status Active/Inactive toggling update
-        $(".updateProductStatus").click(function(){
+            $(document).on("click",".updateProductStatus",function(){
             var status = $(this).children("i").attr("status");             
             var product_id = $(this).attr("product_id");
             $.ajax({
@@ -162,7 +158,7 @@ $(document).ready(function() {
         //confrim delete alert records(with Sweet Alert 2.0)
         
 
-        $(".confirmDelete").click(function(){
+         $(document).on("click",".confirmDelete",function(){
             var record_type = $(this).attr("record_type");
             var record_id = $(this).attr("record_id");
             Swal.fire({

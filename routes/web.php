@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\IndexController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,9 +15,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
- Route::get('/', function () {
-     return view('welcome');
- });
+//  Route::get('/', function () {
+//      return view('welcome');
+//  });
 
 Auth::routes();
 
@@ -24,11 +25,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->namespace('Admin')->group(function(){
     //All ADMIN ROUTES
-
     Route::match(['get','post'],'/','AdminController@login');
-
     Route::group(['middleware'=>['admin']],function(){
-
         //admins
         Route::get('dashboard','AdminController@dashboard');
         Route::get('settings','AdminController@settings');
@@ -66,15 +64,12 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
         Route::get('delete-attributes/{id}','ProductController@deleteAttributes');
         Route::match(['get','post'],'add-images/{id}','ProductController@addImages');
         Route::get('delete-images/{id}','ProductController@deleteImages');
-
-
-
-
-        
-        
-        
-
     });
 
 
+});
+
+
+Route::namespace('Front')->group(function(){
+    Route::get('/','IndexController@index');
 });
