@@ -32,7 +32,7 @@
             {{-- form start --}}
             <form name="bannerForm" id="bannerForm" @if(empty($banner['id']))
                 action="{{ url('admin/add-edit-banner') }}" @else
-                action="{{ url('admin/add-edit-banner/'.$banner['id']) }}" @endif method="post">@csrf
+                action="{{ url('admin/add-edit-banner/'.$banner['id']) }}" @endif method="post" enctype="multipart/form-data">@csrf
                 <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">{{$title}} Form</h3>
@@ -59,13 +59,10 @@
                                         @endif>
                                 </div>
                             </div>
-                        </div>
-                        {{-- ROW 1 --}}
-                        <div class="row">
                             <div class="col-12 col-sm-6">
                                 <div class="form-group">
                                     <label for="product_name">Product Name</label>
-                                    <input type="text" class="form-control" id="title" name="product_name"
+                                    <input type="text" class="form-control" id="product_name" name="product_name"
                                         placeholder="Enter Product Name" 
                                         @if(!empty($banner['product_name']))
                                         value="{{$banner['product_name']}}" 
@@ -91,10 +88,6 @@
                                         @endif>
                                 </div>
                             </div>
-                        </div>
-
-                        {{-- ROW 1 --}}
-                        <div class="row">
                             <div class="col-12 col-sm-6">
                                 <div class="form-group">
                                     <label for="new_price">Product New Price</label>
@@ -107,7 +100,10 @@
                                         @endif>
                                 </div>
                             </div>
+
                         </div>
+
+                        
                         
                         {{-- ROW 1 --}}
                         <div class="row">
@@ -123,9 +119,6 @@
                                         @endif>
                                 </div>
                             </div>
-                        </div>
-                        {{-- ROW 1 --}}
-                        <div class="row">
                             <div class="col-12 col-sm-6">
                                 <div class="form-group">
                                     <label for="alt">Alternative Banner Image Name</label>
@@ -139,6 +132,7 @@
                                 </div>
                             </div>
                         </div>
+                       
                            {{-- ROW 1 --}}
                            <div class="row">
                             <div class="col-12 col-sm-6">
@@ -157,12 +151,6 @@
                                         </select>
                                 </div>
                             </div>
-                        </div>
-
-
-                        {{-- ROW 6 --}}
-
-                        <div class="row">
                             <div class="col-12 col-sm-6">
                                 <div class="form-group">
                                     <label for="image">Banner Image<span style="font-size: 15px;" class="badge badge-secondary navbar-badge">Recommended Image Size (Width:520px,Height:460px)</span></label>
@@ -174,9 +162,18 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- @if(!empty($banner['image']))
+
+                        </div>
+
+
+                        {{-- ROW 6 --}}
+
+                     
+                            
+                        @if(!empty($banner['image']))
+                        {{-- NEW ROW --}}
                         <div class="row">
-                            <div class="col-12 col-sm-6">   
+                            <div class="col-12 col-sm-6">
                             </div>
                             <div class="col-12 col-sm-6">
                                 <div class="info-box">
@@ -195,19 +192,8 @@
                                 </div>
                             </div>
                         </div>
-                        @endif --}}
-
-
-
-
-
-
-
-
-
-
-
-                    </div>
+                        @endif
+                       </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">{{$btn_title}}</button>
                     </div>
