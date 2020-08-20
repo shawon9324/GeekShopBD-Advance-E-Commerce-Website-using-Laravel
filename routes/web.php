@@ -64,6 +64,15 @@ Route::prefix('admin')->namespace('Admin')->group(function(){
         Route::get('delete-attributes/{id}','ProductController@deleteAttributes');
         Route::match(['get','post'],'add-images/{id}','ProductController@addImages');
         Route::get('delete-images/{id}','ProductController@deleteImages');
+
+        //Banners
+        Route::get('banners','BannerController@banners');
+        Route::post('update-banner-status','BannerController@updateBannerStatus');
+        Route::get('delete-banner/{id}','BannerController@deleteBanner');
+        Route::match(['get','post'],'add-edit-banner/{id?}','BannerController@addEditBanner');
+        Route::get('delete-banner-image/{id}','BannerController@deleteBannerImage');
+
+
     });
 
 

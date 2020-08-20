@@ -86,6 +86,14 @@
       "responsive": true,
       "autoWidth": false,
     });
+    $("#banners").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $("#brands").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
     $('.full_description').summernote({
         placeholder: 'Enter Product Full Description. . .',
         height: 150,

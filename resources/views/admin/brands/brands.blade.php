@@ -21,7 +21,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-8">
+                <div class="col-md-12">
                     @if(Session::has('success_message'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top:10px">
                         {{ Session::get('success_message') }}
@@ -37,7 +37,7 @@
                                 <button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add Brand</button></a>
                         </div>
                         <div class="card-body">
-                            <table id="sections" class="table table-bordered table-striped">
+                            <table id="brands" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>ID</th>

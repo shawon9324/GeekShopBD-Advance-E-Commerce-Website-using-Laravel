@@ -21,7 +21,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
+                <div class="col-md-12">
                     @if(Session::has('success_message'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top:10px">
                         {{ Session::get('success_message') }}

@@ -116,7 +116,25 @@ $(document).ready(function() {
                 }
             });
         });
-        
+        //Banner status Active/Inactive toggling update
+        $(document).on("click",".updateBannerStatus",function(){
+            var status = $(this).children("i").attr("status");
+            var banner_id = $(this).attr("banner_id");
+            $.ajax({
+                type: "post",
+                url: "/admin/update-banner-status",
+                data: { status: status, banner_id:banner_id },
+                success: function(resp) {
+                    if (resp["status"] == 0) {
+                        $("#banner-" + banner_id).html("<i class='fas fa-toggle-off fa-lg'  status='Inactive'></i>");
+                    } else if (resp["status"] == 1) {
+                        $("#banner-" + banner_id).html("<i class='fas fa-toggle-on fa-lg' style='color:greenyellow;'status='Active'></i>");
+                    }
+                },
+                error: function() {
+                }
+            });
+        });
 
 
 
