@@ -4,23 +4,24 @@
 
 {{-- @if (isset($page_name) && $page_name == "index") //content @endif --}}
 
-<!-- Banner -->
+<!--Top Banner -->
 <div class="banner">
 	<div class="banner_background" style="background-image:url(img/front_img/banner_background.jpg)"></div>
-
+			@foreach ($banner_tops as $banner_top)
 			<div class="container fill_height">
 				<div class="row fill_height">
-					<div class="banner_product_image"><img src="{{ url('img/front_img/banner_product.png') }}" alt=""></div>
+					<div class="banner_product_image"><img src="{{ asset('img/banner_img/'.$banner_top['image']) }}" alt="{{$banner_top['alt']}}"></div>
 					<div class="col-lg-5 offset-lg-4 fill_height">
 						<div class="banner_content">
-							<h1 class="banner_text">new era of smartphones</h1>
-							<div class="banner_price"><span>$530</span>$460</div>
-							<div class="banner_product_name">Apple Iphone 6s</div>
-							<div class="button banner_button"><a href="#">Shop Now</a></div>
+							<h1 class="banner_text">{{$banner_top['title']}}</h1>
+							<div class="banner_price">৳ {{$banner_top['new_price']}} <span>৳ {{$banner_top['old_price']}}</span></div> 
+							<div class="button banner_button"><a href="{{$banner_top['link']}}">Shop Now</a></div>
 						</div>
 					</div>
 				</div>
 			</div>
+			@endforeach
+			
 </div>
 <!-- Characteristics -->
 
@@ -1590,7 +1591,7 @@
 	</div>
 </div>
 
-<!-- Banner -->
+<!--Middle Slider Banner -->
 
 <div class="banner_2">
 	<div class="banner_2_background" style="background-image:url(img/front_img/banner_2_background.jpg)"></div>
@@ -1601,94 +1602,90 @@
 		<div class="owl-carousel owl-theme banner_2_slider">
 
 			<!-- Banner 2 Slider Item -->
-			<div class="owl-item">
-				<div class="banner_2_item">
-					<div class="container fill_height">
-						<div class="row fill_height">
-							<div class="col-lg-4 col-md-6 fill_height">
-								<div class="banner_2_content" >
-									<div class="banner_2_category">Laptops</div>
-									<div class="banner_2_title">MacBook Air 13</div>
-									<div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-										Maecenas fermentum laoreet.</div>
-									<div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i>
+			@foreach ($banner_middle_slider_1 as $bms_1)
+				<div class="owl-item">
+					<div class="banner_2_item">
+						<div class="container fill_height">
+							<div class="row fill_height">
+								<div class="col-lg-4 col-md-6 fill_height">
+									<div class="banner_2_content" >
+										<div class="banner_2_title">{{$bms_1['product_name']}}</div>
+										<div class="banner_2_text">{{$bms_1['title']}}</div>
+										<div class="banner_price">৳ {{$bms_1['new_price']}}<span></div>
+										<div class="button banner_2_button"><a href="{{$bms_1['link']}}">Explore</a></div>
 									</div>
-									<div class="button banner_2_button"><a href="#">Explore</a></div>
-								</div>
 
-							</div>
-							<div class="col-lg-8 col-md-6 fill_height">
-								<div class="banner_2_image_container">
-                                        <div class="banner_2_image"><img
-                                                src="{{ url('img/front_img/banner_2_product.png') }}" alt=""></div>
-                                    </div>
+								</div>
+								<div class="col-lg-8 col-md-6 fill_height">
+									<div class="banner_2_image_container">
+											<div class="banner_2_image"><img 
+													src="{{ asset('img/banner_img/'.$bms_1['image']) }}" alt="{{$bms_1['alt']}}"></div>
+										</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			@endforeach
 
 			<!-- Banner 2 Slider Item -->
-			<div class="owl-item">
-				<div class="banner_2_item">
-					<div class="container fill_height">
-						<div class="row fill_height">
-							<div class="col-lg-4 col-md-6 fill_height">
-								<div class="banner_2_content">
-									<div class="banner_2_category">Laptops</div>
-									<div class="banner_2_title">MacBook Air 13</div>
-									<div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-										Maecenas fermentum laoreet.</div>
-									<div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i>
+			@foreach ($banner_middle_slider_2 as $bms_2)
+				<div class="owl-item">
+					<div class="banner_2_item">
+						<div class="container fill_height">
+							<div class="row fill_height">
+								<div class="col-lg-4 col-md-6 fill_height">
+									<div class="banner_2_content" >
+										<div class="banner_2_title">{{$bms_2['product_name']}}</div>
+										<div class="banner_2_text">{{$bms_2['title']}}</div>
+										<div class="banner_price">৳ {{$bms_2['new_price']}}</div>
+										<div class="button banner_2_button"><a href="{{$bms_2['link']}}">Explore</a></div>
 									</div>
-									<div class="button banner_2_button"><a href="#">Explore</a></div>
-								</div>
 
-							</div>
-							<div class="col-lg-8 col-md-6 fill_height">
-								<div class="banner_2_image_container">
-									<div class="banner_2_image"><img
-											src="{{ url('img/front_img/banner_2_product.png') }}" alt=""></div>
+								</div>
+								<div class="col-lg-8 col-md-6 fill_height">
+									<div class="banner_2_image_container">
+											<div class="banner_2_image"><img 	 src="{{ asset('img/banner_img/'.$bms_2['image']) }}" alt="{{$bms_2['alt']}}"></div>
+										</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			@endforeach
 
-			<!-- Banner 2 Slider Item -->
-			<div class="owl-item">
-				<div class="banner_2_item">
-					<div class="container fill_height">
-						<div class="row fill_height">
-							<div class="col-lg-4 col-md-6 fill_height">
-								<div class="banner_2_content">
-									<div class="banner_2_category">Laptops</div>
-									<div class="banner_2_title">MacBook Air 13</div>
-									<div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-										Maecenas fermentum laoreet.</div>
-									<div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i>
+			<!-- Banner 3 Slider Item -->
+			@foreach ($banner_middle_slider_3 as $bms_3)
+				<div class="owl-item">
+					<div class="banner_2_item">
+						<div class="container fill_height">
+							<div class="row fill_height">
+								<div class="col-lg-4 col-md-6 fill_height">
+									<div class="banner_2_content" >
+										<div class="banner_2_title">{{$bms_3['product_name']}}</div>
+										<div class="banner_2_text">{{$bms_3['title']}}</div>
+										<div class="banner_price">৳ {{$bms_3['new_price']}}</div>
+										<div class="button banner_2_button"><a href="{{$bms_3['link']}}">Explore</a></div>
 									</div>
-									<div class="button banner_2_button"><a href="#">Explore</a></div>
-								</div>
 
-							</div>
-							<div class="col-lg-8 col-md-6 fill_height">
-								<div class="banner_2_image_container">
-									<div class="banner_2_image"><img
-											src="{{ url('img/front_img/banner_2_product.png') }}" alt=""></div>
+								</div>
+								<div class="col-lg-8 col-md-6 fill_height">
+									<div class="banner_2_image_container">
+											<div class="banner_2_image"><img 
+													src="{{ asset('img/banner_img/'.$bms_3['image']) }}" alt="{{$bms_3['alt']}}"></div>
+										</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			@endforeach
 
 		</div>
 	</div>
 </div>
 
-
+	<br><br>
 <!-- Best Sellers -->
 
 <div class="best_sellers">
