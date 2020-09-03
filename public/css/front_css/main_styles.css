@@ -1224,10 +1224,7 @@ select option
 	text-transform: uppercase;
 	letter-spacing: 0.038em;
 }
-.banner_price
-{
 
-}
 .banner_price
 {
 	font-size: 30px;
@@ -1309,6 +1306,30 @@ select option
 	color: rgba(0,0,0,0.5);
 	margin-top: 3px;
 }
+.features
+{
+	text-align: left;
+	padding-left: 10px;
+	font-size: 12px;
+	font-weight: 420;
+	color: rgba(0,0,0,0.5);
+	margin-top: 2px;
+}
+.features ul{
+	margin: 0 0 0 15px;
+	padding-bottom: 15px;
+	list-style: none;
+}
+
+.features li{
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 18px;
+	color: #666666;
+	margin-bottom: 5px;
+	list-style: disc;
+	}
+
 
 /*********************************
 6. Deals of the week
@@ -1685,6 +1706,13 @@ select option
 {
 	color: #df3b3b;
 }
+
+.product_price.discount_2
+{
+	color: #0089d0;
+	text-align: left;
+	padding-left: 10px;
+}
 .product_price span
 {
 	font-size: 12px;
@@ -1718,6 +1746,71 @@ select option
 {
 	color: #0e8ce4;
 }
+
+
+
+
+.product_name_2
+{
+	margin-top: 4px;
+	overflow: hidden;
+}
+.product_name_2 div
+{
+	width: 100%;
+	
+}
+.product_name_2 div a
+{
+	padding-left: 10px;
+	padding-right: 25px;
+	font-size: 14px;
+	font-weight: 500;
+	text-align: center;
+	color: #000000;
+	/* text-transform: uppercase; */
+	letter-spacing: 0.038em;
+	/* white-space: nowrap; */
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.product_name_2 div a:hover
+{
+	color: #0e8ce4;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .product_color
 {
 	visibility: hidden;
@@ -2139,6 +2232,7 @@ select option
 	line-height: 1.5;
 	margin-top: 9px;
 }
+
 .banner_2_rating
 {
 	margin-top: 18px;

@@ -14,28 +14,28 @@ class BannerController extends Controller
 {
     public function banners()
     {
-        Session::put('page','banners');
+        Session::put('page', 'banners');
         $banners = Banner::get();
         // $banners = json_decode(json_encode($banners),true);
         // echo "<pre>";print_r($banners);die;
-        return view ('admin.banners.banners')->with(compact('banners'));
+        return view('admin.banners.banners')->with(compact('banners'));
     }
 
-    public function addEditBanner(Request $request, $id=null){
+    public function addEditBanner(Request $request, $id = null)
+    {
 
-        if($id==""){
+        if ($id == "") {
             //ADD Banner
             $title = "Add Banner";
-            $btn_title ="Submit";
+            $btn_title = "Submit";
             $banner = new Banner;
             $bannerData = array();
             $message = "Banner added Successfully!";
-        }
-        else{
-             //EDIT Banner
+        } else {
+            //EDIT Banner
             $title = "Edit Banner";
-            $btn_title ="Update";
-            $bannerData = Banner::where('id',$id)->first();
+            $btn_title = "Update";
+            $bannerData = Banner::where('id', $id)->first();
             $banner = Banner::find($id);        //this query is for update Banner
             $message = "Banner updated Successfully!";
         }
@@ -44,18 +44,18 @@ class BannerController extends Controller
         //Data Storing Process
         if ($request->isMethod('post')) {
             $data = $request->all();
-           // $data = json_decode(json_encode($data),true);
+            // $data = json_decode(json_encode($data),true);
             //echo "<pre>"; print_r($data);die;
 
             //category validation
-                $rules = [
-                    'image' => 'image'
-                ];
-                $customMessage = [
+            $rules = [
+                'image' => 'image'
+            ];
+            $customMessage = [
 
-                    'image.image' => 'Valid Image is required',
-                ];
-                $this->validate($request,$rules,$customMessage);
+                'image.image' => 'Valid Image is required',
+            ];
+            $this->validate($request, $rules, $customMessage);
             //end validation
 
             //Upload Product Image
@@ -64,8 +64,8 @@ class BannerController extends Controller
                 if ($image_temp->isValid()) {
                     //upload images after resizing
                     $image_name = $image_temp->getClientOriginalName();
-                    $imageName = rand(111, 99999).'-'.$image_name;
-                    $image_path = 'img/banner_img/'.$imageName;
+                    $imageName = rand(111, 99999) . '-' . $image_name;
+                    $image_path = 'img/banner_img/' . $imageName;
                     Image::make($image_temp)->save($image_path);
                     $banner->image = $imageName;
                 }
@@ -80,29 +80,29 @@ class BannerController extends Controller
             $banner->banner_position = $data['banner_position'];
             $banner->status = 1;
             $banner->save();
-            Session::flash('success_message',$message);
+            Session::flash('success_message', $message);
             return redirect('admin/banners');
         }
         //-/Data Storing Process
-        
-        $positionArray = array('Top','Middle-Slider-1','Middle-Slider-2','Middle-Slider-3','Bottom');
-        return view('admin.banners.add_edit_banner')->with(compact('title','btn_title','banner','positionArray','bannerData'));
-}
 
-
-
-public function deleteBannerImage($id)
-{
-    $getBannerImage = Banner::select('image')->where('id', $id)->first();
-    $product_image_path = 'img/banner_img/' . $getBannerImage->image;
-    if (file_exists($product_image_path)) {
-        unlink($product_image_path);
+        $positionArray = array('Top', 'Middle-Slider-1', 'Middle-Slider-2', 'Middle-Slider-3', 'Bottom');
+        return view('admin.banners.add_edit_banner')->with(compact('title', 'btn_title', 'banner', 'positionArray', 'bannerData'));
     }
-    //delete category image from the database table
-    Banner::where('id', $id)->update(['image' => '']);
-    Session::flash('success_message', 'Banner Image has been deleted successfully!');
-    return redirect()->back();
-}
+
+
+
+    public function deleteBannerImage($id)
+    {
+        $getBannerImage = Banner::select('image')->where('id', $id)->first();
+        $product_image_path = 'img/banner_img/' . $getBannerImage->image;
+        if (file_exists($product_image_path)) {
+            unlink($product_image_path);
+        }
+        //delete category image from the database table
+        Banner::where('id', $id)->update(['image' => '']);
+        Session::flash('success_message', 'Banner Image has been deleted successfully!');
+        return redirect()->back();
+    }
 
 
 
@@ -113,24 +113,25 @@ public function deleteBannerImage($id)
 
 
 
-    public function updateBannerStatus(Request $request){
-        if($request->ajax()){
+    public function updateBannerStatus(Request $request)
+    {
+        if ($request->ajax()) {
             $data = $request->all();
-            if($data['status']=="Active"){
+            if ($data['status'] == "Active") {
                 $status = 0;
-            }
-            else{
+            } else {
                 $status = 1;
             }
-            Banner::where('id',$data['banner_id'])->update(['status'=>$status]);
-            return response()->json(['status'=>$status,'banner_id'=>$data['banner_id']]);
+            Banner::where('id', $data['banner_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'banner_id' => $data['banner_id']]);
         }
     }
-    public function deleteBanner($id){
-        $bannerName = Banner::select('title')->where('id',$id)->first();
-        Banner::where('id',$id)->delete();
-        $message = $bannerName->title.'- Banner has been deleted successfully!';
-        Session::flash('success_message',$message);
+    public function deleteBanner($id)
+    {
+        $bannerName = Banner::select('title')->where('id', $id)->first();
+        Banner::where('id', $id)->delete();
+        $message = $bannerName->title . '- Banner has been deleted successfully!';
+        Session::flash('success_message', $message);
         return redirect()->back();
     }
 }
