@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="GeekShopBD Computer Shop Project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{ url('css/front_css/bootstrap4/bootstrap.min.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ url('css/front_css/bootstrap4/bootstrap.min.css') }}"> --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="{{ url('plugins/front_plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}" rel="stylesheet"
         type="text/css">
     <link rel="stylesheet" type="text/css"
@@ -61,6 +62,7 @@
     <script src="{{ url('plugins/front_plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
     <script src="{{ url('plugins/front_plugins/parallax-js-master/parallax.min.js') }}"></script>
     <script src="{{ url('js/front_js/shop_custom.js') }}"></script>
+    
 
 </body>
 

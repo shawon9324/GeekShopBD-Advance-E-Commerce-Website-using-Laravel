@@ -1370,7 +1370,7 @@ select option
 	-ms-transform: translateX(-20px);
 	-o-transform: translateX(-20px);
 	transform: translateX(-20px);
-	width: calc(100% + 40px);
+	width: calc(115% + 40px);
 }
 .product_grid_border
 {
@@ -1399,18 +1399,35 @@ select option
 	cursor: pointer;
 	padding-top: 40px;
 	padding-bottom: 24px;
+	
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	/* width: 100%; */
+	border-radius: 5px;
+	margin-left:15px;
+	margin-right:15px;
+	margin-bottom:8px;
+	margin-top:5px;
 	text-align: center;
 }
-.product_border
+.product_item:hover
 {
-	display: block;
-	position: absolute;
-	top: 52px;
-	right: 1px;
-	width: 1px;
-	height: calc(100% - 71px);
-	background: #e5e5e5;
+	box-shadow: 0 10px 25px 0 rgba(0,0,0,0.2);
+
 }
+/* aded */
+.buy_now:hover
+{
+	border-radius: 15px;
+	text-shadow: 0px 0px 6px #00FFFF;
+	box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.3s ease 0s;
+}
+
+
+
+
 .product_image
 {
 	width: 100%;

@@ -32,7 +32,7 @@
 
 								@foreach($section['categories'] as $category)
 
-                                <li><a href="#">{{ $category['category_name'] }}</a></li>
+                                <li><a href="/{{ $category['url'] }}">{{ $category['category_name'] }}</a></li>
 								@endforeach
 								@endforeach
                             </ul>
@@ -84,13 +84,9 @@
                                 </ul>
                             </div>
                         </div>
-                    {{-- <div class="shop_content">
-                        <div class="shop_bar clearfix">
-                            <div class="shop_product_count"> <a href="http://">	HOME</a> | <?php echo $categoryDetails['breadcrumbs']; ?></div>
-                        </div> --}}
+
 
                         <div class="product_grid">
-                            <div class="product_grid_border"></div>
 								@foreach ($categoryProducts as $product)
 	                           		<!-- Product Item -->
 										<div class="product_item is_new">
@@ -115,14 +111,22 @@
 												<hr>
 												<div class="product_price discount_2">
 													<div class="row">
-														<div class="col-md-9">৳ {{$product['product_price']}}</div>
-														<div class="col-md-3"> <a style="" href="awd"><i class="fas fa-exchange-alt"aria-hidden="true"></i></a></div>
+														<div class="col-md-6">
+                                                            ৳ {{$product['product_price']}}
+                                                        </div>
+														<div class="col-md-6"> 
+                                                            <a style="" href="awd" type="button" class="btn btn-secondary btn-md buy_now"><i class="fa fa-eye " aria-hidden="true"></i>
+                                                        </a>
+                                                        &nbsp;&nbsp;<a style="" href="awd" type="button" class="btn btn-secondary btn-md buy_now" ><i class="fas fa-exchange-alt"aria-hidden="true"></i></a></div>
 													</div>
 													
 												</div>
 												<hr>
-											</div>
-											<a style="" href="awd" type="button" class="btn btn-primary btn-md">Buy Now</button></a>
+                                            </div>
+                                           
+                                                
+                                                <a style="" href="awd" type="button" class="btn btn-info btn-md buy_now"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Buy Now</button></a>
+                                         
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
 											<ul class="product_marks">
 												<li class="product_mark product_discount">-25%</li>

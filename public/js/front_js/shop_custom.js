@@ -281,7 +281,7 @@ $(document).ready(function() {
                     var priceEle = $(itemElement)
                         .find(".product_price")
                         .text()
-                        .replace("$", "");
+                        .replace("৳", "");
                     return parseFloat(priceEle);
                 },
                 name: ".product_name_2 div a"
@@ -315,19 +315,19 @@ $(document).ready(function() {
             $("#slider-range").slider({
                 range: true,
                 min: 0,
-                max: 20000,
-                values: [0, 20000],
+                max: 100000,
+                values: [0, 100000],
                 slide: function(event, ui) {
                     $("#amount").val(
-                        "$" + ui.values[0] + " - $" + ui.values[1]
+                        "৳" + ui.values[0] + " - ৳" + ui.values[1]
                     );
                 }
             });
 
             $("#amount").val(
-                "$" +
+                "৳" +
                     $("#slider-range").slider("values", 0) +
-                    " - $" +
+                    " - ৳" +
                     $("#slider-range").slider("values", 1)
             );
             $(".ui-slider-handle").on("mouseup", function() {
@@ -335,10 +335,10 @@ $(document).ready(function() {
                     filter: function() {
                         var priceRange = $("#amount").val();
                         var priceMin = parseFloat(
-                            priceRange.split("-")[0].replace("$", "")
+                            priceRange.split("-")[0].replace("৳", "")
                         );
                         var priceMax = parseFloat(
-                            priceRange.split("-")[1].replace("$", "")
+                            priceRange.split("-")[1].replace("৳", "")
                         );
                         var itemPrice = $(this)
                             .find(".product_price")
@@ -347,7 +347,7 @@ $(document).ready(function() {
                             .remove()
                             .end()
                             .text()
-                            .replace("$", "");
+                            .replace("৳", "");
 
                         return itemPrice > priceMin && itemPrice < priceMax;
                     },

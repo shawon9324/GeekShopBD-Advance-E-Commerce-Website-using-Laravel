@@ -1779,7 +1779,14 @@ select option
 }
 .product_name_2 div a:hover
 {
+
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 14px;
+	font-weight: bold;
 	color: #0e8ce4;
+	text-align: center;
+  	text-shadow: 2px 7px 5px 0e8ce4, 
+    0px -4px 10px 0e8ce4;
 }
 
 
