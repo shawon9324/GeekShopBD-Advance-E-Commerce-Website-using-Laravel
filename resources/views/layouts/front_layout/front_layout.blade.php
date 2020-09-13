@@ -61,6 +61,7 @@
     <script src="{{ url('plugins/front_plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
     <script src="{{ url('plugins/front_plugins/parallax-js-master/parallax.min.js') }}"></script>
     <script src="{{ url('js/front_js/shop_custom.js') }}"></script>
+    <script src="{{ url('js/front_js/front_script_custom.js') }}"></script>
     
 
 </body>

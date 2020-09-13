@@ -150,13 +150,13 @@ $sections = Section::sections();
                                                     <li class="hassubs">
                                                         <a href="/{{ $category['url'] }}">{{ $category['category_name'] }}<i
                                                                 class="fas fa-chevron-{{ $arrow }}"></i></a>
-                                                        @foreach ($category['subcategories'] as $subcategory)
                                                             <ul>
+                                                            @foreach ($category['subcategories'] as $subcategory)
                                                             <li><a href="/{{ $subcategory['url'] }}">{{ $subcategory['category_name'] }}<i
                                                                             class="fas fa-chevron-{{ $arrow }}"></i></a>
-                                                                </li>
+                                                            </li>
+                                                            @endforeach
                                                             </ul>
-                                                        @endforeach
                                                     </li>
                                                 @endforeach
                                             </ul>

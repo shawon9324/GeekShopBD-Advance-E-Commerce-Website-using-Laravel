@@ -53,7 +53,15 @@
                                                 <td>{{ $brand->id }}</td>
                                                 <td>{{ $brand->name }}</td>
                                                 <td>
-                                                    @if ($brand->status == 1)
+                                                    
+                                                    <a class="btn btn-success" title="Edit Brand"
+                                                        href="{{ url('admin/add-edit-brand/' . $brand->id) }}"><i
+                                                            class="fa fa-pencil-square-o"></i> </a>&nbsp;&nbsp;
+                                                    <a title="Delete Brand" class="confirmDelete btn btn-danger"
+                                                        record_type="brand" record_id="{{ $brand->id }}"
+                                                        href="javascript:void(0)"><i class="fas fa-trash"></i></a>
+
+                                                        @if ($brand->status == 1)
                                                         <a title="Status" class="updateBrandStatus btn btn-info"
                                                             id="brand-{{ $brand->id }}" brand_id="{{ $brand->id }}"
                                                             href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg"
@@ -65,12 +73,6 @@
                                                             href="javascript:void(0)"><i class="fas fa-toggle-off fa-lg"
                                                                 status="Inactive"></i></a>&nbsp;&nbsp;
                                                     @endif
-                                                    <a class="btn btn-success" title="Edit Brand"
-                                                        href="{{ url('admin/add-edit-brand/' . $brand->id) }}"><i
-                                                            class="fa fa-pencil-square-o"></i> </a>&nbsp;&nbsp;
-                                                    <a title="Delete Brand" class="confirmDelete btn btn-danger"
-                                                        record_type="brand" record_id="{{ $brand->id }}"
-                                                        href="javascript:void(0)"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
