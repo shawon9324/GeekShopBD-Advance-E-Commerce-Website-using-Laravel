@@ -37,6 +37,12 @@
                                 <a href="{{ url('admin/add-edit-brand') }}" style="max-width:150px; float:right;">
                                     <button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add
                                         Brand</button></a>
+                                        <form name="brandForm" id="brandForm" @if(empty($brand['id']))
+                                        action="{{ url('admin/add-edit-brand') }}" @else
+                                        action="{{ url('admin/add-edit-brand/'.$brand['id']) }}" @endif method="post">@csrf
+                                    <a  style="max-width:150px; float:right; padding-left:20px;">
+                                            <button type="button" class="btn btn-info float-right confirmSaveBrands"><i class="fas fa-plus"></i> Add
+                                                Brand SWEET</button></a></form>
                             </div>
                             <div class="card-body">
                                 <table id="brands" class="table table-bordered table-striped">

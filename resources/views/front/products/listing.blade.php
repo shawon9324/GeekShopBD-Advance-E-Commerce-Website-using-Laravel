@@ -1,28 +1,79 @@
-{{-- <ul> --}}
-                                {{-- <li> --}}
-                                    {{-- <span class="sorting_text">Select<i
-                                            class="fas fa-chevron-down"></span></i> --}}
-                                    {{-- <ul>
-                                        <li class="shop_sorting_button"
-                                            data-isotope-option='{ "sortBy": "original-order" }'>highest rated</li>
-                                        <li class="shop_sorting_button" data-isotope-option='{ "sortBy": "name" }'>name
-                                        </li>
-                                        <li class="shop_sorting_button" data-isotope-option='{ "sortBy": "price" }'>
-                                            price</li>
-                                        <li value="product_latest" class="shop_sorting_button">Latest Product</li>
-                                        <li value="product_name_a_z" class="shop_sorting_button"> Product Name A-Z</li>
-                                        <li value="product_name_z_a" class="shop_sorting_button"> Product Name Z-A</li>
-                                        <li value="price_lowest" class="shop_sorting_button">Price Lowest FirstPrice
-                                            Lowest First</li>
-                                        <li value="price_highest" class="shop_sorting_button"> Highest Price First</li>
-                                    </ul> --}}
-                                    {{-- </li> --}}
-                                {{-- </ul> --}}
-
+<?php
+	use App\Section;
+	$sections = Section::sections();
+?>
+@extends('layouts.front_layout.front_layout')
+@section('content')
+    <div class="home">
+        <div class="home_background parallax-window" data-parallax="scroll"
+            data-image-src="{{ asset('img/front_img/shop_background.jpg') }}"></div>
+        <div class="home_overlay"></div>
+        <div class="home_content d-flex flex-column align-items-center justify-content-center">
+			<h2 class="home_title">{{$categoryDetails['catDetails']['category_name']}}</h2>
+			<div class="product_name_2" style="font-size: 16px;"><a href="/">	HOME</a> &nbsp;&nbsp;/&nbsp;&nbsp;<?php echo $categoryDetails['breadcrumbs']; ?></div>
+			<div class="advert_text" style="font-size: 16px;">{{$categoryDetails['catDetails']['description']}}</div>
+        </div>
+    </div>
+    <!-- Shop -->
+    <div class="shop">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Shop Sidebar -->
+                    <div class="shop_sidebar">
+                        <div class="sidebar_section">
+                            <div class="sidebar_title">Categories</div>
+                            <ul class="sidebar_categories">
+								@foreach($sections as $section)
+								@foreach($section['categories'] as $category)
+                                <li><a href="/{{ $category['url'] }}">{{ $category['category_name'] }}</a></li>
+								@endforeach
+								@endforeach
+                            </ul>
+                        </div>
+                        <div class="sidebar_section filter_by_section">
+                            <div class="sidebar_title">Filter By</div>
+                            <div class="sidebar_subtitle">Price</div>
+                            <div class="filter_price">
+                                <div id="slider-range" class="slider_range"></div>
+                                <p>Range: </p>
+                                <p><input type="text" id="amount" class="amount" readonly
+                                        style="border:0; font-weight:bold;"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="sidebar_section">
+                            <div class="sidebar_subtitle brands_subtitle">Brands</div>
+                            <ul class="brands_list">
+								@foreach ($categoryProducts as $product)
+                                <li class="brand"><a href="#">{{$product['brand']['name']}}</a></li>
+                               @endforeach
+                            </ul>
                         </div>
                     </div>
-
-
+                </div>
+                <div class="col-lg-9">
+                    <!-- Shop Content -->
+                    <div class="shop_content">
+                        <div class="shop_bar clearfix">
+                            <div class="shop_product_count"><span>{{count($categoryProducts)}}</span> products found</div>
+                            <div class="shop_sorting">
+                                <span>Sort by:</span>
+                                <ul>
+                                    <li>
+                                        <span class="sorting_text">highest rated<i class="fas fa-chevron-down"></span></i>
+                                        <ul>
+                                            <li class="shop_sorting_button"
+                                                data-isotope-option='{ "sortBy": "original-order" }'>highest rated</li>
+                                            <li class="shop_sorting_button" data-isotope-option='{ "sortBy": "name" }'>name
+                                            </li>
+                                            <li class="shop_sorting_button" data-isotope-option='{ "sortBy": "price" }'>
+                                                price</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     <div class="product_grid">
                         @foreach ($categoryProducts as $product)
                             <!-- Product Item -->

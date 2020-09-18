@@ -50,7 +50,7 @@
                             <div class="col-12 col-sm-6">
                                 <div class="form-group">
                                     <label for="brand_name">Brand Name</label>
-                                    <input type="text" class="form-control" id="brand_name" name="brand_name"
+                                    <input required type="text" class="form-control" id="brand_name" name="brand_name"
                                         placeholder="Enter Brand Name" 
                                         @if(!empty($brand['name']))
                                         value="{{$brand['name']}}" 

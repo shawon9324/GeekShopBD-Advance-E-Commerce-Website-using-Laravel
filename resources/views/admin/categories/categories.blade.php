@@ -48,7 +48,7 @@
                                             <th>Parent Category</th>
                                             <th>Section</th>
                                             <th>URL</th>
-                                            <th>Discount</th>
+                                            <th>Discount(%)</th>
                                             <th>Description</th>
                                             <th>Action</th>
                                         </tr>
@@ -56,7 +56,7 @@
                                     <tbody>
                                         @foreach ($categories as $category)
                                             @if (!isset($category->parentcategory->category_name))
-                                                <?php $parent_category = 'Root'; ?>
+                                                <?php $parent_category = 'Main'; ?>
                                             @else
                                                 <?php $parent_category =
                                                 $category->parentcategory->category_name; ?>
@@ -64,10 +64,14 @@
                                             <tr>
                                                 <td>{{ $category->id }}</td>
                                                 <td>{{ $category->category_name }}</td>
-                                                <td>{{ $parent_category }}</td>
-                                                <td>{{ $category->section->name }}</td>
+                                                @if ($parent_category=='Main')
+                                                <td><small class="badge badge-danger" style="font-size: 15px;">{{ $parent_category }}</small></td>
+                                                @else
+                                                <td><small class="badge badge-primary" style="font-size: 15px;">{{ $parent_category }}</small></td>
+                                                @endif
+                                                <td><small class="badge badge-secondary" style="font-size: 17px;">{{ $category->section->name }}</small></td>
                                                 <td>{{ $category->url }}</td>
-                                                <td>{{ $category->category_discount }}</td>
+                                                <td><small class="badge badge-success" style="font-size: 15px;">{{ $category->category_discount }}</small></td>
                                                 <td>{{ $category->description }}</td>
 
                                                 <td>

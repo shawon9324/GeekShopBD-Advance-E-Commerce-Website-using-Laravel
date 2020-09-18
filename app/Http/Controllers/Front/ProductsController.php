@@ -35,9 +35,7 @@ class ProductsController extends Controller
                 }else if($_GET['sort']=="price_highest"){
                     $categoryProducts->orderBy('product_price','desc');
                 }
-                
             }else{
-
             }
             $categoryProducts = $categoryProducts->paginate(3);
             return view('front.products.listing')->with(compact('categoryDetails', 'categoryProducts', 'page_name'));

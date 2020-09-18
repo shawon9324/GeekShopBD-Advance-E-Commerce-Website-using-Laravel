@@ -1,18 +1,18 @@
 //loader
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     $(".loader").fadeOut(200);
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     //check_admin_pwd_correct_or_not
-    $("#current_password").keyup(function() {
+    $("#current_password").keyup(function () {
         var current_password = $("#current_password").val();
 
         $.ajax({
             type: "post",
             url: "/admin/check-current-password",
             data: { current_password: current_password },
-            success: function(resp) {
+            success: function (resp) {
                 if (resp == "false") {
                     $("#checkCurrentPwd").html(
                         "<font color=red>Current Password is incorrect</font>"
@@ -29,12 +29,12 @@ $(document).ready(function() {
                         .addClass("form-control is-valid");
                 }
             },
-            error: function() {}
+            error: function () { }
         });
     });
 
     //Brand status Active/Inactive toggling update
-    $(document).on("click", ".updateBrandStatus", function() {
+    $(document).on("click", ".updateBrandStatus", function () {
         var status = $(this)
             .children("i")
             .attr("status");
@@ -43,7 +43,7 @@ $(document).ready(function() {
             type: "post",
             url: "/admin/update-brand-status",
             data: { status: status, brand_id: brand_id },
-            success: function(resp) {
+            success: function (resp) {
                 if (resp["status"] == 0) {
                     $("#brand-" + brand_id).html(
                         "<i class='fas fa-toggle-off fa-lg'  status='Inactive'></i>"
@@ -54,12 +54,12 @@ $(document).ready(function() {
                     );
                 }
             },
-            error: function() {}
+            error: function () { }
         });
     });
 
     //Section status Active/Inactive toggling update
-    $(document).on("click", ".updateSectionStatus", function() {
+    $(document).on("click", ".updateSectionStatus", function () {
         var status = $(this)
             .children("i")
             .attr("status");
@@ -68,7 +68,7 @@ $(document).ready(function() {
             type: "post",
             url: "/admin/update-section-status",
             data: { status: status, section_id: section_id },
-            success: function(resp) {
+            success: function (resp) {
                 if (resp["status"] == 0) {
                     $("#section-" + section_id).html(
                         "<i class='fas fa-toggle-off fa-lg' status='Inactive'></i></a>"
@@ -79,12 +79,12 @@ $(document).ready(function() {
                     );
                 }
             },
-            error: function() {}
+            error: function () { }
         });
     });
 
     //Category status Active/Inactive toggling update
-    $(document).on("click", ".updateCategoryStatus", function() {
+    $(document).on("click", ".updateCategoryStatus", function () {
         var status = $(this)
             .children("i")
             .attr("status");
@@ -93,7 +93,7 @@ $(document).ready(function() {
             type: "post",
             url: "/admin/update-category-status",
             data: { status: status, category_id: category_id },
-            success: function(resp) {
+            success: function (resp) {
                 if (resp["status"] == 0) {
                     $("#category-" + category_id).html(
                         "<i class='fas fa-toggle-off fa-lg'  status='Inactive'></i>"
@@ -104,12 +104,12 @@ $(document).ready(function() {
                     );
                 }
             },
-            error: function() {}
+            error: function () { }
         });
     });
 
     //Products status Active/Inactive toggling update
-    $(document).on("click", ".updateProductStatus", function() {
+    $(document).on("click", ".updateProductStatus", function () {
         var status = $(this)
             .children("i")
             .attr("status");
@@ -118,7 +118,7 @@ $(document).ready(function() {
             type: "post",
             url: "/admin/update-product-status",
             data: { status: status, product_id: product_id },
-            success: function(resp) {
+            success: function (resp) {
                 if (resp["status"] == 0) {
                     $("#product-" + product_id).html(
                         "<i class='fas fa-toggle-off fa-lg'  status='Inactive'></i>"
@@ -129,11 +129,11 @@ $(document).ready(function() {
                     );
                 }
             },
-            error: function() {}
+            error: function () { }
         });
     });
     //Banner status Active/Inactive toggling update
-    $(document).on("click", ".updateBannerStatus", function() {
+    $(document).on("click", ".updateBannerStatus", function () {
         var status = $(this)
             .children("i")
             .attr("status");
@@ -142,7 +142,7 @@ $(document).ready(function() {
             type: "post",
             url: "/admin/update-banner-status",
             data: { status: status, banner_id: banner_id },
-            success: function(resp) {
+            success: function (resp) {
                 if (resp["status"] == 0) {
                     $("#banner-" + banner_id).html(
                         "<i class='fas fa-toggle-off fa-lg'  status='Inactive'></i>"
@@ -153,22 +153,22 @@ $(document).ready(function() {
                     );
                 }
             },
-            error: function() {}
+            error: function () { }
         });
     });
 
     //Append Category level in the Add category form
 
-    $("#section_id").change(function() {
+    $("#section_id").change(function () {
         var section_id = $(this).val();
         $.ajax({
             type: "post",
             url: "/admin/append-categories-level",
             data: { section_id: section_id },
-            success: function(resp) {
+            success: function (resp) {
                 $("#appendCategoriesLevel").html(resp);
             },
-            error: function() {}
+            error: function () { }
         });
     });
 
@@ -188,13 +188,13 @@ $(document).ready(function() {
     //default alert message timeout
     $(".alert")
         .fadeTo(4000, 500)
-        .slideUp(1000, function() {
+        .slideUp(1000, function () {
             $(".alert").slideUp(4000);
         });
 
     //confrim delete alert records(with Sweet Alert 2.0)
 
-    $(document).on("click", ".confirmDelete", function() {
+    $(document).on("click", ".confirmDelete", function () {
         var record_type = $(this).attr("record_type");
         var record_id = $(this).attr("record_id");
         Swal.fire({
@@ -213,10 +213,11 @@ $(document).ready(function() {
             }
         });
     });
+ 
 
     //view image in update category form
 
-    $(".imageView").click(function() {
+    $(".imageView").click(function () {
         var image_id = $(this).attr("image_id");
         var image_info = $(this).attr("image_info");
         var image_folder = $(this).attr("image_folder");
@@ -239,7 +240,7 @@ $(document).ready(function() {
     var x = 1; //Initial field counter is 1
 
     //Once add button is clicked
-    $(addButton).click(function() {
+    $(addButton).click(function () {
         //Check maximum number of input fields
         if (x < maxField) {
             x++; //Increment field counter
@@ -248,7 +249,7 @@ $(document).ready(function() {
     });
 
     //Once remove button is clicked
-    $(wrapper).on("click", ".remove_button", function(e) {
+    $(wrapper).on("click", ".remove_button", function (e) {
         e.preventDefault();
         $(this)
             .parent("div")
