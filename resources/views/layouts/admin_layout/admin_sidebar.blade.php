@@ -2,9 +2,9 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
-          <img src="{{ asset('img/admin_img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-              class="brand-image img-circle elevation-3" style="opacity: .8">
-          <span class="brand-text font-weight-light">AdminLTE 3</span>
+          {{-- <img src="{{ asset('img/admin_img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+              class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
+          <span class="brand-text font-weight-light"> <i class="fa fa-simplybuilt" aria-hidden="true"></i> &nbsp;&nbsp; Admin Panel</span>
       </a>
 
       <!-- Sidebar -->

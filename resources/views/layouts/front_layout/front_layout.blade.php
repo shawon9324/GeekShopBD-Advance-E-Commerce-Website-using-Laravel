@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="GeekShopBD Computer Shop Project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{ url('css/front_css/bootstrap4/bootstrap.min.css') }}">
-    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="{{ url('plugins/front_plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}" rel="stylesheet"
         type="text/css">
     <link rel="stylesheet" type="text/css"
@@ -21,16 +20,10 @@
     <link rel="stylesheet" type="text/css" href="{{ url('css/front_css/responsive.css') }}">
 
     @if (isset($page_name) && $page_name == 'Products')
-
-
         <link rel="stylesheet" type="text/css"
             href="{{ url('plugins/front_plugins/jquery-ui-1.12.1.custom/jquery-ui.css') }}">
-
         <link rel="stylesheet" type="text/css" href="{{ url('css/front_css/shop_styles.css') }}">
-
         <link rel="stylesheet" type="text/css" href="{{ url('css/front_css/shop_responsive.css') }}">
-
-
     @endif
 
 
@@ -44,9 +37,11 @@
         @yield('content')
         @include('layouts.front_layout.front_footer')
     </div>
-    <script src="{{ url('js/front_js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ url('css/front_css/bootstrap4/popper.js') }}"></script>
-    <script src="{{ url('css/front_css/bootstrap4/bootstrap.min.js') }}"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.2/umd/popper.min.js" integrity="sha512-Jen3K+iRN4thSYDEyHwUGYFxNslAUCTV9P/g0k836eaoq/tplAUCzRPUyDxKUjBlKdJhamW7S3u7NWSGEEdIQw==" crossorigin="anonymous"></script>
     <script src="{{ url('plugins/front_plugins/greensock/TweenMax.min.js') }}"></script>
     <script src="{{ url('plugins/front_plugins/greensock/TimelineMax.min.js') }}"></script>
     <script src="{{ url('plugins/front_plugins/scrollmagic/ScrollMagic.min.js') }}"></script>
@@ -56,14 +51,11 @@
     <script src="{{ url('plugins/front_plugins/slick-1.8.0/slick.js') }}"></script>
     <script src="{{ url('plugins/front_plugins/easing/easing.js') }}"></script>
     <script src="{{ url('js/front_js/custom.js') }}"></script>
-
     <script src="{{ url('plugins/front_plugins/Isotope/isotope.pkgd.min.js') }}"></script>
     <script src="{{ url('plugins/front_plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
     <script src="{{ url('plugins/front_plugins/parallax-js-master/parallax.min.js') }}"></script>
     <script src="{{ url('js/front_js/shop_custom.js') }}"></script>
     <script src="{{ url('js/front_js/front_script_custom.js') }}"></script>
-    
-
 </body>
 
 </html>

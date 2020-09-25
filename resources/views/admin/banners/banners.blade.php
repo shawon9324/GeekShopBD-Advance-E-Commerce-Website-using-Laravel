@@ -22,12 +22,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    @if(Session::has('success_message'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top:10px">
-                        {{ Session::get('success_message') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    @include('sweetalert::alert')
+                    @if (session('success_message'))
+                    <div class="alert  alert-success">
+                        {{ session('success_message') }}
                     </div>
                     @endif
                     <div class="card">
@@ -61,7 +59,7 @@
                                         <td></td>
                                         <td>{{$banner->banner_position}}</td>
                                         <td>@if($banner->status==1)
-                                            <a  title="Status" class="updateBannerStatus btn btn-info" id="banner-{{$banner->id}}" banner_id="{{$banner->id}}" href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg" style="color:greenyellow" status="Active"></i></a>&nbsp;&nbsp;
+                                            <a  title="Status" class="updateBannerStatus btn btn-info" id="banner-{{$banner->id}}" banner_id="{{$banner->id}}" href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg" style="color:cyan" status="Active"></i></a>&nbsp;&nbsp;
                                             @else
                                             <a title="Status" class="updateBannerStatus btn btn-info" id="banner-{{$banner->id}}" banner_id="{{$banner->id}}" href="javascript:void(0)"><i class="fas fa-toggle-off fa-lg" status="Inactive"></i></a>&nbsp;&nbsp;
                                             @endif 

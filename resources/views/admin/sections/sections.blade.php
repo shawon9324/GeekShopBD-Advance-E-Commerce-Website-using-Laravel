@@ -41,7 +41,7 @@
                                         <td>{{$section->id}}</td>
                                         <td>{{$section->name}}</td>
                                         <td>@if($section->status==1)
-                                            <a class="updateSectionStatus btn btn-info" id="section-{{$section->id}}" section_id="{{$section->id}}" href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg" style="color:greenyellow" status="Active"></i></a>
+                                            <a class="updateSectionStatus btn btn-info" id="section-{{$section->id}}" section_id="{{$section->id}}" href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg" style="color:cyan" status="Active"></i></a>
                                             @else
                                             <a class="updateSectionStatus btn btn-info" id="section-{{$section->id}}" section_id="{{$section->id}}" href="javascript:void(0)"><i class="fas fa-toggle-off fa-lg"  status="Inactive"></i></a>
                                             @endif

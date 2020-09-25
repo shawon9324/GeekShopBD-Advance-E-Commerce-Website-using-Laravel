@@ -3104,4 +3104,7 @@
 		</div>
 	</div>
 </div>
+<div class="sliding_text_wrap">
+	<marquee direction="left">Our Website is Under Construction.Please stay with us</marquee>
+</div>
 @endsection

@@ -185,8 +185,7 @@ class ProductController extends Controller
             $product->is_featured = $is_featured;
             $product->status = 1;
             $product->save();
-            Session::flash('success_message', $message);
-            return redirect('admin/products');
+            return redirect('admin/products')->with('toast_success',$message);
         }
 
 
@@ -247,7 +246,6 @@ class ProductController extends Controller
         }
         //delete category image from the database table
         Product::where('id', $id)->update(['main_image' => '']);
-        Session::flash('success_message', 'Product Image has been deleted successfully!');
         return redirect()->back();
     }
     public function deleteProductVideo($id)
@@ -259,7 +257,6 @@ class ProductController extends Controller
         }
         //delete category image from the database table
         Product::where('id', $id)->update(['product_video' => '']);
-        Session::flash('success_message', 'Product Video has been deleted successfully!');
         return redirect()->back();
     }
 
@@ -275,8 +272,7 @@ class ProductController extends Controller
                 if (!empty($value)) {
                     $attrCountSKU = ProductsAttribute::where('sku', $value)->count();
                     if ($attrCountSKU > 0) {
-                        Session::flash('error_message', "SKU is already exists.Please enter another one!");
-                        return redirect()->back();
+                        return redirect()->back()->with('toast_error','SKU is already exists.Please enter another one!');
                     }
                     $attribute = new ProductsAttribute;
                     $attribute->product_id = $id;
@@ -285,8 +281,7 @@ class ProductController extends Controller
                     $attribute->save();
                 }
             }
-            Session::flash('success_message', "Product Attributes added successfully!");
-            return redirect()->back();
+            return redirect()->back()->with('toast_success','Product Attributes added successfully!');
         }
 
         $productData = Product::select('id', 'product_name', 'product_model', 'product_code', 'product_mpn', 'main_image')->with('attributes')->find($id);
@@ -297,8 +292,6 @@ class ProductController extends Controller
     public function deleteAttributes($id)
     {
         ProductsAttribute::where('id', $id)->delete();
-        $message = 'Product Attributes has been deleted successfully!';
-        Session::flash('success_message', $message);
         return redirect()->back();
     }
     public function editAttributes(Request $request, $id)
@@ -312,8 +305,7 @@ class ProductController extends Controller
             }
             // echo "<pre>"; print_r($data); die;
         }
-        Session::flash('success_message', "Product Attributes updated successfully!");
-        return redirect()->back();
+        return redirect()->back()->with('toast_success','Product Attributes updated successfully!');
     }
     public function addImages(Request $request, $id)
     {
@@ -339,8 +331,7 @@ class ProductController extends Controller
                     $productImage->product_id = $id;
                     $productImage->save();
                 }
-                Session::flash('success_message', 'Product Image has been added successfully!');
-                return redirect()->back();
+                return redirect()->back()->with('toast_success','Product Image has been added successfully!');
             }
         }
         $title = "Product Images";
@@ -363,7 +354,6 @@ class ProductController extends Controller
         } 
         //delete image from the database table
         ProductsImage::where('id', $id)->delete();
-        Session::flash('success_message', 'Product Image has been deleted successfully!');
         return redirect()->back();
     }
 }

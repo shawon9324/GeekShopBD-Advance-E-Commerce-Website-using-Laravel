@@ -80,8 +80,7 @@ class BannerController extends Controller
             $banner->banner_position = $data['banner_position'];
             $banner->status = 1;
             $banner->save();
-            Session::flash('success_message', $message);
-            return redirect('admin/banners');
+            return redirect('admin/banners')->with('toast_success', $message);
         }
         //-/Data Storing Process
 
@@ -100,7 +99,6 @@ class BannerController extends Controller
         }
         //delete category image from the database table
         Banner::where('id', $id)->update(['image' => '']);
-        Session::flash('success_message', 'Banner Image has been deleted successfully!');
         return redirect()->back();
     }
 

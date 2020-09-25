@@ -58,81 +58,27 @@
                         <div class="shop_bar clearfix">
                             <div class="shop_product_count"><span>{{count($categoryProducts)}}</span> products found</div>
                             <div class="shop_sorting">
-                                <span>Sort by:</span>
-                                <ul>
-                                    <li>
-                                        <span class="sorting_text">highest rated<i class="fas fa-chevron-down"></span></i>
-                                        <ul>
-                                            <li class="shop_sorting_button"
-                                                data-isotope-option='{ "sortBy": "original-order" }'>highest rated</li>
-                                            <li class="shop_sorting_button" data-isotope-option='{ "sortBy": "name" }'>name
-                                            </li>
-                                            <li class="shop_sorting_button" data-isotope-option='{ "sortBy": "price" }'>
-                                                price</li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                
+                                <form name="sortProducts" id="sortProducts" >
+                                <meta name="csrf-token" content="{{ csrf_token() }}">
+                                <input type="hidden" name="url" id="url" value="{{ $url }}">
+                                    <span>Sort by:</span>
+                                    <select name="sort" id="sort" class="browser-default custom-select" style="font-size: 15px;">
+                                                <option value="product_default" @if(isset($_GET['sort']) && $_GET['sort']=='product_default') selected @endif>Default</option>
+                                                <option value="product_name_a_z"  @if(isset($_GET['sort']) && $_GET['sort']=='product_name_a_z') selected @endif>Name (A-Z)</option>
+                                                <option value="product_name_z_a"  @if(isset($_GET['sort']) && $_GET['sort']=='product_name_z_a') selected @endif>Name (Z-A)</option>
+                                                <option value="price_lowest"  @if(isset($_GET['sort']) && $_GET['sort']=='price_lowest') selected @endif>Price (Low>High)</option>
+                                                <option value="price_highest"  @if(isset($_GET['sort']) && $_GET['sort']=='price_highest') selected @endif>Price (High>Low)</option>
+                                    </select>
+                                </form>
+                               
                             </div>
                         </div>
-                    <div class="product_grid">
-                        @foreach ($categoryProducts as $product)
-                            <!-- Product Item -->
-                            <div class="product_item is_new">
-                                <div class="product_border"></div>
-                                <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                    <img src="{{ asset('img/product_img/small/' . $product['main_image']) }}"
-                                        style="height: 115px;width:115px;" alt=""></div>
-                                <div class="product_content">
-                                    <hr>
-                                    <div class="product_name_2">
-                                        <div><a href="#" tabindex="0">{{ $product['product_name'] }}</a></div>
-                                    </div>
-                                    <hr>
-                                    <div class="features">
-                                        <ul>
-
-                                            <li>{{ $product['feature_1'] }}</li>
-                                            <li>{{ $product['feature_2'] }}</li>
-                                            <li>{{ $product['feature_3'] }}</li>
-                                        </ul>
-                                        Brand : {{ $product['brand']['name'] }}
-                                    </div>
-                                    <hr>
-                                    <div class="product_price discount_2">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                ৳ {{ $product['product_price'] }}
-                                            </div>
-                                            <div class="col-md-6">
-                                                <a style="" href="awd" type="button"
-                                                    class="btn btn-secondary btn-md buy_now"><i class="fa fa-eye "
-                                                        aria-hidden="true"></i>
-                                                </a>
-                                                &nbsp;&nbsp;<a style="" href="awd" type="button"
-                                                    class="btn btn-secondary btn-md buy_now"><i
-                                                        class="fas fa-exchange-alt" aria-hidden="true"></i></a></div>
-                                        </div>
-
-                                    </div>
-                                    <hr>
-                                </div>
-
-
-                                <a style="" href="awd" type="button" class="btn btn-info btn-md buy_now"><i
-                                        class="fa fa-shopping-cart" aria-hidden="true"></i> Buy Now</button></a>
-
-                                <div class="product_fav"><i class="fas fa-heart"></i></div>
-                                <ul class="product_marks">
-                                    <li class="product_mark product_discount">-25%</li>
-                                    <li class="product_mark product_new">new</li>
-                                </ul>
-                            </div>
-                        @endforeach
-
-                    </div>
-
+                        <div class="product_grid filter_products">
+                            @include('front.products.ajax_products_listing')
+                        </div>
                     <!-- Shop Page Navigation -->
-
+                        
                     <div class="shop_page_nav d-flex flex-row">
                         <ul class="page_nav d-flex flex-row">
                             @if (isset($_GET['sort']) && !empty($_GET['sort']))
@@ -148,7 +94,7 @@
     </div>
 </div>
 
-<!-- Recently Viewed -->
+{{-- <!-- Recently Viewed -->
 
 <div class="viewed">
     <div class="container">
@@ -269,7 +215,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!-- Brands -->
 
@@ -279,7 +225,7 @@
             <div class="col">
                 <div class="brands_slider_container">
 
-                    <!-- Brands Slider -->
+                    {{-- <!-- Brands Slider -->
 
                     <div class="owl-carousel owl-theme brands_slider">
 
@@ -316,7 +262,7 @@
                                     src="images/brands_8.jpg" alt=""></div>
                         </div>
 
-                    </div>
+                    </div> --}}
 
                     <!-- Brands Slider Navigation -->
                     <div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
@@ -337,7 +283,7 @@
                 <div
                     class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
                     <div class="newsletter_title_container">
-                        <div class="newsletter_icon"><img src="images/send.png" alt=""></div>
+                        {{-- <div class="newsletter_icon"><img src="images/send.png" alt=""></div> --}}
                         <div class="newsletter_title">Sign up for Newsletter</div>
                         <div class="newsletter_text">
                             <p>...and receive %20 coupon for first shopping.</p>

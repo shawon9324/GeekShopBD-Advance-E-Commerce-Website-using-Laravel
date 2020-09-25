@@ -22,13 +22,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        @if (Session::has('success_message'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert"
-                                style="margin-top:10px">
-                                {{ Session::get('success_message') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                        @if (session('success_message'))
+                            <div class="alert  alert-success">
+                                {{ session('success_message') }}
                             </div>
                         @endif
                         <div class="card">
@@ -37,12 +33,6 @@
                                 <a href="{{ url('admin/add-edit-brand') }}" style="max-width:150px; float:right;">
                                     <button type="button" class="btn btn-info float-right"><i class="fas fa-plus"></i> Add
                                         Brand</button></a>
-                                        <form name="brandForm" id="brandForm" @if(empty($brand['id']))
-                                        action="{{ url('admin/add-edit-brand') }}" @else
-                                        action="{{ url('admin/add-edit-brand/'.$brand['id']) }}" @endif method="post">@csrf
-                                    <a  style="max-width:150px; float:right; padding-left:20px;">
-                                            <button type="button" class="btn btn-info float-right confirmSaveBrands"><i class="fas fa-plus"></i> Add
-                                                Brand SWEET</button></a></form>
                             </div>
                             <div class="card-body">
                                 <table id="brands" class="table table-bordered table-striped">
@@ -59,7 +49,7 @@
                                                 <td>{{ $brand->id }}</td>
                                                 <td>{{ $brand->name }}</td>
                                                 <td>
-                                                    
+
                                                     <a class="btn btn-success" title="Edit Brand"
                                                         href="{{ url('admin/add-edit-brand/' . $brand->id) }}"><i
                                                             class="fa fa-pencil-square-o"></i> </a>&nbsp;&nbsp;
@@ -67,11 +57,11 @@
                                                         record_type="brand" record_id="{{ $brand->id }}"
                                                         href="javascript:void(0)"><i class="fas fa-trash"></i></a>
 
-                                                        @if ($brand->status == 1)
+                                                    @if ($brand->status == 1)
                                                         <a title="Status" class="updateBrandStatus btn btn-info"
                                                             id="brand-{{ $brand->id }}" brand_id="{{ $brand->id }}"
                                                             href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg"
-                                                                style="color:greenyellow"
+                                                                style="color:cyan"
                                                                 status="Active"></i></a>&nbsp;&nbsp;
                                                     @else
                                                         <a title="Status" class="updateBrandStatus btn btn-info"
@@ -90,5 +80,6 @@
                 </div>
             </div>
         </section>
+        @include('sweetalert::alert')
     </div>
 @endsection

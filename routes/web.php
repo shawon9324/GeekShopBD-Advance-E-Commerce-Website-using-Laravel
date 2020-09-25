@@ -79,5 +79,5 @@ Route::namespace('Front')->group(function () {
     //HOME PAGE ROUTE
     Route::get('/', 'IndexController@index');
     //LISTING / CATEGORIES ROUTE
-    Route::get('/{url}', 'ProductsController@listing');
+    Route::any('/{url}', 'ProductsController@listing');
 });

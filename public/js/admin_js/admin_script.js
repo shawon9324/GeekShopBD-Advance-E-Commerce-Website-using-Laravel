@@ -1,7 +1,13 @@
+function goBack() {
+    window.history.back();
+}
 //loader
-window.addEventListener("load", function () {
-    $(".loader").fadeOut(200);
-});
+window.addEventListener('load', function load() {
+    const loader = document.getElementById('loader');
+    setTimeout(function() {
+      loader.classList.add('fadeOut');
+    }, 150);
+  });
 
 $(document).ready(function () {
     //check_admin_pwd_correct_or_not
@@ -50,7 +56,7 @@ $(document).ready(function () {
                     );
                 } else if (resp["status"] == 1) {
                     $("#brand-" + brand_id).html(
-                        "<i class='fas fa-toggle-on fa-lg' style='color:greenyellow;'status='Active'></i>"
+                        "<i class='fas fa-toggle-on fa-lg' style='color:cyan;'status='Active'></i>"
                     );
                 }
             },
@@ -75,7 +81,7 @@ $(document).ready(function () {
                     );
                 } else if (resp["status"] == 1) {
                     $("#section-" + section_id).html(
-                        "<i class='fas fa-toggle-on fa-lg' style='color:greenyellow;'status='Active'></i>"
+                        "<i class='fas fa-toggle-on fa-lg' style='color:cyan;'status='Active'></i>"
                     );
                 }
             },
@@ -100,7 +106,7 @@ $(document).ready(function () {
                     );
                 } else if (resp["status"] == 1) {
                     $("#category-" + category_id).html(
-                        "<i class='fas fa-toggle-on fa-lg' style='color:greenyellow;'status='Active'></i>"
+                        "<i class='fas fa-toggle-on fa-lg' style='color:cyan;'status='Active'></i>"
                     );
                 }
             },
@@ -125,7 +131,7 @@ $(document).ready(function () {
                     );
                 } else if (resp["status"] == 1) {
                     $("#product-" + product_id).html(
-                        "<i class='fas fa-toggle-on fa-lg' style='color:greenyellow;'status='Active'></i>"
+                        "<i class='fas fa-toggle-on fa-lg' style='color:cyan;'status='Active'></i>"
                     );
                 }
             },
@@ -149,7 +155,7 @@ $(document).ready(function () {
                     );
                 } else if (resp["status"] == 1) {
                     $("#banner-" + banner_id).html(
-                        "<i class='fas fa-toggle-on fa-lg' style='color:greenyellow;'status='Active'></i>"
+                        "<i class='fas fa-toggle-on fa-lg' style='color:cyan;'status='Active'></i>"
                     );
                 }
             },

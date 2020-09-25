@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Session;
 
+
 class BrandController extends Controller
 {
     public function brands(){
@@ -59,8 +60,8 @@ class BrandController extends Controller
             $brand->name = $data['brand_name'];
             $brand->status = 1;
             $brand->save();
-            Session::flash('success_message',$message);
-            return redirect('admin/brands');
+            // Session::flash('success',$message);
+            return redirect('admin/brands')->with('toast_success',$message);
         }
         return view('admin.brands.add_edit_brand')->with(compact('title','brand','btn_title'));
 }

@@ -22,14 +22,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    @if(Session::has('success_message'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top:10px">
-                        {{ Session::get('success_message') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif
+                    @include('sweetalert::alert')
+            @if (session('success_message'))
+            <div class="alert  alert-success">
+                {{ session('success_message') }}
+            </div>
+            @endif
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Products Information</h3>
@@ -81,7 +79,7 @@
                                         </td>
                                         <td> 
                                             @if($product->status==1)
-                                            <a class="updateProductStatus btn btn-info" id="product-{{$product->id}}" product_id="{{$product->id}}" href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg" style="color:greenyellow" status="Active"></i></a>
+                                            <a class="updateProductStatus btn btn-info" id="product-{{$product->id}}" product_id="{{$product->id}}" href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg" style="color:cyan" status="Active"></i></a>
                                             @else
                                             <a class="updateProductStatus btn btn-info" id="product-{{$product->id}}" product_id="{{$product->id}}" href="javascript:void(0)"><i class="fas fa-toggle-off fa-lg"  status="Inactive"></i></a>
                                             @endif

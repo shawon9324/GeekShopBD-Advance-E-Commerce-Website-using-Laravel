@@ -3758,3 +3758,23 @@ select option
 {
 	margin-right: 0px;
 }
+
+
+
+.sliding_text_wrap{
+	background-color: rgba(2, 12, 20, 0.8);
+	border-top: 3px solid #0084c9;
+	bottom: 0;
+	/* color: #fa8729; */
+	color: lemonchiffon;
+	font-size: 14px;
+	font-weight: bold;
+	left: 0;
+	padding: 10px;
+	position: fixed;
+	right: 0;
+	z-index: 10;
+}
+
+
+

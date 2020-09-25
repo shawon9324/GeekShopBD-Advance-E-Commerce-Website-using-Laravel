@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ url('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ url('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ url('css/admin_css/ionicons.min.css') }}">
     <!-- Tempusdominus Bbootstrap 4 -->
     <link rel="stylesheet" href="{{ url('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- Select2 -->
@@ -35,18 +35,17 @@
     <link rel="stylesheet" href="{{ url('plugins/summernote/summernote-bs4.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    {{-- SweetAlert --}}
+    <link rel="stylesheet" href="{{ url('css/admin_css/sweetalert2.min.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-        @include('admin.loader')
+        {{-- <div id='loader'><div class="spinner"></div></div> --}}
         @include('layouts.admin_layout.admin_header')
         @include('layouts.admin_layout.admin_sidebar')
         @yield('content')
         @include('layouts.admin_layout.admin_footer')
-
-
-
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
@@ -54,6 +53,7 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+
     <!-- jQuery -->
     <script src="{{ url('plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -65,8 +65,6 @@
     </script>
     <!-- Font Awesome ICON-->
     <script src="https://kit.fontawesome.com/1950dd3d37.js" crossorigin="anonymous"></script>
-
-
     <!-- Bootstrap 4 -->
     <script src="{{ url('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- DataTables -->
@@ -143,12 +141,10 @@
     <script src="{{ url('js/admin_js/pages/dashboard.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ url('js/admin_js/demo.js') }}"></script>
-    <!-- SWEETALERT 2 CDN-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!-- Custom ADMIN JS -->
+    <script src="{{ url('js/admin_js/sweetalert2.min.js') }}"></script>
     <script src="{{ url('js/admin_js/admin_script.js') }}"></script>
-
-
+   
 </body>
 
 </html>

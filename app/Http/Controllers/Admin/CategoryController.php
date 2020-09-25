@@ -112,8 +112,7 @@ class CategoryController extends Controller
                 $category->meta_keywords = $data['meta_keywords'];
                 $category->status = 1;
                 $category->save();
-                Session::flash('success_message',$message);
-                return redirect('admin/categories');
+                return redirect('admin/categories')->with('toast_success',$message);
             }
             //-/Data Storing Process
             //get all section
@@ -151,8 +150,7 @@ class CategoryController extends Controller
         $categoryName = Category::select('category_name')->where('id',$id)->first();
         Category::where('id',$id)->delete();
         $message = $categoryName->category_name.'- Category has been deleted successfully!';
-        Session::flash('success_message',$message);
-        return redirect()->back();
+        return redirect()->back()->with('toast_success',$message);
     }
 
 

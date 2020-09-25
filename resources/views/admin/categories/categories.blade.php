@@ -22,7 +22,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        @if (Session::has('success_message'))
+                        {{-- @if (Session::has('success_message'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert"
                                 style="margin-top:10px">
                                 {{ Session::get('success_message') }}
@@ -30,6 +30,12 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+                        @endif --}}
+                        @include('sweetalert::alert')
+                        @if (session('success_message'))
+                        <div class="alert  alert-success">
+                            {{ session('success_message') }}
+                        </div>
                         @endif
                         <div class="card">
                             <div class="card-header">
@@ -79,7 +85,7 @@
                                                         <a class="updateCategoryStatus btn btn-info"
                                                             id="category-{{ $category->id }}"
                                                             category_id="{{ $category->id }}" href="javascript:void(0)"><i
-                                                                class="fas fa-toggle-on fa-lg" style="color:greenyellow"
+                                                                class="fas fa-toggle-on fa-lg" style="color:cyan"
                                                                 status="Active"></i></a>&nbsp;&nbsp;
                                                     @else
                                                         <a class="updateCategoryStatus btn btn-info"
@@ -105,5 +111,6 @@
                 </div>
             </div>
         </section>
+        
     </div>
 @endsection
