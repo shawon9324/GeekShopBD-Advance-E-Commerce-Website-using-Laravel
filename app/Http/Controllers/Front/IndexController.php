@@ -13,29 +13,37 @@ class IndexController extends Controller
     {
         $page_name = "index";
         $featured_item_count = Product::where('is_featured', 'Yes')->count();
-        $featured_items = Product::where('is_featured', 'Yes')->get()->toArray();
-        $latest_products = Product::where('status', 1)->orderby('id', 'Desc')->limit(20)->get()->toArray();
-        $latest_desktop_pc_products = Product::where(['section_id' => 1, 'status' => 1])->orderby('id', 'Desc')->limit(20)->get()->toArray();
-        $latest_laptop_netbook_products = Product::where(['section_id' => 2, 'status' => 1])->orderby('id', 'Desc')->limit(20)->get()->toArray();
-        $banner_tops = Banner::where(['banner_position' => 'Top', 'status' => 1])->limit(1)->get()->toArray();
-        $banner_middle_slider_1 = Banner::where(['banner_position' => 'Middle-Slider-1', 'status' => 1])->limit(1)->get()->toArray();
-        $banner_middle_slider_2 = Banner::where(['banner_position' => 'Middle-Slider-2', 'status' => 1])->limit(1)->get()->toArray();
-        $banner_middle_slider_3 = Banner::where(['banner_position' => 'Middle-Slider-3', 'status' => 1])->limit(1)->get()->toArray();
-        $banner_bottoms = Banner::where(['banner_position' => 'Bottom', 'status' => 1])->limit(1)->get()->toArray();
+        $featured_items = Product::with(['category' => function ($query) {
+            $query->select('id', 'category_name');
+        }])->where(['is_featured'=>'Yes','status'=>1])->orderby('id','Desc')->limit(8)->get()->toArray();
+        $latest_desktop_pc_products = Product::where(['section_id' => 1, 'status' => 1])->orderby('id', 'Desc')->limit(8)->get()->toArray();
+        $latest_laptop_netbook_products = Product::where(['section_id' => 2, 'status' => 1])->orderby('id', 'Desc')->limit(8)->get()->toArray();
+        $latest_smartphone_tablets = Product::where(['section_id' => 3, 'status' => 1])->orderby('id', 'Desc')->limit(8)->get()->toArray();
+
+        $banner_top_slider_1 = Banner::where(['banner_position' => 'Top-Slider-1', 'status' => 1])->limit(1)->get()->toArray();
+        $banner_top_slider_2 = Banner::where(['banner_position' => 'Top-Slider-2', 'status' => 1])->limit(1)->get()->toArray();
+        $banner_top_slider_3 = Banner::where(['banner_position' => 'Top-Slider-3', 'status' => 1])->limit(1)->get()->toArray();
+        $banner_middle = Banner::where(['banner_position' => 'Middle', 'status' => 1])->limit(1)->get()->toArray();
+        $banner_bottom = Banner::where(['banner_position' => 'Bottom', 'status' => 1])->limit(1)->get()->toArray();
+       
+        
         // $featured_items_chunk =array_chunk($featured_items,4);
-        //echo "<pre>";
-        //dd($banner_middle_slider_2);die;
+        // echo "<pre>";
+        // dd($latest_desktop_pc_products);die;
         return view('front.index')->with(compact(
             'page_name',
             'featured_items',
-            'latest_products',
             'latest_desktop_pc_products',
             'latest_laptop_netbook_products',
-            'banner_tops',
-            'banner_middle_slider_1',
-            'banner_middle_slider_2',
-            'banner_middle_slider_3',
-            'banner_bottoms',
+            'latest_laptop_netbook_products',
+            'latest_smartphone_tablets',
+            'banner_top_slider_1',
+            'banner_top_slider_2',
+            'banner_top_slider_3',
+            'banner_middle',
+            'banner_bottom',
+            
         ));
     }
+
 }

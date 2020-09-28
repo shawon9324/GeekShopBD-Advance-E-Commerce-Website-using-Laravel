@@ -1,3110 +1,1202 @@
-@extends('layouts.front_layout.front_layout')
+@extends('layouts.front_layout.front_index_layout')
 @section('content')
-
-
-{{-- @if (isset($page_name) && $page_name == "index") //content @endif --}}
-
-<!--Top Banner -->
-<div class="banner">
-	<div class="banner_background" style="background-image:url(img/front_img/banner_background.jpg)"></div>
-			@foreach ($banner_tops as $banner_top)
-			<div class="container fill_height">
-				<div class="row fill_height">
-					<div class="banner_product_image"><img src="{{ asset('img/banner_img/'.$banner_top['image']) }}" alt="{{$banner_top['alt']}}"></div>
-					<div class="col-lg-5 offset-lg-4 fill_height">
-						<div class="banner_content">
-							<h1 class="banner_text">{{$banner_top['title']}}</h1>
-							<div class="banner_price">৳ {{$banner_top['new_price']}} <span>৳ {{$banner_top['old_price']}}</span></div> 
-							<div class="button banner_button"><a href="{{$banner_top['link']}}">Shop Now</a></div>
-						</div>
-					</div>
-				</div>
-			</div>
-			@endforeach
-			
-</div>
-<!-- Characteristics -->
-
-<div class="characteristics">
-	<div class="container">
-		<div class="row">
-
-			<!-- Char. Item -->
-			<div class="col-lg-3 col-md-6 char_col">
-
-				<div class="char_item d-flex flex-row align-items-center justify-content-start">
-					<div class="char_icon"><img src="{{ url('img/front_img/char_1.png') }}" alt=""></div>
-					<div class="char_content">
-						<div class="char_title">Free Delivery</div>
-						<div class="char_subtitle">from $50</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Char. Item -->
-			<div class="col-lg-3 col-md-6 char_col">
-
-				<div class="char_item d-flex flex-row align-items-center justify-content-start">
-					<div class="char_icon"><img src="{{ url('img/front_img/char_2.png') }}" alt=""></div>
-					<div class="char_content">
-						<div class="char_title">Free Delivery</div>
-						<div class="char_subtitle">from $50</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Char. Item -->
-			<div class="col-lg-3 col-md-6 char_col">
-
-				<div class="char_item d-flex flex-row align-items-center justify-content-start">
-					<div class="char_icon"><img src="{{ url('img/front_img/char_3.png') }}" alt=""></div>
-					<div class="char_content">
-						<div class="char_title">Free Delivery</div>
-						<div class="char_subtitle">from $50</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Char. Item -->
-			<div class="col-lg-3 col-md-6 char_col">
-
-				<div class="char_item d-flex flex-row align-items-center justify-content-start">
-					<div class="char_icon"><img src="{{ url('img/front_img/char_4.png') }}" alt=""></div>
-					<div class="char_content">
-						<div class="char_title">Free Delivery</div>
-						<div class="char_subtitle">from $50</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Deals of the week+ FEATURED -->
-
-<div class="deals_featured">
-	<div class="container">
-		<div class="row">
-			<div class="col d-flex flex-lg-row flex-column align-items-center justify-content-start">
-
-				<!-- Deals -->
-
-				<div class="deals">
-					<div class="deals_title">Deals of the Week</div>
-					<div class="deals_slider_container">
-
-						<!-- Deals Slider -->
-						<div class="owl-carousel owl-theme deals_slider">
-
-							<!-- Deals Item -->
-							<div class="owl-item deals_item">
-								<div class="deals_image"><img src="{{ url('img/front_img/deals.png') }}" alt=""></div>
-								<div class="deals_content">
-									<div class="deals_info_line d-flex flex-row justify-content-start">
-										<div class="deals_item_category"><a href="#">Headphones</a></div>
-										<div class="deals_item_price_a ml-auto">$300</div>
-									</div>
-									<div class="deals_info_line d-flex flex-row justify-content-start">
-										<div class="deals_item_name">Beoplay H7</div>
-										<div class="deals_item_price ml-auto">$225</div>
-									</div>
-									<div class="available">
-										<div class="available_line d-flex flex-row justify-content-start">
-											<div class="available_title">Available: <span>6</span></div>
-											<div class="sold_title ml-auto">Already sold: <span>28</span></div>
-										</div>
-										<div class="available_bar"><span style="width:17%"></span></div>
-									</div>
-									<div class="deals_timer d-flex flex-row align-items-center justify-content-start">
-										<div class="deals_timer_title_container">
-											<div class="deals_timer_title">Hurry Up</div>
-											<div class="deals_timer_subtitle">Offer ends in:</div>
-										</div>
-										<div class="deals_timer_content ml-auto">
-											<div class="deals_timer_box clearfix" data-target-time="">
-												<div class="deals_timer_unit">
-													<div id="deals_timer1_hr" class="deals_timer_hr"></div>
-													<span>hours</span>
-												</div>
-												<div class="deals_timer_unit">
-													<div id="deals_timer1_min" class="deals_timer_min"></div>
-													<span>mins</span>
-												</div>
-												<div class="deals_timer_unit">
-													<div id="deals_timer1_sec" class="deals_timer_sec"></div>
-													<span>secs</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Deals Item -->
-							<div class="owl-item deals_item">
-								<div class="deals_image"><img src="{{ url('img/front_img/deals.png') }}" alt=""></div>
-								<div class="deals_content">
-									<div class="deals_info_line d-flex flex-row justify-content-start">
-										<div class="deals_item_category"><a href="#">Headphones</a></div>
-										<div class="deals_item_price_a ml-auto">$300</div>
-									</div>
-									<div class="deals_info_line d-flex flex-row justify-content-start">
-										<div class="deals_item_name">Beoplay H7</div>
-										<div class="deals_item_price ml-auto">$225</div>
-									</div>
-									<div class="available">
-										<div class="available_line d-flex flex-row justify-content-start">
-											<div class="available_title">Available: <span>6</span></div>
-											<div class="sold_title ml-auto">Already sold: <span>28</span></div>
-										</div>
-										<div class="available_bar"><span style="width:17%"></span></div>
-									</div>
-									<div class="deals_timer d-flex flex-row align-items-center justify-content-start">
-										<div class="deals_timer_title_container">
-											<div class="deals_timer_title">Hurry Up</div>
-											<div class="deals_timer_subtitle">Offer ends in:</div>
-										</div>
-										<div class="deals_timer_content ml-auto">
-											<div class="deals_timer_box clearfix" data-target-time="">
-												<div class="deals_timer_unit">
-													<div id="deals_timer3_hr" class="deals_timer_hr"></div>
-													<span>hours</span>
-												</div>
-												<div class="deals_timer_unit">
-													<div id="deals_timer3_min" class="deals_timer_min"></div>
-													<span>mins</span>
-												</div>
-												<div class="deals_timer_unit">
-													<div id="deals_timer3_sec" class="deals_timer_sec"></div>
-													<span>secs</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="deals_slider_nav_container">
-						<div class="deals_slider_prev deals_slider_nav"><i class="fas fa-chevron-left ml-auto"></i>
-						</div>
-						<div class="deals_slider_next deals_slider_nav"><i class="fas fa-chevron-right ml-auto"></i>
-						</div>
-					</div>
-				</div>
-
-				<!-- Featured -->
-				<div class="featured">
-					<div class="tabbed_container">
-						<div class="tabs">
-							<ul class="clearfix">
-								<li class="active">Featured</li>
-								<li>On Sale</li>
-								<li>Best Rated</li>
-							</ul>
-							<div class="tabs_line"><span></span></div>
-						</div>
-
-						<!-- Product Panel -->
-						<div class="product_panel panel active">
-							<div class="featured_slider slider">
-                                @foreach ($featured_items as $featured_item)
-								<!-- Slider Product Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ asset('img/product_img/small/'.$featured_item['main_image']) }}" width="115px" height="115px" alt=""></div>
-										<div class="product_content">
-                                            
-                                            <div class="product_price discount">
-                                                <?php  
-                                                    $price = $featured_item['product_price'];    
-                                                    $discount = $featured_item['product_discount'];
-                                                    $discount_price = $price - round(($price*$discount)/100);
-                                                ?>
-                                                @if($discount>0)
-                                                ৳ {{ $discount_price }}
-                                                <span>
-                                                <del>৳ {{$price}}</del>
-                                                </span>
-                                                @else
-                                                ৳ {{$price}}
-                                                @endif
+<?php
+use App\Section;
+$sections = Section::sections();
+?> 
+        <!-- ========== MAIN CONTENT ========== -->
+        <main id="content" role="main">
+            <!-- Slider Section -->
+            <div class="mb-5">
+                <div class="bg-img-hero" style="background-image: url(img/front_img/1920X422/img1.jpg);">
+                    <div class="container min-height-420 overflow-hidden">
+                        <div class="js-slick-carousel u-slick"
+                            data-pagi-classes="text-center position-absolute right-0 bottom-0 left-0 u-slick__pagination u-slick__pagination--long justify-content-start mb-3 mb-md-4 offset-xl-3 pl-2 pb-1">
+							@foreach ($banner_top_slider_1 as $btop_1)
+							<div class="js-slide bg-img-hero-center">
+                                <div class="row min-height-420 py-7 py-md-0">
+                                    <div class="offset-xl-3 col-xl-4 col-6 mt-md-8">
+                                        <h1 class="font-size-64 text-lh-57 font-weight-light"
+                                            data-scs-animation-in="fadeInUp">
+                                            {{$btop_1['title']}}
+                                        </h1>
+                                        <h6 class="font-size-15 font-weight-bold mb-3"
+                                            data-scs-animation-in="fadeInUp"
+                                            data-scs-animation-delay="200">{{$btop_1['product_name']}}
+                                        </h6>
+                                        <div class="mb-4"
+                                            data-scs-animation-in="fadeInUp"
+                                            data-scs-animation-delay="300">
+                                            <span class="font-size-13">FROM</span>
+                                            <div class="font-size-50 font-weight-bold text-lh-45">
+                                                <sup class="">৳</sup>{{$btop_1['new_price']}}
                                             </div>
-											<div class="product_name"><div><a title="{{$featured_item['product_name']}}" href="product.html">{{\Illuminate\Support\Str::limit($featured_item['product_name'],20)}}                                            </a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-                                        <div class="product_fav"><i class="fas fa-heart"></i></div>
-                                        @if (isset($featured_item['product_discount'])==0)
-                                        <?php $mark ="" ; ?>
-										<ul class="product_marks">
-                                            <li class="product_mark {{$mark}}">{{$featured_item['product_discount']}}</li>
-											{{-- <li class="product_mark product_new">new</li> --}}
-                                        </ul>
-                                        @else
-                                        <?php $mark ="product_discount" ; ?>
-										<ul class="product_marks">
-                                            <li class="product_mark {{$mark}}">-{{$featured_item['product_discount']}}</li>
-                                        </ul>
-                                        @endif
+                                        </div>
+                                        <a href="{{$btop_1['link']}}" class="btn btn-primary transition-3d-hover rounded-lg font-weight-normal py-2 px-md-7 px-3 font-size-16"
+                                            data-scs-animation-in="fadeInUp"
+                                            data-scs-animation-delay="400">
+                                            Start Buying
+                                        </a>
+                                    </div>
+                                    <div class="col-xl-5 col-6  d-flex align-items-center"
+                                        data-scs-animation-in="zoomIn"
+                                        data-scs-animation-delay="500">
+                                        <img class="img-fluid" src="{{ asset('img/banner_img/'.$btop_1['image']) }}" alt="{{$btop_1['alt']}}">
+                                    </div>
+                                </div>
+							</div>
+							@endforeach
+							@foreach ($banner_top_slider_2 as $btop_2)
+							<div class="js-slide bg-img-hero-center">
+                                <div class="row min-height-420 py-7 py-md-0">
+                                    <div class="offset-xl-3 col-xl-4 col-6 mt-md-8">
+                                        <h1 class="font-size-64 text-lh-57 font-weight-light"
+                                            data-scs-animation-in="fadeInUp">
+                                            {{$btop_2['title']}}
+                                        </h1>
+                                        <h6 class="font-size-15 font-weight-bold mb-3"
+                                            data-scs-animation-in="fadeInUp"
+                                            data-scs-animation-delay="200">{{$btop_2['product_name']}}
+                                        </h6>
+                                        <div class="mb-4"
+                                            data-scs-animation-in="fadeInUp"
+                                            data-scs-animation-delay="300">
+                                            <span class="font-size-13">FROM</span>
+                                            <div class="font-size-50 font-weight-bold text-lh-45">
+                                                <sup class="">৳</sup>{{$btop_2['new_price']}}
+                                            </div>
+                                        </div>
+                                        <a href="{{$btop_2['link']}}" class="btn btn-primary transition-3d-hover rounded-lg font-weight-normal py-2 px-md-7 px-3 font-size-16"
+                                            data-scs-animation-in="fadeInUp"
+                                            data-scs-animation-delay="400">
+                                            Start Buying
+                                        </a>
+                                    </div>
+                                    <div class="col-xl-5 col-6  d-flex align-items-center"
+                                        data-scs-animation-in="zoomIn"
+                                        data-scs-animation-delay="500">
+                                        <img class="img-fluid" src="{{ asset('img/banner_img/'.$btop_2['image']) }}" alt="{{$btop_2['alt']}}">
+                                    </div>
+                                </div>
+							</div>
+							@endforeach
+							@foreach ($banner_top_slider_3 as $btop_3)
+							<div class="js-slide bg-img-hero-center">
+                                <div class="row min-height-420 py-7 py-md-0">
+                                    <div class="offset-xl-3 col-xl-4 col-6 mt-md-8">
+                                        <h1 class="font-size-64 text-lh-57 font-weight-light"
+                                            data-scs-animation-in="fadeInUp">
+                                            {{$btop_3['title']}}
+                                        </h1>
+                                        <h6 class="font-size-15 font-weight-bold mb-3"
+                                            data-scs-animation-in="fadeInUp"
+                                            data-scs-animation-delay="200">{{$btop_3['product_name']}}
+                                        </h6>
+                                        <div class="mb-4"
+                                            data-scs-animation-in="fadeInUp"
+                                            data-scs-animation-delay="300">
+                                            <span class="font-size-13">FROM</span>
+                                            <div class="font-size-50 font-weight-bold text-lh-45">
+                                                <sup class="">৳</sup>{{$btop_3['new_price']}}
+                                            </div>
+                                        </div>
+                                        <a href="{{$btop_3['link']}}" class="btn btn-primary transition-3d-hover rounded-lg font-weight-normal py-2 px-md-7 px-3 font-size-16"
+                                            data-scs-animation-in="fadeInUp"
+                                            data-scs-animation-delay="400">
+                                            Start Buying
+                                        </a>
+                                    </div>
+                                    <div class="col-xl-5 col-6  d-flex align-items-center"
+                                        data-scs-animation-in="zoomIn"
+                                        data-scs-animation-delay="500">
+                                        <img class="img-fluid" src="{{ asset('img/banner_img/'.$btop_3['image']) }}" alt="{{$btop_3['alt']}}">
+                                    </div>
+                                </div>
+							</div>
+							@endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<!-- End Slider Section -->
+			
 
+            <div class="container">
+                <!-- Banner -->
+                <div class="mb-5">
+                    <div class="row">
+                        <div class="col-md-6 mb-4 mb-xl-0 col-xl-3">
+                            <a href="shop_listing.html" class="d-black text-gray-90">
+                                <div class="min-height-132 py-1 d-flex bg-gray-1 align-items-center">
+                                    <div class="col-6 col-xl-5 col-wd-6 pr-0">
+                                        <img class="img-fluid" src="{{ url('img/front_img/190X150/img1.png') }}" alt="Image Description">
+                                    </div>
+                                    <div class="col-6 col-xl-7 col-wd-6">
+                                        <div class="mb-2 pb-1 font-size-18 font-weight-light text-ls-n1 text-lh-23">
+                                            CATCH BIG <strong>DEALS</strong> ON THE CAMERA
+                                        </div>
+                                        <div class="link text-gray-90 font-weight-bold font-size-15" href="#">
+                                            Shop now
+                                            <span class="link__icon ml-1">
+                                                <span class="link__icon-inner"><i class="ec ec-arrow-right-categproes"></i></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-4 mb-xl-0 col-xl-3">
+                            <a href="shop_listing.html" class="d-black text-gray-90">
+                                <div class="min-height-132 py-1 d-flex bg-gray-1 align-items-center">
+                                    <div class="col-6 col-xl-5 col-wd-6 pr-0">
+                                        <img class="img-fluid" src="{{ url('img/front_img/190X150/img2.jpg') }}" alt="Image Description">
+                                    </div>
+                                    <div class="col-6 col-xl-7 col-wd-6">
+                                        <div class="mb-2 pb-1 font-size-18 font-weight-light text-ls-n1 text-lh-23">
+                                            CATCH BIG <strong>DEALS</strong> ON THE LAPTOP & NETBOOK    
+                                        </div>
+                                        <div class="link text-gray-90 font-weight-bold font-size-15" href="#">
+                                            Shop now
+                                            <span class="link__icon ml-1">
+                                                <span class="link__icon-inner"><i class="ec ec-arrow-right-categproes"></i></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-4 mb-xl-0 col-xl-3">
+                            <a href="shop_listing.html" class="d-black text-gray-90">
+                                <div class="min-height-132 py-1 d-flex bg-gray-1 align-items-center">
+                                    <div class="col-6 col-xl-5 col-wd-6 pr-0">
+                                        <img class="img-fluid" src="{{ url('img/front_img/190X150/img3.jpg') }}" alt="Image Description">
+                                    </div>
+                                    <div class="col-6 col-xl-7 col-wd-6">
+                                        <div class="mb-2 pb-1 font-size-18 font-weight-light text-ls-n1 text-lh-23">
+                                            CATCH BIG <strong>DEALS</strong> ON THE DESKTOP PC
+                                        </div>
+                                        <div class="link text-gray-90 font-weight-bold font-size-15" href="#">
+                                            Shop now
+                                            <span class="link__icon ml-1">
+                                                <span class="link__icon-inner"><i class="ec ec-arrow-right-categproes"></i></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6 mb-4 mb-xl-0 col-xl-3">
+                            <a href="shop_listing.html" class="d-black text-gray-90">
+                                <div class="min-height-132 py-1 d-flex bg-gray-1 align-items-center">
+                                    <div class="col-6 col-xl-5 col-wd-6 pr-0">
+                                        <img class="img-fluid" src="{{ url('img/front_img/190X150/img4.png') }}" alt="Image Description">
+                                    </div>
+                                    <div class="col-6 col-xl-7 col-wd-6">
+                                        <div class="mb-2 pb-1 font-size-18 font-weight-light text-ls-n1 text-lh-23">
+                                            CATCH BIG <strong>DEALS</strong> ON THE GADGET
+                                        </div>
+                                        <div class="link text-gray-90 font-weight-bold font-size-15" href="#">
+                                            Shop now
+                                            <span class="link__icon ml-1">
+                                                <span class="link__icon-inner"><i class="ec ec-arrow-right-categproes"></i></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Banner -->
+                <!-- Deals-and-tabs -->
+                <div class="mb-5">
+                    <div class="row">
+                        <!-- Deal -->
+                        <div class="col-md-auto mb-6 mb-md-0">
+                            <div class="p-3 border border-width-2 border-primary borders-radius-20 bg-white min-width-370">
+                                <div class="d-flex justify-content-between align-items-center m-1 ml-2">
+                                    <h3 class="font-size-22 mb-0 font-weight-normal text-lh-28 max-width-120">Special Offer</h3>
+                                    <div class="d-flex align-items-center flex-column justify-content-center bg-primary rounded-pill height-75 width-75 text-lh-1">
+                                        <!-- <span class="white-txt font-size-12">Save</span> -->
+                                        <div class="white-txt font-size-20 font-weight-bold">-25%</div>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/320X300/img1.jpg') }}" alt="Image Description"></a>
+                                </div>
+                                <h5 class="mb-2 font-size-14 text-center mx-auto max-width-180 text-lh-18"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Game Console Controller + USB 3.0 Cable</a></h5>
+                                <div class="d-flex align-items-center justify-content-center mb-3">
+                                    <del class="font-size-18 mr-2 text-gray-2">$99,00</del>
+                                    <ins class="font-size-30 text-red text-decoration-none">$79,00</ins>
+                                </div>
+                                <div class="mb-3 mx-2">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="">Availavle: <strong>6</strong></span>
+                                        <span class="">Already Sold: <strong>28</strong></span>
+                                    </div>
+                                    <div class="rounded-pill bg-gray-3 height-20 position-relative">
+                                        <span class="position-absolute left-0 top-0 bottom-0 rounded-pill w-30 bg-primary"></span>
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <h6 class="font-size-15 text-gray-2 text-center mb-3">Hurry Up! Offer ends in:</h6>
+                                    <div class="js-countdown d-flex justify-content-center"
+                                        data-end-date="2020/11/30"
+                                        data-hours-format="%H"
+                                        data-minutes-format="%M"
+                                        data-seconds-format="%S">
+                                        <div class="text-lh-1">
+                                            <div class="text-gray-2 font-size-30 bg-gray-4 py-2 px-2 rounded-sm mb-2">
+                                                <span class="js-cd-hours"></span>
+                                            </div>
+                                            <div class="text-gray-2 font-size-12 text-center">HOURS</div>
+                                        </div>
+                                        <div class="mx-1 pt-1 text-gray-2 font-size-24">:</div>
+                                        <div class="text-lh-1">
+                                            <div class="text-gray-2 font-size-30 bg-gray-4 py-2 px-2 rounded-sm mb-2">
+                                                <span class="js-cd-minutes"></span>
+                                            </div>
+                                            <div class="text-gray-2 font-size-12 text-center">MINS</div>
+                                        </div>
+                                        <div class="mx-1 pt-1 text-gray-2 font-size-24">:</div>
+                                        <div class="text-lh-1">
+                                            <div class="text-gray-2 font-size-30 bg-gray-4 py-2 px-2 rounded-sm mb-2">
+                                                <span class="js-cd-seconds"></span>
+                                            </div>
+                                            <div class="text-gray-2 font-size-12 text-center">SECS</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Deal -->
+						
+						
+						<!-- Tab Prodcut -->
+                        <div class="col">
+                            <!-- Features Section -->
+                            <div class="">
+                                <!-- Nav Classic -->
+                                <div class="position-relative bg-white text-center z-index-2">
+                                    <ul class="nav nav-classic nav-tab justify-content-center" id="pills-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active " id="pills-one-example1-tab" data-toggle="pill" href="#pills-one-example1" role="tab" aria-controls="pills-one-example1" aria-selected="true">
+                                                <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                                    Featured
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " id="pills-two-example1-tab" data-toggle="pill" href="#pills-two-example1" role="tab" aria-controls="pills-two-example1" aria-selected="false">
+                                                <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                                    On Sale
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " id="pills-three-example1-tab" data-toggle="pill" href="#pills-three-example1" role="tab" aria-controls="pills-three-example1" aria-selected="false">
+                                                <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                                    Top Rated
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- End Nav Classic -->
+
+                                <!-- Tab Content -->
+                                <div class="tab-content" id="pills-tabContent">
+									{{-- #Featured --}}
+									<div class="tab-pane fade pt-2 show active" id="pills-one-example1" role="tabpanel" aria-labelledby="pills-one-example1-tab">
+                                        <ul class="row list-unstyled products-group no-gutters">
+											@foreach ($featured_items as $featured_item)
+												<li class="col-6 col-wd-3 col-md-4 product-item">
+													<div class="product-item__outer h-100">
+														<div class="product-item__inner px-xl-4 p-3">
+															<div class="product-item__body pb-xl-2">
+																<div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">{{$featured_item['category']['category_name']}}</a></div>
+																<h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">{{$featured_item['product_name']}}</a></h5>
+																<div class="mb-2">
+																	<a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$featured_item['main_image']) }}" style="height: 212px;width:200px;"alt="Image Description"></a>
+																</div>
+																<div class="flex-center-between mb-1">
+																	<div class="prodcut-price">
+																		<?php  
+																			$price = $featured_item['product_price'];    
+																			$discount = $featured_item['product_discount'];
+																			$discount_price = $price - round(($price*$discount)/100);
+																		?>
+																		
+																		<div class="text-gray-100">
+																			@if($discount>0)
+																			৳ {{ $discount_price }}
+																			<span>
+																			<del style="font-size: 15px;">৳ {{$price}}</del>
+																			</span>
+																			@else
+																			৳ {{$price}}
+																			@endif</div>
+																		</div>
+																	<div class="d-none d-xl-block prodcut-add-cart">
+																		<a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+																	</div>
+																</div>
+															</div>
+															<div class="product-item__footer">
+																<div class="border-top pt-2 flex-center-between flex-wrap">
+																	<a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+																	<a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</li>
+											@endforeach
+                                        </ul>
 									</div>
                                 </div>
-                                @endforeach
-							</div>
-							<div class="featured_slider_dots_cover"></div>
-						</div>
-
-						<!-- Product Panel -->
-
-						<div class="product_panel panel">
-							<div class="featured_slider slider">
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_1.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price discount">$225<span>$300</span></div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount">-25%</li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_2.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Apple iPod shuffle</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button active">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_3.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Sony MDRZX310W</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_4.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price discount">$225<span>$300</span></div>
-											<div class="product_name">
-												<div><a href="product.html">LUNA Smartphone</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount">-25%</li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_5.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$225</div>
-											<div class="product_name">
-												<div><a href="product.html">Canon STM Kit...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_6.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Samsung J330F...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_7.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Lenovo IdeaPad</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount">-25%</li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_8.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$225</div>
-											<div class="product_name">
-												<div><a href="product.html">Digitus EDNET...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_1.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$225</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_2.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_3.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_4.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$225</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_5.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$225</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_6.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_7.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_8.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$225</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-							</div>
-							<div class="featured_slider_dots_cover"></div>
-						</div>
-
-						<!-- Product Panel -->
-
-						<div class="product_panel panel">
-							<div class="featured_slider slider">
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_1.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price discount">$225<span>$300</span></div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount">-25%</li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_2.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Apple iPod shuffle</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button active">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_3.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Sony MDRZX310W</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_4.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price discount">$225<span>$300</span></div>
-											<div class="product_name">
-												<div><a href="product.html">LUNA Smartphone</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount">-25%</li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_5.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$225</div>
-											<div class="product_name">
-												<div><a href="product.html">Canon STM Kit...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_6.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Samsung J330F...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_7.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Lenovo IdeaPad</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount">-25%</li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_8.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$225</div>
-											<div class="product_name">
-												<div><a href="product.html">Digitus EDNET...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_1.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$225</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_2.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_3.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_4.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$225</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_5.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$225</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_6.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_7.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$379</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-								<!-- Slider Item -->
-								<div class="featured_slider_item">
-									<div class="border_active"></div>
-									<div
-										class="product_item d-flex flex-column align-items-center justify-content-center text-center">
-										<div
-											class="product_image d-flex flex-column align-items-center justify-content-center">
-											<img src="{{ url('img/front_img/featured_8.png') }}" alt=""></div>
-										<div class="product_content">
-											<div class="product_price">$225</div>
-											<div class="product_name">
-												<div><a href="product.html">Huawei MediaPad...</a></div>
-											</div>
-											<div class="product_extras">
-												<div class="product_color">
-													<input type="radio" checked name="product_color"
-														style="background:#b19c83">
-													<input type="radio" name="product_color" style="background:#000000">
-													<input type="radio" name="product_color" style="background:#999999">
-												</div>
-												<button class="product_cart_button">Add to Cart</button>
-											</div>
-										</div>
-										<div class="product_fav"><i class="fas fa-heart"></i></div>
-										<ul class="product_marks">
-											<li class="product_mark product_discount"></li>
-											<li class="product_mark product_new">new</li>
-										</ul>
-									</div>
-								</div>
-
-							</div>
-							<div class="featured_slider_dots_cover"></div>
-						</div>
-
-					</div>
-				</div>
-
+                                <!-- End Tab Content -->
+                            </div>
+                            <!-- End Features Section -->
+                        </div>
+                        <!-- End Tab Prodcut -->
+                    </div>
+                </div>
+                <!-- End Deals-and-tabs -->
 			</div>
-		</div>
-	</div>
-</div>
+			
 
-<!-- New Products Arrivals -->
-<div class="new_arrivals">
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<div class="tabbed_container">
-					<div class="tabs clearfix tabs-right">
-						<div class="new_arrivals_title">Hot New Arrivals</div>
-						<ul class="clearfix">
-							<li class="active">Latest Products</li>
-							<li>Desktop PC</li>
-							<li>Laptop & Netbook</li>
-						</ul>
-						<div class="tabs_line"><span></span></div>
-					</div>
-					<div class="row">
-						<div class="col-lg-9" style="z-index:1;">
 
-							<!-- Latest Products -->
-							<div class="product_panel panel active">
-								<div class="arrivals_slider slider">
 
-									<!-- Slider Item -->
-									@foreach ($latest_products as $latest_product)
-										<div class="arrivals_slider_item">
-											<div class="border_active"></div>
-											<div
-												class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-												<div
-													class="product_image d-flex flex-column align-items-center justify-content-center">
-													<img src="{{ asset('img/product_img/small/'.$latest_product['main_image']) }}" width="115px" height="115px" alt=""></div>
-												<div class="product_content">
 
-													<div class="product_price">
-														<?php  
-														$price = $latest_product['product_price'];    
-														$discount = $latest_product['product_discount'];
-														$discount_price = $price - round(($price*$discount)/100);
-													?>
-													@if($discount>0)
-													৳ {{ $discount_price }}
-													<span>
-													<del>৳ {{$price}}</del>
-													</span>
-													@else
-													৳ {{$price}}
-													@endif
-													</div>
-													<div class="product_name">
-														<div><a title="{{$featured_item['product_name']}}" href="product.html">{{\Illuminate\Support\Str::limit($latest_product['product_name'],20)}}</a></div>
-													</div>
-													<div class="product_extras">
-														<div class="product_color">
-															<input type="radio" checked name="product_color"
-																style="background:#b19c83">
-															<input type="radio" name="product_color"
-																style="background:#000000">
-															<input type="radio" name="product_color"
-																style="background:#999999">
-														</div>
-														<button class="product_cart_button">Add to Cart</button>
-													</div>
-												</div>
-												<div class="product_fav"><i class="fas fa-heart"></i></div>
-												<ul class="product_marks">
-													<li class="product_mark product_new">new</li>
-												</ul>
-											</div>
-										</div>
-									@endforeach
 
-									
-								</div>
-								<div class="arrivals_slider_dots_cover"></div>
-							</div>
+			
+            <!-- Products-4-1-4 -->
+            <div class="products-group-4-1-4 space-1 bg-gray-7">
+                <h2 class="sr-only">Products Grid</h2>
+                <div class="container">
+                    <!-- Nav Classic -->
+                    <div class="position-relative text-center z-index-2 mb-3">
+                        <ul class="nav nav-classic nav-tab nav-tab-sm px-md-3 justify-content-start justify-content-lg-center flex-nowrap flex-lg-wrap overflow-auto overflow-lg-visble border-md-down-bottom-0 pb-1 pb-lg-0 mb-n1 mb-lg-0" id="pills-tab-1" role="tablist">
+							<?php  $count = array('one','two','three','four','five','six','seven','eight','nine'); ?>
+							<?php $i=1;?>
+							@foreach ($sections as $section)
+						
+								<li class="nav-item flex-shrink-0 flex-lg-shrink-1">
+                                <a class="nav-link @if($i==1) active @else @endif" id="SectionTab-{{$i}}-tab" data-toggle="pill" href="#SectionTab-{{$i}}" role="tab" aria-controls="SectionTab-{{$i}}" >
+                                    <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                       {{$section['name']}}
+                                    </div>
+                                </a>
+							</li>
+							<?php $i++;?>
+							@endforeach
+                        </ul>
+                    </div>
+                    <!-- End Nav Classic -->
 
-							<!-- Desktop PC -->
-							<div class="product_panel panel">
-								<div class="arrivals_slider slider">
+                    <!-- Tab Content -->
+                    <div class="tab-content" id="Tpills-tabContent">
+                        <div class="tab-pane fade pt-2 show active" id="SectionTab-1" role="tabpanel" aria-labelledby="SectionTab-1-tab">
+                            <div class="row no-gutters">
+                                <div class="col-md-3 col-wd-4 d-md-flex d-wd-block">
+                                    <ul class="row list-unstyled products-group no-gutters mb-0 flex-xl-column flex-wd-row">
+                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Tablet White EliteBook Revolve 810 G2</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img2.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">GameConsole Destiny  Special Edition</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img7.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-wd-4 products-group-1">
+                                    <ul class="row list-unstyled products-group no-gutters bg-white h-100 mb-0">
+                                        <li class="col product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body d-flex flex-column">
+                                                        <div class="mb-1">
+                                                            <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Game Consoles</a></div>
+                                                            <h5 class="mb-0 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Game Console Controller + USB 3.0 Cable</a></h5>
+                                                        </div>
+                                                        <div class="mb-1 min-height-4-1-4">
+                                                            <a href="#" class="d-block text-center my-4 mt-lg-6 mb-lg-5 mt-xl-0 mb-xl-0 mt-wd-6 mb-wd-5"><img class="img-fluid" src="{{ url('img/front_img/564X520/img2.jpg') }}" alt="Image Description"></a>
+                                                            <!-- Gallery -->
+                                                            <div class="row mx-gutters-2 mb-3">
+                                                                <div class="col-auto">
+                                                                    <!-- Gallery -->
+                                                                    <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;"
+                                                                        data-src="{{ url('img/front_img/1920X1080/img1.jpg') }}"
+                                                                        data-fancybox="fancyboxGallery6"
+                                                                        data-caption="Electro in frames - image #01"
+                                                                        data-speed="700"
+                                                                        data-is-infinite="true">
+                                                                        <img class="img-fluid border" src="{{ url('img/front_img/100X100/img1.jpg') }}" alt="Image Description">
 
-									<!-- Slider Item -->
-									@foreach ($latest_desktop_pc_products as $latest_desktop_pc_product)
-										<div class="arrivals_slider_item">
-											<div class="border_active"></div>
-											<div
-												class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-												<div
-													class="product_image d-flex flex-column align-items-center justify-content-center">
-													<img src="{{ asset('img/product_img/small/'.$latest_desktop_pc_product['main_image']) }}" width="115px" height="115px" alt=""></div>
-												<div class="product_content">
+                                                                        <span class="u-media-viewer__container">
+                                                                            <span class="u-media-viewer__icon">
+                                                                                <span class="fas fa-plus u-media-viewer__icon-inner"></span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </a>
+                                                                    <!-- End Gallery -->
+                                                                </div>
 
-													<div class="product_price">
-														<?php  
-														$price = $latest_desktop_pc_product['product_price'];    
-														$discount = $latest_desktop_pc_product['product_discount'];
-														$discount_price = $price - round(($price*$discount)/100);
-													?>
-													@if($discount>0)
-													৳ {{ $discount_price }}
-													<span>
-													<del>৳ {{$price}}</del>
-													</span>
-													@else
-													৳ {{$price}}
-													@endif
-													</div>
-													<div class="product_name">
-														<div><a title="{{$featured_item['product_name']}}" href="product.html">{{\Illuminate\Support\Str::limit($latest_desktop_pc_product['product_name'],20)}}</a></div>
-													</div>
-													<div class="product_extras">
-														<div class="product_color">
-															<input type="radio" checked name="product_color"
-																style="background:#b19c83">
-															<input type="radio" name="product_color"
-																style="background:#000000">
-															<input type="radio" name="product_color"
-																style="background:#999999">
-														</div>
-														<button class="product_cart_button">Add to Cart</button>
-													</div>
-												</div>
-												<div class="product_fav"><i class="fas fa-heart"></i></div>
-												<ul class="product_marks">
-													<li class="product_mark product_new">new</li>
-												</ul>
-											</div>
-										</div>
-									@endforeach
+                                                                <div class="col-auto">
+                                                                    <!-- Gallery -->
+                                                                    <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;"
+                                                                        data-src="{{ url('img/front_img/1920X1080/img2.jpg') }}"
+                                                                        data-fancybox="fancyboxGallery6"
+                                                                        data-caption="Electro in frames - image #02"
+                                                                        data-speed="700"
+                                                                        data-is-infinite="true">
+                                                                        <img class="img-fluid border" src="{{ url('img/front_img/100X100/img2.jpg') }}" alt="Image Description">
 
-								</div>
-								<div class="arrivals_slider_dots_cover"></div>
-							</div>
+                                                                        <span class="u-media-viewer__container">
+                                                                            <span class="u-media-viewer__icon">
+                                                                                <span class="fas fa-plus u-media-viewer__icon-inner"></span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </a>
+                                                                    <!-- End Gallery -->
+                                                                </div>
 
-							<!--Laptop & Netbook -->
-							<div class="product_panel panel">
-								<div class="arrivals_slider slider">
+                                                                <div class="col-auto">
+                                                                    <!-- Gallery -->
+                                                                    <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;"
+                                                                        data-src="{{ url('img/front_img/1920X1080/img3.jpg') }}"
+                                                                        data-fancybox="fancyboxGallery6"
+                                                                        data-caption="Electro in frames - image #03"
+                                                                        data-speed="700"
+                                                                        data-is-infinite="true">
+                                                                        <img class="img-fluid border" src="{{ url('img/front_img/100X100/img3.jpg') }}" alt="Image Description">
 
-									<!-- Slider Item -->
-									@foreach ($latest_laptop_netbook_products as $latest_laptop_netbook_products)
-										<div class="arrivals_slider_item">
-											<div class="border_active"></div>
-											<div
-												class="product_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-												<div
-													class="product_image d-flex flex-column align-items-center justify-content-center">
-													<img src="{{ asset('img/product_img/small/'.$latest_laptop_netbook_products['main_image']) }}" width="115px" height="115px" alt=""></div>
-												<div class="product_content">
+                                                                        <span class="u-media-viewer__container">
+                                                                            <span class="u-media-viewer__icon">
+                                                                                <span class="fas fa-plus u-media-viewer__icon-inner"></span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </a>
+                                                                    <!-- End Gallery -->
+                                                                </div>
+                                                                <div class="col"></div>
+                                                            </div>
+                                                            <!-- End Gallery -->
+                                                        </div>
+                                                        <div class="flex-center-between">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-add-cart__wide btn-primary transition-3d-hover"><i class="ec ec-add-to-cart mr-2"></i> Add to Cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3 col-wd-4 d-md-flex d-wd-block">
+                                    <ul class="row list-unstyled products-group no-gutters mb-0 flex-xl-column flex-wd-row">
+                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Tablet White EliteBook Revolve 810 G2</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img2.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">GameConsole Destiny  Special Edition</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img7.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade pt-2" id="SectionTab-2" role="tabpanel" aria-labelledby="SectionTab-2-tab">
+                            <div class="row no-gutters">
+                                <div class="col-md-3 col-wd-4 d-md-flex d-wd-block">
+                                    <ul class="row list-unstyled products-group no-gutters mb-0 flex-xl-column flex-wd-row">
+                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Tablet White EliteBook Revolve 810 G2</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img2.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">GameConsole Destiny  Special Edition</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img7.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-wd-4 products-group-1">
+                                    <ul class="row list-unstyled products-group no-gutters bg-white h-100 mb-0">
+                                        <li class="col product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body d-flex flex-column">
+                                                        <div class="mb-1">
+                                                            <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Game Consoles</a></div>
+                                                            <h5 class="mb-0 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Game Console Controller + USB 3.0 Cable</a></h5>
+                                                        </div>
+                                                        <div class="mb-1 min-height-4-1-4">
+                                                            <a href="#" class="d-block text-center my-4 mt-lg-6 mb-lg-5 mt-xl-0 mb-xl-0 mt-wd-6 mb-wd-5"><img class="img-fluid" src="{{ url('img/front_img/564X520/img2.jpg') }}" alt="Image Description"></a>
+                                                            <!-- Gallery -->
+                                                            <div class="row mx-gutters-2 mb-3">
+                                                                <div class="col-auto">
+                                                                    <!-- Gallery -->
+                                                                    <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;"
+                                                                        data-src="{{ url('img/front_img/1920X1080/img1.jpg') }}"
+                                                                        data-fancybox="fancyboxGallery6"
+                                                                        data-caption="Electro in frames - image #01"
+                                                                        data-speed="700"
+                                                                        data-is-infinite="true">
+                                                                        <img class="img-fluid border" src="{{ url('img/front_img/100X100/img1.jpg') }}" alt="Image Description">
 
-													<div class="product_price">
-														<?php  
-														$price = $latest_laptop_netbook_products['product_price'];    
-														$discount = $latest_laptop_netbook_products['product_discount'];
-														$discount_price = $price - round(($price*$discount)/100);
-													?>
-													@if($discount>0)
-													৳ {{ $discount_price }}
-													<span>
-													<del>৳ {{$price}}</del>
-													</span>
-													@else
-													৳ {{$price}}
-													@endif
-													</div>
-													<div class="product_name">
-														<div><a title="{{$featured_item['product_name']}}" href="product.html">{{\Illuminate\Support\Str::limit($latest_laptop_netbook_products['product_name'],20)}}</a></div>
-													</div>
-													<div class="product_extras">
-														<div class="product_color">
-															<input type="radio" checked name="product_color"
-																style="background:#b19c83">
-															<input type="radio" name="product_color"
-																style="background:#000000">
-															<input type="radio" name="product_color"
-																style="background:#999999">
-														</div>
-														<button class="product_cart_button">Add to Cart</button>
-													</div>
-												</div>
-												<div class="product_fav"><i class="fas fa-heart"></i></div>
-												<ul class="product_marks">
-													<li class="product_mark product_new">new</li>
-												</ul>
-											</div>
-										</div>
-									@endforeach
-								</div>
-								<div class="arrivals_slider_dots_cover"></div>
-							</div>
+                                                                        <span class="u-media-viewer__container">
+                                                                            <span class="u-media-viewer__icon">
+                                                                                <span class="fas fa-plus u-media-viewer__icon-inner"></span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </a>
+                                                                    <!-- End Gallery -->
+                                                                </div>
 
-						</div>
+                                                                <div class="col-auto">
+                                                                    <!-- Gallery -->
+                                                                    <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;"
+                                                                        data-src="{{ url('img/front_img/1920X1080/img2.jpg') }}"
+                                                                        data-fancybox="fancyboxGallery6"
+                                                                        data-caption="Electro in frames - image #02"
+                                                                        data-speed="700"
+                                                                        data-is-infinite="true">
+                                                                        <img class="img-fluid border" src="{{ url('img/front_img/100X100/img2.jpg') }}" alt="Image Description">
 
-						<div class="col-lg-3">
-							<div class="arrivals_single clearfix">
-								<div class="d-flex flex-column align-items-center justify-content-center">
-									<div class="arrivals_single_image"><img
-											src="{{ url('img/front_img/new_single.png') }}" alt=""></div>
-									<div class="arrivals_single_content">
-										<div class="arrivals_single_category"><a href="#">Smartphones</a></div>
-										<div class="arrivals_single_name_container clearfix">
-											<div class="arrivals_single_name"><a href="#">LUNA Smartphone</a></div>
-											<div class="arrivals_single_price text-right">$379</div>
-										</div>
-										<div class="rating_r rating_r_4 arrivals_single_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<form action="#"><button class="arrivals_single_button">Add to Cart</button>
-										</form>
-									</div>
-									<div class="arrivals_single_fav product_fav active"><i class="fas fa-heart"></i>
-									</div>
-									<ul class="arrivals_single_marks product_marks">
-										<li class="arrivals_single_mark product_mark product_new">new</li>
-									</ul>
-								</div>
-							</div>
-						</div>
+                                                                        <span class="u-media-viewer__container">
+                                                                            <span class="u-media-viewer__icon">
+                                                                                <span class="fas fa-plus u-media-viewer__icon-inner"></span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </a>
+                                                                    <!-- End Gallery -->
+                                                                </div>
 
-					</div>
+                                                                <div class="col-auto">
+                                                                    <!-- Gallery -->
+                                                                    <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;"
+                                                                        data-src="{{ url('img/front_img/1920X1080/img3.jpg') }}"
+                                                                        data-fancybox="fancyboxGallery6"
+                                                                        data-caption="Electro in frames - image #03"
+                                                                        data-speed="700"
+                                                                        data-is-infinite="true">
+                                                                        <img class="img-fluid border" src="{{ url('img/front_img/100X100/img3.jpg') }}" alt="Image Description">
 
-				</div>
+                                                                        <span class="u-media-viewer__container">
+                                                                            <span class="u-media-viewer__icon">
+                                                                                <span class="fas fa-plus u-media-viewer__icon-inner"></span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </a>
+                                                                    <!-- End Gallery -->
+                                                                </div>
+                                                                <div class="col"></div>
+                                                            </div>
+                                                            <!-- End Gallery -->
+                                                        </div>
+                                                        <div class="flex-center-between">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-add-cart__wide btn-primary transition-3d-hover"><i class="ec ec-add-to-cart mr-2"></i> Add to Cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-3 col-wd-4 d-md-flex d-wd-block">
+                                    <ul class="row list-unstyled products-group no-gutters mb-0 flex-xl-column flex-wd-row">
+                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Tablet White EliteBook Revolve 810 G2</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img2.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">GameConsole Destiny  Special Edition</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img7.jpg') }}" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">$685,00</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Tab Content -->
+                </div>
 			</div>
-		</div>
-	</div>
-</div>
+            <!-- End Products-4-1-4 -->
 
 
 
 
-<!-- Popular Categories -->
 
-<div class="popular_categories">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-3">
-				<div class="popular_categories_content">
-					<div class="popular_categories_title">Popular Categories</div>
-					<div class="popular_categories_slider_nav">
-						<div class="popular_categories_prev popular_categories_nav"><i
-								class="fas fa-angle-left ml-auto"></i></div>
-						<div class="popular_categories_next popular_categories_nav"><i
-								class="fas fa-angle-right ml-auto"></i></div>
-					</div>
-					<div class="popular_categories_link"><a href="#">full catalog</a></div>
+
+            
+            <div class="container">
+                <!-- Prodcut-cards-carousel -->
+                <div class="space-top-2">
+                    <div class=" d-flex justify-content-between border-bottom border-color-1 flex-md-nowrap flex-wrap border-sm-bottom-0">
+                        <h3 class="section-title mb-0 pb-2 font-size-22">Latest Products</h3>
+                        <ul class="nav nav-pills mb-2 pt-3 pt-md-0 mb-0 border-top border-color-1 border-md-top-0 align-items-center font-size-15 font-size-15-md flex-nowrap flex-md-wrap overflow-auto overflow-md-visble">
+                            <li class="nav-item flex-shrink-0 flex-md-shrink-1">
+                                <a class="text-gray-90 btn btn-outline-primary border-width-2 rounded-pill py-1 px-4 font-size-15 text-lh-19 font-size-15-md" >Top 25</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="js-slick-carousel u-slick u-slick--gutters-2 overflow-hidden u-slick-overflow-visble pt-3 pb-6"
+                        data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-4">
+                        <div class="js-slide">
+                            <ul class="row list-unstyled products-group no-gutters mb-0 overflow-visible">
+								@foreach ($latest_desktop_pc_products as $latest)
+                                <li class="col-wd-3 col-md-4 product-item product-item__card pb-2 mb-2 pb-md-0 mb-md-0 border-bottom border-md-bottom-0">
+                                    <div class="product-item__outer h-100">
+                                        <div class="product-item__inner p-md-3 row no-gutters">
+                                            <div class="col col-lg-auto product-media-left">
+                                                <a href="#example" class="max-width-150 d-block"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$latest['main_image']) }}" style="height: 150px;width:140px;" alt="Image Description"></a>
+                                            </div>
+                                            <div class="col product-item__body pl-2 pl-lg-3 mr-xl-2 mr-wd-1">
+                                                <div class="mb-4">
+                                                   
+                                                    <h5 class="product-item__title"><a href="#example" class="text-blue font-weight-bold">{{$latest['product_name']}}</a></h5>
+                                                </div>
+                                                <div class="flex-center-between mb-3">
+                                                    <div class="prodcut-price">
+                                                        <div class="text-gray-100">৳ {{$latest['product_price']}}</div>
+                                                    </div>
+                                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                                        <a href="#example" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="product-item__footer">
+                                                    <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                        <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                        <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</li>
+								@endforeach
+                            </ul>
+                        </div>
+                        <div class="js-slide">
+                            <ul class="row list-unstyled products-group no-gutters mb-0 overflow-visible">
+								@foreach ($latest_laptop_netbook_products as $latest)
+                                <li class="col-wd-3 col-md-4 product-item product-item__card pb-2 mb-2 pb-md-0 mb-md-0 border-bottom border-md-bottom-0">
+                                    <div class="product-item__outer h-100">
+                                        <div class="product-item__inner p-md-3 row no-gutters">
+                                            <div class="col col-lg-auto product-media-left">
+                                                <a href="single-product-fullwidth.html" class="max-width-150 d-block"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$latest['main_image']) }}" style="height: 150px;width:140px;" alt="Image Description"></a>
+                                            </div>
+                                            <div class="col product-item__body pl-2 pl-lg-3 mr-xl-2 mr-wd-1">
+                                                <div class="mb-4">
+                                                   
+                                                    <h5 class="product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">{{$latest['product_name']}}</a></h5>
+                                                </div>
+                                                <div class="flex-center-between mb-3">
+                                                    <div class="prodcut-price">
+                                                        <div class="text-gray-100">৳ {{$latest['product_price']}}</div>
+                                                    </div>
+                                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                                        <a href="#" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="product-item__footer">
+                                                    <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                        <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                        <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</li>
+								@endforeach
+                            </ul>
+                        </div>
+                        <div class="js-slide">
+                            <ul class="row list-unstyled products-group no-gutters mb-0 overflow-visible">
+								@foreach ($latest_smartphone_tablets as $latest)
+                                <li class="col-wd-3 col-md-4 product-item product-item__card pb-2 mb-2 pb-md-0 mb-md-0 border-bottom border-md-bottom-0">
+                                    <div class="product-item__outer h-100">
+                                        <div class="product-item__inner p-md-3 row no-gutters">
+                                            <div class="col col-lg-auto product-media-left">
+                                                <a href="#" class="max-width-150 d-block"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$latest['main_image']) }}" style="height: 150px;width:140px;" alt="Image Description"></a>
+                                            </div>
+                                            <div class="col product-item__body pl-2 pl-lg-3 mr-xl-2 mr-wd-1">
+                                                <div class="mb-4">
+                                                   
+                                                    <h5 class="product-item__title"><a href="#" class="text-blue font-weight-bold">{{$latest['product_name']}}</a></h5>
+                                                </div>
+                                                <div class="flex-center-between mb-3">
+                                                    <div class="prodcut-price">
+                                                        <div class="text-gray-100">৳ {{$latest['product_price']}}</div>
+                                                    </div>
+                                                    <div class="d-none d-xl-block prodcut-add-cart">
+                                                        <a href="#" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="product-item__footer">
+                                                    <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                        <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                        <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</li>
+								@endforeach
+                            </ul>
+                        </div>
+                    </div>
 				</div>
-			</div>
+                <!-- End Prodcut-cards-carousel -->
+                <!-- Full banner -->
+                <div class="mb-6">
+                    <a href="#AD" class="d-block text-gray-90">
+                        <div class="" style="background-image: url(img/front_img/1400X206/img1.jpg);">
+                            <div class="space-top-2-md p-4 pt-6 pt-md-8 pt-lg-6 pt-xl-8 pb-lg-4 px-xl-8 px-lg-6">
+                                <div class="flex-horizontal-center mt-lg-3 mt-xl-0 overflow-auto overflow-md-visble">
+                                    <h1 class="text-lh-38 font-size-32 font-weight-light mb-0 flex-shrink-0 flex-md-shrink-1">SHOP AND <strong>SAVE BIG</strong> ON HOTTEST TABLETS</h1>
+                                    <div class="ml-5 flex-content-center flex-shrink-0">
+                                        <div class="bg-primary rounded-lg px-6 py-2">
+                                            <em class="font-size-14 font-weight-light">STARTING AT</em>
+                                            <div class="font-size-30 font-weight-bold text-lh-1">
+                                                <sup class="">$</sup>79<sup class="">99</sup>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- End Full banner -->
+            </div>
+        </main>
+        <!-- ========== END MAIN CONTENT ========== -->
 
-			<!-- Popular Categories Slider -->
-
-			<div class="col-lg-9">
-				<div class="popular_categories_slider_container">
-					<div class="owl-carousel owl-theme popular_categories_slider">
-
-						<!-- Popular Categories Item -->
-						<div class="owl-item">
-							<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-								<div class="popular_category_image"><img src="{{ url('img/front_img/popular_1.png') }}"
-										alt=""></div>
-								<div class="popular_category_text">Smartphones & Tablets</div>
-							</div>
-						</div>
-
-						<!-- Popular Categories Item -->
-						<div class="owl-item">
-							<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-								<div class="popular_category_image"><img src="{{ url('img/front_img/popular_2.png') }}"
-										alt=""></div>
-								<div class="popular_category_text">Computers & Laptops</div>
-							</div>
-						</div>
-
-						<!-- Popular Categories Item -->
-						<div class="owl-item">
-							<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-								<div class="popular_category_image"><img src="{{ url('img/front_img/popular_3.png') }}"
-										alt=""></div>
-								<div class="popular_category_text">Gadgets</div>
-							</div>
-						</div>
-
-						<!-- Popular Categories Item -->
-						<div class="owl-item">
-							<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-								<div class="popular_category_image"><img src="{{ url('img/front_img/popular_4.png') }}"
-										alt=""></div>
-								<div class="popular_category_text">Video Games & Consoles</div>
-							</div>
-						</div>
-
-						<!-- Popular Categories Item -->
-						<div class="owl-item">
-							<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-								<div class="popular_category_image"><img src="{{ url('img/front_img/popular_5.png') }}"
-										alt=""></div>
-								<div class="popular_category_text">Accessories</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!--Middle Slider Banner -->
-
-<div class="banner_2">
-	<div class="banner_2_background" style="background-image:url(img/front_img/banner_2_background.jpg)"></div>
-	<div class="banner_2_container">
-		<div class="banner_2_dots"></div>
-		<!-- Banner 2 Slider -->
-
-		<div class="owl-carousel owl-theme banner_2_slider">
-
-			<!-- Banner 2 Slider Item -->
-			@foreach ($banner_middle_slider_1 as $bms_1)
-				<div class="owl-item">
-					<div class="banner_2_item">
-						<div class="container fill_height">
-							<div class="row fill_height">
-								<div class="col-lg-4 col-md-6 fill_height">
-									<div class="banner_2_content" >
-										<div class="banner_2_title">{{$bms_1['product_name']}}</div>
-										<div class="banner_2_text">{{$bms_1['title']}}</div>
-										<div class="banner_price">৳ {{$bms_1['new_price']}}<span></div>
-										<div class="button banner_2_button"><a href="{{$bms_1['link']}}">Explore</a></div>
-									</div>
-
-								</div>
-								<div class="col-lg-8 col-md-6 fill_height">
-									<div class="banner_2_image_container">
-											<div class="banner_2_image"><img 
-													src="{{ asset('img/banner_img/'.$bms_1['image']) }}" alt="{{$bms_1['alt']}}"></div>
-										</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			@endforeach
-
-			<!-- Banner 2 Slider Item -->
-			@foreach ($banner_middle_slider_2 as $bms_2)
-				<div class="owl-item">
-					<div class="banner_2_item">
-						<div class="container fill_height">
-							<div class="row fill_height">
-								<div class="col-lg-4 col-md-6 fill_height">
-									<div class="banner_2_content" >
-										<div class="banner_2_title">{{$bms_2['product_name']}}</div>
-										<div class="banner_2_text">{{$bms_2['title']}}</div>
-										<div class="banner_price">৳ {{$bms_2['new_price']}}</div>
-										<div class="button banner_2_button"><a href="{{$bms_2['link']}}">Explore</a></div>
-									</div>
-
-								</div>
-								<div class="col-lg-8 col-md-6 fill_height">
-									<div class="banner_2_image_container">
-											<div class="banner_2_image"><img 	 src="{{ asset('img/banner_img/'.$bms_2['image']) }}" alt="{{$bms_2['alt']}}"></div>
-										</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			@endforeach
-
-			<!-- Banner 3 Slider Item -->
-			@foreach ($banner_middle_slider_3 as $bms_3)
-				<div class="owl-item">
-					<div class="banner_2_item">
-						<div class="container fill_height">
-							<div class="row fill_height">
-								<div class="col-lg-4 col-md-6 fill_height">
-									<div class="banner_2_content" >
-										<div class="banner_2_title">{{$bms_3['product_name']}}</div>
-										<div class="banner_2_text">{{$bms_3['title']}}</div>
-										<div class="banner_price">৳ {{$bms_3['new_price']}}</div>
-										<div class="button banner_2_button"><a href="{{$bms_3['link']}}">Explore</a></div>
-									</div>
-
-								</div>
-								<div class="col-lg-8 col-md-6 fill_height">
-									<div class="banner_2_image_container">
-											<div class="banner_2_image"><img 
-													src="{{ asset('img/banner_img/'.$bms_3['image']) }}" alt="{{$bms_3['alt']}}"></div>
-										</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			@endforeach
-
-		</div>
-	</div>
-</div>
-
-	<br><br>
-<!-- Best Sellers -->
-
-<div class="best_sellers">
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<div class="tabbed_container">
-					<div class="tabs clearfix tabs-right">
-						<div class="new_arrivals_title">Hot Best Sellers</div>
-						<ul class="clearfix">
-							<li class="active">Top 20</li>
-							<li>Audio & Video</li>
-							<li>Laptops & Computers</li>
-						</ul>
-						<div class="tabs_line"><span></span></div>
-					</div>
-
-					<div class="bestsellers_panel panel active">
-
-						<!-- Best Sellers Slider -->
-
-						<div class="bestsellers_slider slider">
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_1.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_2.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Samsung J730F...</a></div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_3.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Nomi Black White</a></div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_4.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Samsung Charm Gold</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_5.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Beoplay H7</a></div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_6.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Huawei MediaPad T3</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_1.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_2.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_3.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_4.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_5.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_6.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-						</div>
-					</div>
-
-					<div class="bestsellers_panel panel">
-
-						<!-- Best Sellers Slider -->
-
-						<div class="bestsellers_slider slider">
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_1.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_2.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_3.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_4.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_5.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_6.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_1.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_2.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_3.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_4.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_5.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_6.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-						</div>
-					</div>
-
-					<div class="bestsellers_panel panel">
-
-						<!-- Best Sellers Slider -->
-
-						<div class="bestsellers_slider slider">
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_1.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_2.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_3.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_4.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_5.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_6.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_1.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_2.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_3.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_4.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item discount">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_5.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Best Sellers Item -->
-							<div class="bestsellers_item">
-								<div
-									class="bestsellers_item_container d-flex flex-row align-items-center justify-content-start">
-									<div class="bestsellers_image"><img src="{{ url('img/front_img/best_6.png') }}"
-											alt=""></div>
-									<div class="bestsellers_content">
-										<div class="bestsellers_category"><a href="#">Headphones</a></div>
-										<div class="bestsellers_name"><a href="product.html">Xiaomi Redmi Note 4</a>
-										</div>
-										<div class="rating_r rating_r_4 bestsellers_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="bestsellers_price discount">$225<span>$300</span></div>
-									</div>
-								</div>
-								<div class="bestsellers_fav active"><i class="fas fa-heart"></i></div>
-								<ul class="bestsellers_marks">
-									<li class="bestsellers_mark bestsellers_discount">-25%</li>
-									<li class="bestsellers_mark bestsellers_new">new</li>
-								</ul>
-							</div>
-
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Adverts -->
-
-<div class="adverts">
-	<div class="container">
-		<div class="row">
-
-			<div class="col-lg-4 advert_col">
-
-				<!-- Advert Item -->
-
-				<div class="advert d-flex flex-row align-items-center justify-content-start">
-					<div class="advert_content">
-						<div class="advert_title"><a href="#">Trends 2018</a></div>
-						<div class="advert_text">Lorem ipsum dolor sit amet, consectetur adipiscing Donec et.</div>
-					</div>
-					<div class="ml-auto">
-						<div class="advert_image"><img src="{{ url('img/front_img/adv_1.png') }}" alt=""></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 advert_col">
-
-				<!-- Advert Item -->
-
-				<div class="advert d-flex flex-row align-items-center justify-content-start">
-					<div class="advert_content">
-						<div class="advert_subtitle">Trends 2018</div>
-						<div class="advert_title_2"><a href="#">Sale -45%</a></div>
-						<div class="advert_text">Lorem ipsum dolor sit amet, consectetur.</div>
-					</div>
-					<div class="ml-auto">
-						<div class="advert_image"><img src="{{ url('img/front_img/adv_2.png') }}" alt=""></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 advert_col">
-
-				<!-- Advert Item -->
-
-				<div class="advert d-flex flex-row align-items-center justify-content-start">
-					<div class="advert_content">
-						<div class="advert_title"><a href="#">Trends 2018</a></div>
-						<div class="advert_text">Lorem ipsum dolor sit amet, consectetur.</div>
-					</div>
-					<div class="ml-auto">
-						<div class="advert_image"><img src="{{ url('img/front_img/adv_3.png') }}" alt=""></div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</div>
-
-<!-- Trends -->
-
-<div class="trends">
-	<div class="trends_background" style="background-image:url(img/front_img/trends_background.jpg)"></div>
-	<div class="trends_overlay"></div>
-	<div class="container">
-		<div class="row">
-
-			<!-- Trends Content -->
-			<div class="col-lg-3">
-				<div class="trends_container">
-					<h2 class="trends_title">Trends 2018</h2>
-					<div class="trends_text">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing Donec et.</p>
-					</div>
-					<div class="trends_slider_nav">
-						<div class="trends_prev trends_nav"><i class="fas fa-chevron-left ml-auto"></i></div>
-						<div class="trends_next trends_nav"><i class="fas fa-chevron-right ml-auto"></i></div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Trends Slider -->
-			<div class="col-lg-9">
-				<div class="trends_slider_container">
-
-					<!-- Trends Slider -->
-
-					<div class="owl-carousel owl-theme trends_slider">
-
-						<!-- Trends Slider Item -->
-						<div class="owl-item">
-							<div class="trends_item is_new">
-								<div class="trends_image d-flex flex-column align-items-center justify-content-center">
-									<img src="{{ url('img/front_img/trends_1.jpg') }}" alt=""></div>
-								<div class="trends_content">
-									<div class="trends_category"><a href="#">Smartphones</a></div>
-									<div class="trends_info clearfix">
-										<div class="trends_name"><a href="product.html">Jump White</a></div>
-										<div class="trends_price">$379</div>
-									</div>
-								</div>
-								<ul class="trends_marks">
-									<li class="trends_mark trends_discount">-25%</li>
-									<li class="trends_mark trends_new">new</li>
-								</ul>
-								<div class="trends_fav"><i class="fas fa-heart"></i></div>
-							</div>
-						</div>
-
-						<!-- Trends Slider Item -->
-						<div class="owl-item">
-							<div class="trends_item">
-								<div class="trends_image d-flex flex-column align-items-center justify-content-center">
-									<img src="{{ url('img/front_img/trends_2.jpg') }}" alt=""></div>
-								<div class="trends_content">
-									<div class="trends_category"><a href="#">Smartphones</a></div>
-									<div class="trends_info clearfix">
-										<div class="trends_name"><a href="product.html">Samsung Charm...</a></div>
-										<div class="trends_price">$379</div>
-									</div>
-								</div>
-								<ul class="trends_marks">
-									<li class="trends_mark trends_discount">-25%</li>
-									<li class="trends_mark trends_new">new</li>
-								</ul>
-								<div class="trends_fav"><i class="fas fa-heart"></i></div>
-							</div>
-						</div>
-
-						<!-- Trends Slider Item -->
-						<div class="owl-item">
-							<div class="trends_item is_new">
-								<div class="trends_image d-flex flex-column align-items-center justify-content-center">
-									<img src="{{ url('img/front_img/trends_3.jpg') }}" alt=""></div>
-								<div class="trends_content">
-									<div class="trends_category"><a href="#">Smartphones</a></div>
-									<div class="trends_info clearfix">
-										<div class="trends_name"><a href="product.html">DJI Phantom 3...</a></div>
-										<div class="trends_price">$379</div>
-									</div>
-								</div>
-								<ul class="trends_marks">
-									<li class="trends_mark trends_discount">-25%</li>
-									<li class="trends_mark trends_new">new</li>
-								</ul>
-								<div class="trends_fav"><i class="fas fa-heart"></i></div>
-							</div>
-						</div>
-
-						<!-- Trends Slider Item -->
-						<div class="owl-item">
-							<div class="trends_item is_new">
-								<div class="trends_image d-flex flex-column align-items-center justify-content-center">
-									<img src="{{ url('img/front_img/trends_1.jpg') }}" alt=""></div>
-								<div class="trends_content">
-									<div class="trends_category"><a href="#">Smartphones</a></div>
-									<div class="trends_info clearfix">
-										<div class="trends_name"><a href="product.html">Jump White</a></div>
-										<div class="trends_price">$379</div>
-									</div>
-								</div>
-								<ul class="trends_marks">
-									<li class="trends_mark trends_discount">-25%</li>
-									<li class="trends_mark trends_new">new</li>
-								</ul>
-								<div class="trends_fav"><i class="fas fa-heart"></i></div>
-							</div>
-						</div>
-
-						<!-- Trends Slider Item -->
-						<div class="owl-item">
-							<div class="trends_item">
-								<div class="trends_image d-flex flex-column align-items-center justify-content-center">
-									<img src="{{ url('img/front_img/trends_2.jpg') }}" alt=""></div>
-								<div class="trends_content">
-									<div class="trends_category"><a href="#">Smartphones</a></div>
-									<div class="trends_info clearfix">
-										<div class="trends_name"><a href="product.html">Jump White</a></div>
-										<div class="trends_price">$379</div>
-									</div>
-								</div>
-								<ul class="trends_marks">
-									<li class="trends_mark trends_discount">-25%</li>
-									<li class="trends_mark trends_new">new</li>
-								</ul>
-								<div class="trends_fav"><i class="fas fa-heart"></i></div>
-							</div>
-						</div>
-
-						<!-- Trends Slider Item -->
-						<div class="owl-item">
-							<div class="trends_item is_new">
-								<div class="trends_image d-flex flex-column align-items-center justify-content-center">
-									<img src="{{ url('img/front_img/trends_3.jpg') }}" alt=""></div>
-								<div class="trends_content">
-									<div class="trends_category"><a href="#">Smartphones</a></div>
-									<div class="trends_info clearfix">
-										<div class="trends_name"><a href="product.html">Jump White</a></div>
-										<div class="trends_price">$379</div>
-									</div>
-								</div>
-								<ul class="trends_marks">
-									<li class="trends_mark trends_discount">-25%</li>
-									<li class="trends_mark trends_new">new</li>
-								</ul>
-								<div class="trends_fav"><i class="fas fa-heart"></i></div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</div>
-
-<!-- Reviews -->
-
-<div class="reviews">
-	<div class="container">
-		<div class="row">
-			<div class="col">
-
-				<div class="reviews_title_container">
-					<h3 class="reviews_title">Latest Reviews</h3>
-					<div class="reviews_all ml-auto"><a href="#">view all <span>reviews</span></a></div>
-				</div>
-
-				<div class="reviews_slider_container">
-
-					<!-- Reviews Slider -->
-					<div class="owl-carousel owl-theme reviews_slider">
-
-						<!-- Reviews Slider Item -->
-						<div class="owl-item">
-							<div class="review d-flex flex-row align-items-start justify-content-start">
-								<div>
-									<div class="review_image"><img src="{{ url('img/front_img/review_1.jpg') }}" alt="">
-									</div>
-								</div>
-								<div class="review_content">
-									<div class="review_name">Roberto Sanchez</div>
-									<div class="review_rating_container">
-										<div class="rating_r rating_r_4 review_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="review_time">2 day ago</div>
-									</div>
-									<div class="review_text">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum
-											laoreet.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Reviews Slider Item -->
-						<div class="owl-item">
-							<div class="review d-flex flex-row align-items-start justify-content-start">
-								<div>
-									<div class="review_image"><img src="{{ url('img/front_img/review_2.jpg') }}" alt="">
-									</div>
-								</div>
-								<div class="review_content">
-									<div class="review_name">Brandon Flowers</div>
-									<div class="review_rating_container">
-										<div class="rating_r rating_r_4 review_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="review_time">2 day ago</div>
-									</div>
-									<div class="review_text">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum
-											laoreet.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Reviews Slider Item -->
-						<div class="owl-item">
-							<div class="review d-flex flex-row align-items-start justify-content-start">
-								<div>
-									<div class="review_image"><img src="{{ url('img/front_img/review_3.jpg') }}" alt="">
-									</div>
-								</div>
-								<div class="review_content">
-									<div class="review_name">Emilia Clarke</div>
-									<div class="review_rating_container">
-										<div class="rating_r rating_r_4 review_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="review_time">2 day ago</div>
-									</div>
-									<div class="review_text">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum
-											laoreet.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Reviews Slider Item -->
-						<div class="owl-item">
-							<div class="review d-flex flex-row align-items-start justify-content-start">
-								<div>
-									<div class="review_image"><img src="{{ url('img/front_img/review_1.jpg') }}" alt="">
-									</div>
-								</div>
-								<div class="review_content">
-									<div class="review_name">Roberto Sanchez</div>
-									<div class="review_rating_container">
-										<div class="rating_r rating_r_4 review_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="review_time">2 day ago</div>
-									</div>
-									<div class="review_text">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum
-											laoreet.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Reviews Slider Item -->
-						<div class="owl-item">
-							<div class="review d-flex flex-row align-items-start justify-content-start">
-								<div>
-									<div class="review_image"><img src="{{ url('img/front_img/review_2.jpg') }}" alt="">
-									</div>
-								</div>
-								<div class="review_content">
-									<div class="review_name">Brandon Flowers</div>
-									<div class="review_rating_container">
-										<div class="rating_r rating_r_4 review_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="review_time">2 day ago</div>
-									</div>
-									<div class="review_text">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum
-											laoreet.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Reviews Slider Item -->
-						<div class="owl-item">
-							<div class="review d-flex flex-row align-items-start justify-content-start">
-								<div>
-									<div class="review_image"><img src="{{ url('img/front_img/review_3.jpg') }}" alt="">
-									</div>
-								</div>
-								<div class="review_content">
-									<div class="review_name">Emilia Clarke</div>
-									<div class="review_rating_container">
-										<div class="rating_r rating_r_4 review_rating">
-											<i></i><i></i><i></i><i></i><i></i></div>
-										<div class="review_time">2 day ago</div>
-									</div>
-									<div class="review_text">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum
-											laoreet.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<div class="reviews_dots"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Recently Viewed -->
-
-<div class="viewed">
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<div class="viewed_title_container">
-					<h3 class="viewed_title">Recently Viewed</h3>
-					<div class="viewed_nav_container">
-						<div class="viewed_nav viewed_prev"><i class="fas fa-chevron-left"></i></div>
-						<div class="viewed_nav viewed_next"><i class="fas fa-chevron-right"></i></div>
-					</div>
-				</div>
-
-				<div class="viewed_slider_container">
-
-					<!-- Recently Viewed Slider -->
-
-					<div class="owl-carousel owl-theme viewed_slider">
-
-						<!-- Recently Viewed Item -->
-						<div class="owl-item">
-							<div
-								class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-								<div class="viewed_image"><img src="{{ url('img/front_img/view_1.jpg') }}" alt=""></div>
-								<div class="viewed_content text-center">
-									<div class="viewed_price">$225<span>$300</span></div>
-									<div class="viewed_name"><a href="#">Beoplay H7</a></div>
-								</div>
-								<ul class="item_marks">
-									<li class="item_mark item_discount">-25%</li>
-									<li class="item_mark item_new">new</li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- Recently Viewed Item -->
-						<div class="owl-item">
-							<div
-								class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-								<div class="viewed_image"><img src="{{ url('img/front_img/view_2.jpg') }}" alt=""></div>
-								<div class="viewed_content text-center">
-									<div class="viewed_price">$379</div>
-									<div class="viewed_name"><a href="#">LUNA Smartphone</a></div>
-								</div>
-								<ul class="item_marks">
-									<li class="item_mark item_discount">-25%</li>
-									<li class="item_mark item_new">new</li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- Recently Viewed Item -->
-						<div class="owl-item">
-							<div
-								class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-								<div class="viewed_image"><img src="{{ url('img/front_img/view_3.jpg') }}" alt=""></div>
-								<div class="viewed_content text-center">
-									<div class="viewed_price">$225</div>
-									<div class="viewed_name"><a href="#">Samsung J730F...</a></div>
-								</div>
-								<ul class="item_marks">
-									<li class="item_mark item_discount">-25%</li>
-									<li class="item_mark item_new">new</li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- Recently Viewed Item -->
-						<div class="owl-item">
-							<div
-								class="viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-								<div class="viewed_image"><img src="{{ url('img/front_img/view_4.jpg') }}" alt=""></div>
-								<div class="viewed_content text-center">
-									<div class="viewed_price">$379</div>
-									<div class="viewed_name"><a href="#">Huawei MediaPad...</a></div>
-								</div>
-								<ul class="item_marks">
-									<li class="item_mark item_discount">-25%</li>
-									<li class="item_mark item_new">new</li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- Recently Viewed Item -->
-						<div class="owl-item">
-							<div
-								class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-								<div class="viewed_image"><img src="{{ url('img/front_img/view_5.jpg') }}" alt=""></div>
-								<div class="viewed_content text-center">
-									<div class="viewed_price">$225<span>$300</span></div>
-									<div class="viewed_name"><a href="#">Sony PS4 Slim</a></div>
-								</div>
-								<ul class="item_marks">
-									<li class="item_mark item_discount">-25%</li>
-									<li class="item_mark item_new">new</li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- Recently Viewed Item -->
-						<div class="owl-item">
-							<div
-								class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-								<div class="viewed_image"><img src="{{ url('img/front_img/view_6.jpg') }}" alt=""></div>
-								<div class="viewed_content text-center">
-									<div class="viewed_price">$375</div>
-									<div class="viewed_name"><a href="#">Speedlink...</a></div>
-								</div>
-								<ul class="item_marks">
-									<li class="item_mark item_discount">-25%</li>
-									<li class="item_mark item_new">new</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Brands -->
-
-<div class="brands">
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<div class="brands_slider_container">
-
-					<!-- Brands Slider -->
-
-					<div class="owl-carousel owl-theme brands_slider">
-
-						<div class="owl-item">
-							<div class="brands_item d-flex flex-column justify-content-center"><img
-									src="{{ url('img/front_img/brands_1.jpg') }}" alt=""></div>
-						</div>
-						<div class="owl-item">
-							<div class="brands_item d-flex flex-column justify-content-center"><img
-									src="{{ url('img/front_img/brands_2.jpg') }}" alt=""></div>
-						</div>
-						<div class="owl-item">
-							<div class="brands_item d-flex flex-column justify-content-center"><img
-									src="{{ url('img/front_img/brands_3.jpg') }}" alt=""></div>
-						</div>
-						<div class="owl-item">
-							<div class="brands_item d-flex flex-column justify-content-center"><img
-									src="{{ url('img/front_img/brands_4.jpg') }}" alt=""></div>
-						</div>
-						<div class="owl-item">
-							<div class="brands_item d-flex flex-column justify-content-center"><img
-									src="{{ url('img/front_img/brands_5.jpg') }}" alt=""></div>
-						</div>
-						<div class="owl-item">
-							<div class="brands_item d-flex flex-column justify-content-center"><img
-									src="{{ url('img/front_img/brands_6.jpg') }}" alt=""></div>
-						</div>
-						<div class="owl-item">
-							<div class="brands_item d-flex flex-column justify-content-center"><img
-									src="{{ url('img/front_img/brands_7.jpg') }}" alt=""></div>
-						</div>
-						<div class="owl-item">
-							<div class="brands_item d-flex flex-column justify-content-center"><img
-									src="{{ url('img/front_img/brands_8.jpg') }}" alt=""></div>
-						</div>
-
-					</div>
-
-					<!-- Brands Slider Navigation -->
-					<div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
-					<div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<!-- Newsletter -->
-
-<div class="newsletter">
-	<div class="container">
-		<div class="row">
-			<div class="col">
-				<div
-					class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
-					<div class="newsletter_title_container">
-						<div class="newsletter_icon"><img src="{{ url('img/front_img/send.png') }}" alt=""></div>
-						<div class="newsletter_title">Sign up for Newsletter</div>
-						<div class="newsletter_text">
-							<p>...and receive %20 coupon for first shopping.</p>
-						</div>
-					</div>
-					<div class="newsletter_content clearfix">
-						<form action="#" class="newsletter_form">
-							<input type="email" class="newsletter_input" required="required"
-								placeholder="Enter your email address">
-							<button class="newsletter_button">Subscribe</button>
-						</form>
-						<div class="newsletter_unsubscribe_link"><a href="#">unsubscribe</a></div>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="sliding_text_wrap">
-	<marquee direction="left">Our Website is Under Construction.Please stay with us</marquee>
-</div>
 @endsection

@@ -26,12 +26,15 @@ class Category extends Model
         }])->where('url', $url)->first()->toArray();  //get All category Data
         if ($catDetails['parent_id'] == 0) {
             //show only main category in breadcrumb
-            $breadcrumbs = '<a href="' . url($catDetails['url']) . '">' . $catDetails['category_name'] . '</a>';
+            $breadcrumbs = '<li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active" aria-current="page"><a href="' . url($catDetails['url']) . '">' . $catDetails['category_name'] . '</a></li>';
         } else {
             //show main category and sub category in breadcrumb
             $parentCategory = Category::select('category_name', 'url', 'description')->where('id', $catDetails['parent_id'])->first()->toArray();
-            $breadcrumbs = '<a href="' . url($parentCategory['url']) . '">' . $parentCategory['category_name'] .
-                '</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="' . url($catDetails['url']) . '">' . $catDetails['category_name'] . '</a>';
+            // $breadcrumbs = '<a href="' . url($parentCategory['url']) . '">' . $parentCategory['category_name'] .
+            //     '</a>&nbsp;&nbsp;>&nbsp;&nbsp;<a href="' . url($catDetails['url']) . '">' . $catDetails['category_name'] . '</a>';
+
+                $breadcrumbs= '<li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active" aria-current="page"><a href="' . url($parentCategory['url']).'">'. $parentCategory['category_name'] .'</a></li>'
+                .'<li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active" aria-current="page"><a href="'. url($catDetails['url']) .'">'. $catDetails['category_name'] .'</a></li>';
         }
         $catIds = array();  //initialize empty array
         $catIds[] = $catDetails['id']; //store the category id

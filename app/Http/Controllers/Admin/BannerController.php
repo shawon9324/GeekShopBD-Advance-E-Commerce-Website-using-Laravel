@@ -84,7 +84,7 @@ class BannerController extends Controller
         }
         //-/Data Storing Process
 
-        $positionArray = array('Top', 'Middle-Slider-1', 'Middle-Slider-2', 'Middle-Slider-3', 'Bottom');
+        $positionArray = array('Top-Slider-1', 'Top-Slider-2', 'Top-Slider-3','Middle', 'Bottom');
         return view('admin.banners.add_edit_banner')->with(compact('title', 'btn_title', 'banner', 'positionArray', 'bannerData'));
     }
 
