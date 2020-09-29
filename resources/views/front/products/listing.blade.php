@@ -59,6 +59,7 @@
 								<div class="border-bottom border-color-1 mb-2">
 									<h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Filters-Desk</h3>
 								</div>
+								
 								 <div class="border-bottom pb-1 mb-1">
 										<h4 class="font-size-14 mb-1 font-weight-bold">
 											Generation
@@ -76,12 +77,12 @@
 										</h4>
 										
 										<div class="collapse" id="collapseGeneration">
-											@foreach ($generationArray as $gen)
+											@foreach ($generationArray as $generation)
 												<div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
 													<div class="custom-control custom-checkbox">
-														<input type="checkbox" class="custom-control-input" name="gen[]" id="{{ $gen }}" value="{{ $gen }}"	>
-														<label class="custom-control-label" for="{{ $gen }}">
-															{{ $gen }}
+														<input type="checkbox" class="generation custom-control-input" name="generation[]" id="{{ $generation }}" value="{{ $generation }}">
+														<label class="custom-control-label" for="{{ $generation }}">
+															{{ $generation }}
 														</label>
 													</div>
 												</div>
@@ -109,7 +110,7 @@
 											@foreach ($processorArray as $processor)
 												<div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
 													<div class="custom-control custom-checkbox">
-														<input type="checkbox" class="custom-control-input" name="processor[]" id="{{ $processor }}" value="{{ $processor }}"	>
+														<input type="checkbox" class="processor custom-control-input" name="processor[]" id="{{ $processor }}" value="{{ $processor }}"	>
 														<label class="custom-control-label" for="{{ $processor }}">
 															{{ $processor }}
 														</label>
@@ -139,7 +140,7 @@
 										@foreach ($graphicsArray as $graphics)
 											<div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
 												<div class="custom-control custom-checkbox">
-													<input type="checkbox" class="custom-control-input" name="graphics[]" id="{{ $graphics }}" value="{{ $graphics }}"	>
+													<input type="checkbox" class="graphics custom-control-input" name="graphics[]" id="{{ $graphics }}" value="{{ $graphics }}"	>
 													<label class="custom-control-label" for="{{ $graphics }}">
 														{{ $graphics }}
 													</label>
@@ -186,9 +187,9 @@
 												<span class="link__icon text-gray-27 bg-white">
 													<span class="link__icon-inner"></span>
 												</span>
-												<span style="padding-left:134px;" class="link-collapse__default"><button type="button" class="btn btn-secondary btn-filter-circle"><i class="fa fa-plus"></i>
+												<span style="padding-left:135px;" class="link-collapse__default"><button type="button" class="btn btn-secondary btn-filter-circle"><i class="fa fa-plus"></i>
 												</button></span>
-												<span style="padding-left:134px;" class="link-collapse__active"><button type="button" class="btn btn-secondary btn-filter-circle"><i class="fa fa-minus"></i>
+												<span style="padding-left:135px;" class="link-collapse__active"><button type="button" class="btn btn-secondary btn-filter-circle"><i class="fa fa-minus"></i>
 												</button></span>
 											</a>
 											<!-- End Link -->
@@ -198,7 +199,7 @@
 											@foreach ($hddArray as $hdd)
 												<div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
 													<div class="custom-control custom-checkbox">
-														<input type="checkbox" class="custom-control-input" name="hdd[]" id="{{ $hdd }}" value="{{ $hdd }}"	>
+														<input type="checkbox" class="hdd custom-control-input" name="hdd[]" id="{{ $hdd }}" value="{{ $hdd }}"	>
 														<label class="custom-control-label" for="{{ $hdd }}">
 															{{ $hdd }}
 														</label>
@@ -216,9 +217,9 @@
 												<span class="link__icon text-gray-27 bg-white">
 													<span class="link__icon-inner"></span>
 												</span>
-												<span style="padding-left:139px;" class="link-collapse__default"><button type="button" class="btn btn-secondary btn-filter-circle"><i class="fa fa-plus"></i>
+												<span style="padding-left:142px;" class="link-collapse__default"><button type="button" class="btn btn-secondary btn-filter-circle"><i class="fa fa-plus"></i>
 												</button></span>
-												<span style="padding-left:139px;" class="link-collapse__active"><button type="button" class="btn btn-secondary btn-filter-circle"><i class="fa fa-minus"></i>
+												<span style="padding-left:142px;" class="link-collapse__active"><button type="button" class="btn btn-secondary btn-filter-circle"><i class="fa fa-minus"></i>
 												</button></span>
 											</a>
 											<!-- End Link -->
@@ -228,7 +229,7 @@
 											@foreach ($ssdArray as $ssd)
 												<div class="form-group d-flex align-items-center justify-content-between mb-2 pb-1">
 													<div class="custom-control custom-checkbox">
-														<input type="checkbox" class="custom-control-input" name="ssd[]" id="{{ $ssd }}" value="{{ $ssd }}"	>
+														<input type="checkbox" class="ssd custom-control-input" name="ssd[]" id="{{ $ssd }}" value="{{ $ssd }}"	>
 														<label class="custom-control-label" for="{{ $ssd }}">
 															{{ $ssd }}
 														</label>
@@ -468,7 +469,7 @@
                             <div class="text-center text-md-left mb-3 mb-md-0">Showing {{ $categoryProducts->firstItem() }}–{{ $categoryProducts->lastItem() }} of {{ $categoryProducts->total() }} results</div>
                             <ul class="pagination mb-0 pagination-shop justify-content-center justify-content-md-start">
                                	@if (isset($_GET['sort']) && !empty($_GET['sort']))
-                                {{ $categoryProducts->appends(['sort' => $_GET['sort']])->links() }}
+                                {{ $categoryProducts->appends([ 'generation'=> $_GET['generation']  ])->links() }}
 								@else
 									{{ $categoryProducts->links() }}
 								@endif
@@ -734,5 +735,6 @@
                 </div>
             </div>
         </aside>
-        <!-- End Sidebar Navigation -->
+		<!-- End Sidebar Navigation -->
+
 @endsection

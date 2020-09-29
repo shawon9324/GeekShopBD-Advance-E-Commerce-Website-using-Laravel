@@ -50,9 +50,9 @@
             <span class="fas fa-arrow-up u-go-to__inner"></span>
         </a>
         <!-- End Go to Top -->
-
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <!-- JS Global Compulsory -->
-        <script src="{{ url('vendor/front_vendor/jquery/dist/jquery.min.js')}} "></script>
+        {{-- <script src="{{ url('vendor/front_vendor/jquery/dist/jquery.min.js')}} "></script> --}}
         <script src="{{ url('vendor/front_vendor/jquery-migrate/dist/jquery-migrate.min.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/popper.js/dist/umd/popper.min.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/bootstrap/bootstrap.min.js')}} "></script>

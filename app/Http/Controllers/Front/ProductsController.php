@@ -21,11 +21,15 @@ class ProductsController extends Controller
             $categoryCount = Category::where(['url' => $url, 'status' => 1])->count();
             if ($categoryCount > 0) {
                 
-                Paginator::useBootstrap();
                 //echo "Category Exists";die;
                 $categoryDetails = Category::catDetails($url);
                 // echo "<pre>";print_r($categoryDetails);die;
                 $categoryProducts = Product::with('brand')->whereIn('category_id', $categoryDetails['catIds'])->where('status', 1);
+                //ajax filtering 
+                if(isset($data['generation']) && !empty($data['generation'])){
+                    $categoryProducts->whereIn('products.generation',$data['generation']);
+                }
+
                 //checking sort option selection
                 if(isset($data['sort']) && !empty($data['sort'])){
                     if($data['sort']=="product_default"){
@@ -55,7 +59,6 @@ class ProductsController extends Controller
             $page_name = 'listing';
             $categoryCount = Category::where(['url' => $url, 'status' => 1])->count();
             if ($categoryCount > 0) {
-                Paginator::useBootstrap();
                 //echo "Category Exists";die;
                 $categoryDetails = Category::catDetails($url);
                 // echo "<pre>";print_r($categoryDetails);die;
