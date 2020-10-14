@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use Illuminate\Pagination\Paginator;
-
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
@@ -11,7 +11,7 @@ use App\Product;
 
 class ProductsController extends Controller
 {
-    public function listing($url,Request $request)
+    public function listing(Request $request)
     {
         if($request->ajax()){
             $data = $request->all();
@@ -53,9 +53,8 @@ class ProductsController extends Controller
             }
             
         }
-        
-        
         else{
+            $url = Route::getFacadeRoot()->current()->uri();
             $page_name = 'listing';
             $categoryCount = Category::where(['url' => $url, 'status' => 1])->count();
             if ($categoryCount > 0) {
@@ -64,9 +63,7 @@ class ProductsController extends Controller
                 // echo "<pre>";print_r($categoryDetails);die;
                 $categoryProducts = Product::with('brand')->whereIn('category_id', $categoryDetails['catIds'])->where('status', 1);
                 //checking sort option selection
-                
                 $categoryProducts = $categoryProducts->paginate(2);
-
                 //product filters
                 $productFilters = Product::productFilters();
                 $generationArray =$productFilters['generationArray'];
@@ -76,7 +73,6 @@ class ProductsController extends Controller
                 $ssdArray =$productFilters['ssdArray'];
                 $ramArray =$productFilters['ramArray'];
 
-                
                 $latest_products_discounted = Product::where('status', 1)->where('product_discount','>',0)->orderby('id', 'Desc')->limit(5)->get()->toArray();
 
                 return view('front.products.listing')->with(compact('categoryDetails', 'categoryProducts', 'page_name','url',

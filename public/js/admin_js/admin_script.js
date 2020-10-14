@@ -162,7 +162,30 @@ $(document).ready(function () {
             error: function () { }
         });
     });
-
+    //Product Attributes status Active/Inactive toggling update
+    $(document).on("click", ".updateProductAttributesStatus", function () {
+        var status = $(this)
+            .children("i")
+            .attr("status");
+        var attribute_id = $(this).attr("attribute_id");
+        $.ajax({
+            type: "post",
+            url: "/admin/update-product-attributes-status",
+            data: { status: status, attribute_id: attribute_id },
+            success: function (resp) {
+                if (resp["status"] == 0) {
+                    $("#attribute-" + attribute_id).html(
+                        "<i class='fas fa-toggle-off fa-lg'  status='Inactive'></i>"
+                    );
+                } else if (resp["status"] == 1) {
+                    $("#attribute-" + attribute_id).html(
+                        "<i class='fas fa-toggle-on fa-lg' style='color:cyan;'status='Active'></i>"
+                    );
+                }
+            },
+            error: function () { }
+        });
+    });
     //Append Category level in the Add category form
 
     $("#section_id").change(function () {
@@ -242,8 +265,14 @@ $(document).ready(function () {
     var addButton = $(".add_button"); //Add button selector
     var wrapper = $(".field_wrapper"); //Input field wrapper
     var fieldHTML =
-        '<div><br><input type="text" name="sku[]" value="" placeholder="SKU" style="width: 310px" required=""/>  <input type="number" name="stock[]" value="" placeholder="STOCK" style="width: 310px" required=""/>  <a href="javascript:void(0);" class="remove_button"> <i class="fa fa-minus-square" aria-hidden="true"></i></a></div>'; //New input field html
-    var x = 1; //Initial field counter is 1
+        '<div><br>'+
+        ' <input type="text" name="sku[]" value="" placeholder="SKU" style="width: 310px" required=""/>'+
+        ' <input type="number" name="color[]" value="" placeholder="COLOR" style="width: 310px" required=""/> '+
+        ' <input type="number" name="price[]" value="" placeholder="PRICE" style="width: 310px" required=""/> '+
+        ' <input type="number" name="stock[]" value="" placeholder="STOCK" style="width: 310px" required=""/>'+
+         '<a href="javascript:void(0);" class="remove_button"> <i class="fa fa-minus-square" aria-hidden="true"></i></a></div>'; //New input field html
+    
+         var x = 1; //Initial field counter is 1
 
     //Once add button is clicked
     $(addButton).click(function () {

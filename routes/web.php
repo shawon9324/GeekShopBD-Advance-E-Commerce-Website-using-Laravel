@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 //  Route::get('/', function () {
 //      return view('welcome');
 //  });
-
+use App\Category;
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -64,6 +64,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::get('delete-attributes/{id}', 'ProductController@deleteAttributes');
         Route::match(['get', 'post'], 'add-images/{id}', 'ProductController@addImages');
         Route::get('delete-images/{id}', 'ProductController@deleteImages');
+        Route::post('update-product-attributes-status','ProductController@updateProductAttributesStatus');
 
         //Banners
         Route::get('banners', 'BannerController@banners');
@@ -76,8 +77,13 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
 
 Route::namespace('Front')->group(function () {
+    // GET CATEGORY URL
+    $catUrls = Category::select('url')->where('status',1)->get()->pluck('url')->toArray();
+    //Loop For only Category URL and remove url confliction with other url
+    foreach ($catUrls as $url) {
+        Route::any('/'.$url, 'ProductsController@listing');
+    }
     //HOME PAGE ROUTE
     Route::get('/', 'IndexController@index');
     //LISTING / CATEGORIES ROUTE
-    Route::any('/{url}', 'ProductsController@listing');
 });

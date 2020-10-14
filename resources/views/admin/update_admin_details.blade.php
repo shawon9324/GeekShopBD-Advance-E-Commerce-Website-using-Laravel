@@ -90,19 +90,29 @@
                     <div class="form-group">
                         <label for="adminImage">Image</label>
                         <input type="file" class="form-control" name="admin_image" id="admin_image" accept="image/*">
+                        <hr>
                         @if(empty(Auth::guard('admin')->user()->iamge))
-                        <a target="_blank"
-                            href="{{ url('img/admin_img/admin_photos/'.Auth::guard('admin')->user()->image) }}"> View
-                            Image </a>
-                        <input type="hidden" name="current_admin_image"
-                            value="{{ Auth::guard('admin')->user()->image }}">
+                        {{-- NEW ROW  --}}
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <div class="info-box">
+                                    <img class="img-circle elevation-2"  src="{{ asset('img/admin_img/admin_photos/'.Auth::guard('admin')->user()->image)}}" height="120" width="120"/>
+                                    </span>
+                                    <div class="info-box-content">
+                                        <a class="imageView" image_folder="admin_img/admin_photos/" image_info="{{Auth::guard('admin')->user()->image}}" image_id="{{Auth::guard('admin')->user()->image}}" href="javascript:void(0)">
+                                        <button style="width: 150px;margin-bottom:5px;" type="button" class="btn btn-block btn-outline-success">
+                                        View Image</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @endif
                     </div>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
         </div>

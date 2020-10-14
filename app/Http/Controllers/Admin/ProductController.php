@@ -27,8 +27,6 @@ class ProductController extends Controller
         // echo "<pre>";print_r($products);die;
         return view('admin.products.products')->with(compact('products'));
     }
-
-
     public function updateProductStatus(Request $request)
     {
         if ($request->ajax()) {
@@ -42,8 +40,6 @@ class ProductController extends Controller
             return response()->json(['status' => $status, 'product_id' => $data['product_id']]);
         }
     }
-
-
     public function deleteProduct($id)
     {
         $productName = Product::select('product_name')->where('id', $id)->first();
@@ -224,7 +220,6 @@ class ProductController extends Controller
             'brands'
         ));
     }
-
     public function deleteProductImage($id)
     {
         $getProductImage = Product::select('main_image')->where('id', $id)->first();
@@ -255,9 +250,6 @@ class ProductController extends Controller
         Product::where('id', $id)->update(['product_video' => '']);
         return redirect()->back();
     }
-
-
-
     public function addAttributes(Request $request, $id)
     {
         if ($request->isMethod('post')) {
@@ -273,6 +265,8 @@ class ProductController extends Controller
                     $attribute = new ProductsAttribute;
                     $attribute->product_id = $id;
                     $attribute->sku = $value;
+                    $attribute->color = $data['color'][$key];
+                    $attribute->price = $data['price'][$key];
                     $attribute->stock = $data['stock'][$key];
                     $attribute->save();
                 }
@@ -285,6 +279,19 @@ class ProductController extends Controller
         // echo "<pre>"  ;print_r($productData) ;die;
         return view('admin.products.add_attributes')->with(compact('productData'));
     }
+    public function updateProductAttributesStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            ProductsAttribute::where('id', $data['attribute_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'attribute_id' => $data['attribute_id']]);
+        }
+    }
     public function deleteAttributes($id)
     {
         ProductsAttribute::where('id', $id)->delete();
@@ -296,7 +303,7 @@ class ProductController extends Controller
             $data = $request->all();
             foreach ($data['attrId'] as $key => $attr) {
                 if (!empty($attr)) {
-                    ProductsAttribute::where(['id' => $data['attrId'][$key]])->update(['stock' => $data['stock'][$key]]);
+                    ProductsAttribute::where(['id' => $data['attrId'][$key]])->update(['price' => $data['price'][$key] , 'stock' => $data['stock'][$key]]);
                 }
             }
             // echo "<pre>"; print_r($data); die;

@@ -65,6 +65,8 @@
                                                 <div class="field_wrapper">
                                                     <div>
                                                         <input style="width: 310px" type="text" id="sku" name="sku[]" value="" placeholder="SKU" required=""/>
+                                                        <input style="width: 310px" type="text" id="color" name="color[]" value="" placeholder="COLOR" required=""/>
+                                                        <input style="width: 310px" type="text" id="price" name="price[]" value="" placeholder="PRICE" required=""/>
                                                         <input style="width: 310px" type="number" id="stock" name="stock[]" value="" placeholder="STOCK" required=""/>
                                                         <a href="javascript:void(0);" class="add_button" title="Add field"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
                                                     </div>
@@ -124,6 +126,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Product SKU</th>
+                                    <th>Product Color</th>
+                                    <th>Product Price</th>
                                     <th>Product Stock</th>
                                     <th>Action</th>
                                 </tr>
@@ -134,9 +138,16 @@
                                 <tr>
                                     <td>{{$attribute['id']}}</td>
                                     <td>{{$attribute['sku']}}</td>
+                                    <td>{{$attribute['color']}}</td>
+                                    <td><input type="number" name="price[]" value="{{$attribute['price']}}"></td>
                                     <td><input type="number" name="stock[]" value="{{$attribute['stock']}}"></td>
                                     <td>
-                                        <a title="Delete Attribute" class="confirmDelete" record_type="attributes" record_id="{{$attribute['id']}}"  href="javascript:void(0)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>                                    
+                                        @if($attribute->status==1)
+                                            <a class="updateProductAttributesStatus btn btn-info" id="attribute-{{$attribute->id}}" attribute_id="{{$attribute->id}}" href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg" style="color:cyan" status="Active"></i></a>
+                                            @else
+                                            <a class="updateProductAttributesStatus btn btn-info" id="attribute-{{$attribute->id}}" attribute_id="{{$attribute->id}}" href="javascript:void(0)"><i class="fas fa-toggle-off fa-lg"  status="Inactive"></i></a>
+                                            @endif
+                                        <a title="Delete Attribute" class="confirmDelete btn btn-danger" record_type="attributes" record_id="{{$attribute['id']}}"  href="javascript:void(0)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>                                    
                                     </td>
                                 </tr>
                                 @endforeach

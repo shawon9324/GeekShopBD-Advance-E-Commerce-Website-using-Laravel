@@ -16,8 +16,11 @@ class CreateProductsAttributesTable extends Migration
         Schema::create('products_attributes', function (Blueprint $table) {
             $table->id();
             $table->integer('product_id');
-            $table->integer('stock');
             $table->string('sku');
+            $table->string('color');
+            $table->integer('stock');
+            $table->float('price');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

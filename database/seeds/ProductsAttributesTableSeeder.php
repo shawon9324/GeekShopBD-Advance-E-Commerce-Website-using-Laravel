@@ -15,14 +15,18 @@ class ProductsAttributesTableSeeder extends Seeder
             [
                 'id'=>1,
                 'product_id'=>1,
+                'sku'=>'PRO1-ASUS',
+                'color'=>'Red',
                 'stock'=>10,
-                'sku'=>'APMC0001'
+                'price'=>'105000',
             ],
             [
                 'id'=>2,
                 'product_id'=>2,
-                'stock'=>15,
-                'sku'=>'ASD0002'
+                'sku'=>'PRO2-HP',
+                'color'=>'Black',
+                'stock'=>10,
+                'price'=>'905000',
             ],
         ];
         ProductsAttribute::insert($productsAttributeRecords);

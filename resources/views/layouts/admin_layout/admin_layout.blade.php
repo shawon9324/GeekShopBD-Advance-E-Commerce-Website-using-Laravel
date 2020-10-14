@@ -9,11 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ url('plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ url('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ url('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ url('css/admin_css/ionicons.min.css') }}">
+
     <!-- Tempusdominus Bbootstrap 4 -->
     <link rel="stylesheet" href="{{ url('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- Select2 -->
@@ -63,8 +65,7 @@
         $.widget.bridge('uibutton', $.ui.button)
 
     </script>
-    <!-- Font Awesome ICON-->
-    <script src="https://kit.fontawesome.com/1950dd3d37.js" crossorigin="anonymous"></script>
+
     <!-- Bootstrap 4 -->
     <script src="{{ url('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- DataTables -->
