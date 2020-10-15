@@ -267,8 +267,8 @@ $(document).ready(function () {
     var fieldHTML =
         '<div><br>'+
         ' <input type="text" name="sku[]" value="" placeholder="SKU" style="width: 310px" required=""/>'+
-        ' <input type="number" name="color[]" value="" placeholder="COLOR" style="width: 310px" required=""/> '+
-        ' <input type="number" name="price[]" value="" placeholder="PRICE" style="width: 310px" required=""/> '+
+        ' <input type="number" name="color[]" value="" placeholder="COLOR" style="width: 310px" /> '+
+        ' <input type="number" name="price[]" value="" placeholder="PRICE" style="width: 310px" /> '+
         ' <input type="number" name="stock[]" value="" placeholder="STOCK" style="width: 310px" required=""/>'+
          '<a href="javascript:void(0);" class="remove_button"> <i class="fa fa-minus-square" aria-hidden="true"></i></a></div>'; //New input field html
     

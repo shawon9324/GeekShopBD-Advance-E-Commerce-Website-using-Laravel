@@ -17,9 +17,9 @@ class CreateProductsAttributesTable extends Migration
             $table->id();
             $table->integer('product_id');
             $table->string('sku');
-            $table->string('color');
+            $table->string('color')->nullable();
             $table->integer('stock');
-            $table->float('price');
+            $table->float('price')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

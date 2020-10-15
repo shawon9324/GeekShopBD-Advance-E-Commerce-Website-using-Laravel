@@ -105,12 +105,16 @@
                                             <span class="text-secondary font-size-13">(3 customer reviews)</span>
                                         </a>
                                     </div>
+                                    @if(!empty($total_stock) && ($stock_status->status)>0)
                                     <div class="d-md-flex align-items-center">
                                         <div class="text-gray-9 font-size-14">Availability : <span class="text-green font-weight-bold">{{$total_stock}} in stock</span></div>
                                     </div>
+                                    @else
                                     <div class="d-md-flex align-items-center">
                                         <div class="text-gray-9 font-size-14">Availability: <span class="text-red font-weight-bold">Out of stock</span></div>
                                     </div>
+                                    @endif
+                                    
                                 </div>
                                 <div class="flex-horizontal-center flex-wrap mb-4">
                                     <a href="#" class="text-gray-6 font-size-13 mr-2"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
@@ -142,7 +146,10 @@
                                 </div>
                                 <div class="border-top border-bottom py-3 mb-4">
                                     <div class="d-flex align-items-center">
-                                        <h6 class="font-size-14 mb-0">Color</h6>
+                                        <h6 class="font-size-14 mb-0">Color : </h6>
+                                        @if(empty($productDetails['attributes']['color']))
+                                        <h6 class="font-size-14 mb-0 text-red font-weight-bold">&nbsp;Not available</h6>
+                                        @else
                                         <!-- Select -->
                                         <select name="size" id="getPrice" product-id="{{$productDetails['id']}}" class="js-select selectpicker dropdown-select ml-3"
                                             data-style="btn-sm bg-white font-weight-normal py-2 border">
@@ -152,6 +159,8 @@
                                             @endforeach
                                         </select>
                                         <!-- End Select -->
+                                        @endif
+                                        
                                     </div>
                                 </div>
                                 <div class="d-md-flex align-items-end mb-3">

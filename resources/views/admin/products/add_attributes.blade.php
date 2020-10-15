@@ -65,8 +65,8 @@
                                                 <div class="field_wrapper">
                                                     <div>
                                                         <input style="width: 310px" type="text" id="sku" name="sku[]" value="" placeholder="SKU" required=""/>
-                                                        <input style="width: 310px" type="text" id="color" name="color[]" value="" placeholder="COLOR" required=""/>
-                                                        <input style="width: 310px" type="text" id="price" name="price[]" value="" placeholder="PRICE" required=""/>
+                                                        <input style="width: 310px" type="text" id="color" name="color[]" value="" placeholder="COLOR"/>
+                                                        <input style="width: 310px" type="text" id="price" name="price[]" value="" placeholder="PRICE"/>
                                                         <input style="width: 310px" type="number" id="stock" name="stock[]" value="" placeholder="STOCK" required=""/>
                                                         <a href="javascript:void(0);" class="add_button" title="Add field"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
                                                     </div>
