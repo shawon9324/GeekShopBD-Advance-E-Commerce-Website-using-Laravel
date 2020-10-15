@@ -31689,7 +31689,7 @@ label.btn {
   line-height: 0;
   display: inline-block;
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #00abc53f;
   width: 2.5rem;
   height: 2.5rem;
   font-size: 0.875rem;

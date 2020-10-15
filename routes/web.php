@@ -4,21 +4,10 @@ use App\Http\Controllers\Front\IndexController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-//  Route::get('/', function () {
-//      return view('welcome');
-//  });
 use App\Category;
+use App\Product;
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -75,15 +64,25 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     });
 });
 
-
 Route::namespace('Front')->group(function () {
     // GET CATEGORY URL
     $catUrls = Category::select('url')->where('status',1)->get()->pluck('url')->toArray();
     //Loop For only Category URL and remove url confliction with other url
     foreach ($catUrls as $url) {
+        //LISTING / CATEGORIES ROUTE
         Route::any('/'.$url, 'ProductsController@listing');
     }
     //HOME PAGE ROUTE
     Route::get('/', 'IndexController@index');
-    //LISTING / CATEGORIES ROUTE
+
+    //Product Single Details
+    //get product model name in array
+    $productModel = Product::select('product_model')->where(['status'=>1])->get()->pluck('product_model')->toArray();
+    foreach($productModel as $key){
+        $productUrl = strtolower(str_replace('+','-',urlencode($key))); //convert in url format and repalce + to - with string lowercase
+        Route::get('/product/'.$productUrl.'-{id}','ProductsController@productDetails');
+    }
+    //Ajax Product Attribute Price
+    Route::post('/get-product-price','ProductsController@getProductPrice');
+    Route::post('/get-product-discount-price','ProductsController@getProductDiscountPrice');
 });

@@ -16,6 +16,9 @@ class IndexController extends Controller
         $featured_items = Product::with(['category' => function ($query) {
             $query->select('id', 'category_name');
         }])->where(['is_featured'=>'Yes','status'=>1])->orderby('id','Desc')->limit(8)->get()->toArray();
+        // echo "<pre>";
+        // print_r($featured_items);die;
+
         $latest_desktop_pc_products = Product::where(['section_id' => 1, 'status' => 1])->orderby('id', 'Desc')->limit(8)->get()->toArray();
         $latest_laptop_netbook_products = Product::where(['section_id' => 2, 'status' => 1])->orderby('id', 'Desc')->limit(8)->get()->toArray();
         $latest_smartphone_tablets = Product::where(['section_id' => 3, 'status' => 1])->orderby('id', 'Desc')->limit(8)->get()->toArray();

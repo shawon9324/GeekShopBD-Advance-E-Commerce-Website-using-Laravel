@@ -45,10 +45,33 @@ $(document).ready(function() {
         });
         return filter;
     }
+    $("#getPrice").on('change',function(){
+        var color = $(this).val();
+        var product_id = $(this).attr("product-id");
+        if(color=="none"){
+            Swal.fire('Please Select Any Color!')
+            return false;
+        }
+        $.ajax({
+            url:'/get-product-discount-price',
+            data:{color:color,product_id:product_id},
+            type:'post',
+            success:function(resp){
+                $(".getDiscountPrice").html("৳ "+resp);
+            },error:function(){
 
-
-
-
-
+            }
+        });
+        $.ajax({
+            url:'/get-product-price',
+            data:{color:color,product_id:product_id},
+            type:'post',
+            success:function(resp){
+                $(".getAttrPrice").html("৳ "+resp);
+            },error:function(){
+                
+            }
+        });
+    });
 
 });

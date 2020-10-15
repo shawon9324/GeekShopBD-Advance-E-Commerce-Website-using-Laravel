@@ -224,7 +224,7 @@ $sections = Section::sections();
                                 <div class="mb-4">
                                     <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/320X300/img1.jpg') }}" alt="Image Description"></a>
                                 </div>
-                                <h5 class="mb-2 font-size-14 text-center mx-auto max-width-180 text-lh-18"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Game Console Controller + USB 3.0 Cable</a></h5>
+                                <h5 class="mb-2 font-size-14 text-center mx-auto max-width-180 text-lh-18"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Game Console Controller ++ USB 3.0 Cable</a></h5>
                                 <div class="d-flex align-items-center justify-content-center mb-3">
                                     <del class="font-size-18 mr-2 text-gray-2">$99,00</del>
                                     <ins class="font-size-30 text-red text-decoration-none">$79,00</ins>
@@ -309,32 +309,30 @@ $sections = Section::sections();
 									{{-- #Featured --}}
 									<div class="tab-pane fade pt-2 show active" id="pills-one-example1" role="tabpanel" aria-labelledby="pills-one-example1-tab">
                                         <ul class="row list-unstyled products-group no-gutters">
-											@foreach ($featured_items as $featured_item)
+                                            @foreach ($featured_items as $featured_item)
+                                             <?php $model = $featured_item['product_model'];   
+                                              $productUrl = strtolower(str_replace('+','-',urlencode($model)));
+                                             ?>
 												<li class="col-6 col-wd-3 col-md-4 product-item">
 													<div class="product-item__outer h-100">
 														<div class="product-item__inner px-xl-4 p-3">
 															<div class="product-item__body pb-xl-2">
-																<div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">{{$featured_item['category']['category_name']}}</a></div>
-																<h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">{{$featured_item['product_name']}}</a></h5>
+																<div class="mb-2"><a href="#category_link" class="font-size-12 text-gray-5">{{$featured_item['category']['category_name']}}</a></div>
+																<h5 class="mb-1 product-item__title"><a href="{{url('/product/'.$productUrl.'-'.$featured_item['id'])}}" class="text-blue font-weight-bold">{{$featured_item['product_name']}}</a></h5>
 																<div class="mb-2">
 																	<a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$featured_item['main_image']) }}" style="height: 212px;width:200px;"alt="Image Description"></a>
 																</div>
 																<div class="flex-center-between mb-1">
 																	<div class="prodcut-price">
-																		<?php  
-																			$price = $featured_item['product_price'];    
-																			$discount = $featured_item['product_discount'];
-																			$discount_price = $price - round(($price*$discount)/100);
-																		?>
-																		
+																		<?php $discount_price=(($featured_item['product_price'])-(round(($featured_item['product_price']*$featured_item['product_discount'])/100))); ?>
 																		<div class="text-gray-100">
-																			@if($discount>0)
+																			@if($featured_item['product_discount']>0)
 																			৳ {{ $discount_price }}
 																			<span>
-																			<del style="font-size: 15px;">৳ {{$price}}</del>
+																			<del style="font-size: 15px;">৳ {{$featured_item['product_price']}}</del>
 																			</span>
 																			@else
-																			৳ {{$price}}
+																			৳ {{$featured_item['product_price']}}
 																			@endif</div>
 																		</div>
 																	<div class="d-none d-xl-block prodcut-add-cart">
@@ -519,7 +517,7 @@ $sections = Section::sections();
                                                     <div class="product-item__body d-flex flex-column">
                                                         <div class="mb-1">
                                                             <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Game Consoles</a></div>
-                                                            <h5 class="mb-0 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Game Console Controller + USB 3.0 Cable</a></h5>
+                                                            <h5 class="mb-0 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Game Console Controller +++ USB 3.0 Cable</a></h5>
                                                         </div>
                                                         <div class="mb-1 min-height-4-1-4">
                                                             <a href="#" class="d-block text-center my-4 mt-lg-6 mb-lg-5 mt-xl-0 mb-xl-0 mt-wd-6 mb-wd-5"><img class="img-fluid" src="{{ url('img/front_img/564X520/img2.jpg') }}" alt="Image Description"></a>

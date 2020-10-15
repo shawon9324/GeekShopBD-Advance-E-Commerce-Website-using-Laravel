@@ -61,8 +61,7 @@
                                                         <a title="Status" class="updateBrandStatus btn btn-info"
                                                             id="brand-{{ $brand->id }}" brand_id="{{ $brand->id }}"
                                                             href="javascript:void(0)"><i class="fas fa-toggle-on fa-lg"
-                                                                style="color:cyan"
-                                                                status="Active"></i></a>&nbsp;&nbsp;
+                                                                style="color:cyan" status="Active"></i></a>&nbsp;&nbsp;
                                                     @else
                                                         <a title="Status" class="updateBrandStatus btn btn-info"
                                                             id="brand-{{ $brand->id }}" brand_id="{{ $brand->id }}"
@@ -83,3 +82,4 @@
         @include('sweetalert::alert')
     </div>
 @endsection
+

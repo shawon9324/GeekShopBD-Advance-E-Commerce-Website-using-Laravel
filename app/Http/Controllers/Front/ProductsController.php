@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
+use App\ProductsAttribute;
 
 class ProductsController extends Controller
 {
@@ -89,5 +90,50 @@ class ProductsController extends Controller
             }
         }
 
+    }
+ 
+    public function productDetails($id){
+
+        $productDetails = Product::with([
+        'category'=> function ($query) {
+            $query->select('id', 'category_name','url');
+        },
+        'brand'=> function ($query) {
+            $query->select('id', 'name');
+        },
+        'attributes',
+        'images'
+        ])->find($id)->toArray();
+        
+        $total_stock = ProductsAttribute::where('product_id',$id)->sum('stock');
+        // dd($productDetails); 
+
+        return view('front.products.product_single_details')->with(compact('productDetails','total_stock'));
+    }
+    public function getProductPrice(Request $request){
+        if($request->ajax()){
+           $data = $request->all();
+           
+            $getAttributes = ProductsAttribute::where(['product_id'=>$data['product_id'],'color'=>$data['color']])->first();
+            $getDiscount = Product::where('id',$data['product_id'])->first();
+            // $discount_price=product_price'])-(round(($productDetails['product_price']*$productDetails['product_discount'])/100)));
+            $discount = $getDiscount->product_discount;
+            $price = $getAttributes->price;
+            // echo $getAttributes->price;
+            echo $price;
+            // return $discount;
+        }
+    }
+    public function getProductDiscountPrice(Request $request){
+        if($request->ajax()){
+           $data = $request->all();
+            $getAttributes = ProductsAttribute::where(['product_id'=>$data['product_id'],'color'=>$data['color']])->first();
+            $getDiscount = Product::where('id',$data['product_id'])->first();
+            // $discount_price=product_price'])-(round(($productDetails['product_price']*$productDetails['product_discount'])/100)));
+            $discount = $getDiscount->product_discount;
+            $price = $getAttributes->price;
+            $discounted_price = ($price-(round(($price*$discount)/100)));
+            echo $discounted_price;
+        }
     }
 }
