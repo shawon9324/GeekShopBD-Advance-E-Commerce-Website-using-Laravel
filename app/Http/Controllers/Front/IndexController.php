@@ -14,7 +14,7 @@ class IndexController extends Controller
         $page_name = "index";
         $featured_item_count = Product::where('is_featured', 'Yes')->count();
         $featured_items = Product::with(['category' => function ($query) {
-            $query->select('id', 'category_name');
+            $query->select('id', 'category_name','url');
         }])->where(['is_featured'=>'Yes','status'=>1])->orderby('id','Desc')->limit(8)->get()->toArray();
         // echo "<pre>";
         // print_r($featured_items);die;

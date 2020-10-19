@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Http\Controllers\Front;
-
-use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\Paginator; //LARAVEL 8.0 NEW PAGINATOR
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,6 +12,7 @@ class ProductsController extends Controller
 {
     public function listing(Request $request)
     {
+        Paginator::useBootstrap();  //LARAVEL 8.0 NEW PAGINATOR
         if($request->ajax()){
             $data = $request->all();
             // echo "<pre>"; print_r($data);die;
@@ -89,12 +88,13 @@ class ProductsController extends Controller
                 abort(404);
             }
         }
-
     }
- 
     public function productDetails($id){
 
         $productDetails = Product::with([
+        'section'=> function ($query) {
+                $query->select('id', 'name');
+        },
         'category'=> function ($query) {
             $query->select('id', 'category_name','url');
         },
@@ -105,11 +105,13 @@ class ProductsController extends Controller
         'images'
         ])->find($id)->toArray();
         
-        $total_stock = ProductsAttribute::where('product_id',$id)->sum('stock');
-        $stock_status = ProductsAttribute::where('product_id',$id)->first();
-        // dd($productDetails); 
+        $total_stock = ProductsAttribute::where(['product_id'=>$id,'status'=>1])->sum('stock');
+        $total_stock_status = ProductsAttribute::where('product_id',$id)->sum('status');
 
-        return view('front.products.product_single_details')->with(compact('productDetails','total_stock','stock_status'));
+        $relatedProuducts = Product::where('category_id',$productDetails['category']['id'])->where('id','!=',$id)->limit(6)->inRandomOrder()->get()->toArray();
+        // dd($relatedProuducts); die;
+
+        return view('front.products.product_single_details')->with(compact('productDetails','total_stock','total_stock_status','relatedProuducts'));
     }
     public function getProductPrice(Request $request){
         if($request->ajax()){

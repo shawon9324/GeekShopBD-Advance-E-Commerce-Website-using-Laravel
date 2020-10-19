@@ -118,7 +118,7 @@ class ProductController extends Controller
             }
 
 
-            //Upload Product Image
+            //Upload Product Image                              //TODO: MAJOR:: Need to Fixed Image Upload Functionality.When new Image upload,need to unlink the oldone!!! 
             if ($request->hasFile('main_image')) {
                 $image_temp = $request->file('main_image');
                 if ($image_temp->isValid()) {

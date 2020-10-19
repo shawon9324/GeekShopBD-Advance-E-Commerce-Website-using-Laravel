@@ -77,9 +77,9 @@ Route::namespace('Front')->group(function () {
 
     //Product Single Details
     //get product model name in array
-    $productModel = Product::select('product_model')->where(['status'=>1])->get()->pluck('product_model')->toArray();
-    foreach($productModel as $key){
-        $productUrl = strtolower(str_replace('+','-',urlencode($key))); //convert in url format and repalce + to - with string lowercase
+    $productModels = Product::select('product_model')->where(['status'=>1])->get()->pluck('product_model')->toArray();
+    foreach($productModels as $productModel){
+        $productUrl = strtolower(str_replace('+','-',urlencode($productModel))); //convert in url format and repalce + to - with string lowercase
         Route::get('/product/'.$productUrl.'-{id}','ProductsController@productDetails');
     }
     //Ajax Product Attribute Price

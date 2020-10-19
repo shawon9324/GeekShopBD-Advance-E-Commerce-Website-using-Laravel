@@ -309,18 +309,16 @@ $sections = Section::sections();
 									{{-- #Featured --}}
 									<div class="tab-pane fade pt-2 show active" id="pills-one-example1" role="tabpanel" aria-labelledby="pills-one-example1-tab">
                                         <ul class="row list-unstyled products-group no-gutters">
-                                            @foreach ($featured_items as $featured_item)
-                                             <?php $model = $featured_item['product_model'];   
-                                              $productUrl = strtolower(str_replace('+','-',urlencode($model)));
-                                             ?>
+                                            @foreach ($featured_items as $featured_item) 
+                                            <?php $modelName = $featured_item['product_model']; $productUrl = strtolower(str_replace('+','-',urlencode($modelName))); ?>
 												<li class="col-6 col-wd-3 col-md-4 product-item">
 													<div class="product-item__outer h-100">
 														<div class="product-item__inner px-xl-4 p-3">
 															<div class="product-item__body pb-xl-2">
-																<div class="mb-2"><a href="#category_link" class="font-size-12 text-gray-5">{{$featured_item['category']['category_name']}}</a></div>
+																<div class="mb-2"><a href="{{ url('/'.$featured_item['category']['url'])}}" class="font-size-12 text-gray-5">{{$featured_item['category']['category_name']}}</a></div>
 																<h5 class="mb-1 product-item__title"><a href="{{url('/product/'.$productUrl.'-'.$featured_item['id'])}}" class="text-blue font-weight-bold">{{$featured_item['product_name']}}</a></h5>
 																<div class="mb-2">
-																	<a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$featured_item['main_image']) }}" style="height: 212px;width:200px;"alt="Image Description"></a>
+																	<a href="{{url('/product/'.$productUrl.'-'.$featured_item['id'])}}" class="d-block text-center"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$featured_item['main_image']) }}" style="height: 212px;width:200px;"alt="Image Description"></a>
 																</div>
 																<div class="flex-center-between mb-1">
 																	<div class="prodcut-price">
