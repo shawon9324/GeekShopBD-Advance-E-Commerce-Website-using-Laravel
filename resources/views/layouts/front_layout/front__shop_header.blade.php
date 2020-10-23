@@ -351,16 +351,13 @@
                                                                                     <li>
                                                                                         
                                                                                             <a class="nav-link u-header__sub-menu-nav-link u-nav-divider border-top pt-2 flex-column align-items-start" href="/{{ $category['url'] }}">
-                                                                                                <div class="">See All - {{ $category['category_name'] }}</div>
-                                                                                                <div class="u-nav-subtext font-size-11 text-gray-30">Discover more products</div>
+                                                                                                <div class="">{{ $category['category_name'] }}</div>
+                                                                                                <div class="u-nav-subtext font-size-11 text-gray-30">All products</div>
                                                                                             </a>
                                                                                     </li>
                                                                                 </ul>
                                                                                 
                                                                             </div>@endforeach
-                                                                        </div>
-                                                                        <div class="vmm-bg">
-                                                                            <img class="img-fluid" src="{{ url('img/front_img/500X400/img4.png') }}" alt="Category Picture">
                                                                         </div>
                                                                     </div>
                                                                     <!-- End Nav Item - Mega Menu -->

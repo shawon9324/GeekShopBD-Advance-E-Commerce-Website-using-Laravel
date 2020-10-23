@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('product_code');
             $table->string('product_mpn');
             $table->float('product_price');
-            $table->float('product_regular_price');
+            $table->float('product_regular_price')->nullable();
             $table->float('product_discount')->nullable();
             $table->string('product_video')->nullable();
             $table->string('main_image')->nullable();

@@ -218,16 +218,16 @@ $sections = Section::sections();
                                     <h3 class="font-size-22 mb-0 font-weight-normal text-lh-28 max-width-120">Special Offer</h3>
                                     <div class="d-flex align-items-center flex-column justify-content-center bg-primary rounded-pill height-75 width-75 text-lh-1">
                                         <!-- <span class="white-txt font-size-12">Save</span> -->
-                                        <div class="white-txt font-size-20 font-weight-bold">-25%</div>
+                                        <div class="white-txt font-size-20 font-weight-bold">-20%</div>
                                     </div>
                                 </div>
                                 <div class="mb-4">
                                     <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/320X300/img1.jpg') }}" alt="Image Description"></a>
                                 </div>
-                                <h5 class="mb-2 font-size-14 text-center mx-auto max-width-180 text-lh-18"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Game Console Controller ++ USB 3.0 Cable</a></h5>
+                                <h5 class="mb-2 font-size-14 text-center mx-auto max-width-180 text-lh-18"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Game Console Controller</a></h5>
                                 <div class="d-flex align-items-center justify-content-center mb-3">
-                                    <del class="font-size-18 mr-2 text-gray-2">$99,00</del>
-                                    <ins class="font-size-30 text-red text-decoration-none">$79,00</ins>
+                                    <del class="font-size-18 mr-2 text-gray-2">৳ 2500 </del>
+                                    <ins class="font-size-30 text-red text-decoration-none">৳ 2000</ins>
                                 </div>
                                 <div class="mb-3 mx-2">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
@@ -235,7 +235,8 @@ $sections = Section::sections();
                                         <span class="">Already Sold: <strong>28</strong></span>
                                     </div>
                                     <div class="rounded-pill bg-gray-3 height-20 position-relative">
-                                        <span class="position-absolute left-0 top-0 bottom-0 rounded-pill w-30 bg-primary"></span>
+                                       
+                                        <span class="position-absolute left-0 top-0 bottom-0 rounded-pill w-90 bg-primary"></span>
                                     </div>
                                 </div>
                                 <div class="mb-2">
@@ -316,7 +317,8 @@ $sections = Section::sections();
 														<div class="product-item__inner px-xl-4 p-3">
 															<div class="product-item__body pb-xl-2">
 																<div class="mb-2"><a href="{{ url('/'.$featured_item['category']['url'])}}" class="font-size-12 text-gray-5">{{$featured_item['category']['category_name']}}</a></div>
-																<h5 class="mb-1 product-item__title"><a href="{{url('/product/'.$productUrl.'-'.$featured_item['id'])}}" class="text-blue font-weight-bold">{{$featured_item['product_name']}}</a></h5>
+																<h5 class="mb-1 product-item__title">
+                                                                <a href="{{url('/product/'.$productUrl.'-'.$featured_item['id'])}}" class="text-blue font-weight-bold">{{$featured_item['product_name']}}</a></h5>
 																<div class="mb-2">
 																	<a href="{{url('/product/'.$productUrl.'-'.$featured_item['id'])}}" class="d-block text-center"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$featured_item['main_image']) }}" style="height: 212px;width:200px;"alt="Image Description"></a>
 																</div>

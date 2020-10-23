@@ -3,15 +3,10 @@
 use App\Http\Controllers\Front\IndexController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
-
 use App\Category;
 use App\Product;
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::prefix('admin')->namespace('Admin')->group(function () {
     //All ADMIN ROUTES
     Route::match(['get', 'post'], '/', 'AdminController@login');
@@ -46,7 +41,6 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::get('delete-product-image/{id}', 'ProductController@deleteProductImage');
         Route::get('delete-product-video/{id}', 'ProductController@deleteProductVideo');
         Route::match(['get', 'post'], 'add-edit-product/{id?}', 'ProductController@addEditProduct');
-
         //attribute
         Route::match(['get', 'post'], 'add-attributes/{id}', 'ProductController@addAttributes');
         Route::post('edit-attributes/{id}', 'ProductController@editAttributes');
@@ -54,7 +48,6 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::match(['get', 'post'], 'add-images/{id}', 'ProductController@addImages');
         Route::get('delete-images/{id}', 'ProductController@deleteImages');
         Route::post('update-product-attributes-status','ProductController@updateProductAttributesStatus');
-
         //Banners
         Route::get('banners', 'BannerController@banners');
         Route::post('update-banner-status', 'BannerController@updateBannerStatus');
@@ -65,23 +58,23 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 });
 
 Route::namespace('Front')->group(function () {
-    // GET CATEGORY URL
-    $catUrls = Category::select('url')->where('status',1)->get()->pluck('url')->toArray();
-    //Loop For only Category URL and remove url confliction with other url
+    Route::get('/', 'IndexController@index');
+    $catUrls = Category::select('url')->where('status',1)->pluck('url')->toArray();
     foreach ($catUrls as $url) {
-        //LISTING / CATEGORIES ROUTE
         Route::any('/'.$url, 'ProductsController@listing');
     }
-    //HOME PAGE ROUTE
-    Route::get('/', 'IndexController@index');
 
-    //Product Single Details
-    //get product model name in array
-    $productModels = Product::select('product_model')->where(['status'=>1])->get()->pluck('product_model')->toArray();
+    
+    //get product model_name in array
+    $productModels = Product::select('product_model')->where('status',1)->pluck('product_model')->toArray();
     foreach($productModels as $productModel){
-        $productUrl = strtolower(str_replace('+','-',urlencode($productModel))); //convert in url format and repalce + to - with string lowercase
+        //generate_url_format from modelName
+        $productUrl = strtolower(str_replace('+','-',urlencode($productModel))); 
+        //route for each product
         Route::get('/product/'.$productUrl.'-{id}','ProductsController@productDetails');
     }
+
+    
     //Ajax Product Attribute Price
     Route::post('/get-product-price','ProductsController@getProductPrice');
     Route::post('/get-product-discount-price','ProductsController@getProductDiscountPrice');

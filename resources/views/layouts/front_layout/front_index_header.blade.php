@@ -4,7 +4,7 @@ $sections = Section::sections();
 ?> 
         <!-- ========== HEADER ========== -->
         <header id="header" class="u-header u-header-left-aligned-nav">
-            <div class="u-header__section">
+        <div class="u-header__section">
                 <!-- Topbar -->
                 <div class="u-header-topbar py-2 d-none d-xl-block">
                     <div class="container">
@@ -314,17 +314,14 @@ $sections = Section::sections();
                                                                                         <li>
                                                                                             
                                                                                                 <a class="nav-link u-header__sub-menu-nav-link u-nav-divider border-top pt-2 flex-column align-items-start" href="/{{ $category['url'] }}">
-                                                                                                    <div class="">See All - {{ $category['category_name'] }}</div>
-                                                                                                    <div class="u-nav-subtext font-size-11 text-gray-30">Discover more products</div>
-                                                                                                </a>
+                                                                                                    <div class="">{{ $category['category_name'] }}</div>
+                                                                                                    <div class="u-nav-subtext font-size-11 text-gray-30">All products</div>                                                                                                </a>
                                                                                         </li>
                                                                                     </ul>
                                                                                     
                                                                                 </div>@endforeach
                                                                             </div>
-                                                                            <div class="vmm-bg">
-                                                                                <img class="img-fluid" src="{{ url('img/front_img/500X400/img4.png') }}" alt="Category Picture">
-                                                                            </div>
+                                                                            
                                                                         </div>
                                                                         <!-- End Nav Item - Mega Menu -->
                                                                     </li>
