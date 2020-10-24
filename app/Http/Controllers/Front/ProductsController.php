@@ -55,6 +55,7 @@ class ProductsController extends Controller
             $url = Route::getFacadeRoot()->current()->uri();
             $page_name = 'listing';
             $categoryCount = Category::where(['url' => $url, 'status' => 1])->count();
+            $section_id = Category::where(['url' => $url, 'status' => 1])->pluck('section_id')->toArray();
             if ($categoryCount > 0) {
                 //echo "Category Exists";die;
                 $categoryDetails = Category::catDetails($url);
@@ -62,6 +63,10 @@ class ProductsController extends Controller
                 $categoryProducts = Product::with('brand')->whereIn('category_id', $categoryDetails['catIds'])->where('status', 1);
                 //checking sort option selection
                 $categoryProducts = $categoryProducts->paginate(5);
+                // $categoryProducts = $categoryProducts->paginate(3)->toJson();
+                // echo "<pre>"; print_r($categoryProducts); die;
+
+
                 //product filters
                 $productFilters = Product::productFilters();
                 $generationArray = $productFilters['generationArray'];
@@ -85,6 +90,7 @@ class ProductsController extends Controller
                     'ssdArray',
                     'ramArray',
                     'latest_products_discounted',
+                    'section_id'
                 ));
             } else {
                 abort(404);
@@ -110,11 +116,6 @@ class ProductsController extends Controller
         $total_stock = ProductsAttribute::where(['product_id' => $id, 'status' => 1])->sum('stock');
         $total_stock_status = ProductsAttribute::where('product_id', $id)->sum('status');
         $relatedProuducts = Product::where('category_id', $productDetails['category']['id'])->where('id', '!=', $id)->limit(4)->inRandomOrder()->get()->toArray();
-        // dd($relatedProuducts); die;
-
-
-
-
         return view('front.products.product_single_details')->with(compact('productDetails', 'total_stock', 'total_stock_status', 'relatedProuducts'));
     }
     public function getProductPrice(Request $request)

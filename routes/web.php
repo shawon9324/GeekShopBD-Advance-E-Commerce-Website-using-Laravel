@@ -55,18 +55,18 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::match(['get', 'post'], 'add-edit-banner/{id?}', 'BannerController@addEditBanner');
         Route::get('delete-banner-image/{id}', 'BannerController@deleteBannerImage');
     });
-});
+}); 
 
 Route::namespace('Front')->group(function () {
     Route::get('/', 'IndexController@index');
-    $catUrls = Category::select('url')->where('status',1)->pluck('url')->toArray();
+    $catUrls = Category::select('url')->where('status',1)->get()->pluck('url')->toArray();
     foreach ($catUrls as $url) {
         Route::any('/'.$url, 'ProductsController@listing');
     }
 
     
     //get product model_name in array
-    $productModels = Product::select('product_model')->where('status',1)->pluck('product_model')->toArray();
+    $productModels = Product::select('product_model')->where('status',1)->get()->pluck('product_model')->toArray();
     foreach($productModels as $productModel){
         //generate_url_format from modelName
         $productUrl = strtolower(str_replace('+','-',urlencode($productModel))); 

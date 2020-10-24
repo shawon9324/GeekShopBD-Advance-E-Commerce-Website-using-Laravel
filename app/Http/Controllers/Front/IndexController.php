@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Banner;
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
@@ -29,10 +30,9 @@ class IndexController extends Controller
         $banner_middle = Banner::where(['banner_position' => 'Middle', 'status' => 1])->limit(1)->get()->toArray();
         $banner_bottom = Banner::where(['banner_position' => 'Bottom', 'status' => 1])->limit(1)->get()->toArray();
        
-        
         // $featured_items_chunk =array_chunk($featured_items,4);
         // echo "<pre>";
-        // dd($latest_desktop_pc_products);die;
+        // dd($footer_category);die;
         return view('front.index')->with(compact(
             'page_name',
             'featured_items',
@@ -45,6 +45,7 @@ class IndexController extends Controller
             'banner_top_slider_3',
             'banner_middle',
             'banner_bottom',
+
             
         ));
     }

@@ -32,6 +32,7 @@
 									<li><div class="dropdown-title">Browse Categories</div></li>
 									<?php $i=0; ?>
 									@foreach($sections as $section)
+									@if($section['id'] == $section_id[0])
 									@foreach($section['categories'] as $category)
 									<li>
 										<a class="dropdown-toggle dropdown-toggle-collapse" href="javascript:;" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="x-{{$i}}" data-target="#x-{{$i}}">
@@ -51,6 +52,7 @@
 									</li>
 									<?php $i++; ?>
 									@endforeach
+									@endif
 									@endforeach
 								</ul>
                             <!-- End List -->
@@ -397,7 +399,7 @@
                         <!-- Tab Content -->
                         <div class="tab-content" id="pills-tabContent">
                             
-                            <div class="filter_products tab-pane fade pt-2 show active" id="pills-two-example1" role="tabpanel" aria-labelledby="pills-two-example1-tab" data-target-group="groups">
+                            <div class=" filter_products tab-pane fade pt-2 show active" id="pills-two-example1" role="tabpanel" aria-labelledby="pills-two-example1-tab" data-target-group="groups">
                                 @include('front.products.ajax_products_listing')
 							</div>
 							
@@ -725,7 +727,7 @@
 										<span>$</span>
 										<span id="rangeSliderExample3MaxResult" class=""></span>
 									</div>
-									<button type="submit" class="btn px-4 btn-primary-dark-w py-2 rounded-lg">Filter</button>
+									<button type="submit" class="btn px-4 btn-primary-dark-w py-2 rounded-lg ">Filter</button>
 								</div>
 							</div>
                             </div>

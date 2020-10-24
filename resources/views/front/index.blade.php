@@ -125,18 +125,19 @@ $sections = Section::sections();
                 <!-- Banner -->
                 <div class="mb-5">
                     <div class="row">
+                        
                         <div class="col-md-6 mb-4 mb-xl-0 col-xl-3">
                             <a href="shop_listing.html" class="d-black text-gray-90">
                                 <div class="min-height-132 py-1 d-flex bg-gray-1 align-items-center">
                                     <div class="col-6 col-xl-5 col-wd-6 pr-0">
-                                        <img class="img-fluid" src="{{ url('img/front_img/190X150/img1.png') }}" alt="Image Description">
+                                        <img class="img-fluid" src="{{ url('img/front_img/190X150/img3.jpg') }}" alt="Image Description">
                                     </div>
                                     <div class="col-6 col-xl-7 col-wd-6">
                                         <div class="mb-2 pb-1 font-size-18 font-weight-light text-ls-n1 text-lh-23">
-                                            CATCH BIG <strong>DEALS</strong> ON THE CAMERA
+                                            DISCOVER MORE CATEGORIES OF <strong>DESKTOP PC <br> <br></strong>
                                         </div>
                                         <div class="link text-gray-90 font-weight-bold font-size-15" href="#">
-                                            Shop now
+                                            Discover now
                                             <span class="link__icon ml-1">
                                                 <span class="link__icon-inner"><i class="ec ec-arrow-right-categproes"></i></span>
                                             </span>
@@ -153,10 +154,10 @@ $sections = Section::sections();
                                     </div>
                                     <div class="col-6 col-xl-7 col-wd-6">
                                         <div class="mb-2 pb-1 font-size-18 font-weight-light text-ls-n1 text-lh-23">
-                                            CATCH BIG <strong>DEALS</strong> ON THE LAPTOP & NETBOOK    
+                                            DISCOVER MORE CATEGORIES OF <strong>LAPTOP & NETBOOK </strong>  
                                         </div>
                                         <div class="link text-gray-90 font-weight-bold font-size-15" href="#">
-                                            Shop now
+                                            Discover now
                                             <span class="link__icon ml-1">
                                                 <span class="link__icon-inner"><i class="ec ec-arrow-right-categproes"></i></span>
                                             </span>
@@ -169,14 +170,14 @@ $sections = Section::sections();
                             <a href="shop_listing.html" class="d-black text-gray-90">
                                 <div class="min-height-132 py-1 d-flex bg-gray-1 align-items-center">
                                     <div class="col-6 col-xl-5 col-wd-6 pr-0">
-                                        <img class="img-fluid" src="{{ url('img/front_img/190X150/img3.jpg') }}" alt="Image Description">
+                                        <img class="img-fluid" src="{{ url('img/front_img/190X150/img1.png') }}" alt="Image Description">
                                     </div>
                                     <div class="col-6 col-xl-7 col-wd-6">
                                         <div class="mb-2 pb-1 font-size-18 font-weight-light text-ls-n1 text-lh-23">
-                                            CATCH BIG <strong>DEALS</strong> ON THE DESKTOP PC
+                                            DISCOVER MORE CATEGORIES OF <strong>CAMERA  </strong>
                                         </div>
                                         <div class="link text-gray-90 font-weight-bold font-size-15" href="#">
-                                            Shop now
+                                            Discover now
                                             <span class="link__icon ml-1">
                                                 <span class="link__icon-inner"><i class="ec ec-arrow-right-categproes"></i></span>
                                             </span>
@@ -193,10 +194,10 @@ $sections = Section::sections();
                                     </div>
                                     <div class="col-6 col-xl-7 col-wd-6">
                                         <div class="mb-2 pb-1 font-size-18 font-weight-light text-ls-n1 text-lh-23">
-                                            CATCH BIG <strong>DEALS</strong> ON THE GADGET
+                                            DISCOVER MORE CATEGORIES OF <strong>GADGET</strong>
                                         </div>
                                         <div class="link text-gray-90 font-weight-bold font-size-15" href="#">
-                                            Shop now
+                                            Discover now
                                             <span class="link__icon ml-1">
                                                 <span class="link__icon-inner"><i class="ec ec-arrow-right-categproes"></i></span>
                                             </span>
@@ -208,18 +209,22 @@ $sections = Section::sections();
                     </div>
                 </div>
                 <!-- End Banner -->
+
+
                 <!-- Deals-and-tabs -->
                 <div class="mb-5">
                     <div class="row">
                         <!-- Deal -->
                         <div class="col-md-auto mb-6 mb-md-0">
-                            <div class="p-3 border border-width-2 border-primary borders-radius-20 bg-white min-width-370">
+                            
+                            <div style="border-radius:0 0px 0 70px; margin-top:50px;box-shadow: 0 25px 30px 0 rgba(0,0,0,0.2);" class="p-3 border border-width-2 border-primary borders-radius-8 bg-white min-width-370">
                                 <div class="d-flex justify-content-between align-items-center m-1 ml-2">
-                                    <h3 class="font-size-22 mb-0 font-weight-normal text-lh-28 max-width-120">Special Offer</h3>
-                                    <div class="d-flex align-items-center flex-column justify-content-center bg-primary rounded-pill height-75 width-75 text-lh-1">
+                                    <h3 class="font-size-22 mb-0 font-weight-normal text-lh-28 max-width-120">Special Deal</h3>
+                                    {{-- <div class="d-flex align-items-center flex-column justify-content-center bg-primary rounded-pill height-75 width-75 text-lh-1">
                                         <!-- <span class="white-txt font-size-12">Save</span> -->
                                         <div class="white-txt font-size-20 font-weight-bold">-20%</div>
-                                    </div>
+                                    </div> --}}
+                                    <div style="transform: translate(-5.19px,-1.8px); " class="ribbon ribbon-top-right"><span>25% off!</span></div>
                                 </div>
                                 <div class="mb-4">
                                     <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/320X300/img1.jpg') }}" alt="Image Description"></a>
@@ -271,8 +276,6 @@ $sections = Section::sections();
                             </div>
                         </div>
                         <!-- End Deal -->
-						
-						
 						<!-- Tab Prodcut -->
                         <div class="col">
                             <!-- Features Section -->

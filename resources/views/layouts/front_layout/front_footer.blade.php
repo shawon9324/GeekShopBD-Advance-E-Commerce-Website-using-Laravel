@@ -1,3 +1,14 @@
+<?php 
+use App\Category;
+$footer_category = collect(Category::select('id','category_name','url')->where('parent_id',0)->limit(14)->inRandomOrder()->get()->toArray());
+$right_category = $footer_category->split(2);
+$right_category = json_decode(json_encode($right_category),true);
+// dd($footer_category);
+// echo "right";//
+// dd($right_category);die;
+
+?>
+        
         <!-- ========== FOOTER ========== -->
         <footer>
             <!-- Footer-newsletter -->
@@ -50,14 +61,14 @@
                                     </div>
                                     <div class="col pl-3">
                                         <div class="font-size-13 font-weight-light">Got questions? Call us 24/7!</div>
-                                        <a href="tel:+80080018588" class="font-size-20 text-gray-90">(800) 8001-8588, </a><a href="tel:+0600874548" class="font-size-20 text-gray-90">(0600) 874 548</a>
+                                        <a href="tel:+8801774339279" class="font-size-20 text-gray-90">(+880) 1774339279 </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-4">
                                 <h6 class="mb-1 font-weight-bold">Contact info</h6>
                                 <address class="">
-                                    17 Princess Road, London, Greater London NW1 8JR, UK
+                                   Dhaka , Bangladesh
                                 </address>
                             </div>
                             <div class="my-4 my-md-4">
@@ -91,25 +102,20 @@
                                     <h6 class="mb-3 font-weight-bold">Find it Fast</h6>
                                     <!-- List Group -->
                                     <ul class="list-group list-group-flush list-group-borderless mb-0 list-group-transparent">
-                                        <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Laptops & Computers</a></li>
-                                        <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Cameras & Photography</a></li>
-                                        <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Smart Phones & Tablets</a></li>
-                                        <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Video Games & Consoles</a></li>
-                                        <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">TV & Audio</a></li>
-                                        <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Gadgets</a></li>
-                                        <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Car Electronic & GPS</a></li>
+                                        @foreach($right_category[0] as $category)
+                                        <li><a class="list-group-item list-group-item-action" href="{{ url('/'.$category['url']) }}">{{$category['category_name']}}</a></li>
+                                        @endforeach
                                     </ul>
                                     <!-- End List Group -->
                                 </div>
 
                                 <div class="col-12 col-md mb-4 mb-md-0">
                                     <!-- List Group -->
-                                    <ul class="list-group list-group-flush list-group-borderless mb-0 list-group-transparent mt-md-6">
-                                        <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Printers & Ink</a></li>
-                                        <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Software</a></li>
-                                        <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Office Supplies</a></li>
-                                        <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Computer Components</a></li>
-                                        <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Accesories</a></li>
+                                    <ul class="list-group list-group-flush list-group-borderless mb-0 list-group-transparent">
+                                        <br><br>
+                                        @foreach($right_category[1] as $category)
+                                        <li><a class="list-group-item list-group-item-action" href="{{ url('/'.$category['url']) }}">{{$category['category_name']}}</a></li>
+                                        @endforeach
                                     </ul>
                                     <!-- End List Group -->
                                 </div>
@@ -138,7 +144,7 @@
             <div class="bg-gray-14 py-2">
                 <div class="container">
                     <div class="flex-center-between d-block d-md-flex">
-                        <div class="mb-3 mb-md-0">© <a href="#" class="font-weight-bold text-gray-90">Electro</a> - All rights Reserved</div>
+                    <div class="mb-3 mb-md-0">© <a href="{{url('/')}}" class="font-weight-bold text-gray-90">GeekshopBD</a> - All rights Reserved</div>
                         <div class="text-md-right">
                             <span class="d-inline-block bg-white border rounded p-1">
                                 <img class="max-width-5" src="{{ url('img/front_img/100X60/img1.jpg') }}" alt="Image Description">

@@ -8,7 +8,7 @@
                     <div class="container">
                         <div class="d-flex align-items-center">
                             <div class="topbar-left">
-                                <a href="#" class="text-gray-110 font-size-13 u-header-topbar__nav-link">Welcome to Worldwide Electronics Store</a>
+                                <a href="#" class="text-gray-110 font-size-13 u-header-topbar__nav-link">Welcome to our Computer & Electronics store</a>
                             </div>
                             <div class="topbar-right ml-auto">
                                 <ul class="list-inline mb-0">

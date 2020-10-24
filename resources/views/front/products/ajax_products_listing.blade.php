@@ -1,6 +1,6 @@
 <ul class="row list-unstyled products-group no-gutters">
     @foreach ($categoryProducts as $product)
-        <?php
+        <?php 
         $modelName = $product['product_model'];
         $productUrl = strtolower(str_replace('+', '-', urlencode($modelName)));
         ?>
