@@ -49,5 +49,21 @@ class IndexController extends Controller
             
         ));
     }
+    public function aboutUs(){
+        return view('front.others.about_us');
+    }
+    public function contactUs(){
+        return view('front.others.contact_us');
+    }
+    public function faqs(){
+        return view('front.others.faqs');
+    }
+    public function termsConditions(){
+        return view('front.others.terms_conditions');
+    }
+    public function storeDirectory(){
+        return view('front.others.store_directory');
+    }
+
 
 }

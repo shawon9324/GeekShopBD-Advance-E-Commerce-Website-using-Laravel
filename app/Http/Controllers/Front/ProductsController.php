@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Front;
-
 use Illuminate\Pagination\Paginator; //LARAVEL 8.0 NEW PAGINATOR
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
@@ -9,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 use App\ProductsAttribute;
+use App\Section;
 
 class ProductsController extends Controller
 {
@@ -28,9 +28,23 @@ class ProductsController extends Controller
                 //ajax filtering 
                 if (isset($data['generation']) && !empty($data['generation'])) {
                     $categoryProducts->whereIn('products.generation', $data['generation']);
-                } else if (isset($data['processor']) && !empty($data['processor'])) {
+                }
+                else if (isset($data['processor']) && !empty($data['processor'])) {
                     $categoryProducts->whereIn('products.processor', $data['processor']);
                 }
+                else if (isset($data['graphics']) && !empty($data['graphics'])) {
+                    $categoryProducts->whereIn('products.graphics', $data['graphics']);
+                }
+                else if (isset($data['ram']) && !empty($data['ram'])) {
+                    $categoryProducts->whereIn('products.ram', $data['ram']);
+                }
+                else if (isset($data['hdd']) && !empty($data['hdd'])) {
+                    $categoryProducts->whereIn('products.hdd', $data['hdd']);
+                }
+                else if (isset($data['ssd']) && !empty($data['ssd'])) {
+                    $categoryProducts->whereIn('products.ssd', $data['ssd']);
+                }
+
                 //checking sort option selection
                 if (isset($data['sort']) && !empty($data['sort'])) {
                     if ($data['sort'] == "product_default") {
@@ -46,8 +60,9 @@ class ProductsController extends Controller
                     }
                 } else {
                 }
-                $categoryProducts = $categoryProducts->paginate(100);
-                return view('front.products.ajax_products_listing')->with(compact('categoryDetails', 'categoryProducts', 'page_name', 'url'));
+                $categoryProducts = $categoryProducts->paginate(3);
+                // return view('front.products.ajax_products_listing')->with(compact('categoryDetails', 'categoryProducts', 'page_name', 'url'))->render();
+                return view('front.products.ajax_product_listing_duel_view')->with(compact('categoryDetails', 'categoryProducts', 'page_name', 'url'))->render();
             }else {
                 abort(404);
             }
@@ -57,16 +72,13 @@ class ProductsController extends Controller
             $categoryCount = Category::where(['url' => $url, 'status' => 1])->count();
             $section_id = Category::where(['url' => $url, 'status' => 1])->pluck('section_id')->toArray();
             if ($categoryCount > 0) {
-                //echo "Category Exists";die;
                 $categoryDetails = Category::catDetails($url);
                 // echo "<pre>";print_r($categoryDetails);die;
                 $categoryProducts = Product::with('brand')->whereIn('category_id', $categoryDetails['catIds'])->where('status', 1);
                 //checking sort option selection
-                $categoryProducts = $categoryProducts->paginate(5);
+                $paginateCount = round(($categoryProducts->count('id'))/3);
+                $categoryProducts = $categoryProducts->paginate(3);
                 // $categoryProducts = $categoryProducts->paginate(3)->toJson();
-                // echo "<pre>"; print_r($categoryProducts); die;
-
-
                 //product filters
                 $productFilters = Product::productFilters();
                 $generationArray = $productFilters['generationArray'];
@@ -90,7 +102,8 @@ class ProductsController extends Controller
                     'ssdArray',
                     'ramArray',
                     'latest_products_discounted',
-                    'section_id'
+                    'section_id',
+                    'paginateCount'
                 ));
             } else {
                 abort(404);
@@ -122,10 +135,8 @@ class ProductsController extends Controller
     {
         if ($request->ajax()) {
             $data = $request->all();
-
             $getAttributes = ProductsAttribute::where(['product_id' => $data['product_id'], 'color' => $data['color']])->first();
             $price = $getAttributes->price;
-            // echo $getAttributes->price;
             echo $price;
         }
     }
@@ -135,11 +146,15 @@ class ProductsController extends Controller
             $data = $request->all();
             $getAttributes = ProductsAttribute::where(['product_id' => $data['product_id'], 'color' => $data['color']])->first();
             $getDiscount = Product::where('id', $data['product_id'])->first();
-            // $discount_price=product_price'])-(round(($productDetails['product_price']*$productDetails['product_discount'])/100)));
             $discount = $getDiscount->product_discount;
             $price = $getAttributes->price;
             $discounted_price = ($price - (round(($price * $discount) / 100)));
             echo $discounted_price;
         }
     }
+    public function productCategories($id){
+        $section_id = $id;
+        return view('front.products.category_listing')->with(compact('section_id'));
+    }
+    
 }

@@ -13,6 +13,9 @@
                             <div class="topbar-right ml-auto">
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                                        <a href="" class="u-header-topbar__nav-link">Free Delevering on Orders ৳ 499+</a>
+                                    </li>
+                                    <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
                                         <a href="#" class="u-header-topbar__nav-link"><i class="ec ec-map-pointer mr-1"></i> Store Locator</a>
                                     </li>
                                     <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
@@ -119,105 +122,143 @@
                                     <!-- Navigation -->
                                     <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse">
                                         <ul class="navbar-nav u-header__navbar-nav">
-                                            <!-- Home -->
-                                            <li class="nav-item hs-has-sub-menu u-header__nav-item"
-                                                data-event="hover"
-                                                data-animation-in="slideInUp"
-                                                data-animation-out="fadeOut">
-                                                <a id="HomeMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="HomeSubMenu">Home</a>
-
-                                                <!-- Home - Submenu -->
-                                                <ul id="HomeSubMenu" class="hs-sub-menu u-header__sub-menu animated fadeOut" aria-labelledby="HomeMegaMenu" style="min-width: 230px; display: none;">
-                                                    <li><a class="nav-link u-header__sub-menu-nav-link" href="home/index.html">Home v1</a></li>
-                                                </ul>
-                                                <!-- End Home - Submenu -->
-                                            </li>
-                                            <!-- End Home -->
-
-                                            <!-- Pages -->
                                             <li class="nav-item hs-has-mega-menu u-header__nav-item"
-                                                data-event="hover"
-                                                data-animation-in="slideInUp"
-                                                data-animation-out="fadeOut">
-                                                <a id="pagesMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false">Pages</a>
-
-                                                <!-- Home - Mega Menu -->
-                                                <div class="hs-mega-menu w-100 u-header__sub-menu" aria-labelledby="pagesMegaMenu">
-                                                    <div class="row u-header__mega-menu-wrapper">
+                                            data-event="click"
+                                            data-animation-in="slideInUp"
+                                            data-animation-out="fadeOut"
+                                            data-position="left">
+                                            <a id="homeMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle text-sale" href="javascript:;" aria-haspopup="true" aria-expanded="false">Desktop</a>
+                                            <!-- Desktop - Mega Menu -->
+                                            <div class="hs-mega-menu w-100 u-header__sub-menu" aria-labelledby="homeMegaMenu">
+                                                <div class="row u-header__mega-menu-wrapper">
+                                                        @foreach ($sections as $section)
+                                                        @if($section['id'] == 1)
+                                                        @foreach ($section['categories'] as $category)
                                                         <div class="col-md-3">
-                                                            <span class="u-header__sub-menu-title">Home & Static Pages</span>
-                                                            <ul class="u-header__sub-menu-nav-group">
-                                                                <li><a href="home/index.html" class="nav-link u-header__sub-menu-nav-link">Home v1</a></li>
-                                                            </ul>
+                                                        <span class="u-header__sub-menu-title">{{$category['category_name']}}</span>
+                                                        <ul class="u-header__sub-menu-nav-group">
+                                                            @foreach ($category['subcategories'] as $subcategory)
+                                                            <li><a href="/{{ $subcategory['url'] }}" class="nav-link u-header__sub-menu-nav-link">{{ $subcategory['category_name'] }}</a></li>
+                                                            @endforeach
+                                                            <li> <a class="nav-link u-header__sub-menu-nav-link u-nav-divider border-top pt-2 flex-column align-items-start" href="/{{ $category['url'] }}">
+                                                                <div class="">{{ $category['category_name'] }}</div></a><li>
+                                                        </ul>
                                                         </div>
+                                                        @endforeach
+                                                        @endif
+                                                        @endforeach
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- End Desktop -->
+                                        <!-- LAPTOP -->
+                                        <li class="nav-item hs-has-mega-menu u-header__nav-item"
+                                            data-event="click"
+                                            data-animation-in="slideInUp"
+                                            data-animation-out="fadeOut"
+                                            data-position="left">
+                                            <a id="homeMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle text-sale" href="javascript:;" aria-haspopup="true" aria-expanded="false">Laptop</a>
+                                            <!-- LAPTOP - Mega Menu -->
+                                            <div class="hs-mega-menu w-100 u-header__sub-menu" aria-labelledby="homeMegaMenu">
+                                                <div class="row u-header__mega-menu-wrapper">
+                                                        @foreach ($sections as $section)
+                                                        @if($section['id'] == 2)
+                                                        @foreach ($section['categories'] as $category)
                                                         <div class="col-md-3">
-                                                            <span class="u-header__sub-menu-title">Shop Pages</span>
-                                                            <ul class="u-header__sub-menu-nav-group mb-3">
-                                                                <li><a href="shop-grid.html" class="nav-link u-header__sub-menu-nav-link">Shop Grid</a></li>
-                                                            </ul>
-                                                            <span class="u-header__sub-menu-title">Product Categories</span>
-                                                            <ul class="u-header__sub-menu-nav-group">
-                                                                <li><a href="product-categories-4-column-sidebar.html" class="nav-link u-header__sub-menu-nav-link">4 Column Sidebar</a></li>
-                                                            </ul>
+                                                        <span class="u-header__sub-menu-title">{{$category['category_name']}}</span>
+                                                        <ul class="u-header__sub-menu-nav-group">
+                                                            @foreach ($category['subcategories'] as $subcategory)
+                                                            <li><a href="/{{ $subcategory['url'] }}" class="nav-link u-header__sub-menu-nav-link">{{ $subcategory['category_name'] }}</a></li>
+                                                            @endforeach
+                                                            <li> <a class="nav-link u-header__sub-menu-nav-link u-nav-divider border-top pt-2 flex-column align-items-start" href="/{{ $category['url'] }}">
+                                                                <div class="">{{ $category['category_name'] }}</div></a><li>
+                                                        </ul>
                                                         </div>
-                                                        <div class="col-md-3">
-                                                            <span class="u-header__sub-menu-title">Single Product Pages</span>
-                                                            <ul class="u-header__sub-menu-nav-group mb-3">
-                                                                <li><a href="single-product-extended.html" class="nav-link u-header__sub-menu-nav-link">Single Product Extended</a></li>
-                                                            </ul>
-                                                            <span class="u-header__sub-menu-title">Ecommerce Pages</span>
-                                                            <ul class="u-header__sub-menu-nav-group">
-                                                                <li><a href="shop_listing.html" class="nav-link u-header__sub-menu-nav-link">Shop</a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <span class="u-header__sub-menu-title">Blog Pages</span>
-                                                            <ul class="u-header__sub-menu-nav-group mb-3">
-                                                                <li><a href="blog/blog-v1.html" class="nav-link u-header__sub-menu-nav-link">Blog v1</a></li>
-                                                            </ul>
-                                                            <span class="u-header__sub-menu-title">Shop Columns</span>
-                                                            <ul class="u-header__sub-menu-nav-group">
-                                                                <li><a href="shop-7-columns-full-width.html" class="nav-link u-header__sub-menu-nav-link">7 Column Full width</a></li>
-                                                            </ul>
-                                                        </div>
+                                                        @endforeach
+                                                        @endif
+                                                        @endforeach
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- End LAPTOP -->
+                                        <!-- Accessories -->
+                                        <li class="nav-item hs-has-mega-menu u-header__nav-item"
+                                            data-event="click"
+                                            data-animation-in="slideInUp"
+                                            data-animation-out="fadeOut"
+                                            data-position="left">
+                                            <a id="homeMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle text-sale" href="javascript:;" aria-haspopup="true" aria-expanded="false">Accessories</a>
+                                            <!-- LAPTOP - Mega Menu -->
+                                            <div class="hs-mega-menu w-100 u-header__sub-menu" aria-labelledby="homeMegaMenu">
+                                                <div class="row u-header__mega-menu-wrapper">
+                                                    <div class="col-md-6">
+                                                    <span class="u-header__sub-menu-title">Accessories</span>
+                                                        @foreach ($sections as $section)
+                                                        @if($section['id'] == 5)
+                                                        @foreach ($section['categories'] as $category)
+                                                        <ul class="u-header__sub-menu-nav-group">
+                                                            @foreach ($category['subcategories'] as $subcategory)
+                                                            <li><a href="/{{ $subcategory['url'] }}" class="nav-link u-header__sub-menu-nav-link">{{ $subcategory['category_name'] }}</a></li>
+                                                            @endforeach
+                                                            <li> <a class="nav-link u-header__sub-menu-nav-link u-nav-divider border-top pt-2 flex-column align-items-start" href="/{{ $category['url'] }}">
+                                                                <div class="">{{ $category['category_name'] }}</div></a><li>
+                                                        </ul>
+                                                        @endforeach
+                                                        @endif
+                                                        @endforeach
                                                     </div>
                                                 </div>
-                                                <!-- End Home - Mega Menu -->
-                                            </li>
-                                            <!-- End Pages -->
+                                            </div>
+                                        </li>
+                                        <!-- End Accessories -->
+                                        <!-- Gadget -->
+                                        <li class="nav-item hs-has-mega-menu u-header__nav-item"
+                                            data-event="click"
+                                            data-animation-in="slideInUp"
+                                            data-animation-out="fadeOut"
+                                            data-position="left">
+                                            <a id="homeMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle text-sale" href="javascript:;" aria-haspopup="true" aria-expanded="false">Gadgets</a>
+                                            <!-- LAPTOP - Mega Menu -->
+                                            <div class="hs-mega-menu w-100 u-header__sub-menu" aria-labelledby="homeMegaMenu">
+                                                <div class="row u-header__mega-menu-wrapper">
+                                                    <div class="col-md-6">
+                                                    <span class="u-header__sub-menu-title">Gadgets & Gear</span>
+                                                        @foreach ($sections as $section)
+                                                        @if($section['id'] == 6)
+                                                        @foreach ($section['categories'] as $category)
+                                                        <ul class="u-header__sub-menu-nav-group">
+                                                            @foreach ($category['subcategories'] as $subcategory)
+                                                            <li><a href="/{{ $subcategory['url'] }}" class="nav-link u-header__sub-menu-nav-link">{{ $subcategory['category_name'] }}</a></li>
+                                                            @endforeach
+                                                            <li> <a class="nav-link u-header__sub-menu-nav-link u-nav-divider border-top pt-2 flex-column align-items-start" href="/{{ $category['url'] }}">
+                                                                <div class="">{{ $category['category_name'] }}</div></a><li>
+                                                        </ul>
+                                                        @endforeach
+                                                        @endif
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- End Gadget -->
 
-                                            <!-- Blog -->
-                                            <li class="nav-item hs-has-sub-menu u-header__nav-item"
-                                                data-event="hover"
-                                                data-animation-in="slideInUp"
-                                                data-animation-out="fadeOut">
-                                                <a id="blogMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false" aria-labelledby="blogSubMenu">Blog</a>
+                                        <!-- About us -->
+                                        <li class="nav-item u-header__nav-item">
+                                            <a class="nav-link u-header__nav-link" href="{{url('/about-us')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu">About us</a>
+                                        </li>
+                                        <!-- End About us -->
 
-                                                <!-- Blog - Submenu -->
-                                                <ul id="blogSubMenu" class="hs-sub-menu u-header__sub-menu" aria-labelledby="blogMegaMenu" style="min-width: 230px;">
-                                                    <li><a class="nav-link u-header__sub-menu-nav-link" href="blog/blog-v1.html">Blog v1</a></li>
-                                                </ul>
-                                                <!-- End Submenu -->
-                                            </li>
-                                            <!-- End Blog -->
+                                        <!-- FAQs -->
+                                        <li class="nav-item u-header__nav-item">
+                                            <a class="nav-link u-header__nav-link" href="{{url('/faqs')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="blogSubMenu">FAQs</a>
+                                        </li>
+                                        <!-- End FAQs -->
 
-                                            <!-- About us -->
-                                            <li class="nav-item u-header__nav-item">
-                                                <a class="nav-link u-header__nav-link" href="home/about.html">About us</a>
-                                            </li>
-                                            <!-- End About us -->
-
-                                            <!-- FAQs -->
-                                            <li class="nav-item u-header__nav-item">
-                                                <a class="nav-link u-header__nav-link" href="home/faq.html">FAQs</a>
-                                            </li>
-                                            <!-- End FAQs -->
-
-                                            <!-- Contact Us -->
-                                            <li class="nav-item u-header__nav-item">
-                                                <a class="nav-link u-header__nav-link" href="home/contact-v1.html">Contact Us</a>
-                                            </li>
-                                            <!-- End Contact Us -->
+                                        <!-- Contact Us-->
+                                        <li class="nav-item u-header__nav-item">
+                                            <a class="nav-link u-header__nav-link" href="{{url('/contact-us')}}" aria-haspopup="true" aria-expanded="false">Contact Us</a>
+                                        </li>
+                                        <!-- End Contact Us-->
                                         </ul>
                                     </div>
                                     <!-- End Navigation -->
@@ -231,10 +272,10 @@
                                     <i class="ec ec-support font-size-50 text-primary"></i>
                                     <div class="ml-2">
                                         <div class="phone">
-                                            <strong>Support</strong> <a href="tel:800856800604" class="text-gray-90">(+800) 856 800 604</a>
+                                            <strong>Support</strong> <a href="tel:800856800604" class="text-gray-90">(+880) 1774339279</a>
                                         </div>
                                         <div class="email">
-                                            E-mail: <a href="mailto:info@electro.com?subject=Help Need" class="text-gray-90">info@electro.com</a>
+                                            E-mail: <a href="mailto:info@geekshopbd.com?subject=Help Need" class="text-gray-90">info@geekshopbd.com</a>
                                         </div>
                                     </div>
                                 </div>
@@ -335,7 +376,7 @@
                                                                     <a id="basicMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false">{{ $section['name'] }}</a>
 
                                                                     <!-- Nav Item - Mega Menu -->
-                                                                    <div style="height: 600px;width: 1000px;overflow:auto ;" class="hs-mega-menu vmm-tfw u-header__sub-menu "  aria-labelledby="basicMegaMenu" >
+                                                                    <div style="border-radius:50px 50px 50px 50px;height: 600px;width: 1000px;overflow:auto ;" class="hs-mega-menu vmm-tfw u-header__sub-menu "  aria-labelledby="basicMegaMenu" >
                                                                         
                                                                         <div class="row u-header__mega-menu-wrapper">
                                                                             

@@ -1,8 +1,10 @@
-// $("#sort").on('change',function(){
-//     this.form.submit();
-// });
 
 $(document).ready(function() {
+/********************************************************************
+* 
+* AJAX - CSRF TOEKN PASSING USING META TAG ON HEADER 
+* 
+*********************************************************************/
     $.ajaxSetup({
         beforeSend: function(xhr, type) {
             if (!type.crossDomain) {
@@ -13,21 +15,27 @@ $(document).ready(function() {
             }
         }
     });
+/********************************************************************
+* 
+* AJAX - SORT & FILTER ON LISTING PROUDCT  PAGE: 
+* 
+*********************************************************************/
     $("#sort").on("change", function() {
         var sort = $(this).val();
         var url = $("#url").val();
         var generation = get_filter("generation");
         var processor = get_filter("processor");
+        var ram = get_filter("ram");
+        var hdd = get_filter("hdd");
+        var ssd = get_filter("ssd");
+        var graphics = get_filter("graphics");
+        $('.viewToggle').addClass('active');
+        $('.viewToggle2').removeClass('active');
 
         $.ajax({
             url: url,
             method: "post",
-            data: {
-                generation: generation,
-                processor: processor,
-                sort: sort,
-                url: url
-            },
+            data: {generation:generation,processor:processor,ram:ram,hdd:hdd,ssd:ssd,graphics:graphics,sort:sort,url:url},
             success: function(data) {
                 $(".filter_products").html(data);
             }
@@ -37,31 +45,118 @@ $(document).ready(function() {
     $(".generation").on("click", function() {
         var generation = get_filter("generation");
         var processor = get_filter("processor");
+        var ram = get_filter("ram");
+        var hdd = get_filter("hdd");
+        var ssd = get_filter("ssd");
+        var graphics = get_filter("graphics");
         var sort = $("#sort option:selected").val();
         var url = $("#url").val();
+        $('.viewToggle').addClass('active');
+        $('.viewToggle2').removeClass('active');
         $.ajax({
             url: url,
             method: "post",
-            data: {
-                generation: generation,
-                processor: processor,
-                sort: sort,
-                url: url
-            },
+            data: {generation:generation,processor:processor,ram:ram,hdd:hdd,ssd:ssd,graphics:graphics,sort:sort,url:url},
             success: function(data) {
                 $(".filter_products").html(data);
             }
         });
     });
     $(".processor").on("click", function() {
-        // var generation = get_filter('generation');
+        var generation = get_filter("generation");
         var processor = get_filter("processor");
+        var ram = get_filter("ram");
+        var hdd = get_filter("hdd");
+        var ssd = get_filter("ssd");
+        var graphics = get_filter("graphics");
         var sort = $("#sort option:selected").val();
         var url = $("#url").val();
+        $('.viewToggle').addClass('active');
+        $('.viewToggle2').removeClass('active');
         $.ajax({
             url: url,
             method: "post",
-            data: { processor: processor, sort: sort, url: url },
+            data: {generation:generation,processor:processor,ram:ram,hdd:hdd,ssd:ssd,graphics:graphics,sort:sort,url:url},
+            success: function(data) {
+                $(".filter_products").html(data);
+            }
+        });
+    });
+    $(".ram").on("click", function() {
+        var generation = get_filter("generation");
+        var processor = get_filter("processor");
+        var ram = get_filter("ram");
+        var hdd = get_filter("hdd");
+        var ssd = get_filter("ssd");
+        var graphics = get_filter("graphics");
+        var sort = $("#sort option:selected").val();
+        var url = $("#url").val();
+        $('.viewToggle').addClass('active');
+        $('.viewToggle2').removeClass('active');
+        $.ajax({
+            url: url,
+            method: "post",
+            data: {generation:generation,processor:processor,ram:ram,hdd:hdd,ssd:ssd,graphics:graphics,sort:sort,url:url},
+            success: function(data) {
+                $(".filter_products").html(data);
+            }
+        });
+    });
+    $(".ssd").on("click", function() {
+        var generation = get_filter("generation");
+        var processor = get_filter("processor");
+        var ram = get_filter("ram");
+        var hdd = get_filter("hdd");
+        var ssd = get_filter("ssd");
+        var graphics = get_filter("graphics");
+        var sort = $("#sort option:selected").val();
+        var url = $("#url").val();
+        $('.viewToggle').addClass('active');
+        $('.viewToggle2').removeClass('active');
+        $.ajax({
+            url: url,
+            method: "post",
+            data: {generation:generation,processor:processor,ram:ram,hdd:hdd,ssd:ssd,graphics:graphics,sort:sort,url:url},
+            success: function(data) {
+                $(".filter_products").html(data);
+            }
+        });
+    });
+    $(".hdd").on("click", function() {
+        var generation = get_filter("generation");
+        var processor = get_filter("processor");
+        var ram = get_filter("ram");
+        var hdd = get_filter("hdd");
+        var ssd = get_filter("ssd");
+        var graphics = get_filter("graphics");
+        var sort = $("#sort option:selected").val();
+        var url = $("#url").val();
+        $('.viewToggle').addClass('active');
+        $('.viewToggle2').removeClass('active');
+        $.ajax({
+            url: url,
+            method: "post",
+            data: {generation:generation,processor:processor,ram:ram,hdd:hdd,ssd:ssd,graphics:graphics,sort:sort,url:url},
+            success: function(data) {
+                $(".filter_products").html(data);
+            }
+        });
+    });
+    $(".graphics").on("click", function() {
+        var generation = get_filter("generation");
+        var processor = get_filter("processor");
+        var ram = get_filter("ram");
+        var hdd = get_filter("hdd");
+        var ssd = get_filter("ssd");
+        var graphics = get_filter("graphics");
+        var sort = $("#sort option:selected").val();
+        var url = $("#url").val();
+        $('.viewToggle').addClass('active');
+        $('.viewToggle2').removeClass('active');
+        $.ajax({
+            url: url,
+            method: "post",
+            data: {generation:generation,processor:processor,ram:ram,hdd:hdd,ssd:ssd,graphics:graphics,sort:sort,url:url},
             success: function(data) {
                 $(".filter_products").html(data);
             }
@@ -74,6 +169,45 @@ $(document).ready(function() {
         });
         return filter;
     }
+
+/*************************************************************
+* 
+* AJAX - PRODUCT LISTING PAGE PAGINATION
+* 
+*************************************************************/
+    $(document).on('click','.pagination a', function(event){
+        event.preventDefault();
+        $('.viewToggle').addClass('active');
+        $('.viewToggle2').removeClass('active');
+        $('li').removeClass('active');
+        $('li').removeClass('disabled');
+        $(this).parent('li').addClass('active');
+        var page = $(this).attr('href').split('page=')[1];
+        fetch_data(page);
+    });
+    function fetch_data(page){
+        var generation = get_filter("generation");
+        var processor = get_filter("processor");
+        var ram = get_filter("ram");
+        var hdd = get_filter("hdd");
+        var ssd = get_filter("ssd");
+        var graphics = get_filter("graphics");
+        var sort = $("#sort option:selected").val();
+        var url = $("#url").val();
+        $.ajax({
+            method: "GET",
+            url: url+"?page="+page,
+            data: {generation:generation,processor:processor,ram:ram,hdd:hdd,ssd:ssd,graphics:graphics,sort:sort,url:url},
+            success : function(data){
+                $('.filter_products').html(data);
+            }
+        });
+    }
+/********************************************************************
+* 
+* AJAX - PRICE UPDATE BY PRODUCT COLOR ON SINGLE PROUDCT VIEW PAGE: 
+* 
+*********************************************************************/
     $("#getPrice").on("change", function() {
         var color = $(this).val();
         var product_id = $(this).attr("product-id");
@@ -101,3 +235,10 @@ $(document).ready(function() {
         });
     });
 });
+
+
+
+//GARBAGE AREA
+// $("#sort").on('change',function(){
+//     this.form.submit();
+// });

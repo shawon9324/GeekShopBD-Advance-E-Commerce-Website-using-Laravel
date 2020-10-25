@@ -127,7 +127,7 @@ $sections = Section::sections();
                     <div class="row">
                         
                         <div class="col-md-6 mb-4 mb-xl-0 col-xl-3">
-                            <a href="shop_listing.html" class="d-black text-gray-90">
+                            <a href="{{url('product-categories/1')}}" class="d-black text-gray-90">
                                 <div class="min-height-132 py-1 d-flex bg-gray-1 align-items-center">
                                     <div class="col-6 col-xl-5 col-wd-6 pr-0">
                                         <img class="img-fluid" src="{{ url('img/front_img/190X150/img3.jpg') }}" alt="Image Description">
@@ -147,7 +147,7 @@ $sections = Section::sections();
                             </a>
                         </div>
                         <div class="col-md-6 mb-4 mb-xl-0 col-xl-3">
-                            <a href="shop_listing.html" class="d-black text-gray-90">
+                            <a href="{{url('product-categories/2')}}" class="d-black text-gray-90">
                                 <div class="min-height-132 py-1 d-flex bg-gray-1 align-items-center">
                                     <div class="col-6 col-xl-5 col-wd-6 pr-0">
                                         <img class="img-fluid" src="{{ url('img/front_img/190X150/img2.jpg') }}" alt="Image Description">
@@ -167,7 +167,7 @@ $sections = Section::sections();
                             </a>
                         </div>
                         <div class="col-md-6 mb-4 mb-xl-0 col-xl-3">
-                            <a href="shop_listing.html" class="d-black text-gray-90">
+                            <a href="{{url('product-categories/4')}}" class="d-black text-gray-90">
                                 <div class="min-height-132 py-1 d-flex bg-gray-1 align-items-center">
                                     <div class="col-6 col-xl-5 col-wd-6 pr-0">
                                         <img class="img-fluid" src="{{ url('img/front_img/190X150/img1.png') }}" alt="Image Description">
@@ -187,14 +187,14 @@ $sections = Section::sections();
                             </a>
                         </div>
                         <div class="col-md-6 mb-4 mb-xl-0 col-xl-3">
-                            <a href="shop_listing.html" class="d-black text-gray-90">
+                            <a href="{{url('product-categories/5')}}" class="d-black text-gray-90">
                                 <div class="min-height-132 py-1 d-flex bg-gray-1 align-items-center">
                                     <div class="col-6 col-xl-5 col-wd-6 pr-0">
                                         <img class="img-fluid" src="{{ url('img/front_img/190X150/img4.png') }}" alt="Image Description">
                                     </div>
                                     <div class="col-6 col-xl-7 col-wd-6">
                                         <div class="mb-2 pb-1 font-size-18 font-weight-light text-ls-n1 text-lh-23">
-                                            DISCOVER MORE CATEGORIES OF <strong>GADGET</strong>
+                                            DISCOVER MORE CATEGORIES OF <strong>ACCESSORIES</strong>
                                         </div>
                                         <div class="link text-gray-90 font-weight-bold font-size-15" href="#">
                                             Discover now

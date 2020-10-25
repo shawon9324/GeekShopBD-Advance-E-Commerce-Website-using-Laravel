@@ -15,6 +15,9 @@ $sections = Section::sections();
                             <div class="topbar-right ml-auto">
                                 <ul class="list-inline mb-0">
                                     <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
+                                        <a href="" class="u-header-topbar__nav-link"> Free Delevering on Orders ৳ 499+</a>
+                                    </li>
+                                    <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
                                         <a href="home/contact-v2.html" class="u-header-topbar__nav-link"><i class="ec ec-map-pointer mr-1"></i> Store Locator</a>
                                     </li>
                                     <li class="list-inline-item mr-0 u-header-topbar__nav-item u-header-topbar__nav-item-border">
@@ -285,7 +288,7 @@ $sections = Section::sections();
                                             data-parent="#basicsAccordion">
                                             <div class="card-body p-0">
                                                 <nav class="js-mega-menu navbar navbar-expand-xl u-header__navbar u-header__navbar--no-space hs-menu-initialized">
-                                                    <div id="navBar" class="navbar-nav u-header__navbar-nav border-primary border-top-0">
+                                                    <div style="border-radius:0 0 15px 15px; " id="navBar" class="navbar-nav u-header__navbar-nav border-primary border-top-0">
                                                         <ul class="navbar-nav u-header__navbar-nav">
                                                             @foreach ($sections as $section)
                                                                 @if(count($section['categories']) > 0)
@@ -296,9 +299,8 @@ $sections = Section::sections();
                                                                         data-animation-out="fadeOut"
                                                                         data-position="left">
                                                                         <a id="basicMegaMenu" class="nav-link u-header__nav-link u-header__nav-link-toggle" href="javascript:;" aria-haspopup="true" aria-expanded="false">{{ $section['name'] }}</a>
-
                                                                         <!--SECTION- Nav Item - Mega Menu -->
-                                                                        <div style="height: 600px;width: 1000px;overflow:auto ;" class="hs-mega-menu vmm-tfw u-header__sub-menu "  aria-labelledby="basicMegaMenu" >
+                                                                        <div style="border-radius:50px 50px 50px 50px; height: 600px;width: 1000px;overflow:auto ;" class="hs-mega-menu vmm-tfw u-header__sub-menu "  aria-labelledby="basicMegaMenu" >
                                                                         
                                                                             <div class="row u-header__mega-menu-wrapper">
                                                                                 
@@ -308,12 +310,12 @@ $sections = Section::sections();
                                                                                     <ul class="u-header__sub-menu-nav-group mb-3">
                                                                                         @foreach ($category['subcategories'] as $subcategory)
                                                                                         <li>
-                                                                                            <a class="nav-link u-header__sub-menu-nav-link" href="/{{ $subcategory['url'] }}">{{ $subcategory['category_name'] }}</a>
+                                                                                            <a class="nav-link u-header__sub-menu-nav-link" href="{{ url('/'.$subcategory['url'])}}">{{ $subcategory['category_name'] }}</a>
                                                                                         </li>
                                                                                         @endforeach
                                                                                         <li>
                                                                                             
-                                                                                                <a class="nav-link u-header__sub-menu-nav-link u-nav-divider border-top pt-2 flex-column align-items-start" href="/{{ $category['url'] }}">
+                                                                                                <a class="nav-link u-header__sub-menu-nav-link u-nav-divider border-top pt-2 flex-column align-items-start" href="{{ url('/'.$category['url'])}}">
                                                                                                     <div class="">{{ $category['category_name'] }}</div>
                                                                                                     <div class="u-nav-subtext font-size-11 text-gray-30">All products</div>                                                                                                </a>
                                                                                         </li>
@@ -467,31 +469,39 @@ $sections = Section::sections();
                                             </div>
                                         </li>
                                         <!-- End Gadget -->
-
-                                        <!-- About us -->
-                                        <li class="nav-item u-header__nav-item">
-                                            <a class="nav-link u-header__nav-link" href="#" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu">About us</a>
-                                        </li>
-                                        <!-- End About us -->
-
+                                        
                                         <!-- FAQs -->
                                         <li class="nav-item u-header__nav-item">
-                                            <a class="nav-link u-header__nav-link" href="#" aria-haspopup="true" aria-expanded="false" aria-labelledby="blogSubMenu">FAQs</a>
+                                            <a class="nav-link u-header__nav-link" href="{{url('/faqs')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="blogSubMenu">FAQs</a>
                                         </li>
                                         <!-- End FAQs -->
-
+                                        <!-- About us -->
+                                        <li class="nav-item u-header__nav-item">
+                                            <a class="nav-link u-header__nav-link" href="{{url('/about-us')}}" aria-haspopup="true" aria-expanded="false" aria-labelledby="pagesSubMenu">About us</a>
+                                        </li>
+                                        <!-- End About us -->
                                         <!-- Contact Us-->
                                         <li class="nav-item u-header__nav-item">
-                                            <a class="nav-link u-header__nav-link" href="#" aria-haspopup="true" aria-expanded="false">Contact Us</a>
+                                            <a class="nav-link u-header__nav-link" href="{{url('/contact-us')}}" aria-haspopup="true" aria-expanded="false">Contact Us</a>
                                         </li>
                                         <!-- End Contact Us-->
+                                        <!-- Terms and Conditions-->
+                                        <li class="nav-item u-header__nav-item">
+                                            <a class="nav-link u-header__nav-link" href="{{url('/terms-conditions')}}" aria-haspopup="true" aria-expanded="false">Terms and Conditions</a>
+                                        </li>
+                                        <!-- End Terms and Conditions-->
+                                        <!-- Store Directory-->
+                                        <li class="nav-item u-header__nav-item">
+                                            <a class="nav-link u-header__nav-link" href="{{url('/store-directory')}}" aria-haspopup="true" aria-expanded="false">Store Directory</a>
+                                        </li>
+                                        <!-- End Store Directory-->
 
                                         <!-- Button -->
-                                        <li class="nav-item u-header__nav-last-item">
+                                        {{-- <li class="nav-item u-header__nav-last-item">
                                             <a class="text-gray-90" href="#" target="_blank">
                                                 Free Delevering on Orders ৳ 499+
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         <!-- End Button -->
                                     </ul>
                                 </div>

@@ -82,9 +82,6 @@
 
                                             <!-- End Gallery -->
                                     @endforeach
-                                {{-- @foreach ($productDetails['images'] as $img)
-                                
-                                @endforeach --}}
 
                             </div>
                         </div>

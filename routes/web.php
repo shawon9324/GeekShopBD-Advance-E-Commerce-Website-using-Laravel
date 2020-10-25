@@ -7,11 +7,24 @@ use App\Category;
 use App\Product;
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+/*************************************************************
+* 
+* All ADMIN ROUTES
+*
+*************************************************************/
 Route::prefix('admin')->namespace('Admin')->group(function () {
-    //All ADMIN ROUTES
+    /*************************
+    * ADMIN LOGIN
+    *************************/
     Route::match(['get', 'post'], '/', 'AdminController@login');
+    /*****************************
+    * ADMIN PANEL-[dashboard]
+    *****************************/
     Route::group(['middleware' => ['admin']], function () {
-        //admins
+        /**************************************************************
+        * DASHBOARD+ADMIN PROFILE+UPDATE PROFILES+LOGOUT+SETTINGS
+        ***************************************************************/
         Route::get('dashboard', 'AdminController@dashboard');
         Route::get('settings', 'AdminController@settings');
         Route::get('profile', 'AdminController@profile');
@@ -19,36 +32,48 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
         Route::post('update-current-password', 'AdminController@updateCurrentPassword');
         Route::get('logout', 'AdminController@logout');
         Route::match(['get', 'post'], 'update-admin-details', 'AdminController@updateAdminDetails');
-        //sections
+        /****************************************
+        * SECTIONS
+        *****************************************/
         Route::get('sections', 'SectionController@sections');
         Route::post('update-section-status', 'SectionController@updateSectionStatus');
-        // Brands
+        /****************************************
+        * BRANDS
+        ****************************************/
         Route::get('brands', 'BrandController@brands');
         Route::post('update-brand-status', 'BrandController@updateBrandStatus');
         Route::get('delete-brand/{id}', 'BrandController@deleteBrand');
         Route::match(['get', 'post'], 'add-edit-brand/{id?}', 'BrandController@addEditBrand');
-        //categories
+        /****************************************
+        * CATEGORIES
+        *****************************************/
         Route::get('categories', 'CategoryController@categories');
         Route::post('update-category-status', 'CategoryController@updateCategoryStatus');
         Route::match(['get', 'post'], 'add-edit-category/{id?}', 'CategoryController@addEditCategory');
         Route::post('append-categories-level', 'CategoryController@appendCategoryLevel');
         Route::get('delete-category-image/{id}', 'CategoryController@deleteCategoryImage');
         Route::get('delete-category/{id}', 'CategoryController@deleteCategory');
-        //products
+        /****************************************
+        * PRODUCTS
+        *****************************************/
         Route::get('products', 'ProductController@products');
         Route::post('update-product-status', 'ProductController@updateProductStatus');
         Route::get('delete-product/{id}', 'ProductController@deleteProduct');
         Route::get('delete-product-image/{id}', 'ProductController@deleteProductImage');
         Route::get('delete-product-video/{id}', 'ProductController@deleteProductVideo');
         Route::match(['get', 'post'], 'add-edit-product/{id?}', 'ProductController@addEditProduct');
-        //attribute
+        /***************************************
+        * ATTRIBUTES
+        ****************************************/
         Route::match(['get', 'post'], 'add-attributes/{id}', 'ProductController@addAttributes');
         Route::post('edit-attributes/{id}', 'ProductController@editAttributes');
         Route::get('delete-attributes/{id}', 'ProductController@deleteAttributes');
         Route::match(['get', 'post'], 'add-images/{id}', 'ProductController@addImages');
         Route::get('delete-images/{id}', 'ProductController@deleteImages');
         Route::post('update-product-attributes-status','ProductController@updateProductAttributesStatus');
-        //Banners
+        /****************************************
+        * BANNERS
+        *****************************************/
         Route::get('banners', 'BannerController@banners');
         Route::post('update-banner-status', 'BannerController@updateBannerStatus');
         Route::get('delete-banner/{id}', 'BannerController@deleteBanner');
@@ -57,25 +82,57 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     });
 }); 
 
+
+
+/************************************************************
+* 
+* All INDEX ROUTES
+*
+*************************************************************/
 Route::namespace('Front')->group(function () {
+
+    /****************************************
+    *INDEX PAGE
+    *****************************************/
     Route::get('/', 'IndexController@index');
+    Route::get('about-us', 'IndexController@aboutUs');
+    Route::get('contact-us', 'IndexController@contactUs');
+    Route::get('faqs', 'IndexController@faqs');
+    Route::get('terms-conditions', 'IndexController@termsConditions');
+    Route::get('store-directory', 'IndexController@storeDirectory');
+    Route::get('product-categories/{id}', 'ProductsController@productCategories');
+
+
+    /****************************************
+    *PRODUCT LISTING PAGE
+    *****************************************/
     $catUrls = Category::select('url')->where('status',1)->get()->pluck('url')->toArray();
     foreach ($catUrls as $url) {
         Route::any('/'.$url, 'ProductsController@listing');
     }
 
     
-    //get product model_name in array
+    /****************************************
+    *PRODUCT SINGLE VIEW PAGE
+    *****************************************/
+    /* NOTE: THIS PRODUCT URL GENERATION PROCESS IS TEMPORARY! WILL UPGRADE IT LATER .BECAUSE THIS IS NOT EFFICIENT FOR HUGE PRODUCTS STORAGE */
     $productModels = Product::select('product_model')->where('status',1)->get()->pluck('product_model')->toArray();
     foreach($productModels as $productModel){
-        //generate_url_format from modelName
         $productUrl = strtolower(str_replace('+','-',urlencode($productModel))); 
-        //route for each product
-        Route::get('/product/'.$productUrl.'-{id}','ProductsController@productDetails');
+        Route::get('product/'.$productUrl.'-{id}','ProductsController@productDetails');
     }
-
-    
-    //Ajax Product Attribute Price
+        
+    /**********************************************************************************************
+    * AJAX PRODUCT PRICE & DISCOUNT-PRICE UPDATE FOR RESPECTATIVE COLOR OF THE PRODUCT
+    ***********************************************************************************************/
     Route::post('/get-product-price','ProductsController@getProductPrice');
     Route::post('/get-product-discount-price','ProductsController@getProductDiscountPrice');
+
+
+    /**********************************************************************************************
+    * AJAX PRODUCT PRICE & DISCOUNT-PRICE UPDATE FOR RESPECTATIVE COLOR OF THE PRODUCT
+    ***********************************************************************************************/
+    Route::post('/get-product-price','ProductsController@getProductPrice');
+    Route::post('/get-product-discount-price','ProductsController@getProductDiscountPrice');
+
 });

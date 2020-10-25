@@ -1,16 +1,28 @@
-function goBack() {
-    window.history.back();
-}
-//loader
+/********************************************************************
+* 
+* ADMIN PANEL : LOADER ANIMATION
+* 
+*********************************************************************/
 window.addEventListener('load', function load() {
     const loader = document.getElementById('loader');
     setTimeout(function() {
       loader.classList.add('fadeOut');
     }, 150);
   });
+/********************************************************************
+* BACK BUTTON FUNCTION
+*********************************************************************/
+function goBack() {
+    window.history.back();
+}
 
-$(document).ready(function () {
-    //check_admin_pwd_correct_or_not
+$(document).ready(function (){
+
+/********************************************************************
+* 
+* AJAX - DYNAMIC CURRENT PASSWORD MATCH CHECKING :[admin-password-change] 
+* 
+*********************************************************************/
     $("#current_password").keyup(function () {
         var current_password = $("#current_password").val();
 
@@ -39,7 +51,11 @@ $(document).ready(function () {
         });
     });
 
-    //Brand status Active/Inactive toggling update
+/********************************************************************
+* 
+* AJAX - STATUS ACTIVE/INACTIVE TOGGLING : [brand] 
+* 
+*********************************************************************/
     $(document).on("click", ".updateBrandStatus", function () {
         var status = $(this)
             .children("i")
@@ -64,7 +80,11 @@ $(document).ready(function () {
         });
     });
 
-    //Section status Active/Inactive toggling update
+/********************************************************************
+* 
+* AJAX - STATUS ACTIVE/INACTIVE TOGGLING : [section] 
+* 
+*********************************************************************/
     $(document).on("click", ".updateSectionStatus", function () {
         var status = $(this)
             .children("i")
@@ -88,8 +108,11 @@ $(document).ready(function () {
             error: function () { }
         });
     });
-
-    //Category status Active/Inactive toggling update
+/********************************************************************
+* 
+* AJAX - STATUS ACTIVE/INACTIVE TOGGLING : [category] 
+* 
+*********************************************************************/
     $(document).on("click", ".updateCategoryStatus", function () {
         var status = $(this)
             .children("i")
@@ -113,8 +136,11 @@ $(document).ready(function () {
             error: function () { }
         });
     });
-
-    //Products status Active/Inactive toggling update
+/********************************************************************
+* 
+* AJAX - STATUS ACTIVE/INACTIVE TOGGLING : [product] 
+* 
+*********************************************************************/
     $(document).on("click", ".updateProductStatus", function () {
         var status = $(this)
             .children("i")
@@ -138,7 +164,11 @@ $(document).ready(function () {
             error: function () { }
         });
     });
-    //Banner status Active/Inactive toggling update
+/********************************************************************
+* 
+* AJAX - STATUS ACTIVE/INACTIVE TOGGLING : [banner] 
+* 
+*********************************************************************/
     $(document).on("click", ".updateBannerStatus", function () {
         var status = $(this)
             .children("i")
@@ -162,7 +192,11 @@ $(document).ready(function () {
             error: function () { }
         });
     });
-    //Product Attributes status Active/Inactive toggling update
+/********************************************************************************
+* 
+* AJAX - STATUS ACTIVE/INACTIVE TOGGLING : [product-attributes(stock,color)] 
+* 
+********************************************************************************/
     $(document).on("click", ".updateProductAttributesStatus", function () {
         var status = $(this)
             .children("i")
@@ -186,8 +220,11 @@ $(document).ready(function () {
             error: function () { }
         });
     });
-    //Append Category level in the Add category form
-
+/********************************************************************
+* 
+* AJAX - APPEND CATEGORY LEVEL : [add-category-form] 
+* 
+*********************************************************************/
     $("#section_id").change(function () {
         var section_id = $(this).val();
         $.ajax({
@@ -201,28 +238,17 @@ $(document).ready(function () {
         });
     });
 
-    // //confrim delete alert records(normal default alert)
-
-    // $(".confirmDelete").click(function(){
-    //     var name = $(this).attr("name");
-    //     if(confirm("Are you sure want to delete this"+name+"?"))
-    //     {
-    //         return true;
-    //     }
-    //     else
-    //     {
-    //         return false;
-    //     }
-    // });
-    //default alert message timeout
     $(".alert")
         .fadeTo(4000, 500)
         .slideUp(1000, function () {
             $(".alert").slideUp(4000);
         });
 
-    //confrim delete alert records(with Sweet Alert 2.0)
-
+/********************************************************************
+* 
+* CONFIRM DELETE SWEET-ALERT : [delete-button] 
+* 
+*********************************************************************/
     $(document).on("click", ".confirmDelete", function () {
         var record_type = $(this).attr("record_type");
         var record_id = $(this).attr("record_id");
@@ -243,9 +269,11 @@ $(document).ready(function () {
         });
     });
  
-
-    //view image in update category form
-
+/********************************************************************
+* 
+* IMAGE VIEW SWEET-ALERT : [update-form-image-view] 
+* 
+*********************************************************************/
     $(".imageView").click(function () {
         var image_id = $(this).attr("image_id");
         var image_info = $(this).attr("image_info");
@@ -259,36 +287,50 @@ $(document).ready(function () {
             imageAlt: "Image"
         });
     });
-
-    //Products attributes Add/remove script for future use from : https://www.codexworld.com/add-remove-input-fields-dynamically-using-jquery/
-    var maxField = 10; //Input fields increment limitation
-    var addButton = $(".add_button"); //Add button selector
-    var wrapper = $(".field_wrapper"); //Input field wrapper
+/********************************************************************
+* 
+*  ADD MULTIPLE PRODUCTS ATTRIBUTE DYNAMICALLY : 
+* Credit: https://www.codexworld.com/add-remove-input-fields-dynamically-using-jquery/
+* 
+*********************************************************************/
+    var maxField = 10;
+    var addButton = $(".add_button");
+    var wrapper = $(".field_wrapper");
     var fieldHTML =
         '<div><br>'+
         ' <input type="text" name="sku[]" value="" placeholder="SKU" style="width: 310px" required=""/>'+
         ' <input type="number" name="color[]" value="" placeholder="COLOR" style="width: 310px" /> '+
         ' <input type="number" name="price[]" value="" placeholder="PRICE" style="width: 310px" /> '+
         ' <input type="number" name="stock[]" value="" placeholder="STOCK" style="width: 310px" required=""/>'+
-         '<a href="javascript:void(0);" class="remove_button"> <i class="fa fa-minus-square" aria-hidden="true"></i></a></div>'; //New input field html
-    
-         var x = 1; //Initial field counter is 1
-
-    //Once add button is clicked
+         '<a href="javascript:void(0);" class="remove_button"> <i class="fa fa-minus-square" aria-hidden="true"></i></a></div>';
+         var x = 1; 
     $(addButton).click(function () {
-        //Check maximum number of input fields
         if (x < maxField) {
-            x++; //Increment field counter
-            $(wrapper).append(fieldHTML); //Add field html
+            x++;
+            $(wrapper).append(fieldHTML);
         }
     });
-
-    //Once remove button is clicked
     $(wrapper).on("click", ".remove_button", function (e) {
         e.preventDefault();
         $(this)
             .parent("div")
-            .remove(); //Remove field html
-        x--; //Decrement field counter
+            .remove();
+        x--;
     });
 });
+
+    /*GARBAGE CODE
+        // confrim delete alert records(normal default alert)
+        $(".confirmDelete").click(function(){
+            var name = $(this).attr("name");
+            if(confirm("Are you sure want to delete this"+name+"?"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        });
+        default alert message timeout
+    */
