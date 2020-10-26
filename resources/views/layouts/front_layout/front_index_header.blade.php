@@ -180,7 +180,7 @@ $sections = Section::sections();
                                         <li class="col d-none d-xl-block"><a href="wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites"></i></a></li>
                                         <li class="col d-xl-none px-2 px-sm-3"><a href="my-account.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="My Account"><i class="font-size-22 ec ec-user"></i></a></li>
                                         <li class="col pr-xl-0 px-2 px-sm-3 d-xl-none">
-                                            <a href="cart.html" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">
+                                            <a href="{{url('/shopping-cart')}}" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">
                                                 <i class="font-size-22 ec ec-shopping-bag"></i>
                                                 <span class="bg-lg-down-black width-22 height-22 bg-primary position-absolute d-flex align-items-center justify-content-center rounded-circle left-12 top-8 font-weight-bold font-size-12 white-txt">2</span>
                                                 <span class="d-none d-xl-block font-weight-bold font-size-16 text-gray-90 ml-3">$1785.00</span>
@@ -191,7 +191,7 @@ $sections = Section::sections();
                                                 aria-controls="basicDropdownHover"
                                                 aria-haspopup="true"
                                                 aria-expanded="false"
-                                                data-unfold-event="click"
+                                                data-unfold-event="hover"
                                                 data-unfold-target="#basicDropdownHover"
                                                 data-unfold-type="css-animation"
                                                 data-unfold-duration="300"
@@ -239,7 +239,7 @@ $sections = Section::sections();
                                                     </li>
                                                 </ul>
                                                 <div class="flex-center-between px-4 pt-2">
-                                                    <a href="cart.html" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-4 px-lg-5">View cart</a>
+                                                    <a href="{{url('/shopping-cart')}}" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-4 px-lg-5">View cart</a>
                                                     <a href="checkout.html" class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5">Checkout</a>
                                                 </div>
                                             </div>

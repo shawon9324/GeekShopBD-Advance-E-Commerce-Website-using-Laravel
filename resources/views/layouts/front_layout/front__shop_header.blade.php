@@ -281,7 +281,7 @@
                                 </div>
                             </div>
                             <!-- End Customer Care -->
-                            <!-- Header Icons -->
+                            <!-- Header Icons MOBILE DEVICE-->
                             <div class="d-xl-none col col-xl-auto text-right text-xl-left pl-0 pl-xl-3 position-static">
                                 <div class="d-inline-flex">
                                     <ul class="d-flex list-unstyled mb-0 align-items-center">
@@ -320,7 +320,7 @@
                                         <li class="col d-none d-xl-block"><a href="wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites white-txt"></i></a></li>
                                         <li class="col d-xl-none px-2 px-sm-3"><a href="my-account.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="My Account"><i class="font-size-22 ec ec-user white-txt"></i></a></li>
                                         <li class="col pr-xl-0 px-2 px-sm-3">
-                                            <a href="cart.html" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">
+                                            <a href="{{url('/shopping-cart')}}" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">
                                                 <i class="font-size-22 ec ec-shopping-bag  white-txt"></i>
                                                 <span class="width-22 height-22 bg-dark position-absolute d-flex align-items-center justify-content-center rounded-circle left-12 top-8 font-weight-bold font-size-12 text-white">2</span>
                                                 <span class="d-none d-xl-block font-weight-bold font-size-16 text-gray-90 ml-3 white-txt">$1785.00</span>
@@ -449,12 +449,64 @@
                                     <ul class="d-flex list-unstyled mb-0">
                                         <li class="col"><a href="compare.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare white-txt"></i></a></li>
                                         <li class="col"><a href="wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites white-txt"></i></a></li>
-                                        <li class="col pr-0">
-                                            <a href="cart.html" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">
-                                                <i class="font-size-22 ec ec-shopping-bag white-txt"></i>
-                                                <span class="width-22 height-22 bg-dark position-absolute flex-content-center text-white rounded-circle left-12 top-8 font-weight-bold font-size-12">2</span>
-                                                <span class="font-weight-bold font-size-16 text-gray-90 ml-3 white-txt">$1785.00</span>
-                                            </a>
+                                        <li class="col pr-xl-0 px-2 px-sm-3 d-none d-xl-block">
+                                            <div id="basicDropdownHoverInvoker" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart"
+                                                aria-controls="basicDropdownHover"
+                                                aria-haspopup="true"
+                                                aria-expanded="false"
+                                                data-unfold-event="hover"
+                                                data-unfold-target="#basicDropdownHover"
+                                                data-unfold-type="css-animation"
+                                                data-unfold-duration="350"
+                                                data-unfold-delay="350"
+                                                data-unfold-hide-on-scroll="true"
+                                                data-unfold-animation-in="slideInUp"
+                                                data-unfold-animation-out="fadeOut">
+                                                <i class="font-size-22 ec ec-shopping-bag white-txt "></i>
+                                                <span  class="width-22 height-22 bg-dark position-absolute flex-content-center text-white rounded-circle left-12 top-8 font-weight-bold font-size-12">2</span>
+                                                <span class="d-none d-xl-block font-weight-bold font-size-16 text-gray-90 ml-3 white-txt">$1785.00</span>
+                                            </div>
+                                            <div id="basicDropdownHover" class="cart-dropdown dropdown-menu dropdown-unfold border-top border-top-primary mt-3 border-width-2 border-left-0 border-right-0 border-bottom-0 left-auto right-0" aria-labelledby="basicDropdownHoverInvoker">
+                                                <ul class="list-unstyled px-3 pt-3">
+                                                    <li class="border-bottom pb-3 mb-3">
+                                                        <div class="">
+                                                            <ul class="list-unstyled row mx-n2">
+                                                                <li class="px-2 col-auto">
+                                                                  <a href="{{url('/')}}"><img  class="img-fluid" src="{{ url('img/front_img/75X75/img1.jpg') }}" alt="Image Description"></a>  
+                                                                </li>
+                                                                <li class="px-2 col">
+                                                                    <h5 class="font-size-14 font-weight-bold"> <a href="{{url('/')}}">Ultra Wireless S50 Headphones S50 with Bluetooth</a> </h5>
+                                                                    <span class="font-size-14">1 × $1,100.00</span>
+                                                                </li>
+                                                                <li class="px-2 col-auto">
+                                                                    <a href="#" class="text-gray-90"><i class="ec ec-close-remove"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    <li class="border-bottom pb-3 mb-3">
+                                                        <div class="">
+                                                            <ul class="list-unstyled row mx-n2">
+                                                                <li class="px-2 col-auto">
+                                                                  <a href="{{url('/')}}"><img  class="img-fluid" src="{{ url('img/front_img/75X75/img1.jpg') }}" alt="Image Description"></a>  
+                                                                </li>
+                                                                <li class="px-2 col">
+                                                                    <h5 class="font-size-14 font-weight-bold"> <a href="{{url('/')}}">Ultra Wireless S50 Headphones S50 with Bluetooth</a> </h5>
+                                                                    <span class="font-size-14">1 × $1,100.00</span>
+                                                                </li>
+                                                                <li class="px-2 col-auto">
+                                                                    <a href="#" class="text-gray-90"><i class="ec ec-close-remove"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                </ul>
+                                                <div class="flex-center-between px-4 pt-2">
+                                                    <a href="{{url('/shopping-cart')}}" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-4 px-lg-5">View cart</a>
+                                                    <a href="checkout.html" class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5">Checkout</a>
+                                                </div>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>

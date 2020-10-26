@@ -262,11 +262,17 @@ class ProductController extends Controller
                     if ($attrCountSKU > 0) {
                         return redirect()->back()->with('toast_error','SKU is already exists.Please enter another one!');
                     }
+                    $productPrice = Product::select('product_price')->where('id',$id)->get()->first();
                     $attribute = new ProductsAttribute;
                     $attribute->product_id = $id;
                     $attribute->sku = $value;
-                    $attribute->color = $data['color'][$key];
-                    $attribute->price = $data['price'][$key];
+                    if($data['color'][$key]==''){
+                        $attribute->color = "Default";
+                        $attribute->price = $productPrice['product_price'];
+                    }else{
+                        $attribute->color = $data['color'][$key];
+                        $attribute->price = $data['price'][$key];
+                    }
                     $attribute->stock = $data['stock'][$key];
                     $attribute->save();
                 }

@@ -9,6 +9,11 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+.text-blue-shop{
+  color: #00abc5;
+}
+
  .ribbon {
    margin-top: 50px;
   width: 150px;

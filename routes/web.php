@@ -135,4 +135,10 @@ Route::namespace('Front')->group(function () {
     Route::post('/get-product-price','ProductsController@getProductPrice');
     Route::post('/get-product-discount-price','ProductsController@getProductDiscountPrice');
 
+    /**********************************************************************************************
+    * SHOPPING CARTS
+    ***********************************************************************************************/
+    Route::post('/add-to-cart','ProductsController@addtoCart');
+    Route::get('/shopping-cart','ProductsController@shoppingCart');
+
 });

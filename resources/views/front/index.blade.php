@@ -321,9 +321,9 @@ $sections = Section::sections();
 															<div class="product-item__body pb-xl-2">
 																<div class="mb-2"><a href="{{ url('/'.$featured_item['category']['url'])}}" class="font-size-12 text-gray-5">{{$featured_item['category']['category_name']}}</a></div>
 																<h5 class="mb-1 product-item__title">
-                                                                <a href="{{url('/product/'.$productUrl.'-'.$featured_item['id'])}}" class="text-blue font-weight-bold">{{$featured_item['product_name']}}</a></h5>
+                                                                <a href="{{url('product/'.$productUrl.'-'.$featured_item['id'])}}" class="text-blue font-weight-bold">{{$featured_item['product_name']}}</a></h5>
 																<div class="mb-2">
-																	<a href="{{url('/product/'.$productUrl.'-'.$featured_item['id'])}}" class="d-block text-center"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$featured_item['main_image']) }}" style="height: 212px;width:200px;"alt="Image Description"></a>
+																	<a href="{{url('product/'.$productUrl.'-'.$featured_item['id'])}}" class="d-block text-center"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$featured_item['main_image']) }}" style="height: 212px;width:200px;"alt="Image Description"></a>
 																</div>
 																<div class="flex-center-between mb-1">
 																	<div class="prodcut-price">
@@ -339,7 +339,7 @@ $sections = Section::sections();
 																			@endif</div>
 																		</div>
 																	<div class="d-none d-xl-block prodcut-add-cart">
-																		<a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+																		<a href="{{url('product/'.$productUrl.'-'.$featured_item['id'])}}" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
 																	</div>
 																</div>
 															</div>
@@ -1069,24 +1069,25 @@ $sections = Section::sections();
                         data-pagi-classes="text-center right-0 bottom-1 left-0 u-slick__pagination u-slick__pagination--long mb-0 z-index-n1 mt-4">
                         <div class="js-slide">
                             <ul class="row list-unstyled products-group no-gutters mb-0 overflow-visible">
-								@foreach ($latest_desktop_pc_products as $latest)
+                                @foreach ($latest_desktop_pc_products as $latest)
+                                <?php $modelName = $latest['product_model']; $productUrl = strtolower(str_replace('+','-',urlencode($modelName))); ?>
                                 <li class="col-wd-3 col-md-4 product-item product-item__card pb-2 mb-2 pb-md-0 mb-md-0 border-bottom border-md-bottom-0">
                                     <div class="product-item__outer h-100">
                                         <div class="product-item__inner p-md-3 row no-gutters">
                                             <div class="col col-lg-auto product-media-left">
-                                                <a href="#example" class="max-width-150 d-block"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$latest['main_image']) }}" style="height: 150px;width:140px;" alt="Image Description"></a>
+                                                <a href="{{url('product/'.$productUrl.'-'.$latest['id'])}}" class="max-width-150 d-block"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$latest['main_image']) }}" style="height: 150px;width:140px;" alt="Image Description"></a>
                                             </div>
                                             <div class="col product-item__body pl-2 pl-lg-3 mr-xl-2 mr-wd-1">
                                                 <div class="mb-4">
                                                    
-                                                    <h5 class="product-item__title"><a href="#example" class="text-blue font-weight-bold">{{$latest['product_name']}}</a></h5>
+                                                    <h5 class="product-item__title"><a href="{{url('product/'.$productUrl.'-'.$latest['id'])}}" class="text-blue font-weight-bold">{{$latest['product_name']}}</a></h5>
                                                 </div>
                                                 <div class="flex-center-between mb-3">
                                                     <div class="prodcut-price">
                                                         <div class="text-gray-100">৳ {{$latest['product_price']}}</div>
                                                     </div>
                                                     <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="#example" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                        <a href="{{url('product/'.$productUrl.'-'.$latest['id'])}}" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product-item__footer">
@@ -1104,24 +1105,25 @@ $sections = Section::sections();
                         </div>
                         <div class="js-slide">
                             <ul class="row list-unstyled products-group no-gutters mb-0 overflow-visible">
-								@foreach ($latest_laptop_netbook_products as $latest)
+                                @foreach ($latest_laptop_netbook_products as $latest)
+                                <?php $modelName = $latest['product_model']; $productUrl = strtolower(str_replace('+','-',urlencode($modelName))); ?>
                                 <li class="col-wd-3 col-md-4 product-item product-item__card pb-2 mb-2 pb-md-0 mb-md-0 border-bottom border-md-bottom-0">
                                     <div class="product-item__outer h-100">
                                         <div class="product-item__inner p-md-3 row no-gutters">
                                             <div class="col col-lg-auto product-media-left">
-                                                <a href="single-product-fullwidth.html" class="max-width-150 d-block"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$latest['main_image']) }}" style="height: 150px;width:140px;" alt="Image Description"></a>
+                                                <a href="{{url('product/'.$productUrl.'-'.$latest['id'])}}" class="max-width-150 d-block"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$latest['main_image']) }}" style="height: 150px;width:140px;" alt="Image Description"></a>
                                             </div>
                                             <div class="col product-item__body pl-2 pl-lg-3 mr-xl-2 mr-wd-1">
                                                 <div class="mb-4">
                                                    
-                                                    <h5 class="product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">{{$latest['product_name']}}</a></h5>
+                                                    <h5 class="product-item__title"><a href="{{url('product/'.$productUrl.'-'.$latest['id'])}}" class="text-blue font-weight-bold">{{$latest['product_name']}}</a></h5>
                                                 </div>
                                                 <div class="flex-center-between mb-3">
                                                     <div class="prodcut-price">
                                                         <div class="text-gray-100">৳ {{$latest['product_price']}}</div>
                                                     </div>
                                                     <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="#" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                        <a href="{{url('product/'.$productUrl.'-'.$latest['id'])}}" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product-item__footer">
@@ -1139,24 +1141,25 @@ $sections = Section::sections();
                         </div>
                         <div class="js-slide">
                             <ul class="row list-unstyled products-group no-gutters mb-0 overflow-visible">
-								@foreach ($latest_smartphone_tablets as $latest)
+                                @foreach ($latest_smartphone_tablets as $latest)
+                                <?php $modelName = $latest['product_model']; $productUrl = strtolower(str_replace('+','-',urlencode($modelName))); ?>
                                 <li class="col-wd-3 col-md-4 product-item product-item__card pb-2 mb-2 pb-md-0 mb-md-0 border-bottom border-md-bottom-0">
                                     <div class="product-item__outer h-100">
                                         <div class="product-item__inner p-md-3 row no-gutters">
                                             <div class="col col-lg-auto product-media-left">
-                                                <a href="#" class="max-width-150 d-block"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$latest['main_image']) }}" style="height: 150px;width:140px;" alt="Image Description"></a>
+                                                <a href="{{url('product/'.$productUrl.'-'.$latest['id'])}}" class="max-width-150 d-block"><img class="img-fluid" src="{{ asset('img/product_img/small/'.$latest['main_image']) }}" style="height: 150px;width:140px;" alt="Image Description"></a>
                                             </div>
                                             <div class="col product-item__body pl-2 pl-lg-3 mr-xl-2 mr-wd-1">
                                                 <div class="mb-4">
                                                    
-                                                    <h5 class="product-item__title"><a href="#" class="text-blue font-weight-bold">{{$latest['product_name']}}</a></h5>
+                                                    <h5 class="product-item__title"><a href="{{url('product/'.$productUrl.'-'.$latest['id'])}}" class="text-blue font-weight-bold">{{$latest['product_name']}}</a></h5>
                                                 </div>
                                                 <div class="flex-center-between mb-3">
                                                     <div class="prodcut-price">
                                                         <div class="text-gray-100">৳ {{$latest['product_price']}}</div>
                                                     </div>
                                                     <div class="d-none d-xl-block prodcut-add-cart">
-                                                        <a href="#" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                        <a href="{{url('product/'.$productUrl.'-'.$latest['id'])}}" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
                                                     </div>
                                                 </div>
                                                 <div class="product-item__footer">

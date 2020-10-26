@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Front;
+
+use App\Cart;
 use Illuminate\Pagination\Paginator; //LARAVEL 8.0 NEW PAGINATOR
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
@@ -8,7 +10,8 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 use App\ProductsAttribute;
-use App\Section;
+use Illuminate\Support\Facades\Auth;
+use Session;
 
 class ProductsController extends Controller
 {
@@ -155,6 +158,50 @@ class ProductsController extends Controller
     public function productCategories($id){
         $section_id = $id;
         return view('front.products.category_listing')->with(compact('section_id'));
+    }
+    public function addtoCart(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            // echo "<pre>"; print_r($data);die;
+            $getProductStock = ProductsAttribute::where([ 'product_id'=>$data['product_id'],'color'=>$data['color'] ])->first()->toArray();
+
+            if($getProductStock['stock']<$data['quantity']){
+                alert()->error('Sorry :(','Selected '.$data['color'] .'   color is only   '. $getProductStock['stock'] .'   available!');
+                return redirect()->back();
+            }
+            $session_id = Session::get('session_id');
+            if(empty($session_id)){
+                $session_id = Session::getId();
+                Session::put('session_id',$session_id);
+            }
+            $productName = Product::select('product_name')->where('id',$data['product_id'])->get()->first()->toArray();
+            // echo "<pre>"; print_r($productName);die;
+            if(Auth::check()){
+                //customer is login
+                $countProducts = Cart::where(['product_id'=>$data['product_id'],'color'=>$data['color'] ,'user_id'=>Auth::user()->id])->count();
+            }else{
+                //customer is not login 
+                $countProducts = Cart::where(['product_id'=>$data['product_id'],'color'=>$data['color'] ,'session_id'=>$session_id])->count();
+            }
+            
+            if($countProducts>0){
+                alert()->error('Opps!','Product '.$data['color'] .' color already exists in Shopping Cart!');
+                return redirect()->back();
+            }
+            $cart = new Cart;
+            $cart->session_id =$session_id;
+            $cart->product_id =$data['product_id'];
+            $cart->color =$data['color'];
+            $cart->quantity =$data['quantity'];
+            $cart->save();
+
+
+            session::flash('success_message',$productName['product_name']);
+            return redirect()->back();
+        }
+    }
+    public function shoppingCart(){
+        return view('front.products.shopping_cart');
     }
     
 }
