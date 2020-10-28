@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="{{ url('vendor/front_vendor/slick-carousel/slick/slick.css')}} ">
         <link rel="stylesheet" href="{{ url('vendor/front_vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}} ">
         {{-- Sweet Alert --}}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.5.1/sweetalert2.min.css" integrity="sha512-YpZXdiMhuP3woCdvg0ou2UPj6l4KQUuf3gbMXTNMgtqTakMInX7h+64CTh+UIvYdA7ctBU2BAA/h4eEhoMEmsg==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ url('sweetalert2/bootstrap-4.min.css')}} "/>
 
         {{-- Listing Page --}}
         <link rel="stylesheet" href="{{ url('vendor/front_vendor/ion-rangeslider/css/ion.rangeSlider.css')}} ">
@@ -102,8 +102,7 @@
         <script src="{{ url('js/front_js/components/hs.go-to.js ')}} "></script>
         <script src="{{ url('js/front_js/components/hs.selectpicker.js ')}} "></script>
         {{-- Sweet Alert --}}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.5.1/sweetalert2.min.js" integrity="sha512-VVeh5jiTBk6tJkXWwzY9PLRbX2+K28LlGNKll/MWS7dxZgRPw9XCiGgj2MyG1ZPQQpXLbph6JKx8hWDinNaLmg==" crossorigin="anonymous"></script>
-
+        <script src="{{ url('sweetalert2/sweetalert2.min.js')}} "></script>
         <!-- JS Plugins Init. -LISTING -->
         <script>
             $(window).on('load', function () {

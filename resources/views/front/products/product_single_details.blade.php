@@ -4,7 +4,7 @@
 ?>
 @extends('layouts.front_layout.front_shop_layout')
 @section('content')
-
+@include('sweetalert::alert')
         <!-- ========== MAIN CONTENT ========== -->
         <main id="content" role="main">
             <!-- breadcrumb -->
@@ -88,18 +88,9 @@
                         <div class="col-md-7 mb-md-6 mb-lg-0">
                             <div class="mb-2">
                                 <div class="border-bottom mb-3 pb-md-1 pb-3">
-                                    @include('sweetalert::alert')
-                                    @if (session('success_message'))
-                                    <div class="alert  alert-success">
-                                    <i class="fa fa-check-circle" aria-hidden="true"></i> You have added <b>{{ session('success_message') }}</b> to your shopping cart!
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-outline-primary height-30 py-2 px-3 rounded " href="{{url('/shopping-cart')}}">View cart</a>&nbsp;&nbsp;&nbsp;
-                                    <a class="btn btn-outline-primary height-30 py-2 px-3 rounded " href="http://">Checkout</a>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <div id="success-add-to-cart" class="alert  alert-success " style="display: none;">
+                                    @include('front.products.cart_added_successful_message')
                                     </div>
-                                    
-                                    @endif
                                     <a href="{{ url('/'.$productDetails['category']['url'])}}" class="font-size-12 text-gray-5 mb-2 d-inline-block">{{$productDetails['category']['category_name']}}</a>
                                     <h2 class="font-size-25 text-lh-1dot2">{{$productDetails['product_name']}}</h2>
                                     <div class="mb-2">
@@ -144,7 +135,6 @@
                                 <strong>Price</strong>: ৳  {{$productDetails['product_price']}} <br>
                                 <strong>MPN</strong>: {{$productDetails['product_mpn']}} <br>
                                 <strong>CODE</strong>: {{$productDetails['product_code']}} <br>
-                            <form action="{{url('add-to-cart')}}" method="POST" class="form-horizontal qtyFrm needs-validation">@csrf
                                 <input type="hidden" name="product_id" value=" {{$productDetails['id']}} ">
                                 <div class="mb-4">
                                     <div class="d-flex align-items-baseline">
@@ -157,17 +147,17 @@
                                         @endif
                                     </div>
                                 </div>
+
                                 <div class="border-top border-bottom py-3 mb-4">
                                     <div class="d-flex align-items-center">
                                         <h6 class="font-size-14 mb-0">Color : </h6>
                                         @if($productDetails['attributes'][0]['color']=="")
                                         <h6 class="font-size-14 mb-0 text-red font-weight-bold">&nbsp;Not available</h6>
-                                        {{-- <input type="hidden" name="color" value="Default"> --}}
                                         @else
                                         <!-- Select -->
                                         <select  required="" name="color" id="getPrice" product-id="{{$productDetails['id']}}" class="js-select selectpicker dropdown-select ml-3"
                                         data-style="btn-sm bg-white font-weight-normal py-2 border">
-                                        <option value="" >Select Color</option>
+                                        <option value="none" >Select Color</option>
                                         @foreach ($productDetails['attributes'] as $attr)
                                             @if($attr['status']==1 && $attr['stock']>0 && $attr['color']!="" )
                                             <option value="{{$attr['color']}}" >{{$attr['color']}}</option>
@@ -200,11 +190,12 @@
                                         </div>
                                         <!-- End Quantity -->
                                     </div>
+                                    <input type="hidden" name="product_id" id="product_id" value="{{$productDetails['id']}}">
                                     <div class="ml-md-3">
-                                       <button id="add-to-cart" class="btn btn-primary height-40 py-2 px-3" type="submit" @if($add_cart_pass==0) disabled @else @endif ><i class="ec ec-add-to-cart mr-2 font-size-20"></i> Add to Cart</button> 
+                                       <button id="add-to-cart" class="btn btn-primary height-40 py-2 px-3" type="submit"  @if($add_cart_pass==0) disabled @else @endif ><i class="ec ec-add-to-cart mr-2 font-size-20"></i> Add to Cart</button> 
                                     </div>
                                 </div>
-                            </form>
+                            
                             </div>
                         </div>
                     </div>

@@ -160,45 +160,79 @@ class ProductsController extends Controller
         return view('front.products.category_listing')->with(compact('section_id'));
     }
     public function addtoCart(Request $request){
-        if($request->isMethod('post')){
+        
+        if($request->ajax()){
             $data = $request->all();
-            // echo "<pre>"; print_r($data);die;
-            $getProductStock = ProductsAttribute::where([ 'product_id'=>$data['product_id'],'color'=>$data['color'] ])->first()->toArray();
+            $session_id = Session::get('session_id');
 
-            if($getProductStock['stock']<$data['quantity']){
-                alert()->error('Sorry :(','Selected '.$data['color'] .'   color is only   '. $getProductStock['stock'] .'   available!');
-                return redirect()->back();
+            $getProductStock = ProductsAttribute::where([ 'product_id'=>$data['product_id'],'color'=>$data['product_color'] ])->first()->toArray();
+            if($getProductStock['stock']<$data['product_quantity']){
+                        // alert()->error('Sorry :(','Selected '.$data['color'] .'   color is only   '. $getProductStock['stock'] .'   available!');
+                        $status = "quantity_limit_exceed";
+                        return response()->json(['status'=>$status,'stock_available'=>$getProductStock['stock']]);
             }
             $session_id = Session::get('session_id');
             if(empty($session_id)){
-                $session_id = Session::getId();
-                Session::put('session_id',$session_id);
+                    $session_id = Session::getId();
+                    Session::put('session_id',$session_id);
             }
-            $productName = Product::select('product_name')->where('id',$data['product_id'])->get()->first()->toArray();
-            // echo "<pre>"; print_r($productName);die;
+            // $productName = Product::select('product_name')->where('id',$data['product_id'])->get()->first()->toArray();
             if(Auth::check()){
-                //customer is login
-                $countProducts = Cart::where(['product_id'=>$data['product_id'],'color'=>$data['color'] ,'user_id'=>Auth::user()->id])->count();
+                    $countProducts = Cart::where(['product_id'=>$data['product_id'],'color'=>$data['product_color'] ,'user_id'=>Auth::user()->id])->count();
             }else{
-                //customer is not login 
-                $countProducts = Cart::where(['product_id'=>$data['product_id'],'color'=>$data['color'] ,'session_id'=>$session_id])->count();
+                $countProducts = Cart::where(['product_id'=>$data['product_id'],'color'=>$data['product_color'] ,'session_id'=>$session_id])->count();
             }
-            
             if($countProducts>0){
-                alert()->error('Opps!','Product '.$data['color'] .' color already exists in Shopping Cart!');
-                return redirect()->back();
+                    // alert()->error('Opps!','Product '.$data['color'] .' color already exists in Shopping Cart!');
+                    $status = "color_already_exists";
+                    return response()->json(['status'=>$status]);
             }
             $cart = new Cart;
             $cart->session_id =$session_id;
             $cart->product_id =$data['product_id'];
-            $cart->color =$data['color'];
-            $cart->quantity =$data['quantity'];
+            $cart->color =$data['product_color'];
+            $cart->quantity =$data['product_quantity'];
             $cart->save();
-
-
-            session::flash('success_message',$productName['product_name']);
-            return redirect()->back();
+            $message = "Done!";
+            return $message;
         }
+
+
+
+        // if($request->isMethod('post')){
+        //     $data = $request->all();
+        //     // echo "<pre>"; print_r($data);die;
+        //     $getProductStock = ProductsAttribute::where([ 'product_id'=>$data['product_id'],'color'=>$data['color'] ])->first()->toArray();
+
+        //     if($getProductStock['stock']<$data['quantity']){
+        //         alert()->error('Sorry :(','Selected '.$data['color'] .'   color is only   '. $getProductStock['stock'] .'   available!');
+        //         return redirect()->back();
+        //     }
+        //     $session_id = Session::get('session_id');
+        //     if(empty($session_id)){
+        //         $session_id = Session::getId();
+        //         Session::put('session_id',$session_id);
+        //     }
+        //     $productName = Product::select('product_name')->where('id',$data['product_id'])->get()->first()->toArray();
+        //     if(Auth::check()){
+        //         $countProducts = Cart::where(['product_id'=>$data['product_id'],'color'=>$data['color'] ,'user_id'=>Auth::user()->id])->count();
+        //     }else{
+        //         $countProducts = Cart::where(['product_id'=>$data['product_id'],'color'=>$data['color'] ,'session_id'=>$session_id])->count();
+        //     }
+        //     if($countProducts>0){
+        //         alert()->error('Opps!','Product '.$data['color'] .' color already exists in Shopping Cart!');
+        //         return redirect()->back();
+        //     }
+
+        //     $cart = new Cart;
+        //     $cart->session_id =$session_id;
+        //     $cart->product_id =$data['product_id'];
+        //     $cart->color =$data['color'];
+        //     $cart->quantity =$data['quantity'];
+        //     $cart->save();
+        //     session::flash('success_message',$productName['product_name']);
+        //     return redirect()->back();
+        // }
     }
     public function shoppingCart(){
         return view('front.products.shopping_cart');

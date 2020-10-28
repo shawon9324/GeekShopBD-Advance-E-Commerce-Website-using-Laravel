@@ -5,7 +5,7 @@
 @extends('layouts.front_layout.front_shop_layout')
 @section('content')
 
- <!-- ========== MAIN CONTENT ========== -->
+<!-- ========== MAIN CONTENT ========== -->
  <main id="content" role="main">
     <!-- breadcrumb -->
     <div class="bg-gray-13 bg-md-transparent">

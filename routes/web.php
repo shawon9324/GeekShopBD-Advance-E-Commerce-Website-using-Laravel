@@ -138,7 +138,7 @@ Route::namespace('Front')->group(function () {
     /**********************************************************************************************
     * SHOPPING CARTS
     ***********************************************************************************************/
-    Route::post('/add-to-cart','ProductsController@addtoCart');
+    Route::get('/add-to-cart','ProductsController@addtoCart');    
     Route::get('/shopping-cart','ProductsController@shoppingCart');
 
 });

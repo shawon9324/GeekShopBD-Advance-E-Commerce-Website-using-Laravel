@@ -234,6 +234,52 @@ $(document).ready(function() {
             error: function() {}
         });
     });
+
+
+    //add-to-cart-ajax
+
+    $("#add-to-cart").on('click',function(){
+        var product_id = $("#product_id").val();
+        var product_color =$("#getPrice").val();
+        var product_quantity = $("#qty").val();
+        $("#success-add-to-cart").hide();
+        if (product_color == "none") {
+            Swal.fire({
+                icon: 'warning',
+                text: 'Please select any Color!',
+            });
+            return false;
+        }
+        $.ajax({
+            type: "get",
+            url : "/add-to-cart",
+            data: {product_id:product_id,product_quantity:product_quantity,product_color:product_color},
+            success: function(resp){
+               if(resp['status']=="quantity_limit_exceed"){
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Sorry :(',
+                        text: product_color+ ' color is only '+resp['stock_available']+' available!',
+                    });
+               }
+               else if(resp['status']=="color_already_exists"){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: product_color+' color already exists in your Shopping Cart!',
+                  });
+               }
+               else{
+                   $("#success-add-to-cart").fadeTo(4000, 500).show();
+                   $('html, body').animate({scrollTop: '0px'}, 1000);
+               }
+            },
+            error: function() {
+            }
+        });
+        
+
+    });
 });
 
 
