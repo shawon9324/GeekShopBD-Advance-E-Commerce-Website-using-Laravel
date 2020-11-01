@@ -133,8 +133,6 @@ Route::namespace('Front')->group(function () {
     * AJAX PRODUCT PRICE & DISCOUNT-PRICE UPDATE FOR RESPECTATIVE COLOR OF THE PRODUCT
     ***********************************************************************************************/
     Route::post('/get-product-price','ProductsController@getProductPrice');
-    Route::post('/get-product-discount-price','ProductsController@getProductDiscountPrice');
-
     /**********************************************************************************************
     * SHOPPING CARTS
     ***********************************************************************************************/

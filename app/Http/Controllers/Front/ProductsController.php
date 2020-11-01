@@ -139,20 +139,12 @@ class ProductsController extends Controller
         if ($request->ajax()) {
             $data = $request->all();
             $getAttributes = ProductsAttribute::where(['product_id' => $data['product_id'], 'color' => $data['color']])->first();
-            $price = $getAttributes->price;
-            echo $price;
-        }
-    }
-    public function getProductDiscountPrice(Request $request)
-    {
-        if ($request->ajax()) {
-            $data = $request->all();
-            $getAttributes = ProductsAttribute::where(['product_id' => $data['product_id'], 'color' => $data['color']])->first();
+
             $getDiscount = Product::where('id', $data['product_id'])->first();
             $discount = $getDiscount->product_discount;
             $price = $getAttributes->price;
             $discounted_price = ($price - (round(($price * $discount) / 100)));
-            echo $discounted_price;
+            return response()->json(['price'=>$price,'discounted_price'=>$discounted_price]);
         }
     }
     public function productCategories($id){

@@ -484,22 +484,7 @@
                                                             </ul>
                                                         </div>
                                                     </li>
-                                                    <li class="border-bottom pb-3 mb-3">
-                                                        <div class="">
-                                                            <ul class="list-unstyled row mx-n2">
-                                                                <li class="px-2 col-auto">
-                                                                  <a href="{{url('/')}}"><img  class="img-fluid" src="{{ url('img/front_img/75X75/img1.jpg') }}" alt="Image Description"></a>  
-                                                                </li>
-                                                                <li class="px-2 col">
-                                                                    <h5 class="font-size-14 font-weight-bold"> <a href="{{url('/')}}">Ultra Wireless S50 Headphones S50 with Bluetooth</a> </h5>
-                                                                    <span class="font-size-14">1 × $1,100.00</span>
-                                                                </li>
-                                                                <li class="px-2 col-auto">
-                                                                    <a href="#" class="text-gray-90"><i class="ec ec-close-remove"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
+                                                    
                                                     
                                                 </ul>
                                                 <div class="flex-center-between px-4 pt-2">
