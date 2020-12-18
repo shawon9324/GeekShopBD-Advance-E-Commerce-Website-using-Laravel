@@ -350,6 +350,88 @@ $(document).ready(function() {
             }
         })
     });
+
+/********************************************************************
+* 
+* CUSTOMER REGISTRATION FORM VALIDATION USING JQUERY
+* 
+*********************************************************************/
+    $(function(){
+        var $userRegistrationForm = $("#userRegistration");
+        var $userLogin = $("#userLogin");
+        if($userRegistrationForm.length){
+            $userRegistrationForm.validate({
+                validClass: "is-valid",
+                rules:{
+                    user_name:{
+                        required: true
+                    },
+                    user_mobile:{
+                        required: true,
+                        minlength:11,
+                    },
+                    user_email:{
+                        required: true,
+                        email: true,
+                        remote:"check-user-email",
+                    },
+                    user_password:{
+                        required: true,
+                        minlength: 5,
+                    },
+                    user_confirm_password:{
+                        required: true,
+                        equalTo: '#user_password'
+                    },
+                },
+                messages:{
+                    user_name:{
+                        required:'Please enter your name'
+                    },
+                    user_mobile:{
+                        required:'Please enter your mobile number'
+                    },
+                    user_email:{
+                        required:'Please enter email address',
+                        email: "Please enter valid email address!",
+                        remote:"Account with this email already exists",
+                    },
+                    user_password:{
+                        required:'Please enter  password',
+                        minlength: "Your password must be at least 5 characters long",
+
+                    },
+                    user_confirm_password:{
+                        required:'Please enter confirm password',
+                        equalTo:'Passwords do not match'
+                    },
+                }
+            })
+        }
+        if($userLogin.length){
+            $userLogin.validate({
+                validClass: "is-valid",
+                rules:{
+                    login_email:{
+                        required: true,
+                        email: true,
+                    },
+                    login_password:{
+                        required: true,
+                    },
+                },
+                messages:{
+                    login_email:{
+                        required:'Please enter email address',
+                        email: "Please enter valid email address!",
+                    },
+                    login_password:{
+                        required:'Please enter  password',
+                    },
+                }
+            })
+        }
+    });
 });
 
 

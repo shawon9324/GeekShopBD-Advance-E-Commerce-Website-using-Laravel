@@ -30081,6 +30081,20 @@ label.btn {
   border-color: rgba(222, 68, 55, 0.5);
 }
 
+.error{
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #de4437;
+  border-color: rgba(222, 68, 55, 0.5);
+}
+.success-valid{
+  box-shadow: 0 0 10px rgba(0, 201, 167, 0.1);
+  border-color: rgba(0, 201, 167, 0.5);
+  
+}
+
+
 /*------------------------------------
   Bookmark Checkbox
 ------------------------------------*/

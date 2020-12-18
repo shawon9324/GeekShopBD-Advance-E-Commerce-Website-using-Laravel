@@ -39,6 +39,7 @@
     <body>
 
         @include('layouts.front_layout.front__shop_header')
+        @include('sweetalert::alert')
         @yield('content')
         @include('layouts.front_layout.front_footer')
         @include('layouts.front_layout.login_registration_siderbar')
@@ -76,7 +77,8 @@
         <script src="{{ url('vendor/front_vendor/slick-carousel/slick/slick.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/appear.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}} "></script>
-       
+        {{-- JS FORM VALIDATOR--}}
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
         {{-- FRONT CUSTOM JS SCRIPT --}}
         <script src="{{ url('js/front_js/front_script_custom.js ')}} "></script>
 
@@ -101,6 +103,7 @@
         <script src="{{ url('js/front_js/components/hs.scroll-nav.js ')}} "></script>
         <script src="{{ url('js/front_js/components/hs.go-to.js ')}} "></script>
         <script src="{{ url('js/front_js/components/hs.selectpicker.js ')}} "></script>
+       
         {{-- Sweet Alert --}}
         <script src="{{ url('sweetalert2/sweetalert2.min.js')}} "></script>
         <!-- JS Plugins Init. -LISTING -->

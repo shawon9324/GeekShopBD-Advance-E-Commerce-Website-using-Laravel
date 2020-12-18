@@ -145,6 +145,13 @@ Route::namespace('Front')->group(function () {
     Route::post('/update-cart-item-qty','ProductsController@updateCartItemQty');
     Route::post('/delete-cart-item','ProductsController@deleteCartItem');
     
-
+    /**********************************************************************************************
+     *CUSTOMER LOGIN/REGISTER
+     ***********************************************************************************************/
+    Route::get('/login-register','UsersController@loginRegister');
+    Route::post('/login','UsersController@loginUser');
+    Route::post('/register','UsersController@registerUser');
+    Route::match(['get','post'],'/check-user-email','UsersController@emailCheck');
+    Route::get('/user-logout','UsersController@userLogout');
 
 });
