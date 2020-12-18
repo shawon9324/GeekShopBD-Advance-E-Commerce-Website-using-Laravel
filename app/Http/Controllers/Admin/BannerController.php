@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use Session;
 use Image;
 
-use function GuzzleHttp\json_decode;
-
 class BannerController extends Controller
 {
     public function banners()

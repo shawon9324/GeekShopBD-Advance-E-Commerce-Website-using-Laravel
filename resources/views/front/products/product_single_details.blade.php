@@ -1,7 +1,7 @@
 <?php
 	use App\Section;
 	$sections = Section::sections();
-?>
+?>             
 @extends('layouts.front_layout.front_shop_layout')
 @section('content')
 @include('sweetalert::alert')

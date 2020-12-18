@@ -9,7 +9,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*************************************************************
-* 
+*      
 * All ADMIN ROUTES
 *
 *************************************************************/
@@ -116,6 +116,7 @@ Route::namespace('Front')->group(function () {
     *PRODUCT SINGLE VIEW PAGE
     *****************************************/
     /* NOTE: THIS PRODUCT URL GENERATION PROCESS IS TEMPORARY! WILL UPGRADE IT LATER .BECAUSE THIS IS NOT EFFICIENT FOR HUGE PRODUCTS STORAGE */
+    // TODO remove this process and fetch data from database [*****]
     $productModels = Product::select('product_model')->where('status',1)->get()->pluck('product_model')->toArray();
     foreach($productModels as $productModel){
         $productUrl = strtolower(str_replace('+','-',urlencode($productModel))); 
@@ -138,5 +139,12 @@ Route::namespace('Front')->group(function () {
     ***********************************************************************************************/
     Route::get('/add-to-cart','ProductsController@addtoCart');    
     Route::get('/shopping-cart','ProductsController@shoppingCart');
+    /**********************************************************************************************
+     *UPDATE SHOPPING CART ITEMS QUANTITY
+     ***********************************************************************************************/
+    Route::post('/update-cart-item-qty','ProductsController@updateCartItemQty');
+    Route::post('/delete-cart-item','ProductsController@deleteCartItem');
+    
+
 
 });

@@ -35857,7 +35857,7 @@ blockquote:not(.blockquote) p {
   }
   .cart-table .table tr td::before,
   .wishlist-table .table tr td::before {
-    content: attr(data-title) ": ";
+    content: attr(data-title) "";
     font-weight: 700;
   }
 }

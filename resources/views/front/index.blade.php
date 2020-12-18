@@ -3,7 +3,7 @@
 <?php
 use App\Section;
 $sections = Section::sections();
-?> 
+?>       
         <!-- ========== MAIN CONTENT ========== -->
         <main id="content" role="main">
             <!-- Slider Section -->

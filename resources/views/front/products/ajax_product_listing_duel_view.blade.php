@@ -1,10 +1,10 @@
+<?php
+	use App\Product;
+?>
 <div class="card_view tab-pane fade pt-2 show active" id="pills-two-example1" role="tabpanel" aria-labelledby="pills-two-example1-tab" data-target-group="groups">
     <ul class="row list-unstyled products-group no-gutters">
         @foreach ($categoryProducts as $product)
-            <?php 
-            $modelName = $product['product_model'];
-            $productUrl = strtolower(str_replace('+', '-', urlencode($modelName)));
-            ?>
+        <?php $productUrl = productUrl($product['product_model']); ?>
             <li class="col-6 col-md-4 product-item">
                 <div class="product-item__outer h-100">
                     <div class="product-item__inner px-xl-4 p-3">
@@ -39,20 +39,16 @@
                             </ul>
                             <div class="flex-center-between mb-1">
                                 <div class="prodcut-price">
-                                    <?php
-                                    $price = $product['product_price'];
-                                    $discount = $product['product_discount'];
-                                    $discount_price = $price - round(($price * $discount) / 100);
-                                    ?>
+                                    <?php $discounted_price = Product::getDiscountedPrice($product['id']) ?>
                                     <div class="text-gray-100">
-                                        @if ($discount > 0)
-                                            ৳ {{ $discount_price }}
+                                        @if ($product['product_discount'] > 0)
+                                            ৳ {{ $discounted_price }}
                                             <span>
-                                                <del style="font-size: 15px;">৳ {{ $price }}</del>
+                                                <del style="font-size: 15px;">৳ {{ $product['product_price'] }}</del>
                                                 </button>
                                             </span>
                                         @else
-                                            ৳ {{ $price }}
+                                            ৳ {{ $product['product_price'] }}
                                         @endif
                                     </div>
                                 </div>
@@ -82,10 +78,7 @@
 <div class="list_view tab-pane fade pt-2" id="pills-three-example1" role="tabpanel" aria-labelledby="pills-three-example1-tab" data-target-group="groups">
     <ul class="d-block list-unstyled products-group prodcut-list-view">
         @foreach ($categoryProducts as $product)
-        <?php 
-                $modelName = $product['product_model'];
-                $productUrl = strtolower(str_replace('+', '-', urlencode($modelName)));
-                ?>
+        <?php $productUrl = productUrl($product['product_model']); ?>
         <li class="product-item remove-divider">
             <div class="product-item__outer w-100">
                 <div class="product-item__inner remove-prodcut-hover py-4 row">
@@ -119,21 +112,17 @@
                     </div>
                     <div class="product-item__footer col-md-3 d-md-block">
                         <div class="mb-3">
-                            <?php
-                             $price = $product['product_price'];
-                             $discount = $product['product_discount'];
-                             $discount_price = $price - round(($price * $discount) / 100);
-                            ?>
+                            <?php $discounted_price = Product::getDiscountedPrice($product['id']) ?>
                             <div class="prodcut-price mb-2">
                                 <div class="text-gray-100">
-                                    @if ($discount > 0)
-                                        ৳ {{ $discount_price }}
+                                    @if ($product['product_discount'] > 0)
+                                        ৳ {{ $discounted_price }}
                                         <span>
-                                            <del style="font-size: 15px;">৳ {{ $price }}</del>
+                                            <del style="font-size: 15px;">৳ {{ $product['product_price'] }}</del>
                                             </button>
                                         </span>
                                     @else
-                                        ৳ {{ $price }}
+                                        ৳ {{ $product['product_price'] }}
                                     @endif
                                 </div>
                             </div>
