@@ -15,7 +15,7 @@
                                     <!-- Logo -->
                                     <a class="order-1 order-xl-0 navbar-brand u-header__navbar-brand u-header__navbar-brand-center" href="{{url('/')}}" aria-label="Geekshopbd">
                                         <svg version="1.1" x="0px" y="0px" width="175.748px" height="42.52px" viewBox="0 0 175.748 42.52" enable-background="new 0 0 175.748 42.52" style="margin-bottom: 0;">
-                                           <h2> GeekshopBD</h5> 
+                                           <h4 style="color: black"> GeekshopBD</h4> 
                                         </svg>
                                     </a>
                                     <!-- End Logo -->
@@ -189,6 +189,11 @@
                                             <a class="nav-link u-header__nav-link" href="{{url('/contact-us')}}" aria-haspopup="true" aria-expanded="false">Contact Us</a>
                                         </li>
                                         <!-- End Contact Us-->
+                                        <!-- Store Directory-->
+                                        <li class="nav-item u-header__nav-item">
+                                            <a class="nav-link u-header__nav-link" href="{{url('/store-directory')}}" aria-haspopup="true" aria-expanded="false">Store Directory</a>
+                                        </li>
+                                        <!-- End Store Directory-->
                                         </ul>
                                     </div>
                                     <!-- End Navigation -->
@@ -246,9 +251,38 @@
                                             <!-- End Input -->
                                         </li>
                                         <!-- End Search -->
+                                        <!-- My Account -->
+                                        <li class="col d-xl-none px-2 px-sm-3 position-static">
+                                            <a id="UserPanelInvoker" class="font-size-22 text-gray-90 text-lh-1 btn-text-secondary" href="javascript:;" role="button"
+                                                data-toggle="tooltip"
+                                                data-placement="top"
+                                                title="My Account"
+                                                aria-controls="user-panel"
+                                                aria-haspopup="true"
+                                                aria-expanded="false"
+                                                data-unfold-target="#user-panel"
+                                                data-unfold-type="css-animation"
+                                                data-unfold-duration="300"
+                                                data-unfold-delay="300"
+                                                data-unfold-hide-on-scroll="true"
+                                                data-unfold-animation-in="slideInUp"
+                                                data-unfold-animation-out="fadeOut">
+                                                <span class="ec ec-user white-txt"></span>
+                                            </a>
+
+                                            <div id="user-panel" class="dropdown-menu dropdown-unfold dropdown-menu-right left-0 mx-2" aria-labelledby="UserPanelInvoker">
+                                                @if(Auth::check())
+                                                <a href="{{url('/my-account')}}" class="dropdown-item"><i class="fas fa-user fa-sm fa-fw mr-2 "></i>My Account</a> 
+                                                <div class="dropdown-divider"></div>
+                                                <a href="/user-logout" class="dropdown-item"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a>
+                                                @else
+                                                <a href="{{url('/login-register')}}" class="dropdown-item"><i class="fas fa-sign-in-alt mr-2"></i>  Register/Login</a> 
+                                                @endif
+                                            </div>
+                                        </li>
+                                         <!-- My Account -->
                                         <li class="col d-none d-xl-block"><a href="compare.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare white-txt"></i></a></li>
                                         <li class="col d-none d-xl-block"><a href="wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites white-txt"></i></a></li>
-                                        <li class="col d-xl-none px-2 px-sm-3"><a href="my-account.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="My Account"><i class="font-size-22 ec ec-user white-txt"></i></a></li>
                                         <li class="col pr-xl-0 px-2 px-sm-3">
                                             <a href="{{url('/shopping-cart')}}" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">
                                                 <i class="font-size-22 ec ec-shopping-bag  white-txt"></i>

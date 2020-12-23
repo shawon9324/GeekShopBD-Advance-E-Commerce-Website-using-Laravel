@@ -179,8 +179,14 @@ class ProductsController extends Controller
                     $status = "color_already_exists";
                     return response()->json(['status'=>$status]);
             }
+            if(Auth::check()){
+                $user_id = Auth::user()->id;
+            }else{
+                $user_id = 0;
+            }
             $cart = new Cart;
             $cart->session_id =$session_id;
+            $cart->user_id =$user_id;
             $cart->product_id =$data['product_id'];
             $cart->color =$data['product_color'];
             $cart->quantity =$data['product_quantity'];

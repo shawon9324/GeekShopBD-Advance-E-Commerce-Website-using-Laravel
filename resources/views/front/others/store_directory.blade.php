@@ -39,7 +39,7 @@
                             <li><a href="{{ url('/'.$category['url'])}}">{{ $category['category_name'] }}</a>
                                 <ul>
                                     @foreach ($category['subcategories'] as $subcategory)
-                                    <li><a href="#">{{ $subcategory['category_name'] }}</a></li>
+                                    <li><a href="{{ url('/'.$subcategory['url'])}}">{{ $subcategory['category_name'] }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
