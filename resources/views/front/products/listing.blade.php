@@ -262,19 +262,16 @@
 									</div>
 									<ul class="list-unstyled">
 										@foreach ($latest_products_discounted as $latest)
-										<?php 
-										$modelName = $latest['product_model'];
-										$productUrl = strtolower(str_replace('+', '-', urlencode($modelName)));
-        								?>
+										<?php $productUrl = makeProductUrl($latest['product_model'],$latest['id']); ?>
 											<li class="mb-4">
 											<div class="row">
 												<div class="col-auto">
-													<a href="{{ url('/product/' . $productUrl . '-' . $latest['id']) }}" class="d-block width-75">
+													<a href="{{ url('product/'.$productUrl) }}" class="d-block width-75">
 														<img style="width: 80px; height :70px;" class="img-fluid" src="{{ asset('img/product_img/small/' . $latest['main_image']) }}" alt="Image Description">
 													</a>
 												</div>
 												<div class="col">
-													<h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="{{ url('/product/' . $productUrl . '-' . $latest['id']) }}">{{ $latest['product_name'] }}</a></h3>
+													<h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="{{ url('product/'.$productUrl) }}">{{ $latest['product_name'] }}</a></h3>
 													<div class="text-warning text-ls-n2 font-size-16 mb-1" style="width: 80px;">
 														<small class="fas fa-star"></small>
 														<small class="fas fa-star"></small>

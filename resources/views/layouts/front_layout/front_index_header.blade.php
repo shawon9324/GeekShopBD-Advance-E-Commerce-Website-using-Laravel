@@ -1,6 +1,8 @@
 <?php
 use App\Section;
+use App\Cart;
 $sections = Section::sections();
+$cartItems = Cart::userCartItems();
 ?> 
         <!-- ========== HEADER ========== -->
         <header id="header" class="u-header u-header-left-aligned-nav">
@@ -141,73 +143,15 @@ $sections = Section::sections();
                                          <!-- My Account -->
 
 
-                                        <li class="col d-none d-xl-block"><a href="compare.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare"></i></a></li>
-                                        <li class="col d-none d-xl-block"><a href="wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites"></i></a></li>
+                                        <li class="col-md-1 d-none d-xl-block"><a href="compare.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare"></i></a></li>
+                                        <li class="col-md-1 d-none d-xl-block"><a href="wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites"></i></a></li>
                                         <li class="col pr-xl-0 px-2 px-sm-3 d-xl-none">
                                             <a href="{{url('/shopping-cart')}}" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">
                                                 <i class="font-size-22 ec ec-shopping-bag"></i>
-                                                <span class="bg-lg-down-black width-22 height-22 bg-primary position-absolute d-flex align-items-center justify-content-center rounded-circle left-12 top-8 font-weight-bold font-size-12 white-txt">2</span>
-                                                <span class="d-none d-xl-block font-weight-bold font-size-16 text-gray-90 ml-3">$1785.00</span>
+                                                <span class="bg-lg-down-black width-22 height-22 bg-primary position-absolute d-flex align-items-center justify-content-center rounded-circle left-12 top-8 font-weight-bold font-size-12 white-txt">{{count($cartItems)}}</span>
                                             </a>
                                         </li>
-                                        <li class="col pr-xl-0 px-2 px-sm-3 d-none d-xl-block">
-                                            <div id="basicDropdownHoverInvoker" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart"
-                                                aria-controls="basicDropdownHover"
-                                                aria-haspopup="true"
-                                                aria-expanded="false"
-                                                data-unfold-event="hover"
-                                                data-unfold-target="#basicDropdownHover"
-                                                data-unfold-type="css-animation"
-                                                data-unfold-duration="300"
-                                                data-unfold-delay="300"
-                                                data-unfold-hide-on-scroll="true"
-                                                data-unfold-animation-in="slideInUp"
-                                                data-unfold-animation-out="fadeOut">
-                                                <i class="font-size-22 ec ec-shopping-bag"></i>
-                                                <span class="bg-lg-down-black width-22 height-22 bg-primary position-absolute d-flex align-items-center justify-content-center rounded-circle left-12 top-8 font-weight-bold font-size-12 white-txt">2</span>
-                                                <span class="d-none d-xl-block font-weight-bold font-size-16 text-gray-90 ml-3">$1785.00</span>
-                                            </div>
-                                            <div id="basicDropdownHover" class="cart-dropdown dropdown-menu dropdown-unfold border-top border-top-primary mt-3 border-width-2 border-left-0 border-right-0 border-bottom-0 left-auto right-0" aria-labelledby="basicDropdownHoverInvoker">
-                                                <ul class="list-unstyled px-3 pt-3">
-                                                    <li class="border-bottom pb-3 mb-3">
-                                                        <div class="">
-                                                            <ul class="list-unstyled row mx-n2">
-                                                                <li class="px-2 col-auto">
-                                                                    <img class="img-fluid" src="{{ url('img/front_img/75X75/img1.jpg') }}" alt="Image Description">
-                                                                </li>
-                                                                <li class="px-2 col">
-                                                                    <h5 class="text-blue font-size-14 font-weight-bold">Ultra Wireless S50 Headphones S50 with Bluetooth</h5>
-                                                                    <span class="font-size-14">1 × $1,100.00</span>
-                                                                </li>
-                                                                <li class="px-2 col-auto">
-                                                                    <a href="#" class="text-gray-90"><i class="ec ec-close-remove"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    <li class="border-bottom pb-3 mb-3">
-                                                        <div class="">
-                                                            <ul class="list-unstyled row mx-n2">
-                                                                <li class="px-2 col-auto">
-                                                                    <img class="img-fluid" src="{{ url('img/front_img/75X75/img2.jpg') }}" alt="Image Description">
-                                                                </li>
-                                                                <li class="px-2 col">
-                                                                    <h5 class="text-blue font-size-14 font-weight-bold">Widescreen NX Mini F1 SMART NX</h5>
-                                                                    <span class="font-size-14">1 × $685.00</span>
-                                                                </li>
-                                                                <li class="px-2 col-auto">
-                                                                    <a href="#" class="text-gray-90"><i class="ec ec-close-remove"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <div class="flex-center-between px-4 pt-2">
-                                                    <a href="{{url('/shopping-cart')}}" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-4 px-lg-5">View cart</a>
-                                                    <a href="checkout.html" class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5">Checkout</a>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        @include('front.products.shopping_mini_cart')
                                     </ul>
                                 </div>
                             </div>

@@ -105,7 +105,7 @@
                 <div class="">Saturday to Thrusday: 9am-11pm</div>
                 <div class="mb-6">Friday: Offday!</div>
                 <h5 class="font-size-14 font-weight-bold mb-3">Careers</h5>
-                <p class="text-gray-90">If you’re interested in employment opportunities at Electro, please email us: <a class="text-blue text-decoration-on" href="mailto:contact@geekshopbd.com">contact@geekshopbd.com</a></p>
+                <p class="text-gray-90">If you’re interested in employment opportunities at GeekShopBD, please email us: <a class="text-blue text-decoration-on" href="mailto:contact@geekshopbd.com">contact@geekshopbd.com</a></p>
             </div>
         </div>
     </div>

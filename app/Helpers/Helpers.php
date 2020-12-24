@@ -8,3 +8,7 @@
         $productUrl = strtolower(str_replace('+', '-', urlencode($model)));
         return $productUrl;
     }
+    function makeProductUrl($model,$product_id){
+        $productUrl = (strtolower(str_replace('+', '-', urlencode($model)))).'-'.$product_id;
+        return $productUrl;
+    }

@@ -1,5 +1,10 @@
-    
-        
+<?php
+use App\Product;
+use App\Section;
+use App\Cart;
+$sections = Section::sections();
+$cartItems = Cart::userCartItems();
+?>    
         <!-- ========== HEADER ========== -->
         <header id="header" class="u-header u-header-left-aligned-nav">
             <div class="u-header__section">
@@ -286,8 +291,7 @@
                                         <li class="col pr-xl-0 px-2 px-sm-3">
                                             <a href="{{url('/shopping-cart')}}" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">
                                                 <i class="font-size-22 ec ec-shopping-bag  white-txt"></i>
-                                                <span class="width-22 height-22 bg-dark position-absolute d-flex align-items-center justify-content-center rounded-circle left-12 top-8 font-weight-bold font-size-12 text-white">2</span>
-                                                <span class="d-none d-xl-block font-weight-bold font-size-16 text-gray-90 ml-3 white-txt">$1785.00</span>
+                                                <span class="width-22 height-22 bg-dark position-absolute d-flex align-items-center justify-content-center rounded-circle left-12 top-8 font-weight-bold font-size-12 text-white">{{ count($cartItems)}}</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -393,9 +397,11 @@
                                             <select class="js-select selectpicker dropdown-select custom-search-categories-select"
                                                 data-style="btn height-40 text-gray-60 font-weight-normal border-0 rounded-0 bg-white px-5 py-2">
                                                 <option value="one" selected>All Categories</option>
-                                                <option value="two">Two</option>
-                                                <option value="three">Three</option>
-                                                <option value="four">Four</option>
+                                                @foreach($sections as $section)
+								                @foreach($section['categories'] as $category)
+                                                <option value="{{ $category['category_name'] }}">{{ $category['category_name'] }}</option>
+                                                @endforeach
+								                @endforeach
                                             </select>
                                             <!-- End Select -->
                                             <button class="btn btn-dark height-40 py-2 px-3 rounded-right-pill" type="button" id="searchProduct1">
@@ -407,59 +413,17 @@
                                 <!-- End Search-Form -->
                             </div>
                             <!-- End Search bar -->
-                            <!-- Header Icons -->
+                            <!-- MINI SHOPPING CART -->
                             <div class="col-md-auto align-self-center">
                                 <div class="d-flex">
                                     <ul class="d-flex list-unstyled mb-0">
-                                        <li class="col"><a href="compare.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare white-txt"></i></a></li>
-                                        <li class="col"><a href="wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites white-txt"></i></a></li>
-                                        <li class="col pr-xl-0 px-2 px-sm-3 d-none d-xl-block">
-                                            <div id="basicDropdownHoverInvoker" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart"
-                                                aria-controls="basicDropdownHover"
-                                                aria-haspopup="true"
-                                                aria-expanded="false"
-                                                data-unfold-event="hover"
-                                                data-unfold-target="#basicDropdownHover"
-                                                data-unfold-type="css-animation"
-                                                data-unfold-duration="350"
-                                                data-unfold-delay="350"
-                                                data-unfold-hide-on-scroll="true"
-                                                data-unfold-animation-in="slideInUp"
-                                                data-unfold-animation-out="fadeOut">
-                                                <i class="font-size-22 ec ec-shopping-bag white-txt "></i>
-                                                <span  class="width-22 height-22 bg-dark position-absolute flex-content-center text-white rounded-circle left-12 top-8 font-weight-bold font-size-12">2</span>
-                                                <span class="d-none d-xl-block font-weight-bold font-size-16 text-gray-90 ml-3 white-txt">$1785.00</span>
-                                            </div>
-                                            <div id="basicDropdownHover" class="cart-dropdown dropdown-menu dropdown-unfold border-top border-top-primary mt-3 border-width-2 border-left-0 border-right-0 border-bottom-0 left-auto right-0" aria-labelledby="basicDropdownHoverInvoker">
-                                                <ul class="list-unstyled px-3 pt-3">
-                                                    <li class="border-bottom pb-3 mb-3">
-                                                        <div class="">
-                                                            <ul class="list-unstyled row mx-n2">
-                                                                <li class="px-2 col-auto">
-                                                                  <a href="{{url('/')}}"><img  class="img-fluid" src="{{ url('img/front_img/75X75/img1.jpg') }}" alt="Image Description"></a>  
-                                                                </li>
-                                                                <li class="px-2 col">
-                                                                    <h5 class="font-size-14 font-weight-bold"> <a href="{{url('/')}}">Ultra Wireless S50 Headphones S50 with Bluetooth</a> </h5>
-                                                                    <span class="font-size-14">1 × $1,100.00</span>
-                                                                </li>
-                                                                <li class="px-2 col-auto">
-                                                                    <a href="#" class="text-gray-90"><i class="ec ec-close-remove"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                    
-                                                    
-                                                </ul>
-                                                <div class="flex-center-between px-4 pt-2">
-                                                    <a href="{{url('/shopping-cart')}}" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-4 px-lg-5">View cart</a>
-                                                    <a href="checkout.html" class="btn btn-primary-dark-w ml-md-2 px-5 px-md-4 px-lg-5">Checkout</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                        <li class="col-md-1"><a href="compare.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare white-txt"></i></a></li>
+                                        <li class="col-md-1"><a href="wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites white-txt"></i></a></li>
+                                            @include('front.products.shopping_mini_cart')
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                            
                             <!-- End Header Icons -->
                         </div>
                     </div>

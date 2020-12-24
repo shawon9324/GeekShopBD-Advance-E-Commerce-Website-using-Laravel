@@ -4,7 +4,7 @@
 <div class="card_view tab-pane fade pt-2 show active" id="pills-two-example1" role="tabpanel" aria-labelledby="pills-two-example1-tab" data-target-group="groups">
     <ul class="row list-unstyled products-group no-gutters">
         @foreach ($categoryProducts as $product)
-        <?php $productUrl = productUrl($product['product_model']); ?>
+        <?php $productUrl = makeProductUrl($product['product_model'],$product['id']); ?>
             <li class="col-6 col-md-4 product-item">
                 <div class="product-item__outer h-100">
                     <div class="product-item__inner px-xl-4 p-3">
@@ -12,10 +12,10 @@
                             <div class="mb-2"><a class="font-size-12 text-gray-5">Brand :
                                     {{ $product['brand']['name'] }}</a></div>
                             <h5 class="mb-1 product-item__title"><a
-                                    href="{{ url('/product/' . $productUrl . '-' . $product['id']) }}"
+                                    href="{{ url('product/'.$productUrl) }}"
                                     class="text-blue font-weight-bold">{{ $product['product_name'] }}</a></h5>
                             <div class="mb-2">
-                                <a href="{{ url('/product/' . $productUrl . '-' . $product['id']) }}"
+                                <a href="{{ url('product/'.$productUrl) }}"
                                     class="d-block text-center"><img class="img-fluid"
                                         src="{{ asset('img/product_img/small/' . $product['main_image']) }}"
                                         style="width: 150px; height:150px;" alt="Image Description"></a>
@@ -78,19 +78,19 @@
 <div class="list_view tab-pane fade pt-2" id="pills-three-example1" role="tabpanel" aria-labelledby="pills-three-example1-tab" data-target-group="groups">
     <ul class="d-block list-unstyled products-group prodcut-list-view">
         @foreach ($categoryProducts as $product)
-        <?php $productUrl = productUrl($product['product_model']); ?>
+        <?php $productUrl = makeProductUrl($product['product_model'],$product['id']); ?>
         <li class="product-item remove-divider">
             <div class="product-item__outer w-100">
                 <div class="product-item__inner remove-prodcut-hover py-4 row">
                     <div class="product-item__header col-6 col-md-4">
                         <div class="mb-2">
-                            <a href="{{ url('/product/' . $productUrl . '-' . $product['id']) }}" class="d-block text-center"><img class="img-fluid" src="{{ asset('img/product_img/small/' . $product['main_image']) }}" style="width: 150px; height:150px;" alt="Image Description"></a>
+                            <a href="{{ url('product/'.$productUrl) }}" class="d-block text-center"><img class="img-fluid" src="{{ asset('img/product_img/small/' . $product['main_image']) }}" style="width: 150px; height:150px;" alt="Image Description"></a>
                         </div>
                     </div>
                     <div class="product-item__body col-6 col-md-5">
                         <div class="pr-lg-10">
                             <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Brand : {{ $product['brand']['name'] }}</a></div>
-                            <h5 class="mb-2 product-item__title"><a href="{{ url('/product/' . $productUrl . '-' . $product['id']) }}" class="text-blue font-weight-bold">{{ $product['product_name'] }}</a></h5>
+                            <h5 class="mb-2 product-item__title"><a href="{{ url('product/'.$productUrl) }}" class="text-blue font-weight-bold">{{ $product['product_name'] }}</a></h5>
                             <div class="mb-3 d-none d-md-block">
                                 <a class="d-inline-flex align-items-center small font-size-14" href="#">
                                     <div class="text-warning mr-2">

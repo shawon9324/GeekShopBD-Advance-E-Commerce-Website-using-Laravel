@@ -26,17 +26,18 @@ use App\Product;
         <tbody >
             <?php $total_price = 0; ?>
             @foreach($userCartItems as $item)
+            <?php $productUrl = makeProductUrl($item['product']['product_model'],$item['product_id']); ?>
             <?php $attrPrice = Product::getDiscountedAttrPrice($item['product_id'],$item['color']); ?>
             <tr class="">
                 <td class="text-center">
                     <a href="javascript:void()" data-cartid="{{$item['id']}}" class="btnItemDelete text-gray-32 font-size-26">×</a>
                 </td>
                 <td >
-                <a ><img class="img-fluid max-width-100  border border-color-1" src="{{asset('img/product_img/small/'.$item['product']['main_image'])}}" alt="cart-image"></a>
+                <a href="{{ url('product/'.$productUrl) }}"><img class="img-fluid max-width-100  border border-color-1" src="{{asset('img/product_img/small/'.$item['product']['main_image'])}}" alt="cart-image"></a>
                 </td>
 
                 <td data-title="Product">
-                    <a href="#" class="text-gray-90">{{$item['product']['product_name']}}</a>
+                    <a href="{{ url('product/'.$productUrl) }}" class="text-gray-90">{{$item['product']['product_name']}}</a>
                 </td>
                 <td data-title="Color">
                     <a class="text-gray-90">{{$item['color']}}</a>
@@ -46,7 +47,7 @@ use App\Product;
                     <span class="">৳ {{$attrPrice['product_price']}}</span>
                 </td>
                 <td data-title="Discount">
-                    <span class="">৳ {{$attrPrice['discount']}}</span>
+                    <span class="">৳ {{$attrPrice['discount']*$item['quantity']}}</span>
                 </td>
                 <td>
                     <div class="input-append">

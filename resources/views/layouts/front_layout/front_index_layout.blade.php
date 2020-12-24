@@ -23,8 +23,10 @@
         <link rel="stylesheet" href="{{ url('vendor/front_vendor/fancybox/jquery.fancybox.css')}} ">
         <link rel="stylesheet" href="{{ url('vendor/front_vendor/slick-carousel/slick/slick.css')}} ">
         <link rel="stylesheet" href="{{ url('vendor/front_vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}} ">
+       
         <!-- CSS Electro Template -->
         <link rel="stylesheet" href="{{ url('css/front_css/theme.css')}} ">
+        @toastr_css
     </head>
 
     <body>
@@ -51,7 +53,8 @@
         <script src="{{ url('vendor/front_vendor/jquery-migrate/dist/jquery-migrate.min.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/popper.js/dist/umd/popper.min.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/bootstrap/bootstrap.min.js')}} "></script>
-
+        @toastr_js
+        @toastr_render
         <!-- JS Implementing Plugins -->
         <script src="{{ url('vendor/front_vendor/appear.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/jquery.countdown.min.js')}} "></script>

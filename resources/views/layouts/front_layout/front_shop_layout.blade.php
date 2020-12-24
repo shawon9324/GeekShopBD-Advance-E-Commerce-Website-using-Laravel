@@ -31,6 +31,7 @@
 
         <!-- CSS Electro Template -->
         <link rel="stylesheet" href="{{ url('css/front_css/theme.css')}} ">
+        @toastr_css
         {{-- CSRF TOKEN PASS --}}
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
@@ -43,8 +44,7 @@
         @yield('content')
         @include('layouts.front_layout.front_footer')
         @include('layouts.front_layout.login_registration_siderbar')
-
-        <!-- Go to Top -->
+forn        <!-- Go to Top -->
         <a class="js-go-to u-go-to" href="#"
             data-position='{"bottom": 15, "right": 15 }'
             data-type="fixed"
@@ -61,7 +61,8 @@
         <script src="{{ url('vendor/front_vendor/jquery-migrate/dist/jquery-migrate.min.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/popper.js/dist/umd/popper.min.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/bootstrap/bootstrap.min.js')}} "></script>
-
+        @toastr_js
+        @toastr_render
         <!-- JS Implementing Plugins -->
         <script src="{{ url('vendor/front_vendor/appear.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/jquery.countdown.min.js')}} "></script>

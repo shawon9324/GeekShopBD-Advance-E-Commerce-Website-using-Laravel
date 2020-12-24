@@ -322,28 +322,13 @@ $(document).ready(function() {
 * 
 *********************************************************************/
     $(document).on('click','.btnItemDelete',function(){
-        
         var cartid = $(this).data('cartid');
         $.ajax({
             data : {cartid:cartid},
             url:'/delete-cart-item',
             type:'post',
             success: function(resp){
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                  })
-                  Toast.fire({
-                    icon: 'success',
-                    title: ' Item remvoed successfully!'
-                  })
+                toastr.error('','Item removed from your Cart');
                 $(".AppendCartItems").html(resp.view);
             }, error: function(){
                 console.log("Error")
@@ -359,6 +344,9 @@ $(document).ready(function() {
     $(function(){
         var $userRegistrationForm = $("#userRegistration");
         var $userLogin = $("#userLogin");
+        var $recoverPassowrd = $("#recoverPassowrd");
+        var $userProfile = $("#userProfile");
+        var $updatePassword = $("#updatePassword");
         if($userRegistrationForm.length){
             $userRegistrationForm.validate({
                 validClass: "is-valid",
@@ -427,6 +415,86 @@ $(document).ready(function() {
                     },
                     login_password:{
                         required:'Please enter  password',
+                    },
+                }
+            })
+        }
+        if($recoverPassowrd.length){
+            $recoverPassowrd.validate({
+                validClass: "is-valid",
+                rules:{
+                    password:{
+                        required: true,
+                        minlength: 5,
+                    },
+                    confirm_password:{
+                        required: true,
+                        equalTo: '#password'
+                    },
+                },
+                messages:{
+                    password:{
+                        required:'Please enter  password',
+                        minlength: "Your password must be at least 5 characters long",
+                    },
+                    confirm_password:{
+                        required:'Please enter confirm password',
+                        equalTo:'Passwords do not match'
+                    },
+                }
+            })
+        }
+        if($userProfile.length){
+            $userProfile.validate({
+                validClass: "is-valid",
+                rules:{
+                    name:{
+                        required: true
+                    },
+                    mobile:{
+                        required: true,
+                        minlength:11,
+                    },
+                },
+                messages:{
+                    name:{
+                        required:'Please enter your name'
+                    },
+                    mobile:{
+                        required:'Please enter your mobile number'
+                    },
+                }
+            })
+        }
+        if($updatePassword.length){
+            $updatePassword.validate({
+                validClass: "is-valid",
+                rules:{
+                    current_password:{
+                        required: true,
+                        remote:"check-user-password",
+                    },
+                    password:{
+                        required: true,
+                        minlength: 5,
+                    },
+                    confirm_password:{
+                        required: true,
+                        equalTo: '#password'
+                    },
+                },
+                messages:{
+                    current_password:{
+                        required:'Please enter current password',
+                        remote:"Please enter correct password",
+                    },
+                    password:{
+                        required:'Please enter new password',
+                        minlength: "Your password must be at least 5 characters long",
+                    },
+                    confirm_password:{
+                        required:'Please enter confirm password',
+                        equalTo:'Passwords do not match'
                     },
                 }
             })

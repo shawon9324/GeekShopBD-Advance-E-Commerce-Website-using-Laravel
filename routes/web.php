@@ -153,5 +153,14 @@ Route::namespace('Front')->group(function () {
     Route::post('/register','UsersController@registerUser');
     Route::match(['get','post'],'/check-user-email','UsersController@emailCheck');
     Route::get('/user-logout','UsersController@userLogout');
-
+    Route::match(['get','post'],'/confirm/{code}','UsersController@confirmAccount');
+    Route::match(['get','post'],'/forgot-password','UsersController@forgotPassword');
+    Route::match(['get','post'],'/recover/auth={auth}','UsersController@recoverAccount');
+    /**********************************************************************************************
+    *CUSTOMER PROFILE
+    ***********************************************************************************************/
+    Route::get('/my-account','UsersController@userAccount');
+    Route::post('/update-my-account','UsersController@updateAccount');
+    Route::post('/update-user-password','UsersController@updateUserPassword');
+    Route::match(['get','post'],'/check-user-password','UsersController@passwordCheck');
 });

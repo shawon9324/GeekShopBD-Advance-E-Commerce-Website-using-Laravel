@@ -28,6 +28,57 @@ $sections = Section::sections();
         </div>
         <div class="my-4 my-xl-8">
             <div class="row">
+                <div class="col-md-5 ml-xl-auto mr-md-auto mr-xl-0 mb-8 mb-md-0">
+                    <!-- Title -->
+                    <div class="border-bottom border-color-1 mb-6">
+                        <h3 class="d-inline-block section-title mb-0 pb-2 font-size-26">Login</h3>
+                    </div>
+                    <p class="text-gray-90 mb-4">Welcome back! Sign in to your account.</p>
+                    <!-- End Title -->
+                    <form class="userLogin"  name="userLogin" id="userLogin" action="{{ url('/login') }} " method="post" >@csrf                        <!-- Form Group -->
+                        <div class=" form-group">
+                            <label class="form-label" for="signinEmail">Email address
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input type="email" class="form-control" name="login_email" id="login_email" placeholder="Username or Email address" aria-label="Username or Email address">
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Form Group -->
+                        <div class=" form-group">
+                            <label class="form-label" for="signinSrPasswordExample2">Password <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" name="login_password" id="login_password" placeholder="Password" aria-label="Password">
+                        </div>
+                        <!-- End Form Group -->
+                        <!-- Checkbox -->
+                        <div class=" mb-3">
+                            <div class="custom-control custom-checkbox d-flex align-items-center">
+                                <input type="checkbox" class="custom-control-input" id="rememberCheckbox" name="rememberCheckbox">
+                                <label class="custom-control-label form-label" for="rememberCheckbox">
+                                    Remember me
+                                </label>
+                            </div>
+                        </div>
+                        <!-- End Checkbox -->
+                        <!-- Button -->
+                        <div class="mb-1">
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary-dark-w px-5">Login</button>
+                            </div>
+                            <div class="mb-2">
+                                <a class="text-blue" href="{{url('forgot-password')}}">Lost your password?</a>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+                    </form>
+                </div>
+                <div class="col-md-1 d-none d-md-block">
+                    <div class="flex-content-center h-100">
+                        <div class="width-1 bg-1 h-100"></div>
+                        <div class="width-50 height-50 border border-color-1 rounded-circle flex-content-center font-italic bg-white position-absolute">or</div>
+                    </div>
+                </div>
+                
                 <div class="col-md-5 ml-md-auto ml-xl-0 mr-xl-auto">
                     <!-- Title -->
                     <div class="border-bottom border-color-1 mb-6">
@@ -84,57 +135,6 @@ $sections = Section::sections();
                         <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Keep a record of all your purchases</li>
                     </ul>
                 </div>
-                <div class="col-md-1 d-none d-md-block">
-                    <div class="flex-content-center h-100">
-                        <div class="width-1 bg-1 h-100"></div>
-                        <div class="width-50 height-50 border border-color-1 rounded-circle flex-content-center font-italic bg-white position-absolute">or</div>
-                    </div>
-                </div>
-                <div class="col-md-5 ml-xl-auto mr-md-auto mr-xl-0 mb-8 mb-md-0">
-                    <!-- Title -->
-                    <div class="border-bottom border-color-1 mb-6">
-                        <h3 class="d-inline-block section-title mb-0 pb-2 font-size-26">Login</h3>
-                    </div>
-                    <p class="text-gray-90 mb-4">Welcome back! Sign in to your account.</p>
-                    <!-- End Title -->
-                    <form class="userLogin"  name="userLogin" id="userLogin" action="{{ url('/login') }} " method="post" >@csrf                        <!-- Form Group -->
-                        <div class=" form-group">
-                            <label class="form-label" for="signinEmail">Email address
-                                <span class="text-danger">*</span>
-                            </label>
-                            <input type="email" class="form-control" name="login_email" id="login_email" placeholder="Username or Email address" aria-label="Username or Email address">
-                        </div>
-                        <!-- End Form Group -->
-
-                        <!-- Form Group -->
-                        <div class=" form-group">
-                            <label class="form-label" for="signinSrPasswordExample2">Password <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" name="login_password" id="login_password" placeholder="Password" aria-label="Password">
-                        </div>
-                        <!-- End Form Group -->
-                        <!-- Checkbox -->
-                        <div class=" mb-3">
-                            <div class="custom-control custom-checkbox d-flex align-items-center">
-                                <input type="checkbox" class="custom-control-input" id="rememberCheckbox" name="rememberCheckbox">
-                                <label class="custom-control-label form-label" for="rememberCheckbox">
-                                    Remember me
-                                </label>
-                            </div>
-                        </div>
-                        <!-- End Checkbox -->
-                        <!-- Button -->
-                        <div class="mb-1">
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary-dark-w px-5">Login</button>
-                            </div>
-                            <div class="mb-2">
-                                <a class="text-blue" href="#">Lost your password?</a>
-                            </div>
-                        </div>
-                        <!-- End Button -->
-                    </form>
-                </div>
-                
             </div>
         </div>
     </div>
