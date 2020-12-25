@@ -214,16 +214,12 @@ $sections = Section::sections();
                 <!-- Deals-and-tabs -->
                 <div class="mb-5">
                     <div class="row">
-                        <!-- Deal -->
+                        <!--SPEICAL Deal -->
                         <div class="col-md-auto mb-6 mb-md-0">
                             
                             <div style="border-radius:0 0px 0 70px; margin-top:50px;box-shadow: 0 25px 30px 0 rgba(0,0,0,0.2);" class="p-3 border border-width-2 border-primary borders-radius-8 bg-white min-width-370">
                                 <div class="d-flex justify-content-between align-items-center m-1 ml-2">
                                     <h3 class="font-size-22 mb-0 font-weight-normal text-lh-28 max-width-120">Special Deal</h3>
-                                    {{-- <div class="d-flex align-items-center flex-column justify-content-center bg-primary rounded-pill height-75 width-75 text-lh-1">
-                                        <!-- <span class="white-txt font-size-12">Save</span> -->
-                                        <div class="white-txt font-size-20 font-weight-bold">-20%</div>
-                                    </div> --}}
                                     <div style="transform: translate(-5.19px,-1.8px); " class="ribbon ribbon-top-right"><span>25% off!</span></div>
                                 </div>
                                 <div class="mb-4">
@@ -275,7 +271,7 @@ $sections = Section::sections();
                                 </div>
                             </div>
                         </div>
-                        <!-- End Deal -->
+                        <!-- End SPEICAL Deal -->
 						<!-- Tab Prodcut -->
                         <div class="col">
                             <!-- Features Section -->
@@ -374,7 +370,6 @@ $sections = Section::sections();
 			
             <!-- Products-4-1-4 -->
             <div class="products-group-4-1-4 space-1 bg-gray-7">
-                <h2 class="sr-only">Products Grid</h2>
                 <div class="container">
                     <!-- Nav Classic -->
                     <div class="position-relative text-center z-index-2 mb-3">
@@ -382,7 +377,6 @@ $sections = Section::sections();
 							<?php  $count = array('one','two','three','four','five','six','seven','eight','nine'); ?>
 							<?php $i=1;?>
 							@foreach ($sections as $section)
-						
 								<li class="nav-item flex-shrink-0 flex-lg-shrink-1">
                                 <a class="nav-link @if($i==1) active @else @endif" id="SectionTab-{{$i}}-tab" data-toggle="pill" href="#SectionTab-{{$i}}" role="tab" aria-controls="SectionTab-{{$i}}" >
                                     <div class="d-md-flex justify-content-md-center align-items-md-center">
@@ -396,27 +390,43 @@ $sections = Section::sections();
                     </div>
                     <!-- End Nav Classic -->
 
+
+
+
+
                     <!-- Tab Content -->
                     <div class="tab-content" id="Tpills-tabContent">
+                        {{-- Desktop PC --}}
                         <div class="tab-pane fade pt-2 show active" id="SectionTab-1" role="tabpanel" aria-labelledby="SectionTab-1-tab">
                             <div class="row no-gutters">
                                 <div class="col-md-3 col-wd-4 d-md-flex d-wd-block">
                                     <ul class="row list-unstyled products-group no-gutters mb-0 flex-xl-column flex-wd-row">
+                                        @foreach($top_desktopsL as $product)
+                                        <?php $productUrl = makeProductUrl($product['product_model'],$product['id']) ?>
+                                        <?php $discounted_price = getDiscountedPrice($product['product_price'],$product['product_discount']) ?>
                                         <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
                                             <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
                                                 <div class="product-item__inner bg-white p-3">
                                                     <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                                        <div class="mb-2"><a href="{{url('/'.$product['category']['url'])}}" class="font-size-12 text-gray-5">{{$product['category']['category_name']}}</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="{{url('product/'.$productUrl)}}" class="text-blue font-weight-bold">{{$product['product_name']}}</a></h5>
                                                         <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
+                                                            <a href="{{url('product/'.$productUrl)}}" class="d-block text-center"><img class="img-fluid" style="height: 212px;width:200px;" src="{{ url('img/product_img/small/'.$product['main_image']) }}" alt="Image Description"></a>
                                                         </div>
                                                         <div class="flex-center-between mb-1">
                                                             <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
+                                                                <div class="text-gray-100">
+                                                                    @if($product['product_discount']>0)
+                                                                    ৳ {{ $discounted_price }}
+                                                                    <span>
+                                                                    <del style="font-size: 15px;">৳ {{$product['product_price']}}</del>
+                                                                    </span>
+                                                                    @else
+                                                                    ৳ {{$product['product_price']}}
+                                                                    @endif</div>
                                                             </div>
                                                             <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                                <a href="{{url('product/'.$productUrl)}}" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -429,87 +439,7 @@ $sections = Section::sections();
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Tablet White EliteBook Revolve 810 G2</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img2.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">GameConsole Destiny  Special Edition</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img7.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                                 <div class="col-md-6 col-wd-4 products-group-1">
@@ -519,23 +449,25 @@ $sections = Section::sections();
                                                 <div class="product-item__inner bg-white p-3">
                                                     <div class="product-item__body d-flex flex-column">
                                                         <div class="mb-1">
-                                                            <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Game Consoles</a></div>
-                                                            <h5 class="mb-0 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Game Console Controller +++ USB 3.0 Cable</a></h5>
+                                                            <?php $productUrl = makeProductUrl($top_product['product_model'],$top_product['id']) ?>
+                                                            <?php $discounted_price = getDiscountedPrice($top_product['product_price'],$top_product['product_discount']) ?>
+                                                            <div class="mb-2"><a href="{{url('/'.$top_product['category']['url'])}}" class="font-size-12 text-gray-5">{{$top_product['category']['category_name']}}</a></div>
+                                                            <h5 class="mb-0 product-item__title"><a href="{{url('product/'.$productUrl)}}" class="text-blue font-weight-bold">{{$top_product['product_name']}}</a></h5>
                                                         </div>
                                                         <div class="mb-1 min-height-4-1-4">
-                                                            <a href="#" class="d-block text-center my-4 mt-lg-6 mb-lg-5 mt-xl-0 mb-xl-0 mt-wd-6 mb-wd-5"><img class="img-fluid" src="{{ url('img/front_img/564X520/img2.jpg') }}" alt="Image Description"></a>
+                                                            <a href="{{url('product/'.$productUrl)}}" class="d-block text-center my-4 mt-lg-6 mb-lg-5 mt-xl-0 mb-xl-0 mt-wd-6 mb-wd-5"><img class="img-fluid" src="{{ url('img/product_img/large/'.$top_product['main_image']) }}" alt="Image Description"></a>
                                                             <!-- Gallery -->
                                                             <div class="row mx-gutters-2 mb-3">
+                                                                @foreach ($top_product['images'] as $img)
                                                                 <div class="col-auto">
                                                                     <!-- Gallery -->
                                                                     <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;"
-                                                                        data-src="{{ url('img/front_img/1920X1080/img1.jpg') }}"
+                                                                        data-src="{{ url('img/product_img/large/'.$img['image']) }}"
                                                                         data-fancybox="fancyboxGallery6"
-                                                                        data-caption="Electro in frames - image #01"
+                                                                        data-caption={{$top_product['product_name']}}
                                                                         data-speed="700"
                                                                         data-is-infinite="true">
-                                                                        <img class="img-fluid border" src="{{ url('img/front_img/100X100/img1.jpg') }}" alt="Image Description">
-
+                                                                        <img class="img-fluid border" src="{{ url('img/product_img/small/'.$img['image']) }}" alt="Image Description">
                                                                         <span class="u-media-viewer__container">
                                                                             <span class="u-media-viewer__icon">
                                                                                 <span class="fas fa-plus u-media-viewer__icon-inner"></span>
@@ -544,54 +476,25 @@ $sections = Section::sections();
                                                                     </a>
                                                                     <!-- End Gallery -->
                                                                 </div>
-
-                                                                <div class="col-auto">
-                                                                    <!-- Gallery -->
-                                                                    <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;"
-                                                                        data-src="{{ url('img/front_img/1920X1080/img2.jpg') }}"
-                                                                        data-fancybox="fancyboxGallery6"
-                                                                        data-caption="Electro in frames - image #02"
-                                                                        data-speed="700"
-                                                                        data-is-infinite="true">
-                                                                        <img class="img-fluid border" src="{{ url('img/front_img/100X100/img2.jpg') }}" alt="Image Description">
-
-                                                                        <span class="u-media-viewer__container">
-                                                                            <span class="u-media-viewer__icon">
-                                                                                <span class="fas fa-plus u-media-viewer__icon-inner"></span>
-                                                                            </span>
-                                                                        </span>
-                                                                    </a>
-                                                                    <!-- End Gallery -->
-                                                                </div>
-
-                                                                <div class="col-auto">
-                                                                    <!-- Gallery -->
-                                                                    <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;"
-                                                                        data-src="{{ url('img/front_img/1920X1080/img3.jpg') }}"
-                                                                        data-fancybox="fancyboxGallery6"
-                                                                        data-caption="Electro in frames - image #03"
-                                                                        data-speed="700"
-                                                                        data-is-infinite="true">
-                                                                        <img class="img-fluid border" src="{{ url('img/front_img/100X100/img3.jpg') }}" alt="Image Description">
-
-                                                                        <span class="u-media-viewer__container">
-                                                                            <span class="u-media-viewer__icon">
-                                                                                <span class="fas fa-plus u-media-viewer__icon-inner"></span>
-                                                                            </span>
-                                                                        </span>
-                                                                    </a>
-                                                                    <!-- End Gallery -->
-                                                                </div>
+                                                                @endforeach
                                                                 <div class="col"></div>
                                                             </div>
                                                             <!-- End Gallery -->
                                                         </div>
                                                         <div class="flex-center-between">
                                                             <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
+                                                                <div class="text-gray-100">
+                                                                    @if($top_product['product_discount']>0)
+                                                                    ৳ {{ $discounted_price }}
+                                                                    <span>
+                                                                    <del style="font-size: 15px;">৳ {{$top_product['product_price']}}</del>
+                                                                    </span>
+                                                                    @else
+                                                                    ৳ {{$top_product['product_price']}}
+                                                                    @endif</div>
                                                             </div>
                                                             <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-add-cart__wide btn-primary transition-3d-hover"><i class="ec ec-add-to-cart mr-2"></i> Add to Cart</a>
+                                                                <a href="{{url('product/'.$productUrl)}}" class="btn-add-cart btn-add-cart__wide btn-primary transition-3d-hover"><i class="ec ec-add-to-cart mr-2"></i> Add to Cart</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -608,21 +511,32 @@ $sections = Section::sections();
                                 </div>
                                 <div class="col-md-3 col-wd-4 d-md-flex d-wd-block">
                                     <ul class="row list-unstyled products-group no-gutters mb-0 flex-xl-column flex-wd-row">
+                                        @foreach($top_desktopsR as $product)
+                                        <?php $productUrl = makeProductUrl($product['product_model'],$product['id']) ?>
+                                        <?php $discounted_price = getDiscountedPrice($product['product_price'],$product['product_discount']) ?>
                                         <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
                                             <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
                                                 <div class="product-item__inner bg-white p-3">
                                                     <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                                        <div class="mb-2"><a href="{{url('/'.$product['category']['url'])}}" class="font-size-12 text-gray-5">{{$product['category']['category_name']}}</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="{{url('product/'.$productUrl)}}" class="text-blue font-weight-bold">{{$product['product_name']}}</a></h5>
                                                         <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
+                                                            <a href="{{url('product/'.$productUrl)}}" class="d-block text-center"><img class="img-fluid" src="{{ url('img/product_img/small/'.$product['main_image']) }}" style="height: 212px;width:200px;" alt="Image Description"></a>
                                                         </div>
                                                         <div class="flex-center-between mb-1">
                                                             <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
+                                                                <div class="text-gray-100">
+                                                                    @if($product['product_discount']>0)
+                                                                    ৳ {{ $discounted_price }}
+                                                                    <span>
+                                                                    <del style="font-size: 15px;">৳ {{$product['product_price']}}</del>
+                                                                    </span>
+                                                                    @else
+                                                                    ৳ {{$product['product_price']}}
+                                                                    @endif</div>
                                                             </div>
                                                             <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                                <a href="{{url('product/'.$productUrl)}}" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -635,110 +549,44 @@ $sections = Section::sections();
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Tablet White EliteBook Revolve 810 G2</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img2.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">GameConsole Destiny  Special Edition</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img7.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        {{--END Desktop PC --}}
+
+                        {{-- LAPTOP & NETBOOK --}}
                         <div class="tab-pane fade pt-2" id="SectionTab-2" role="tabpanel" aria-labelledby="SectionTab-2-tab">
                             <div class="row no-gutters">
-                                <div class="col-md-3 col-wd-4 d-md-flex d-wd-block">
-                                    <ul class="row list-unstyled products-group no-gutters mb-0 flex-xl-column flex-wd-row">
-                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
+                                <div class="col-md-12 ">
+                                    <ul class="row list-unstyled products-group no-gutters mb-0  ">
+                                        @foreach($top_laptops as $product)
+                                        <?php $productUrl = makeProductUrl($product['product_model'],$product['id']) ?>
+                                        <?php $discounted_price = getDiscountedPrice($product['product_price'],$product['product_discount']) ?>
+                                        <li class="col-xl-3 product-item remove-divider">
                                             <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
                                                 <div class="product-item__inner bg-white p-3">
                                                     <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
+                                                        <div class="mb-2"><a href="{{url('/'.$product['category']['url'])}}" class="font-size-12 text-gray-5">{{$product['category']['category_name']}}</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="{{url('product/'.$productUrl)}}" class="text-blue font-weight-bold">{{$product['product_name']}}</a></h5>
                                                         <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
+                                                            <a href="{{url('product/'.$productUrl)}}" class="d-block text-center"><img class="img-fluid" src="{{ url('img/product_img/small/'.$product['main_image']) }}" style="height: 212px;width:200px;" alt="Image Description"></a>
                                                         </div>
                                                         <div class="flex-center-between mb-1">
                                                             <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
+                                                                <div class="text-gray-100">
+                                                                    @if($product['product_discount']>0)
+                                                                    ৳ {{ $discounted_price }}
+                                                                    <span>
+                                                                    <del style="font-size: 15px;">৳ {{$product['product_price']}}</del>
+                                                                    </span>
+                                                                    @else
+                                                                    ৳ {{$product['product_price']}}
+                                                                    @endif</div>
                                                             </div>
                                                             <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                                <a href="{{url('product/'.$productUrl)}}" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -751,297 +599,213 @@ $sections = Section::sections();
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Tablet White EliteBook Revolve 810 G2</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img2.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">GameConsole Destiny  Special Edition</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img7.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6 col-wd-4 products-group-1">
-                                    <ul class="row list-unstyled products-group no-gutters bg-white h-100 mb-0">
-                                        <li class="col product-item remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body d-flex flex-column">
-                                                        <div class="mb-1">
-                                                            <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Game Consoles</a></div>
-                                                            <h5 class="mb-0 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Game Console Controller + USB 3.0 Cable</a></h5>
-                                                        </div>
-                                                        <div class="mb-1 min-height-4-1-4">
-                                                            <a href="#" class="d-block text-center my-4 mt-lg-6 mb-lg-5 mt-xl-0 mb-xl-0 mt-wd-6 mb-wd-5"><img class="img-fluid" src="{{ url('img/front_img/564X520/img2.jpg') }}" alt="Image Description"></a>
-                                                            <!-- Gallery -->
-                                                            <div class="row mx-gutters-2 mb-3">
-                                                                <div class="col-auto">
-                                                                    <!-- Gallery -->
-                                                                    <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;"
-                                                                        data-src="{{ url('img/front_img/1920X1080/img1.jpg') }}"
-                                                                        data-fancybox="fancyboxGallery6"
-                                                                        data-caption="Electro in frames - image #01"
-                                                                        data-speed="700"
-                                                                        data-is-infinite="true">
-                                                                        <img class="img-fluid border" src="{{ url('img/front_img/100X100/img1.jpg') }}" alt="Image Description">
-
-                                                                        <span class="u-media-viewer__container">
-                                                                            <span class="u-media-viewer__icon">
-                                                                                <span class="fas fa-plus u-media-viewer__icon-inner"></span>
-                                                                            </span>
-                                                                        </span>
-                                                                    </a>
-                                                                    <!-- End Gallery -->
-                                                                </div>
-
-                                                                <div class="col-auto">
-                                                                    <!-- Gallery -->
-                                                                    <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;"
-                                                                        data-src="{{ url('img/front_img/1920X1080/img2.jpg') }}"
-                                                                        data-fancybox="fancyboxGallery6"
-                                                                        data-caption="Electro in frames - image #02"
-                                                                        data-speed="700"
-                                                                        data-is-infinite="true">
-                                                                        <img class="img-fluid border" src="{{ url('img/front_img/100X100/img2.jpg') }}" alt="Image Description">
-
-                                                                        <span class="u-media-viewer__container">
-                                                                            <span class="u-media-viewer__icon">
-                                                                                <span class="fas fa-plus u-media-viewer__icon-inner"></span>
-                                                                            </span>
-                                                                        </span>
-                                                                    </a>
-                                                                    <!-- End Gallery -->
-                                                                </div>
-
-                                                                <div class="col-auto">
-                                                                    <!-- Gallery -->
-                                                                    <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;"
-                                                                        data-src="{{ url('img/front_img/1920X1080/img3.jpg') }}"
-                                                                        data-fancybox="fancyboxGallery6"
-                                                                        data-caption="Electro in frames - image #03"
-                                                                        data-speed="700"
-                                                                        data-is-infinite="true">
-                                                                        <img class="img-fluid border" src="{{ url('img/front_img/100X100/img3.jpg') }}" alt="Image Description">
-
-                                                                        <span class="u-media-viewer__container">
-                                                                            <span class="u-media-viewer__icon">
-                                                                                <span class="fas fa-plus u-media-viewer__icon-inner"></span>
-                                                                            </span>
-                                                                        </span>
-                                                                    </a>
-                                                                    <!-- End Gallery -->
-                                                                </div>
-                                                                <div class="col"></div>
-                                                            </div>
-                                                            <!-- End Gallery -->
-                                                        </div>
-                                                        <div class="flex-center-between">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-add-cart__wide btn-primary transition-3d-hover"><i class="ec ec-add-to-cart mr-2"></i> Add to Cart</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-3 col-wd-4 d-md-flex d-wd-block">
-                                    <ul class="row list-unstyled products-group no-gutters mb-0 flex-xl-column flex-wd-row">
-                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="col-xl-6 product-item max-width-xl-100 remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Tablet White EliteBook Revolve 810 G2</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img2.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">Wireless Audio System Multiroom 360 degree Full base audio</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img1.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="col-xl-6 product-item max-width-xl-100 d-md-none d-wd-block product-item remove-divider">
-                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
-                                                <div class="product-item__inner bg-white p-3">
-                                                    <div class="product-item__body pb-xl-2">
-                                                        <div class="mb-2"><a href="product-categories-7-column-full-width.html" class="font-size-12 text-gray-5">Speakers</a></div>
-                                                        <h5 class="mb-1 product-item__title"><a href="single-product-fullwidth.html" class="text-blue font-weight-bold">GameConsole Destiny  Special Edition</a></h5>
-                                                        <div class="mb-2">
-                                                            <a href="single-product-fullwidth.html" class="d-block text-center"><img class="img-fluid" src="{{ url('img/front_img/212X200/img7.jpg') }}" alt="Image Description"></a>
-                                                        </div>
-                                                        <div class="flex-center-between mb-1">
-                                                            <div class="prodcut-price">
-                                                                <div class="text-gray-100">$685,00</div>
-                                                            </div>
-                                                            <div class="d-none d-xl-block prodcut-add-cart">
-                                                                <a href="single-product-fullwidth.html" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-item__footer">
-                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
                         </div>
+                        {{--END LAPTOP & NETBOOK --}}
+
+                        {{-- Smartphone & Tablet --}}
+                        <div class="tab-pane fade pt-2" id="SectionTab-3" role="tabpanel" aria-labelledby="SectionTab-3-tab">
+                            <div class="row no-gutters">
+                                <div class="col-md-12 ">
+                                    <ul class="row list-unstyled products-group no-gutters mb-0  ">
+                                        @foreach($top_smartphone as $product)
+                                        <?php $productUrl = makeProductUrl($product['product_model'],$product['id']) ?>
+                                        <?php $discounted_price = getDiscountedPrice($product['product_price'],$product['product_discount']) ?>
+                                        <li class="col-xl-3 product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="{{url('/'.$product['category']['url'])}}" class="font-size-12 text-gray-5">{{$product['category']['category_name']}}</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="{{url('product/'.$productUrl)}}" class="text-blue font-weight-bold">{{$product['product_name']}}</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="{{url('product/'.$productUrl)}}" class="d-block text-center"><img class="img-fluid" src="{{ url('img/product_img/small/'.$product['main_image']) }}" style="height: 212px;width:200px;" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">
+                                                                    @if($product['product_discount']>0)
+                                                                    ৳ {{ $discounted_price }}
+                                                                    <span>
+                                                                    <del style="font-size: 15px;">৳ {{$product['product_price']}}</del>
+                                                                    </span>
+                                                                    @else
+                                                                    ৳ {{$product['product_price']}}
+                                                                    @endif</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="{{url('product/'.$productUrl)}}" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {{--END Smartphone & Tablet --}}
+
+                        {{-- Camera & Photo --}}
+                        <div class="tab-pane fade pt-2" id="SectionTab-4" role="tabpanel" aria-labelledby="SectionTab-4-tab">
+                            <div class="row no-gutters">
+                                <div class="col-md-12 ">
+                                    <ul class="row list-unstyled products-group no-gutters mb-0  ">
+                                        @foreach($top_camera as $product)
+                                        <?php $productUrl = makeProductUrl($product['product_model'],$product['id']) ?>
+                                        <?php $discounted_price = getDiscountedPrice($product['product_price'],$product['product_discount']) ?>
+                                        <li class="col-xl-3 product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="{{url('/'.$product['category']['url'])}}" class="font-size-12 text-gray-5">{{$product['category']['category_name']}}</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="{{url('product/'.$productUrl)}}" class="text-blue font-weight-bold">{{$product['product_name']}}</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="{{url('product/'.$productUrl)}}" class="d-block text-center"><img class="img-fluid" src="{{ url('img/product_img/small/'.$product['main_image']) }}" style="height: 212px;width:200px;" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">
+                                                                    @if($product['product_discount']>0)
+                                                                    ৳ {{ $discounted_price }}
+                                                                    <span>
+                                                                    <del style="font-size: 15px;">৳ {{$product['product_price']}}</del>
+                                                                    </span>
+                                                                    @else
+                                                                    ৳ {{$product['product_price']}}
+                                                                    @endif</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="{{url('product/'.$productUrl)}}" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {{--END Camera & Photo --}}
+
+                        {{-- Accessories --}}
+                        <div class="tab-pane fade pt-2" id="SectionTab-5" role="tabpanel" aria-labelledby="SectionTab-5-tab">
+                            <div class="row no-gutters">
+                                <div class="col-md-12 ">
+                                    <ul class="row list-unstyled products-group no-gutters mb-0  ">
+                                        @foreach($top_accessories as $product)
+                                        <?php $productUrl = makeProductUrl($product['product_model'],$product['id']) ?>
+                                        <?php $discounted_price = getDiscountedPrice($product['product_price'],$product['product_discount']) ?>
+                                        <li class="col-xl-3 product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="{{url('/'.$product['category']['url'])}}" class="font-size-12 text-gray-5">{{$product['category']['category_name']}}</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="{{url('product/'.$productUrl)}}" class="text-blue font-weight-bold">{{$product['product_name']}}</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="{{url('product/'.$productUrl)}}" class="d-block text-center"><img class="img-fluid" src="{{ url('img/product_img/small/'.$product['main_image']) }}" style="height: 212px;width:200px;" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">
+                                                                    @if($product['product_discount']>0)
+                                                                    ৳ {{ $discounted_price }}
+                                                                    <span>
+                                                                    <del style="font-size: 15px;">৳ {{$product['product_price']}}</del>
+                                                                    </span>
+                                                                    @else
+                                                                    ৳ {{$product['product_price']}}
+                                                                    @endif</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="{{url('product/'.$productUrl)}}" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {{--END Accessories --}}
+
+                         {{-- Gadget --}}
+                         <div class="tab-pane fade pt-2" id="SectionTab-6" role="tabpanel" aria-labelledby="SectionTab-6-tab">
+                            <div class="row no-gutters">
+                                <div class="col-md-12 ">
+                                    <ul class="row list-unstyled products-group no-gutters mb-0  ">
+                                        @foreach($top_gadget as $product)
+                                        <?php $productUrl = makeProductUrl($product['product_model'],$product['id']) ?>
+                                        <?php $discounted_price = getDiscountedPrice($product['product_price'],$product['product_discount']) ?>
+                                        <li class="col-xl-3 product-item remove-divider">
+                                            <div class="product-item__outer h-100 w-100 prodcut-box-shadow">
+                                                <div class="product-item__inner bg-white p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2"><a href="{{url('/'.$product['category']['url'])}}" class="font-size-12 text-gray-5">{{$product['category']['category_name']}}</a></div>
+                                                        <h5 class="mb-1 product-item__title"><a href="{{url('product/'.$productUrl)}}" class="text-blue font-weight-bold">{{$product['product_name']}}</a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="{{url('product/'.$productUrl)}}" class="d-block text-center"><img class="img-fluid" src="{{ url('img/product_img/small/'.$product['main_image']) }}" style="height: 212px;width:200px;" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">
+                                                                    @if($product['product_discount']>0)
+                                                                    ৳ {{ $discounted_price }}
+                                                                    <span>
+                                                                    <del style="font-size: 15px;">৳ {{$product['product_price']}}</del>
+                                                                    </span>
+                                                                    @else
+                                                                    ৳ {{$product['product_price']}}
+                                                                    @endif</div>
+                                                            </div>
+                                                            <div class="d-none d-xl-block prodcut-add-cart">
+                                                                <a href="{{url('product/'.$productUrl)}}" class="btn-add-cart btn-primary transition-3d-hover"><i class="ec ec-add-to-cart"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-item__footer">
+                                                        <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {{--END Gadget --}}
+
                     </div>
                     <!-- End Tab Content -->
                 </div>
@@ -1054,6 +818,9 @@ $sections = Section::sections();
 
 
             
+
+
+
             <div class="container">
                 <!-- Prodcut-cards-carousel -->
                 <div class="space-top-2">

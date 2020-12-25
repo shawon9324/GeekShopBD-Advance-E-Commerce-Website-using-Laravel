@@ -22,13 +22,11 @@ class AdminController extends Controller
         Session::put('page', 'profile');
         return view('admin.profile');
     }
-
-
-
-
-
     public function login(Request $request)
     {
+        if(Auth::guard('admin')->check()){
+            return redirect('admin/dashboard');
+        }
         if ($request->isMethod('post')) {
             $data = $request->all();
             //validation
@@ -52,7 +50,6 @@ class AdminController extends Controller
                 return redirect()->back();
             }
         }
-
         return view('admin.admin_login');
     }
 

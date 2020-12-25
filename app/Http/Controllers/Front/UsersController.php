@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Session;
+
 class UsersController extends Controller
 {
     public function loginRegister(){
@@ -195,13 +196,13 @@ class UsersController extends Controller
             'pincode' =>$data['pincode'],
             'address' =>$data['address'],
         ]);
-        toastr()->success('','Profile Updated Successfully!');
+        toastr()->success('','Profile Updated Successfully');
         return redirect()->back();
     }
     public function updateUserPassword(Request $request){
         $data = $request->all();
         User::where('email',Auth::user()->email)->update(['password'=>bcrypt($data['password'])]);
-        toastr()->success('','Password Updated Successfully!');
+        toastr()->success('','Password Updated Successfully');
         return redirect()->back();
     }
     public function passwordCheck(Request $request){

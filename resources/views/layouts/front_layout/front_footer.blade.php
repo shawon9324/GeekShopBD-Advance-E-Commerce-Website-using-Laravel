@@ -144,8 +144,8 @@ $right_category = json_decode(json_encode($right_category),true);
             <div class="bg-gray-14 py-2">
                 <div class="container">
                     <div class="flex-center-between d-block d-md-flex">
-                    <div class="mb-3 mb-md-0">© <a href="{{url('/')}}" class="font-weight-bold text-gray-90">GeekshopBD</a> - All rights Reserved</div>
-                        <div class="text-md-right">
+                    <div class="mb-3 mb-md-0">© <a href="{{url('/')}}" class="font-weight-bold text-gray-90">GeekshopBD</a> - Made with <span  style="color: #e25555;font-size:24px;">&#9829;</span> by <a href="https://shawon9324.github.io/">@shawon9324</a></div>
+                        {{-- <div class="text-md-right">
                             <span class="d-inline-block bg-white border rounded p-1">
                                 <img class="max-width-5" src="{{ url('img/front_img/100X60/img1.jpg') }}" alt="Image Description">
                             </span>
@@ -161,7 +161,7 @@ $right_category = json_decode(json_encode($right_category),true);
                             <span class="d-inline-block bg-white border rounded p-1">
                                 <img class="max-width-5" src="{{ url('img/front_img/100X60/img5.jpg') }}" alt="Image Description">
                             </span>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

@@ -57,7 +57,7 @@
                                 data-is-thumbs="true"
                                 data-nav-for="#sliderSyncingNav">
                                     <div class="js-slide" style="cursor: pointer;">
-                                        <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;" data-src="{{ url('img/product_img/large/'.$productDetails['main_image']) }}" data-fancybox="fancyboxGallery6" data-caption="{{$img['image']}}" data-speed="700" data-is-infinite="true">
+                                        <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;" data-src="{{ url('img/product_img/large/'.$productDetails['main_image']) }}" data-fancybox="fancyboxGallery6" data-caption="{{$productDetails['product_name']}}" data-speed="700" data-is-infinite="true">
                                             <img class="img-fluid" src="{{ url('img/product_img/small/'.$productDetails['main_image']) }}" alt="Image Description">
                                                 <span class="u-media-viewer__container">
                                                     <span class="u-media-viewer__icon">
@@ -69,7 +69,7 @@
                                     @foreach ($productDetails['images'] as $img)
                                     <div class="js-slide" style="cursor: pointer;">
                                             <!-- Gallery -->
-                                            <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;" data-src="{{ url('img/product_img/large/'.$img['image']) }}" data-fancybox="fancyboxGallery6" data-caption="{{$img['image']}}" data-speed="700" data-is-infinite="true">
+                                            <a class="js-fancybox max-width-60 u-media-viewer" href="javascript:;" data-src="{{ url('img/product_img/large/'.$img['image']) }}" data-fancybox="fancyboxGallery6" data-caption="{{$productDetails['product_name']}}" data-speed="700" data-is-infinite="true">
                                                 <img class="img-fluid" src="{{ url('img/product_img/small/'.$img['image']) }}" alt="Image Description">
 
                                                 <span class="u-media-viewer__container">
