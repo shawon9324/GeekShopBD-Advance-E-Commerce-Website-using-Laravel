@@ -143,8 +143,8 @@ $cartItems = Cart::userCartItems();
                                          <!-- My Account -->
 
 
-                                        <li class="col-md-1 d-none d-xl-block"><a href="compare.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare"></i></a></li>
-                                        <li class="col-md-1 d-none d-xl-block"><a href="wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites"></i></a></li>
+                                        <li class="col-md-1 d-none d-xl-block"><a href="{{ url('/compare') }}" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare"></i></a></li>
+                                        <li class="col-md-1 d-none d-xl-block"><a href="{{ url('/my-wishlist') }}" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites"></i></a></li>
                                         <li class="col pr-xl-0 px-2 px-sm-3 d-xl-none">
                                             <a href="{{url('/shopping-cart')}}" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">
                                                 <i class="font-size-22 ec ec-shopping-bag"></i>

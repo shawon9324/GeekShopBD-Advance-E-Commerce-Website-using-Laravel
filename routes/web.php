@@ -163,4 +163,18 @@ Route::namespace('Front')->group(function () {
     Route::post('/update-my-account','UsersController@updateAccount');
     Route::post('/update-user-password','UsersController@updateUserPassword');
     Route::match(['get','post'],'/check-user-password','UsersController@passwordCheck');
+    /**********************************************************************************************
+    * WISH-LIST
+    ***********************************************************************************************/
+    Route::get('/add-to-wishlist','ProductsController@addtoWishlist');    
+    Route::get('/my-wishlist','ProductsController@wishList');
+    Route::post('/delete-wishlist-item','ProductsController@deleteWishListItem');
+    /**********************************************************************************************/
+    /**********************************************************************************************
+    * COMPARE PRODUCTS
+    ***********************************************************************************************/
+    Route::get('/add-to-compare','ProductsController@addtoCompare');    
+    Route::get('/compare','ProductsController@compare');
+    Route::post('/delete-compare-item','ProductsController@deleteCompareItem');
+    /**********************************************************************************************/
 });

@@ -53,17 +53,19 @@
                                     </div>
                                 </div>
                                 <div class="d-none d-xl-block prodcut-add-cart">
-                                    <a href="#" class="btn-add-cart btn-primary transition-3d-hover"><i
+                                    <a href="{{ url('product/'.$productUrl) }}" class="btn-add-cart btn-primary transition-3d-hover"><i
                                             class="ec ec-add-to-cart"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="product-item__footer">
                             <div class="border-top pt-2 flex-center-between flex-wrap">
-                                <a href="compare.html" class="text-gray-6 font-size-13"><i
-                                        class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                <a href="wishlist.html" class="text-gray-6 font-size-13"><i
-                                        class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                <a class="add-to-compare text-gray-6 font-size-13" id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()">
+                                    <i class="ec ec-compare mr-1 font-size-15"></i> Compare
+                                </a>
+                                <a class="add-to-cart text-gray-6 font-size-13" id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()">
+                                    <i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist
+                                </a>
                             </div>
                         </div>
                     </div>

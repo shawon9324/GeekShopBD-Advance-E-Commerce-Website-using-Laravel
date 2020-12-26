@@ -286,8 +286,8 @@ $cartItems = Cart::userCartItems();
                                             </div>
                                         </li>
                                          <!-- My Account -->
-                                        <li class="col d-none d-xl-block"><a href="compare.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare white-txt"></i></a></li>
-                                        <li class="col d-none d-xl-block"><a href="wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites white-txt"></i></a></li>
+                                        <li class="col d-none d-xl-block"><a href="{{ url('/compare') }}" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare white-txt"></i></a></li>
+                                        <li class="col d-none d-xl-block"><a href="{{ url('/my-wishlist') }}" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites white-txt"></i></a></li>
                                         <li class="col pr-xl-0 px-2 px-sm-3">
                                             <a href="{{url('/shopping-cart')}}" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">
                                                 <i class="font-size-22 ec ec-shopping-bag  white-txt"></i>
@@ -417,8 +417,8 @@ $cartItems = Cart::userCartItems();
                             <div class="col-md-auto align-self-center">
                                 <div class="d-flex">
                                     <ul class="d-flex list-unstyled mb-0">
-                                        <li class="col-md-1"><a href="compare.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare white-txt"></i></a></li>
-                                        <li class="col-md-1"><a href="wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites white-txt"></i></a></li>
+                                        <li class="col-md-1"><a href="{{ url('/compare') }}" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare white-txt"></i></a></li>
+                                        <li class="col-md-1"><a href="{{ url('/my-wishlist') }}" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites white-txt"></i></a></li>
                                             @include('front.products.shopping_mini_cart')
                                         </ul>
                                     </div>

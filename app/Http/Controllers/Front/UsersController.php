@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Cart;
+use App\Compare;
 use App\Http\Controllers\Controller;
 use App\Sms;
 use App\User;
@@ -128,6 +129,7 @@ class UsersController extends Controller
                         if(!empty($session_id)){
                             $user_id = Auth::user()->id;
                             Cart::where('session_id',$session_id)->update(['user_id'=>$user_id]);
+                            Compare::where('session_id',$session_id)->update(['user_id'=>$user_id]);
                         }
                         toastr()->info('','Welcome, '.Auth::user()->name);
                         return redirect('/');

@@ -500,6 +500,122 @@ $(document).ready(function() {
             })
         }
     });
+
+/********************************************************************
+* 
+* PRODUCTS-ADD-TO-WISHLIST
+* 
+*********************************************************************/
+$(document).on("click",".add-to-cart",function(){
+    var product_id =$(this).attr("product_id");
+    var product_name = $(this).attr("product_name");
+    var message = "You must login or create an account to save "+product_name+" to your wish list";
+    var added_message = "You have added successfully "+product_name+" to your wish list";
+    var already_added_message = "You have already added "+product_name+" to your wish list";
+    $.ajax({
+        type: "get",
+        url : "/add-to-wishlist",
+        data: {product_id:product_id},
+        success: function(resp){
+           if(resp == "no_login"){
+            toastr.error('',message);
+           }
+           else if(resp =="added_to_wishlist"){
+            toastr.success('',added_message);
+           }
+           else if(resp =="already_added"){
+                toastr.error('',already_added_message);
+           }
+        },
+        error: function() {
+        }
+    });
+});
+
+/********************************************************************
+* 
+* REMOVE WISHLIST ITEMS
+* 
+*********************************************************************/
+$(document).on('click','.btnItemDelete',function(){
+    var wishlist_id = $(this).data('wishlist_id');
+    $.ajax({
+        data : {wishlist_id:wishlist_id},
+        url:'/delete-wishlist-item',
+        type:'post',
+        success: function(resp){
+            toastr.error('','Item removed from your Wishlist');
+            $(".AppendWishlistItems").html(resp.view);
+        }, error: function(){
+            console.log("Error")
+        }
+    })
+});
+
+/********************************************************************
+* 
+* PRODUCTS-ADD-TO-COMPARE
+* 
+*********************************************************************/
+
+$(document).on("click",".add-to-compare",function(){
+    var product_id =$(this).attr("product_id");
+    var product_name = $(this).attr("product_name");
+    var added_message = "You have added  "+product_name+" to your product comparison";
+    var already_added_message = "You have already added "+product_name+" to your product comparison";
+    $.ajax({
+        type: "get",
+        url : "/add-to-compare",
+        data: {product_id:product_id},
+        success: function(resp){
+           if(resp == "added_to_compare"){
+            toastr.success(added_message,'Success');
+           }
+           else if(resp =="already_added"){
+                toastr.error(already_added_message,'Failed');
+           }
+           else if(resp =="limit_exceded"){
+                toastr.error("You can add upto 4 products to your product comparison",'Failed');
+           }
+        },
+        error: function() {
+        }
+    });
+               
+
+});
+
+/********************************************************************
+* 
+* REMOVE COMPARE ITEMS
+* 
+*********************************************************************/
+$(document).on('click','.btnItemDelete',function(){
+    var comparison_id = $(this).data('comparison_id');
+    $.ajax({
+        data : {comparison_id:comparison_id},
+        url:'/delete-compare-item',
+        type:'post',
+        success: function(resp){
+            toastr.error('','Item removed from your Comparison');
+            $(".AppendCompareItems").html(resp.view);
+        }, error: function(){
+            console.log("Error")
+        }
+    })
+});
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
 

@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Compare;
 use App\Product;
 use App\ProductsAttribute;
+use App\Wishlist;
 use View;
 use Illuminate\Support\Facades\Auth;
 use Session;
@@ -233,5 +235,95 @@ class ProductsController extends Controller
                 ]);
             }
     }
-    
+    public function wishList(){
+        $wishListItems = Wishlist::wishListItems();
+        // echo "<pre>"; print_r($wishListItems);die;
+        return view('front.products.wishlist')->with(compact('wishListItems'));
+    }
+    public function addtoWishlist(Request $request){
+        if($request->ajax()){
+            $data = $request->all();
+            if(Auth::check()){
+                    $user_id = Auth::user()->id;
+                    $countProducts = Wishlist::where(['product_id'=>$data['product_id'],'user_id'=>$user_id])->count();
+                    if($countProducts>0){
+                        echo "already_added";
+                    }else{
+                        $wishlist = new Wishlist;
+                        $wishlist->user_id = $user_id;
+                        $wishlist->product_id =$data['product_id'];
+                        $wishlist->save();
+                        $message = "added_to_wishlist";
+                        return $message;
+                    }
+            }else{
+                echo "no_login";
+            }
+            
+        }
+    }
+    public function deleteWishListItem(Request $request){
+        if($request->ajax()){
+            $data = $request->all();
+            Wishlist::find($data['wishlist_id'])->delete();
+            $wishListItems = Wishlist::wishListItems();
+            return response()->json([
+            'view'=>(String)View::make('front.products.wishlist_item')->with(compact('wishListItems'))
+            ]);
+        }
+    }
+
+    public function compare(){
+        $compareItems = Compare::compareItems();
+        // echo "<pre>"; print_r($compareItems);die;
+        return view('front.products.compare')->with(compact('compareItems'));
+    }
+    public function addtoCompare(Request $request){
+        if($request->ajax()){
+            $data = $request->all();
+            $session_id = Session::get('session_id');
+
+            if(empty($session_id)){
+                    $session_id = Session::getId();
+                    Session::put('session_id',$session_id);
+            }
+            if(Auth::check()){
+                $countProducts = Compare::where(['product_id'=>$data['product_id'],'user_id'=>Auth::user()->id])->count();
+                $limit_check = Compare::where(['user_id'=>Auth::user()->id])->count();
+            }else{
+                $countProducts = Compare::where(['product_id'=>$data['product_id'],'session_id'=>$session_id])->count();
+                $limit_check = Compare::where(['session_id'=>$session_id])->count();
+            }
+            if($countProducts>0){
+                echo "already_added";
+                return false;
+            }
+            if($limit_check>3){
+                echo "limit_exceded";
+                return false;
+            }
+            if(Auth::check()){
+                $user_id = Auth::user()->id;
+            }else{
+                $user_id = 0;
+            }
+            $compare = new Compare;
+            $compare->session_id =$session_id;
+            $compare->user_id =$user_id;
+            $compare->product_id =$data['product_id'];
+            $compare->save();
+            $message = "added_to_compare";
+            return $message;
+        }
+    }
+    public function deleteCompareItem(Request $request){
+        if($request->ajax()){
+            $data = $request->all();
+            Compare::find($data['comparison_id'])->delete();
+            $compareItems = Compare::compareItems();
+            return response()->json([
+            'view'=>(String)View::make('front.products.compare_item')->with(compact('compareItems'))
+            ]);
+        }
+    }
 }
