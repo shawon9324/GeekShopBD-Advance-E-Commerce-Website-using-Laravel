@@ -18,7 +18,7 @@
                 <th>Remove</th>
                 @foreach($compareItems as $item)
                 <td class="text-center">
-                    <a href="javascript:void()" data-comparison_id="{{$item['id']}}" class="btnItemDelete text-gray-90"><i class="fa fa-times"></i></a>
+                    <a href="javascript:void()" data-comparison_id="{{$item['id']}}" class="btnCompareDelete text-gray-90"><i class="fa fa-times"></i></a>
                 </td>
                 @endforeach
             </tr>
@@ -35,13 +35,6 @@
                         </div>
                         <h3 class="product-item__title text-blue font-weight-bold mb-3">{{$item['product']['product_name']}}</h3>
                     </a>
-                    <div class="text-warning mb-2">
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                    </div>
                 </td>
                 @endforeach
             </tr>

@@ -63,7 +63,7 @@
                                 <a class="add-to-compare text-gray-6 font-size-13" id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()">
                                     <i class="ec ec-compare mr-1 font-size-15"></i> Compare
                                 </a>
-                                <a class="add-to-cart text-gray-6 font-size-13" id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()">
+                                <a class="add-to-wishlist text-gray-6 font-size-13" id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()">
                                     <i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist
                                 </a>
                             </div>
@@ -132,9 +132,15 @@
                                 <a href="single-product-fullwidth.html" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Add to cart</a>
                             </div>
                         </div>
-                        <div class="flex-horizontal-center justify-content-between justify-content-wd-center flex-wrap">
-                            <a href="compare.html" class="text-gray-6 font-size-13 mx-wd-3"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                            <a href="wishlist.html" class="text-gray-6 font-size-13 mx-wd-3"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                        <div class="product-item__footer">
+                            <div class="border-top pt-2 flex-center-between flex-wrap">
+                                <a class="add-to-compare text-gray-6 font-size-13" id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()">
+                                    <i class="ec ec-compare mr-1 font-size-15"></i> Compare
+                                </a>
+                                <a class="add-to-wishlist text-gray-6 font-size-13" id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()">
+                                    <i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

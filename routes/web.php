@@ -177,4 +177,10 @@ Route::namespace('Front')->group(function () {
     Route::get('/compare','ProductsController@compare');
     Route::post('/delete-compare-item','ProductsController@deleteCompareItem');
     /**********************************************************************************************/
+    /**********************************************************************************************
+    * REVIEW PRODUCTS
+    ***********************************************************************************************/
+    Route::get('/add-product-review','ProductsController@addtoReview');    
+    Route::post('/delete-product-review','ProductsController@deleteReview');
+    /**********************************************************************************************/
 });

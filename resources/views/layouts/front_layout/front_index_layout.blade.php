@@ -55,6 +55,7 @@
         <script src="{{ url('vendor/front_vendor/bootstrap/bootstrap.min.js')}} "></script>
         @toastr_js
         @toastr_render
+
         <!-- JS Implementing Plugins -->
         <script src="{{ url('vendor/front_vendor/appear.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/jquery.countdown.min.js')}} "></script>
@@ -66,7 +67,8 @@
         <script src="{{ url('vendor/front_vendor/typed.js/lib/typed.min.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/slick-carousel/slick/slick.js')}} "></script>
         <script src="{{ url('vendor/front_vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}} "></script>
-
+        {{-- FRONT CUSTOM JS SCRIPT --}}
+        <script src="{{ url('js/front_js/front_script_custom.js ')}} "></script>
         <!-- JS Electro -->
         <script src="{{ url('js/front_js/hs.core.js ')}} "></script>
         <script src="{{ url('js/front_js/components/hs.countdown.js ')}} "></script>

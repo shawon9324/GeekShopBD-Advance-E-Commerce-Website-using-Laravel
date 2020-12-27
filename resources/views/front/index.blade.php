@@ -286,20 +286,20 @@ $sections = Section::sections();
                                                 </div>
                                             </a>
                                         </li>
-                                        <li class="nav-item">
+                                        {{-- <li class="nav-item">
                                             <a class="nav-link " id="pills-two-example1-tab" data-toggle="pill" href="#pills-two-example1" role="tab" aria-controls="pills-two-example1" aria-selected="false">
                                                 <div class="d-md-flex justify-content-md-center align-items-md-center">
                                                     On Sale
                                                 </div>
                                             </a>
-                                        </li>
-                                        <li class="nav-item">
+                                        </li> --}}
+                                        {{-- <li class="nav-item">
                                             <a class="nav-link " id="pills-three-example1-tab" data-toggle="pill" href="#pills-three-example1" role="tab" aria-controls="pills-three-example1" aria-selected="false">
                                                 <div class="d-md-flex justify-content-md-center align-items-md-center">
                                                     Top Rated
                                                 </div>
                                             </a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
                                 <!-- End Nav Classic -->
@@ -341,8 +341,8 @@ $sections = Section::sections();
 															</div>
 															<div class="product-item__footer">
 																<div class="border-top pt-2 flex-center-between flex-wrap">
-																	<a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-																	<a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+																	<a id="product-{{ $featured_item['id'] }}" product_id="{{ $featured_item['id'] }}" product_name="{{$featured_item['product_name']}}" href="javascript:void()"  class="add-to-compare text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+																	<a id="product-{{ $featured_item['id'] }}" product_id="{{ $featured_item['id'] }}" product_name="{{$featured_item['product_name']}}" href="javascript:void()"  class="add-to-wishlist text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
 																</div>
 															</div>
 														</div>
@@ -432,8 +432,8 @@ $sections = Section::sections();
                                                     </div>
                                                     <div class="product-item__footer">
                                                         <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()" class="add-to-compare text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()"  class="add-to-wishlist text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -500,8 +500,8 @@ $sections = Section::sections();
                                                     </div>
                                                     <div class="product-item__footer">
                                                         <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                            <a id="product-{{ $top_product['id'] }}" product_id="{{ $top_product['id'] }}" product_name="{{$top_product['product_name']}}" href="javascript:void()" class="add-to-compare text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a id="product-{{ $top_product['id'] }}" product_id="{{ $top_product['id'] }}" product_name="{{$top_product['product_name']}}" href="javascript:void()"  class="add-to-wishlist text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -542,8 +542,8 @@ $sections = Section::sections();
                                                     </div>
                                                     <div class="product-item__footer">
                                                         <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()" class="add-to-compare text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()"  class="add-to-wishlist text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -592,8 +592,8 @@ $sections = Section::sections();
                                                     </div>
                                                     <div class="product-item__footer">
                                                         <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()" class="add-to-compare text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()"  class="add-to-wishlist text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -642,8 +642,8 @@ $sections = Section::sections();
                                                     </div>
                                                     <div class="product-item__footer">
                                                         <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()" class="add-to-compare text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()"  class="add-to-wishlist text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -692,8 +692,8 @@ $sections = Section::sections();
                                                     </div>
                                                     <div class="product-item__footer">
                                                         <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()" class="add-to-compare text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()"  class="add-to-wishlist text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -742,8 +742,8 @@ $sections = Section::sections();
                                                     </div>
                                                     <div class="product-item__footer">
                                                         <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()" class="add-to-compare text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()"  class="add-to-wishlist text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -792,8 +792,8 @@ $sections = Section::sections();
                                                     </div>
                                                     <div class="product-item__footer">
                                                         <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                            <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                            <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()" class="add-to-compare text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                            <a id="product-{{ $product['id'] }}" product_id="{{ $product['id'] }}" product_name="{{$product['product_name']}}" href="javascript:void()"  class="add-to-wishlist text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -859,8 +859,8 @@ $sections = Section::sections();
                                                 </div>
                                                 <div class="product-item__footer">
                                                     <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                        <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                        <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                        <a id="product-{{ $latest['id'] }}" product_id="{{ $latest['id'] }}" product_name="{{$latest['product_name']}}" href="javascript:void()"  class="add-to-compare text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                        <a id="product-{{ $latest['id'] }}" product_id="{{ $latest['id'] }}" product_name="{{$latest['product_name']}}" href="javascript:void()" class="add-to-wishlist text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -895,8 +895,8 @@ $sections = Section::sections();
                                                 </div>
                                                 <div class="product-item__footer">
                                                     <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                        <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                        <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                        <a id="product-{{ $latest['id'] }}" product_id="{{ $latest['id'] }}" product_name="{{$latest['product_name']}}" href="javascript:void()"  class="add-to-compare text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                        <a id="product-{{ $latest['id'] }}" product_id="{{ $latest['id'] }}" product_name="{{$latest['product_name']}}" href="javascript:void()" class="add-to-wishlist text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -931,8 +931,8 @@ $sections = Section::sections();
                                                 </div>
                                                 <div class="product-item__footer">
                                                     <div class="border-top pt-2 flex-center-between flex-wrap">
-                                                        <a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                        <a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                        <a id="product-{{ $latest['id'] }}" product_id="{{ $latest['id'] }}" product_name="{{$latest['product_name']}}" href="javascript:void()"  class="add-to-compare text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                                        <a id="product-{{ $latest['id'] }}" product_id="{{ $latest['id'] }}" product_name="{{$latest['product_name']}}" href="javascript:void()" class="add-to-wishlist text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
                                                     </div>
                                                 </div>
                                             </div>

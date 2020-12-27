@@ -10,6 +10,7 @@ use App\Category;
 use App\Compare;
 use App\Product;
 use App\ProductsAttribute;
+use App\Review;
 use App\Wishlist;
 use View;
 use Illuminate\Support\Facades\Auth;
@@ -134,7 +135,28 @@ class ProductsController extends Controller
         $total_stock = ProductsAttribute::where(['product_id' => $id, 'status' => 1])->sum('stock');
         $total_stock_status = ProductsAttribute::where('product_id', $id)->sum('status');
         $relatedProuducts = Product::where('category_id', $productDetails['category']['id'])->where('id', '!=', $id)->limit(4)->inRandomOrder()->get()->toArray();
-        return view('front.products.product_single_details')->with(compact('productDetails', 'total_stock', 'total_stock_status', 'relatedProuducts'));
+        $products_review = Review::with(['user'=>function($query){
+            $query->select('id','name');
+        }])->where(['product_id'=>$id])->orderBy('id','Desc')->get()->toArray();
+        $total_reviews = Review::where(['product_id'=>$id])->count();
+        if($total_reviews == 0){
+            $total_reviews = 0;
+            $overall =0;
+        }else{
+            $overall =number_format((Review::where(['product_id'=>$id])->sum('ratings')/$total_reviews),2);
+        }
+        $ratings = [
+            'one'=>Review::where(['product_id'=>$id, 'ratings'=>1])->count(),
+            'two'=>Review::where(['product_id'=>$id, 'ratings'=>2])->count(),
+            'three'=>Review::where(['product_id'=>$id, 'ratings'=>3])->count(),
+            'four'=>Review::where(['product_id'=>$id, 'ratings'=>4])->count(),
+            'five'=>Review::where(['product_id'=>$id, 'ratings'=>5])->count(),
+            'overall'=>$overall,
+            'total_reviews' => $total_reviews
+        ];
+        //    echo "<pre>"; print_r($ratings);die;
+
+        return view('front.products.product_single_details')->with(compact('productDetails', 'total_stock', 'total_stock_status', 'relatedProuducts','products_review','ratings'));
     }
     public function getProductPrice(Request $request)
     {
@@ -236,6 +258,10 @@ class ProductsController extends Controller
             }
     }
     public function wishList(){
+        if(!Auth::check()){
+            toastr()->error('Please login first','Error');
+            return redirect()->back();
+        }
         $wishListItems = Wishlist::wishListItems();
         // echo "<pre>"; print_r($wishListItems);die;
         return view('front.products.wishlist')->with(compact('wishListItems'));
@@ -326,4 +352,89 @@ class ProductsController extends Controller
             ]);
         }
     }
+    public function addtoReview(Request $request)
+    {
+        if($request->ajax()){
+            $data = $request->all();
+            // echo "<pre>"; print_r($data);die;
+            if(Auth::check()){
+                if(empty($data['ratings'])){
+                    echo "null_ratings";
+                    return false;
+                }else{
+                        $user_id = Auth::user()->id;
+                        $review = new Review;
+                        $review->user_id = $user_id;
+                        $review->product_id = $data['product_id'];
+                        $review->review = $data['review'];
+                        $review->ratings = $data['ratings'];
+                        $review->review_date = date('d/m/Y');
+                        $review->save();
+                        $products_review = Review::with(['user'=>function($query){
+                            $query->select('id','name');
+                        }])->where(['product_id'=>$data['product_id']])->orderBy('id','Desc')->get()->toArray();
+                        $productDetails['id'] = $data['product_id'];
+                        $total_reviews =Review::where(['product_id'=>$data['product_id']])->count();
+                        if($total_reviews == 0){
+                            $total_reviews = 0;
+                            $overall =0;
+                        }else{
+                            $overall =number_format((Review::where(['product_id'=>$data['product_id']])->sum('ratings')/$total_reviews),2);
+                        }
+                        $ratings = [
+                            'one'=>Review::where(['product_id'=>$data['product_id'], 'ratings'=>1])->count(),
+                            'two'=>Review::where(['product_id'=>$data['product_id'], 'ratings'=>2])->count(),
+                            'three'=>Review::where(['product_id'=>$data['product_id'], 'ratings'=>3])->count(),
+                            'four'=>Review::where(['product_id'=>$data['product_id'], 'ratings'=>4])->count(),
+                            'five'=>Review::where(['product_id'=>$data['product_id'], 'ratings'=>5])->count(),
+                            'overall'=>$overall,
+                            'total_reviews' => $total_reviews
+                        ];
+                        return response()->json([
+                            'message' =>'added_to_review',
+                            'view'=>(String)View::make('front.products.product_reviews')->with(compact('products_review','productDetails','ratings')),
+                            ]);
+                }
+                   
+            }else{
+                echo "no_login";
+            }
+            
+        }
+    }
+    public function deleteReview(Request $request)
+    {
+        if($request->ajax()){
+            $data = $request->all();
+            Review::find($data['review_id'])->delete();
+            $products_review = Review::with(['user'=>function($query){
+                $query->select('id','name');
+            }])->where(['product_id'=>$data['product_id']])->orderBy('id','Desc')->get()->toArray();
+            $productDetails['id'] = $data['product_id'];
+            $total_reviews =Review::where(['product_id'=>$data['product_id']])->count();
+            if($total_reviews == 0){
+                $total_reviews = 0;
+                $overall =0;
+            }else{
+                $overall =number_format((Review::where(['product_id'=>$data['product_id']])->sum('ratings')/$total_reviews),2);
+            }
+            $ratings = [
+                'one'=>Review::where(['product_id'=>$data['product_id'], 'ratings'=>1])->count(),
+                'two'=>Review::where(['product_id'=>$data['product_id'], 'ratings'=>2])->count(),
+                'three'=>Review::where(['product_id'=>$data['product_id'], 'ratings'=>3])->count(),
+                'four'=>Review::where(['product_id'=>$data['product_id'], 'ratings'=>4])->count(),
+                'five'=>Review::where(['product_id'=>$data['product_id'], 'ratings'=>5])->count(),
+                'overall'=>$overall,
+                'total_reviews' => $total_reviews
+            ];
+            return response()->json([
+                'view'=>(String)View::make('front.products.product_reviews')->with(compact('products_review','productDetails','ratings')),
+                ]);
+        }
+    }
+
+
+
+
+    
 }

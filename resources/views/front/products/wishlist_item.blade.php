@@ -32,9 +32,9 @@
                     
                     <tr>
                         <td class="text-center">
-                            <a href="javascript:void()" data-wishlist_id="{{$item['id']}}" class="btnItemDelete text-gray-32 font-size-26">×</a>
+                            <a href="javascript:void()" data-wishlist_id="{{$item['id']}}" class="btnWishlistDelete text-gray-32 font-size-26">×</a>
                         </td>
-                        <td class="d-none d-md-table-cell">
+                        <td class=" d-md-table-cell">
                             <a href="{{url('product/'.$productUrl)}}"><img class="img-fluid max-width-100 p-1 border border-color-1" src="{{ asset('img/product_img/small/'.$item['product']['main_image']) }}" alt="Image Description"></a>
                         </td>
 

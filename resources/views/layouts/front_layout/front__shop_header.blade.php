@@ -19,7 +19,7 @@ $cartItems = Cart::userCartItems();
                                 <nav class="navbar navbar-expand u-header__navbar py-0 justify-content-xl-between max-width-270 min-width-270">
                                     <!-- Logo -->
                                     <a class="order-1 order-xl-0 navbar-brand u-header__navbar-brand u-header__navbar-brand-center" href="{{url('/')}}" aria-label="Geekshopbd">
-                                        <svg version="1.1" x="0px" y="0px" width="175.748px" height="42.52px" viewBox="0 0 175.748 42.52" enable-background="new 0 0 175.748 42.52" style="margin-bottom: 0;">
+                                        <svg version="1.1" x="0px" y="0px" width="175.748px" height="42.52px" viewBox="0 0 175.748 42.52"  style="margin-bottom: 0;">
                                            <h4 style="color: black"> GeekshopBD</h4> 
                                         </svg>
                                     </a>
@@ -276,6 +276,10 @@ $cartItems = Cart::userCartItems();
                                             </a>
 
                                             <div id="user-panel" class="dropdown-menu dropdown-unfold dropdown-menu-right left-0 mx-2" aria-labelledby="UserPanelInvoker">
+                                                <a href="{{url('/compare')}}" class="dropdown-item"><i class="font-size-22 ec ec-compare mr-2 "></i> Compare Product</a> 
+                                                <div class="dropdown-divider"></div>
+                                                <a href="{{url('/my-wishlist')}}" class="dropdown-item"><i class="font-size-22 ec ec-favorites mr-2  "></i>Wishlist</a> 
+                                                <div class="dropdown-divider"></div>
                                                 @if(Auth::check())
                                                 <a href="{{url('/my-account')}}" class="dropdown-item"><i class="fas fa-user fa-sm fa-fw mr-2 "></i>My Account</a> 
                                                 <div class="dropdown-divider"></div>
@@ -286,7 +290,6 @@ $cartItems = Cart::userCartItems();
                                             </div>
                                         </li>
                                          <!-- My Account -->
-                                        <li class="col d-none d-xl-block"><a href="{{ url('/compare') }}" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Compare"><i class="font-size-22 ec ec-compare white-txt"></i></a></li>
                                         <li class="col d-none d-xl-block"><a href="{{ url('/my-wishlist') }}" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites white-txt"></i></a></li>
                                         <li class="col pr-xl-0 px-2 px-sm-3">
                                             <a href="{{url('/shopping-cart')}}" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">

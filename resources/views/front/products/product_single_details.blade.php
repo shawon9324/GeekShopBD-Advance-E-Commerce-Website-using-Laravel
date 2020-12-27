@@ -1,5 +1,5 @@
 <?php
-	use App\Section;
+    use App\Section;
 	$sections = Section::sections();
 ?>             
 @extends('layouts.front_layout.front_shop_layout')
@@ -95,14 +95,23 @@
                                     <h2 class="font-size-25 text-lh-1dot2">{{$productDetails['product_name']}}</h2>
                                     <div class="mb-2">
                                         <a class="d-inline-flex align-items-center small font-size-15 text-lh-1" href="#">
-                                            <div class="text-warning mr-2">
+                                            @if(round($ratings['overall']) == 0 )
+                                            <small class="far fa-star text-muted"></small>
+                                            <small class="far fa-star text-muted"></small>
+                                            <small class="far fa-star text-muted"></small>
+                                            <small class="far fa-star text-muted"></small>
+                                            <small class="far fa-star text-muted"></small>
+                                            @else
+                                                @foreach(range(1,round($ratings['overall'])) as $i)
                                                 <small class="fas fa-star"></small>
-                                                <small class="fas fa-star"></small>
-                                                <small class="fas fa-star"></small>
-                                                <small class="fas fa-star"></small>
+                                                @endforeach
+                                                @if(round($ratings['overall']) < 5)
+                                                @foreach(range(1,(5-round($ratings['overall']))) as $i)
                                                 <small class="far fa-star text-muted"></small>
-                                            </div>
-                                            <span class="text-secondary font-size-13">(3 customer reviews)</span>
+                                                @endforeach
+                                                @endif
+                                            @endif
+                                            <span class="text-secondary font-size-13">({{count($products_review)}} customer reviews)</span>
                                         </a>
                                     </div>
                                     @if($total_stock_status>0 && $total_stock>0 )
@@ -119,8 +128,8 @@
                                     
                                 </div>
                                 <div class="flex-horizontal-center flex-wrap mb-4">
-                                    <a href="#" class="text-gray-6 font-size-13 mr-2"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
-                                    <a href="#" class="text-gray-6 font-size-13 ml-2"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
+                                    <a id="product-{{ $productDetails['id'] }}" product_id="{{ $productDetails['id'] }}" product_name="{{$productDetails['product_name']}}" href="javascript:void()" class="add-to-wishlist text-gray-6 font-size-13 mr-2"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                    <a id="product-{{ $productDetails['id'] }}" product_id="{{ $productDetails['id'] }}" product_name="{{$productDetails['product_name']}}" href="javascript:void()" class="add-to-compare text-gray-6 font-size-13 ml-2"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
                                 </div>
                                 <div class="mb-2">
                                     <ul class="font-size-14 pl-3 ml-1 text-gray-110">
@@ -220,7 +229,6 @@
                     <div class="borders-radius-17 border p-4 mt-4 mt-md-0 px-lg-10 py-lg-9">
                         <div class="tab-content" id="Jpills-tabContent">
                             {{-- Description --}}
-
                             <div class="tab-pane fade active show " id="Jpills-two-example1" role="tabpanel" aria-labelledby="Jpills-two-example1-tab">
                                 
                                 {{-- <div class="row"> --}}
@@ -289,261 +297,11 @@
                                 </div>
                             </div>
                             {{-- Reviews --}}
-                            <div class="tab-pane fade" id="Jpills-four-example1" role="tabpanel" aria-labelledby="Jpills-four-example1-tab">
-                                <div class="row mb-8">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <h3 class="font-size-18 mb-6">Based on 3 reviews</h3>
-                                            <h2 class="font-size-30 font-weight-bold text-lh-1 mb-0">4.3</h2>
-                                            <div class="text-lh-1">overall</div>
-                                        </div>
-
-                                        <!-- Ratings -->
-                                        <ul class="list-unstyled">
-                                            <li class="py-1">
-                                                <a class="row align-items-center mx-gutters-2 font-size-1" href="javascript:;">
-                                                    <div class="col-auto mb-2 mb-md-0">
-                                                        <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
-                                                            <small class="fas fa-star"></small>
-                                                            <small class="fas fa-star"></small>
-                                                            <small class="fas fa-star"></small>
-                                                            <small class="fas fa-star"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto mb-2 mb-md-0">
-                                                        <div class="progress ml-xl-5" style="height: 10px; width: 200px;">
-                                                            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto text-right">
-                                                        <span class="text-gray-90">205</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="py-1">
-                                                <a class="row align-items-center mx-gutters-2 font-size-1" href="javascript:;">
-                                                    <div class="col-auto mb-2 mb-md-0">
-                                                        <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
-                                                            <small class="fas fa-star"></small>
-                                                            <small class="fas fa-star"></small>
-                                                            <small class="fas fa-star"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto mb-2 mb-md-0">
-                                                        <div class="progress ml-xl-5" style="height: 10px; width: 200px;">
-                                                            <div class="progress-bar" role="progressbar" style="width: 53%;" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto text-right">
-                                                        <span class="text-gray-90">55</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="py-1">
-                                                <a class="row align-items-center mx-gutters-2 font-size-1" href="javascript:;">
-                                                    <div class="col-auto mb-2 mb-md-0">
-                                                        <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
-                                                            <small class="fas fa-star"></small>
-                                                            <small class="fas fa-star"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto mb-2 mb-md-0">
-                                                        <div class="progress ml-xl-5" style="height: 10px; width: 200px;">
-                                                            <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto text-right">
-                                                        <span class="text-gray-90">23</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="py-1">
-                                                <a class="row align-items-center mx-gutters-2 font-size-1" href="javascript:;">
-                                                    <div class="col-auto mb-2 mb-md-0">
-                                                        <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
-                                                            <small class="fas fa-star"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto mb-2 mb-md-0">
-                                                        <div class="progress ml-xl-5" style="height: 10px; width: 200px;">
-                                                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto text-right">
-                                                        <span class="text-muted">0</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <li class="py-1">
-                                                <a class="row align-items-center mx-gutters-2 font-size-1" href="javascript:;">
-                                                    <div class="col-auto mb-2 mb-md-0">
-                                                        <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
-                                                            <small class="fas fa-star"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto mb-2 mb-md-0">
-                                                        <div class="progress ml-xl-5" style="height: 10px; width: 200px;">
-                                                            <div class="progress-bar" role="progressbar" style="width: 1%;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-auto text-right">
-                                                        <span class="text-gray-90">4</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <!-- End Ratings -->
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h3 class="font-size-18 mb-5">Add a review</h3>
-                                        <!-- Form -->
-                                        <form class="js-validate">
-                                            <div class="row align-items-center mb-4">
-                                                <div class="col-md-4 col-lg-3">
-                                                    <label for="rating" class="form-label mb-0">Your Review</label>
-                                                </div>
-                                                <div class="col-md-8 col-lg-9">
-                                                    <a href="#" class="d-block">
-                                                        <div class="text-warning text-ls-n2 font-size-16">
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                            <small class="far fa-star text-muted"></small>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="js-form-message form-group mb-3 row">
-                                                <div class="col-md-4 col-lg-3">
-                                                    <label for="descriptionTextarea" class="form-label">Your Review</label>
-                                                </div>
-                                                <div class="col-md-8 col-lg-9">
-                                                    <textarea class="form-control" rows="3" id="descriptionTextarea"
-                                                    data-msg="Please enter your message."
-                                                    data-error-class="u-has-error"
-                                                    data-success-class="u-has-success"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="js-form-message form-group mb-3 row">
-                                                <div class="col-md-4 col-lg-3">
-                                                    <label for="inputName" class="form-label">Name <span class="text-danger">*</span></label>
-                                                </div>
-                                                <div class="col-md-8 col-lg-9">
-                                                    <input type="text" class="form-control" name="name" id="inputName" aria-label="Alex Hecker" required
-                                                    data-msg="Please enter your name."
-                                                    data-error-class="u-has-error"
-                                                    data-success-class="u-has-success">
-                                                </div>
-                                            </div>
-                                            <div class="js-form-message form-group mb-3 row">
-                                                <div class="col-md-4 col-lg-3">
-                                                    <label for="emailAddress" class="form-label">Email <span class="text-danger">*</span></label>
-                                                </div>
-                                                <div class="col-md-8 col-lg-9">
-                                                    <input type="email" class="form-control" name="emailAddress" id="emailAddress" aria-label="alexhecker@pixeel.com" required
-                                                    data-msg="Please enter a valid email address."
-                                                    data-error-class="u-has-error"
-                                                    data-success-class="u-has-success">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="offset-md-4 offset-lg-3 col-auto">
-                                                    <button type="submit" class="btn btn-primary-dark btn-wide transition-3d-hover">Add Review</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <!-- End Form -->
-                                    </div>
-                                </div>
-                                <!-- Review -->
-                                <div class="border-bottom border-color-1 pb-4 mb-4">
-                                    <!-- Review Rating -->
-                                    <div class="d-flex justify-content-between align-items-center text-secondary font-size-1 mb-2">
-                                        <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star text-muted"></small>
-                                            <small class="far fa-star text-muted"></small>
-                                        </div>
-                                    </div>
-                                    <!-- End Review Rating -->
-
-                                    <p class="text-gray-90">Fusce vitae nibh mi. Integer posuere, libero et ullamcorper facilisis, enim eros tincidunt orci, eget vestibulum sapien nisi ut leo. Cras finibus vel est ut mollis. Donec luctus condimentum ante et euismod.</p>
-
-                                    <!-- Reviewer -->
-                                    <div class="mb-2">
-                                        <strong>John Doe</strong>
-                                        <span class="font-size-13 text-gray-23">- April 3, 2019</span>
-                                    </div>
-                                    <!-- End Reviewer -->
-                                </div>
-                                <!-- End Review -->
-                                <!-- Review -->
-                                <div class="border-bottom border-color-1 pb-4 mb-4">
-                                    <!-- Review Rating -->
-                                    <div class="d-flex justify-content-between align-items-center text-secondary font-size-1 mb-2">
-                                        <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                        </div>
-                                    </div>
-                                    <!-- End Review Rating -->
-
-                                    <p class="text-gray-90">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse eget facilisis odio. Duis sodales augue eu tincidunt faucibus. Etiam justo ligula, placerat ac augue id, volutpat porta dui.</p>
-
-                                    <!-- Reviewer -->
-                                    <div class="mb-2">
-                                        <strong>Anna Kowalsky</strong>
-                                        <span class="font-size-13 text-gray-23">- April 3, 2019</span>
-                                    </div>
-                                    <!-- End Reviewer -->
-                                </div>
-                                <!-- End Review -->
-                                <!-- Review -->
-                                <div class="pb-4">
-                                    <!-- Review Rating -->
-                                    <div class="d-flex justify-content-between align-items-center text-secondary font-size-1 mb-2">
-                                        <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="fas fa-star"></small>
-                                            <small class="far fa-star text-muted"></small>
-                                        </div>
-                                    </div>
-                                    <!-- End Review Rating -->
-
-                                    <p class="text-gray-90">Sed id tincidunt sapien. Pellentesque cursus accumsan tellus, nec ultricies nulla sollicitudin eget. Donec feugiat orci vestibulum porttitor sagittis.</p>
-
-                                    <!-- Reviewer -->
-                                    <div class="mb-2">
-                                        <strong>Peter Wargner</strong>
-                                        <span class="font-size-13 text-gray-23">- April 3, 2019</span>
-                                    </div>
-                                    <!-- End Reviewer -->
-                                </div>
-                                <!-- End Review -->
+                            
+                            <div class="AppendProductReviews tab-pane fade" id="Jpills-four-example1" role="tabpanel" aria-labelledby="Jpills-four-example1-tab">
+                                @include('front.products.product_reviews')
                             </div>
-
+                            {{--End Reviews --}}
                         </div>
                     </div>
                     <!-- End Tab Content -->
@@ -591,11 +349,15 @@
 																</div>
 															</div>
 															<div class="product-item__footer">
-																<div class="border-top pt-2 flex-center-between flex-wrap">
-																	<a href="compare.html" class="text-gray-6 font-size-13"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-																	<a href="wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Add to Wishlist</a>
-																</div>
-															</div>
+                                                                <div class="border-top pt-2 flex-center-between flex-wrap">
+                                                                    <a class="add-to-compare text-gray-6 font-size-13" id="product-{{ $relatedProuduct['id'] }}" product_id="{{ $relatedProuduct['id'] }}" product_name="{{$relatedProuduct['product_name']}}" href="javascript:void()">
+                                                                        <i class="ec ec-compare mr-1 font-size-15"></i> Compare
+                                                                    </a>
+                                                                    <a class="add-to-wishlist text-gray-6 font-size-13" id="product-{{ $relatedProuduct['id'] }}" product_id="{{ $relatedProuduct['id'] }}" product_name="{{$relatedProuduct['product_name']}}" href="javascript:void()">
+                                                                        <i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist
+                                                                    </a>
+                                                                </div>
+                                                            </div>
 														</div>
 													</div>
 												</li>

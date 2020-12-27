@@ -131,6 +131,10 @@ $cartItems = Cart::userCartItems();
                                             </a>
 
                                             <div id="user-panel" class="dropdown-menu dropdown-unfold dropdown-menu-right left-0 mx-2" aria-labelledby="UserPanelInvoker">
+                                                <a href="{{url('/compare')}}" class="dropdown-item"><i class="font-size-22 ec ec-compare mr-2 "></i> Compare Product</a> 
+                                                <div class="dropdown-divider"></div>
+                                                <a href="{{url('/my-wishlist')}}" class="dropdown-item"><i class="font-size-22 ec ec-favorites mr-2  "></i>Wishlist</a> 
+                                                <div class="dropdown-divider"></div>
                                                 @if(Auth::check())
                                                 <a href="{{url('/my-account')}}" class="dropdown-item"><i class="fas fa-user fa-sm fa-fw mr-2 "></i>My Account</a> 
                                                 <div class="dropdown-divider"></div>

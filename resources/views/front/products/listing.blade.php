@@ -246,12 +246,7 @@
 												</div>
 												<div class="col">
 													<h3 class="text-lh-1dot2 font-size-14 mb-0"><a href="{{ url('product/'.$productUrl) }}">{{ $latest['product_name'] }}</a></h3>
-													<div class="text-warning text-ls-n2 font-size-16 mb-1" style="width: 80px;">
-														<small class="fas fa-star"></small>
-														<small class="fas fa-star"></small>
-														<small class="fas fa-star"></small>
-														<small class="fas fa-star"></small>
-														<small class="far fa-star text-muted"></small>
+													<div class=" mb-2">
 													</div>
 													<div class="font-weight-bold">
 														<?php  

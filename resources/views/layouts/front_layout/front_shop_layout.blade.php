@@ -31,6 +31,8 @@
 
         <!-- CSS Electro Template -->
         <link rel="stylesheet" href="{{ url('css/front_css/theme.css')}} ">
+        <!-- CSS Custom -->
+        <link rel="stylesheet" href="{{ url('css/front_css/front_custom.css')}} ">
         @toastr_css
         {{-- CSRF TOKEN PASS --}}
         <meta name="csrf-token" content="{{ csrf_token() }}">

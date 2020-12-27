@@ -30,7 +30,7 @@ use App\Product;
             <?php $attrPrice = Product::getDiscountedAttrPrice($item['product_id'],$item['color']); ?>
             <tr class="">
                 <td class="text-center">
-                    <a href="javascript:void()" data-cartid="{{$item['id']}}" class="btnItemDelete text-gray-32 font-size-26">×</a>
+                    <a href="javascript:void()" data-cartid="{{$item['id']}}" class="btnCartItemsDelete text-gray-32 font-size-26">×</a>
                 </td>
                 <td >
                 <a href="{{ url('product/'.$productUrl) }}"><img class="img-fluid max-width-100  border border-color-1" src="{{asset('img/product_img/small/'.$item['product']['main_image'])}}" alt="cart-image"></a>

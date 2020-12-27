@@ -321,7 +321,7 @@ $(document).ready(function() {
 * REMOVE CART ITEMS
 * 
 *********************************************************************/
-    $(document).on('click','.btnItemDelete',function(){
+    $(document).on('click','.btnCartItemsDelete',function(){
         var cartid = $(this).data('cartid');
         $.ajax({
             data : {cartid:cartid},
@@ -347,6 +347,7 @@ $(document).ready(function() {
         var $recoverPassowrd = $("#recoverPassowrd");
         var $userProfile = $("#userProfile");
         var $updatePassword = $("#updatePassword");
+        var $
         if($userRegistrationForm.length){
             $userRegistrationForm.validate({
                 validClass: "is-valid",
@@ -506,7 +507,7 @@ $(document).ready(function() {
 * PRODUCTS-ADD-TO-WISHLIST
 * 
 *********************************************************************/
-$(document).on("click",".add-to-cart",function(){
+$(document).on("click",".add-to-wishlist",function(){
     var product_id =$(this).attr("product_id");
     var product_name = $(this).attr("product_name");
     var message = "You must login or create an account to save "+product_name+" to your wish list";
@@ -537,7 +538,7 @@ $(document).on("click",".add-to-cart",function(){
 * REMOVE WISHLIST ITEMS
 * 
 *********************************************************************/
-$(document).on('click','.btnItemDelete',function(){
+$(document).on('click','.btnWishlistDelete',function(){
     var wishlist_id = $(this).data('wishlist_id');
     $.ajax({
         data : {wishlist_id:wishlist_id},
@@ -581,8 +582,6 @@ $(document).on("click",".add-to-compare",function(){
         error: function() {
         }
     });
-               
-
 });
 
 /********************************************************************
@@ -590,7 +589,7 @@ $(document).on("click",".add-to-compare",function(){
 * REMOVE COMPARE ITEMS
 * 
 *********************************************************************/
-$(document).on('click','.btnItemDelete',function(){
+$(document).on('click','.btnCompareDelete',function(){
     var comparison_id = $(this).data('comparison_id');
     $.ajax({
         data : {comparison_id:comparison_id},
@@ -605,11 +604,90 @@ $(document).on('click','.btnItemDelete',function(){
     })
 });
 
+/********************************************************************
+* 
+* REVIEW STAR SYSTEM
+* 
+*********************************************************************/
+$(function() {
+	
+	$(document).on({
+		mouseover: function(event) {
+			$(this).find('.far').addClass('star-over');
+			$(this).prevAll().find('.far').addClass('star-over');
+		},
+		mouseleave: function(event) {
+			$(this).find('.far').removeClass('star-over');
+			$(this).prevAll().find('.far').removeClass('star-over');
+		}
+	}, '.rate');
+
+
+	$(document).on('click', '.rate', function() {
+		if ( !$(this).find('.star').hasClass('rate-active') ) {
+			$(this).siblings().find('.star').addClass('far').removeClass('fas rate-active');
+			$(this).find('.star').addClass('rate-active fas').removeClass('far star-over');
+			$(this).prevAll().find('.star').addClass('fas').removeClass('far star-over');
+		} else {
+			console.log('has');
+		}
+	});
+	
+});
 
 
 
+/********************************************************************
+* 
+* PRODUCTS-ADD-TO-REVIEW
+* 
+*********************************************************************/
 
+$(document).on("click",".add-product-review",function(e){
+    var product_id =$(this).attr("product_id");
+    var ratings = $('input[name="reviewRadio"]:checked').val();
+    var review = $("#reviewProduct").val();
+    $.ajax({
+        type: "get",
+        url : "/add-product-review",
+        data: {product_id:product_id,ratings:ratings,review:review},
+        success: function(resp){
+           if(resp['message'] == "added_to_review"){
+            toastr.success("Your review has been submitted successfully",'Success');
+            $(".AppendProductReviews").html(resp.view);
+           }
+           else if(resp =="no_login"){
+                toastr.error('You have to login first','Failed');
+           }
+           else if(resp =="null_ratings"){
+                toastr.error('Please give rating star','Failed');
+           }
+        },
+        error: function() {
+        }
+    });
+});
 
+/********************************************************************
+* 
+* REMOVE PRODUCT REVIEWS 
+* 
+*********************************************************************/
+$(document).on('click','.btnReviewDelete',function(){
+    var review_id = $(this).data('review_id');
+    var product_id = $(this).data('product_id');
+    $.ajax({
+        data : {review_id:review_id,product_id:product_id},
+        url:'/delete-product-review',
+        type:'post',
+        success: function(resp){
+            toastr.success('Product review deleted successfully', 'Success');
+            $(".AppendProductReviews").html(resp.view);
+        }, error: function(){
+            console.log("Error")
+        }
+    })
+});
 
 
 
